@@ -31,9 +31,32 @@ namespace Forms
 
         }
 
-        private void buttonGetOne_Click(object sender, EventArgs e)
+        private async void buttonGetOne_Click(object sender, EventArgs e)
         {
+            if (int.TryParse(textBox1.Text, out int id))
+            {
+                try
+                {
+                    var especialidad = await _httpClient.GetFromJsonAsync<Especialidad>($"especialidades/{id}");
 
+                    if (especialidad != null)
+                    {
+                        dataGridView1.DataSource = new List<Especialidad> { especialidad };
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontró la especialidad.");
+                    }
+                }
+                catch (HttpRequestException ex)
+                {
+                    MessageBox.Show($"Error al consultar la especialidad: {ex.Message}");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ingrese un ID válido.");
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
