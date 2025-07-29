@@ -7,10 +7,10 @@
         public string Desc { get; set; }
 
 
-        public Especialidad(int id_especialidad, string desc_especialidad)
+        public Especialidad(int id, string desc)
         {
-            this.Id = id_especialidad;
-            this.Desc = desc_especialidad;
+            this.Id = id;
+            this.Desc = desc;
         }
 
     }

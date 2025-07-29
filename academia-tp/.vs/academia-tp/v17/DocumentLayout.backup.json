@@ -1,42 +1,46 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\",
+  "WorkspaceRootPath": "C:\\C#\\Tp\\academia-tp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{22EF5F96-1451-44A7-93D4-6CFFC373A071}|WebApi\\WebApi.csproj|c:\\users\\user\\desktop\\net-tp\\academia-tp\\webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{22EF5F96-1451-44A7-93D4-6CFFC373A071}|WebApi\\WebApi.csproj|solutionrelative:webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2D404E97-7458-4007-B10D-286C43527B64}|Domain.model\\Domain.model.csproj|c:\\c#\\tp\\academia-tp\\domain.model\\especialidad.domain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2D404E97-7458-4007-B10D-286C43527B64}|Domain.model\\Domain.model.csproj|solutionrelative:domain.model\\especialidad.domain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\users\\user\\desktop\\net-tp\\academia-tp\\forms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\users\\user\\desktop\\net-tp\\academia-tp\\forms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C366D0D-1DB9-4AAE-85AB-477CEC944B68}|Domain.services\\Domain.services.csproj|c:\\users\\user\\desktop\\net-tp\\academia-tp\\domain.services\\especialidad.services.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C366D0D-1DB9-4AAE-85AB-477CEC944B68}|Domain.services\\Domain.services.csproj|solutionrelative:domain.services\\especialidad.services.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C366D0D-1DB9-4AAE-85AB-477CEC944B68}|Domain.services\\Domain.services.csproj|c:\\users\\user\\desktop\\net-tp\\academia-tp\\domain.services\\plan.services.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C366D0D-1DB9-4AAE-85AB-477CEC944B68}|Domain.services\\Domain.services.csproj|solutionrelative:domain.services\\plan.services.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9DA5730D-05BB-4FC8-B3FA-C4798EC4E4A6}|DTOs\\DTOs.csproj|c:\\users\\user\\desktop\\net-tp\\academia-tp\\dtos\\especialidad.dto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9DA5730D-05BB-4FC8-B3FA-C4798EC4E4A6}|DTOs\\DTOs.csproj|c:\\c#\\tp\\academia-tp\\dtos\\especialidad.dto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9DA5730D-05BB-4FC8-B3FA-C4798EC4E4A6}|DTOs\\DTOs.csproj|solutionrelative:dtos\\especialidad.dto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9DA5730D-05BB-4FC8-B3FA-C4798EC4E4A6}|DTOs\\DTOs.csproj|c:\\users\\user\\desktop\\net-tp\\academia-tp\\dtos\\plan.dto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7C366D0D-1DB9-4AAE-85AB-477CEC944B68}|Domain.services\\Domain.services.csproj|c:\\c#\\tp\\academia-tp\\domain.services\\especialidad.services.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C366D0D-1DB9-4AAE-85AB-477CEC944B68}|Domain.services\\Domain.services.csproj|solutionrelative:domain.services\\especialidad.services.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DA5730D-05BB-4FC8-B3FA-C4798EC4E4A6}|DTOs\\DTOs.csproj|c:\\c#\\tp\\academia-tp\\dtos\\plan.dto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9DA5730D-05BB-4FC8-B3FA-C4798EC4E4A6}|DTOs\\DTOs.csproj|solutionrelative:dtos\\plan.dto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2D404E97-7458-4007-B10D-286C43527B64}|Domain.model\\Domain.model.csproj|c:\\users\\user\\desktop\\net-tp\\academia-tp\\domain.model\\plan.domain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7C366D0D-1DB9-4AAE-85AB-477CEC944B68}|Domain.services\\Domain.services.csproj|c:\\c#\\tp\\academia-tp\\domain.services\\plan.services.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C366D0D-1DB9-4AAE-85AB-477CEC944B68}|Domain.services\\Domain.services.csproj|solutionrelative:domain.services\\plan.services.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2D404E97-7458-4007-B10D-286C43527B64}|Domain.model\\Domain.model.csproj|c:\\c#\\tp\\academia-tp\\domain.model\\plan.domain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2D404E97-7458-4007-B10D-286C43527B64}|Domain.model\\Domain.model.csproj|solutionrelative:domain.model\\plan.domain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F511DB38-77EB-4D92-A714-3AD25F2C8715}|Data.domain\\DataDomain.csproj|c:\\users\\user\\desktop\\net-tp\\academia-tp\\data.domain\\datadomain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F511DB38-77EB-4D92-A714-3AD25F2C8715}|Data.domain\\DataDomain.csproj|c:\\c#\\tp\\academia-tp\\data.domain\\datadomain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F511DB38-77EB-4D92-A714-3AD25F2C8715}|Data.domain\\DataDomain.csproj|solutionrelative:data.domain\\datadomain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\c#\\tp\\academia-tp\\forms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|C:\\C#\\Tp\\academia-tp\\forms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22EF5F96-1451-44A7-93D4-6CFFC373A071}|WebApi\\WebApi.csproj|c:\\c#\\tp\\academia-tp\\webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22EF5F96-1451-44A7-93D4-6CFFC373A071}|WebApi\\WebApi.csproj|solutionrelative:webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,28 +50,41 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "Especialidad.domain.cs",
+              "DocumentMoniker": "C:\\C#\\Tp\\academia-tp\\Domain.model\\Especialidad.domain.cs",
+              "RelativeDocumentMoniker": "Domain.model\\Especialidad.domain.cs",
+              "ToolTip": "C:\\C#\\Tp\\academia-tp\\Domain.model\\Especialidad.domain.cs",
+              "RelativeToolTip": "Domain.model\\Especialidad.domain.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-29T21:39:31.314Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\Form1.cs",
+              "DocumentMoniker": "C:\\C#\\Tp\\academia-tp\\Forms\\Form1.cs",
               "RelativeDocumentMoniker": "Forms\\Form1.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\Form1.cs",
+              "ToolTip": "C:\\C#\\Tp\\academia-tp\\Forms\\Form1.cs",
               "RelativeToolTip": "Forms\\Form1.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAgwBkAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-29T20:10:53.871Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 8,
               "Title": "Form1.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\Form1.cs",
+              "DocumentMoniker": "C:\\C#\\Tp\\academia-tp\\Forms\\Form1.cs",
               "RelativeDocumentMoniker": "Forms\\Form1.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\Form1.cs [Dise\u00F1o]",
+              "ToolTip": "C:\\C#\\Tp\\academia-tp\\Forms\\Form1.cs [Dise\u00F1o]",
               "RelativeToolTip": "Forms\\Form1.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-29T20:09:32.177Z",
@@ -75,13 +92,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 9,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\WebApi\\Program.cs",
+              "DocumentMoniker": "C:\\C#\\Tp\\academia-tp\\WebApi\\Program.cs",
               "RelativeDocumentMoniker": "WebApi\\Program.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\WebApi\\Program.cs",
+              "ToolTip": "C:\\C#\\Tp\\academia-tp\\WebApi\\Program.cs",
               "RelativeToolTip": "WebApi\\Program.cs",
-              "ViewState": "AgIAAEIAAAAAAAAAAAAAAIEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAIEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "OverriddenGroupName": "WebApi",
               "WhenOpened": "2025-07-28T22:00:52.232Z",
@@ -91,9 +108,9 @@
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "Plan.services.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Domain.services\\Plan.services.cs",
+              "DocumentMoniker": "C:\\C#\\Tp\\academia-tp\\Domain.services\\Plan.services.cs",
               "RelativeDocumentMoniker": "Domain.services\\Plan.services.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Domain.services\\Plan.services.cs",
+              "ToolTip": "C:\\C#\\Tp\\academia-tp\\Domain.services\\Plan.services.cs",
               "RelativeToolTip": "Domain.services\\Plan.services.cs",
               "ViewState": "AgIAAAIAAAAAefmodzsUwDUAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -103,11 +120,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "Especialidad.services.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Domain.services\\Especialidad.services.cs",
+              "DocumentMoniker": "C:\\C#\\Tp\\academia-tp\\Domain.services\\Especialidad.services.cs",
               "RelativeDocumentMoniker": "Domain.services\\Especialidad.services.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Domain.services\\Especialidad.services.cs",
+              "ToolTip": "C:\\C#\\Tp\\academia-tp\\Domain.services\\Especialidad.services.cs",
               "RelativeToolTip": "Domain.services\\Especialidad.services.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAowBsAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -116,52 +133,56 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 5,
               "Title": "Plan.domain.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Domain.model\\Plan.domain.cs",
+              "DocumentMoniker": "C:\\C#\\Tp\\academia-tp\\Domain.model\\Plan.domain.cs",
               "RelativeDocumentMoniker": "Domain.model\\Plan.domain.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Domain.model\\Plan.domain.cs",
+              "ToolTip": "C:\\C#\\Tp\\academia-tp\\Domain.model\\Plan.domain.cs",
               "RelativeToolTip": "Domain.model\\Plan.domain.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-28T21:32:57.603Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "DataDomain.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Data.domain\\DataDomain.cs",
-              "RelativeDocumentMoniker": "Data.domain\\DataDomain.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Data.domain\\DataDomain.cs",
-              "RelativeToolTip": "Data.domain\\DataDomain.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwBoAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "OverriddenGroupName": "Data.domain",
-              "WhenOpened": "2025-07-28T21:21:26.685Z"
+              "WhenOpened": "2025-07-28T21:32:57.603Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "Plan.dto.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\DTOs\\Plan.dto.cs",
-              "RelativeDocumentMoniker": "DTOs\\Plan.dto.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\DTOs\\Plan.dto.cs",
-              "RelativeToolTip": "DTOs\\Plan.dto.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB8AAAAFAAAAAAAAAA==",
+              "Title": "DataDomain.cs",
+              "DocumentMoniker": "C:\\C#\\Tp\\academia-tp\\Data.domain\\DataDomain.cs",
+              "RelativeDocumentMoniker": "Data.domain\\DataDomain.cs",
+              "ToolTip": "C:\\C#\\Tp\\academia-tp\\Data.domain\\DataDomain.cs",
+              "RelativeToolTip": "Data.domain\\DataDomain.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwBoAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-28T21:17:36.85Z"
+              "OverriddenGroupName": "Data.domain",
+              "WhenOpened": "2025-07-28T21:21:26.685Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
+              "Title": "Plan.dto.cs",
+              "DocumentMoniker": "C:\\C#\\Tp\\academia-tp\\DTOs\\Plan.dto.cs",
+              "RelativeDocumentMoniker": "DTOs\\Plan.dto.cs",
+              "ToolTip": "C:\\C#\\Tp\\academia-tp\\DTOs\\Plan.dto.cs",
+              "RelativeToolTip": "DTOs\\Plan.dto.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB8AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-28T21:17:36.85Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Especialidad.dto.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\DTOs\\Especialidad.dto.cs",
+              "DocumentMoniker": "C:\\C#\\Tp\\academia-tp\\DTOs\\Especialidad.dto.cs",
               "RelativeDocumentMoniker": "DTOs\\Especialidad.dto.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\DTOs\\Especialidad.dto.cs",
+              "ToolTip": "C:\\C#\\Tp\\academia-tp\\DTOs\\Especialidad.dto.cs",
               "RelativeToolTip": "DTOs\\Especialidad.dto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-28T21:09:17.122Z"
+              "WhenOpened": "2025-07-28T21:09:17.122Z",
+              "EditorCaption": ""
             }
           ]
         }
