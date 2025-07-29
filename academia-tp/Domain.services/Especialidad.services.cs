@@ -3,6 +3,7 @@ using Domain.model;
 using DataDomain;
 using DTOs;
 using System;
+using System.Linq;
 
 public class EspecialidadServices
 {
@@ -18,8 +19,14 @@ public class EspecialidadServices
 
     public IEnumerable<Especialidad> GetAll()
     {
-        return InMemory.especialidades.ToList();
+        List <Especialidad> especialidades = InMemory.especialidades.ToList();
+        if (especialidades != null)
+        {
+            especialidades.ForEach(x => new Especialidad(x.Id, x.Desc));
+        }
+        return especialidades;
     }
+        
 
     public Especialidad Create(EspecialidadDTO especialidadDTO)
     {
