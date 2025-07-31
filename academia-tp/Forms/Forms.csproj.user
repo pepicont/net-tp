@@ -7,7 +7,13 @@
     <Compile Update="Form2.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Form3.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormDeleteEspecialidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormDeletePlan.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FormGetPlan.cs">
