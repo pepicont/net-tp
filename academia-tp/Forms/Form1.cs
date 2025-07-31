@@ -45,7 +45,7 @@ namespace Forms
                     }
                     else
                     {
-                        MessageBox.Show("No se encontró la especialidad.");
+                        MessageBox.Show("No se encontró la especialidad."); //nunca entra
                     }
                 }
                 catch (HttpRequestException ex)
@@ -55,7 +55,7 @@ namespace Forms
             }
             else
             {
-                MessageBox.Show("Ingrese un ID válido.");
+                MessageBox.Show("Ingrese un ID válido."); //bueno para implementar en los otros
             }
         }
 

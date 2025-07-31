@@ -9,13 +9,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Domain.model;
-using DTOs;
 
 namespace Forms
 {
-    public partial class Form2 : Form
+    public partial class FormDeleteEspecialidad : Form
     {
-        public Form2()
+        public FormDeleteEspecialidad()
         {
             InitializeComponent();
         }
@@ -23,40 +22,6 @@ namespace Forms
         {
             BaseAddress = new Uri("http://localhost:5290")
         };
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-            //ignorar
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-            //ignorar
-        }
-
-        private async void buttonPut_Click(object sender, EventArgs e)
-        {
-            int id = int.Parse(TextBoxId.Text);
-            string desc = richTextBoxDescripcion.Text;
-            Especialidad especialidad = new Especialidad(id, desc);
-            var response = await _httpClient.PutAsJsonAsync($"especialidades/{id}",especialidad);    // TODO preguntar a porta que carajos pasa
-
-            if (response.IsSuccessStatusCode)
-            {
-                MessageBox.Show("Especialidad modificada con éxito");
-              
-                // Limpiar los TextBox
-                this.richTextBoxDescripcion.Clear();
-                this.TextBoxId.Clear();
-            }
-            else
-            {
-                MessageBox.Show("Error al modificar la especialidad");
- 
-            }
-
-
-        }
 
         private async void button1_Click(object sender, EventArgs e)
         {
@@ -72,7 +37,7 @@ namespace Forms
                         TextBoxId.Text = especialidad.Id.ToString();
                         richTextBoxDescripcion.Text = especialidad.Desc;
                     }
-
+                    
                 }
                 catch (HttpRequestException ex)
                 {
@@ -89,9 +54,24 @@ namespace Forms
             {
                 MessageBox.Show("Ingrese un ID válido."); 
             }
-
         }
-            
+
+        private async void buttonDelete_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(this.TextBoxId.Text);
+            var response = await _httpClient.DeleteAsync($"especialidades/{id}"); // Use DeleteAsync instead of DeleteFromJsonAsync
+
+            // Limpieza de campos y mensaje
+            if (response.IsSuccessStatusCode) // Correctly check the success status
+            {
+                MessageBox.Show("Especialidad borrada con éxito");
+                this.richTextBoxDescripcion.Clear();
+                this.TextBoxId.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Error al borrar la especialidad");
+            }
         }
     }
-
+}
