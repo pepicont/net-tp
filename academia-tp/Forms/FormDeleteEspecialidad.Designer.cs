@@ -79,7 +79,6 @@
             // 
             TextBoxId.Location = new Point(125, 50);
             TextBoxId.Name = "TextBoxId";
-            TextBoxId.ReadOnly = true;
             TextBoxId.Size = new Size(100, 23);
             TextBoxId.TabIndex = 12;
             // 

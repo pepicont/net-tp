@@ -3,24 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\juanc\\Desktop\\programacion\\net-tp\\academia-tp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\users\\juanc\\desktop\\programacion\\net-tp\\academia-tp\\forms\\formdeleteplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\formdeleteplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\users\\juanc\\desktop\\programacion\\net-tp\\academia-tp\\forms\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9DA5730D-05BB-4FC8-B3FA-C4798EC4E4A6}|DTOs\\DTOs.csproj|c:\\users\\juanc\\desktop\\programacion\\net-tp\\academia-tp\\dtos\\especialidad.dto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9DA5730D-05BB-4FC8-B3FA-C4798EC4E4A6}|DTOs\\DTOs.csproj|solutionrelative:dtos\\especialidad.dto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\users\\juanc\\desktop\\programacion\\net-tp\\academia-tp\\forms\\formdeleteplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\formdeleteplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\users\\juanc\\desktop\\programacion\\net-tp\\academia-tp\\forms\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\users\\juanc\\desktop\\programacion\\net-tp\\academia-tp\\forms\\formdeleteplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\formdeleteplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\users\\juanc\\desktop\\programacion\\net-tp\\academia-tp\\forms\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\users\\juanc\\desktop\\programacion\\net-tp\\academia-tp\\forms\\formdeleteespecialidad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\formdeleteespecialidad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\users\\juanc\\desktop\\programacion\\net-tp\\academia-tp\\forms\\formdeleteespecialidad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\formdeleteespecialidad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,67 +34,66 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\juanc\\Desktop\\programacion\\net-tp\\academia-tp\\Forms\\Program.cs",
-              "RelativeDocumentMoniker": "Forms\\Program.cs",
-              "ToolTip": "C:\\Users\\juanc\\Desktop\\programacion\\net-tp\\academia-tp\\Forms\\Program.cs",
-              "RelativeToolTip": "Forms\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T18:44:57.021Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Form3.cs",
-              "DocumentMoniker": "C:\\Users\\juanc\\Desktop\\programacion\\net-tp\\academia-tp\\Forms\\Form3.cs",
-              "RelativeDocumentMoniker": "Forms\\Form3.cs",
-              "ToolTip": "C:\\Users\\juanc\\Desktop\\programacion\\net-tp\\academia-tp\\Forms\\Form3.cs",
-              "RelativeToolTip": "Forms\\Form3.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0AAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T18:16:55.202Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Especialidad.dto.cs",
-              "DocumentMoniker": "C:\\Users\\juanc\\Desktop\\programacion\\net-tp\\academia-tp\\DTOs\\Especialidad.dto.cs",
-              "RelativeDocumentMoniker": "DTOs\\Especialidad.dto.cs",
-              "ToolTip": "C:\\Users\\juanc\\Desktop\\programacion\\net-tp\\academia-tp\\DTOs\\Especialidad.dto.cs",
-              "RelativeToolTip": "DTOs\\Especialidad.dto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T18:32:24.122Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Form3.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\juanc\\Desktop\\programacion\\net-tp\\academia-tp\\Forms\\Form3.cs",
-              "RelativeDocumentMoniker": "Forms\\Form3.cs",
-              "ToolTip": "C:\\Users\\juanc\\Desktop\\programacion\\net-tp\\academia-tp\\Forms\\Form3.cs [Design]",
-              "RelativeToolTip": "Forms\\Form3.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T18:46:42.597Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "FormDeletePlan.cs [Design]",
               "DocumentMoniker": "C:\\Users\\juanc\\Desktop\\programacion\\net-tp\\academia-tp\\Forms\\FormDeletePlan.cs",
               "RelativeDocumentMoniker": "Forms\\FormDeletePlan.cs",
               "ToolTip": "C:\\Users\\juanc\\Desktop\\programacion\\net-tp\\academia-tp\\Forms\\FormDeletePlan.cs [Design]",
               "RelativeToolTip": "Forms\\FormDeletePlan.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T18:54:51.225Z",
+              "WhenOpened": "2025-08-01T11:21:44.909Z",
               "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FormDeleteEspecialidad.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\juanc\\Desktop\\programacion\\net-tp\\academia-tp\\Forms\\FormDeleteEspecialidad.cs",
+              "RelativeDocumentMoniker": "Forms\\FormDeleteEspecialidad.cs",
+              "ToolTip": "C:\\Users\\juanc\\Desktop\\programacion\\net-tp\\academia-tp\\Forms\\FormDeleteEspecialidad.cs [Design]",
+              "RelativeToolTip": "Forms\\FormDeleteEspecialidad.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-01T11:22:34.776Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FormDeleteEspecialidad.cs",
+              "DocumentMoniker": "C:\\Users\\juanc\\Desktop\\programacion\\net-tp\\academia-tp\\Forms\\FormDeleteEspecialidad.cs",
+              "RelativeDocumentMoniker": "Forms\\FormDeleteEspecialidad.cs",
+              "ToolTip": "C:\\Users\\juanc\\Desktop\\programacion\\net-tp\\academia-tp\\Forms\\FormDeleteEspecialidad.cs",
+              "RelativeToolTip": "Forms\\FormDeleteEspecialidad.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADoAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-01T11:22:46.968Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FormDeletePlan.cs",
+              "DocumentMoniker": "C:\\Users\\juanc\\Desktop\\programacion\\net-tp\\academia-tp\\Forms\\FormDeletePlan.cs",
+              "RelativeDocumentMoniker": "Forms\\FormDeletePlan.cs",
+              "ToolTip": "C:\\Users\\juanc\\Desktop\\programacion\\net-tp\\academia-tp\\Forms\\FormDeletePlan.cs",
+              "RelativeToolTip": "Forms\\FormDeletePlan.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAmwD0AAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-01T11:23:57.095Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\juanc\\Desktop\\programacion\\net-tp\\academia-tp\\Forms\\Program.cs",
+              "RelativeDocumentMoniker": "Forms\\Program.cs",
+              "ToolTip": "C:\\Users\\juanc\\Desktop\\programacion\\net-tp\\academia-tp\\Forms\\Program.cs",
+              "RelativeToolTip": "Forms\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-01T11:34:40.814Z",
+              "EditorCaption": ""
             }
           ]
         }
