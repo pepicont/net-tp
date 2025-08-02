@@ -4,9 +4,9 @@ using Domain.model;
 
 namespace Forms
 {
-    public partial class Form1 : Form
+    public partial class FormGetEspecialidad : Form
     {
-        public Form1()
+        public FormGetEspecialidad()
         {
             InitializeComponent();
         }

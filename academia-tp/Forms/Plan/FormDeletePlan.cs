@@ -45,8 +45,6 @@ namespace Forms
                         {
                             TextBoxId.Text = plan.Id.ToString();
                             richTextBoxDescripcion.Text = plan.Desc;
-
-                            // Buscar la descripción de la especialidad
                             await CargarDescripcionEspecialidad(plan.Id_especialidad);
                         }
                         else
@@ -89,15 +87,13 @@ namespace Forms
         {
             try
             {
-                // Cargar todas las especialidades
                 var especialidades = await _httpClient.GetFromJsonAsync<IEnumerable<Especialidad>>("especialidades");
                 if (especialidades != null)
                 {
-                    // Buscar la especialidad por ID
                     var especialidad = especialidades.FirstOrDefault(e => e.Id == idEspecialidad);
                     if (especialidad != null)
                     {
-                        txtIdEspecialidad.Text = especialidad.Desc; // Mostrar descripción
+                        txtIdEspecialidad.Text = especialidad.Desc; 
                     }
                     else
                     {

@@ -3,79 +3,24 @@
   "WorkspaceRootPath": "C:\\C#\\Tp\\net-tp\\academia-tp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\c#\\tp\\net-tp\\academia-tp\\forms\\formdeleteplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\formdeleteplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\c#\\tp\\net-tp\\academia-tp\\forms\\plan\\formputplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\plan\\formputplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\c#\\tp\\net-tp\\academia-tp\\forms\\formdeleteplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\formdeleteplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\c#\\tp\\net-tp\\academia-tp\\forms\\plan\\formpostplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\plan\\formpostplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\c#\\tp\\net-tp\\academia-tp\\forms\\formgetplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\formgetplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\c#\\tp\\net-tp\\academia-tp\\forms\\plan\\formpostplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\plan\\formpostplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\c#\\tp\\net-tp\\academia-tp\\forms\\formpost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\formpost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\c#\\tp\\net-tp\\academia-tp\\forms\\plan\\formdeleteplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\plan\\formdeleteplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\c#\\tp\\net-tp\\academia-tp\\forms\\formputplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\formputplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\c#\\tp\\net-tp\\academia-tp\\forms\\formdeleteespecialidad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\formdeleteespecialidad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\c#\\tp\\net-tp\\academia-tp\\forms\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\c#\\tp\\net-tp\\academia-tp\\forms\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\c#\\tp\\net-tp\\academia-tp\\forms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\c#\\tp\\net-tp\\academia-tp\\forms\\formputplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\formputplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\c#\\tp\\net-tp\\academia-tp\\forms\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\c#\\tp\\net-tp\\academia-tp\\forms\\formpost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\formpost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\c#\\tp\\net-tp\\academia-tp\\forms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\c#\\tp\\net-tp\\academia-tp\\forms\\formgetplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\formgetplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\c#\\tp\\net-tp\\academia-tp\\forms\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\c#\\tp\\net-tp\\academia-tp\\forms\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Bruno\\AppData\\Local\\SourceServer\\522f68998aebc6f43a8be8f0d9209de35775298298dc3d991ee5739cf02c036a\\academia-tp\\Forms\\FormDeleteEspecialidad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{22EF5F96-1451-44A7-93D4-6CFFC373A071}|WebApi\\WebApi.csproj|c:\\c#\\tp\\net-tp\\academia-tp\\webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{22EF5F96-1451-44A7-93D4-6CFFC373A071}|WebApi\\WebApi.csproj|solutionrelative:webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9DA5730D-05BB-4FC8-B3FA-C4798EC4E4A6}|DTOs\\DTOs.csproj|c:\\c#\\tp\\net-tp\\academia-tp\\dtos\\plan.dto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9DA5730D-05BB-4FC8-B3FA-C4798EC4E4A6}|DTOs\\DTOs.csproj|solutionrelative:dtos\\plan.dto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\c#\\tp\\net-tp\\academia-tp\\forms\\plan\\formgetplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\plan\\formgetplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2D404E97-7458-4007-B10D-286C43527B64}|Domain.model\\Domain.model.csproj|c:\\c#\\tp\\net-tp\\academia-tp\\domain.model\\plan.domain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -89,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 15,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -97,245 +42,71 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "FormPutPlan.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\FormPutPlan.cs",
-              "RelativeDocumentMoniker": "Forms\\FormPutPlan.cs",
-              "ToolTip": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\FormPutPlan.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Forms\\FormPutPlan.cs [Dise\u00F1o]",
+              "DocumentIndex": 0,
+              "Title": "FormPutPlan.cs",
+              "DocumentMoniker": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\Plan\\FormPutPlan.cs",
+              "RelativeDocumentMoniker": "Forms\\Plan\\FormPutPlan.cs",
+              "ToolTip": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\Plan\\FormPutPlan.cs",
+              "RelativeToolTip": "Forms\\Plan\\FormPutPlan.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T22:04:30.914Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FormGetPlan.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\FormGetPlan.cs",
-              "RelativeDocumentMoniker": "Forms\\FormGetPlan.cs",
-              "ToolTip": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\FormGetPlan.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Forms\\FormGetPlan.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T22:01:01.018Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2025-08-02T23:00:11.483Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "FormDeletePlan.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\FormDeletePlan.cs",
-              "RelativeDocumentMoniker": "Forms\\FormDeletePlan.cs",
-              "ToolTip": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\FormDeletePlan.cs [Dise\u00F1o]*",
-              "RelativeToolTip": "Forms\\FormDeletePlan.cs [Dise\u00F1o]*",
+              "Title": "FormPostPlan.cs",
+              "DocumentMoniker": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\Plan\\FormPostPlan.cs",
+              "RelativeDocumentMoniker": "Forms\\Plan\\FormPostPlan.cs",
+              "ToolTip": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\Plan\\FormPostPlan.cs",
+              "RelativeToolTip": "Forms\\Plan\\FormPostPlan.cs",
+              "ViewState": "AgIAAEQAAAAAAAAAAAAIwE0AAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T21:58:40.679Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "FormDeleteEspecialidad.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\FormDeleteEspecialidad.cs",
-              "RelativeDocumentMoniker": "Forms\\FormDeleteEspecialidad.cs",
-              "ToolTip": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\FormDeleteEspecialidad.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Forms\\FormDeleteEspecialidad.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T21:57:46.988Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Form3.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\Form3.cs",
-              "RelativeDocumentMoniker": "Forms\\Form3.cs",
-              "ToolTip": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\Form3.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Forms\\Form3.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T20:49:40.907Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Form1.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\Form1.cs",
-              "RelativeDocumentMoniker": "Forms\\Form1.cs",
-              "ToolTip": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\Form1.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Forms\\Form1.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T20:45:44.232Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "FormPutPlan.cs",
-              "DocumentMoniker": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\FormPutPlan.cs",
-              "RelativeDocumentMoniker": "Forms\\FormPutPlan.cs",
-              "ToolTip": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\FormPutPlan.cs",
-              "RelativeToolTip": "Forms\\FormPutPlan.cs",
-              "ViewState": "AgIAAI0AAAAAAAAAAAAAwLsAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T19:54:32.017Z",
+              "WhenOpened": "2025-08-02T22:59:55.289Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\Program.cs",
-              "RelativeDocumentMoniker": "Forms\\Program.cs",
-              "ToolTip": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\Program.cs",
-              "RelativeToolTip": "Forms\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "FormPostPlan.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\Plan\\FormPostPlan.cs",
+              "RelativeDocumentMoniker": "Forms\\Plan\\FormPostPlan.cs",
+              "ToolTip": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\Plan\\FormPostPlan.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Forms\\Plan\\FormPostPlan.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T19:56:49.04Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Form3.cs",
-              "DocumentMoniker": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\Form3.cs",
-              "RelativeDocumentMoniker": "Forms\\Form3.cs",
-              "ToolTip": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\Form3.cs",
-              "RelativeToolTip": "Forms\\Form3.cs",
-              "ViewState": "AgIAADoAAAAAAAAAAAAAwGgAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T19:48:51.851Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Form2.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\Form2.cs",
-              "RelativeDocumentMoniker": "Forms\\Form2.cs",
-              "ToolTip": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\Form2.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Forms\\Form2.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T19:14:15.228Z",
+              "WhenOpened": "2025-08-02T22:59:52.866Z",
               "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Form2.cs",
-              "DocumentMoniker": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\Form2.cs",
-              "RelativeDocumentMoniker": "Forms\\Form2.cs",
-              "ToolTip": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\Form2.cs",
-              "RelativeToolTip": "Forms\\Form2.cs",
-              "ViewState": "AgIAAIcAAAAAAAAAAAAmwJYAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T19:12:19.411Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "FormPost.cs",
-              "DocumentMoniker": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\FormPost.cs",
-              "RelativeDocumentMoniker": "Forms\\FormPost.cs",
-              "ToolTip": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\FormPost.cs",
-              "RelativeToolTip": "Forms\\FormPost.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAgwBEAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T18:59:04.629Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "FormPost.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\FormPost.cs",
-              "RelativeDocumentMoniker": "Forms\\FormPost.cs",
-              "ToolTip": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\FormPost.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Forms\\FormPost.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T18:59:00.91Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\C#\\Tp\\net-tp\\academia-tp\\WebApi\\Program.cs",
-              "RelativeDocumentMoniker": "WebApi\\Program.cs",
-              "ToolTip": "C:\\C#\\Tp\\net-tp\\academia-tp\\WebApi\\Program.cs",
-              "RelativeToolTip": "WebApi\\Program.cs",
-              "ViewState": "AgIAAEIAAAAAAAAAAAAAAGQAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T16:40:25.8Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "FormDeletePlan.cs",
-              "DocumentMoniker": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\FormDeletePlan.cs",
-              "RelativeDocumentMoniker": "Forms\\FormDeletePlan.cs",
-              "ToolTip": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\FormDeletePlan.cs*",
-              "RelativeToolTip": "Forms\\FormDeletePlan.cs*",
-              "ViewState": "AgIAAIIAAAAAAAAAAAAAwLAAAAABAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\Plan\\FormDeletePlan.cs",
+              "RelativeDocumentMoniker": "Forms\\Plan\\FormDeletePlan.cs",
+              "ToolTip": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\Plan\\FormDeletePlan.cs",
+              "RelativeToolTip": "Forms\\Plan\\FormDeletePlan.cs",
+              "ViewState": "AgIAAIwAAAAAAAAAAAAIwF8AAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T17:52:33.373Z",
+              "WhenOpened": "2025-08-02T22:59:35.681Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\Form1.cs",
-              "RelativeDocumentMoniker": "Forms\\Form1.cs",
-              "ToolTip": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\Form1.cs",
-              "RelativeToolTip": "Forms\\Form1.cs",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAkwFsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T17:11:43.402Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 4,
               "Title": "FormGetPlan.cs",
-              "DocumentMoniker": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\FormGetPlan.cs",
-              "RelativeDocumentMoniker": "Forms\\FormGetPlan.cs",
-              "ToolTip": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\FormGetPlan.cs",
-              "RelativeToolTip": "Forms\\FormGetPlan.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE8AAAABAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\Plan\\FormGetPlan.cs",
+              "RelativeDocumentMoniker": "Forms\\Plan\\FormGetPlan.cs",
+              "ToolTip": "C:\\C#\\Tp\\net-tp\\academia-tp\\Forms\\Plan\\FormGetPlan.cs",
+              "RelativeToolTip": "Forms\\Plan\\FormGetPlan.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T16:08:09.637Z",
+              "WhenOpened": "2025-08-02T22:59:30.247Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "FormDeleteEspecialidad.cs",
-              "DocumentMoniker": "C:\\Users\\Bruno\\AppData\\Local\\SourceServer\\522f68998aebc6f43a8be8f0d9209de35775298298dc3d991ee5739cf02c036a\\academia-tp\\Forms\\FormDeleteEspecialidad.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\Users\\Bruno\\AppData\\Local\\SourceServer\\522f68998aebc6f43a8be8f0d9209de35775298298dc3d991ee5739cf02c036a\\academia-tp\\Forms\\FormDeleteEspecialidad.cs",
-              "ToolTip": "C:\\Users\\Bruno\\AppData\\Local\\SourceServer\\522f68998aebc6f43a8be8f0d9209de35775298298dc3d991ee5739cf02c036a\\academia-tp\\Forms\\FormDeleteEspecialidad.cs",
-              "RelativeToolTip": "..\\..\\..\\..\\Users\\Bruno\\AppData\\Local\\SourceServer\\522f68998aebc6f43a8be8f0d9209de35775298298dc3d991ee5739cf02c036a\\academia-tp\\Forms\\FormDeleteEspecialidad.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEAAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T16:07:25.132Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "Plan.dto.cs",
-              "DocumentMoniker": "C:\\C#\\Tp\\net-tp\\academia-tp\\DTOs\\Plan.dto.cs",
-              "RelativeDocumentMoniker": "DTOs\\Plan.dto.cs",
-              "ToolTip": "C:\\C#\\Tp\\net-tp\\academia-tp\\DTOs\\Plan.dto.cs",
-              "RelativeToolTip": "DTOs\\Plan.dto.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T15:02:27.713Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 5,
               "Title": "Plan.domain.cs",
               "DocumentMoniker": "C:\\C#\\Tp\\net-tp\\academia-tp\\Domain.model\\Plan.domain.cs",
               "RelativeDocumentMoniker": "Domain.model\\Plan.domain.cs",
@@ -343,7 +114,8 @@
               "RelativeToolTip": "Domain.model\\Plan.domain.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T15:01:04.739Z"
+              "WhenOpened": "2025-08-02T15:01:04.739Z",
+              "EditorCaption": ""
             }
           ]
         }

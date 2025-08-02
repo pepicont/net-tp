@@ -1,6 +1,6 @@
 ﻿namespace Forms
 {
-    partial class FormPost
+    partial class FormPostEspecialidad
     {
         /// <summary>
         /// Required designer variable.

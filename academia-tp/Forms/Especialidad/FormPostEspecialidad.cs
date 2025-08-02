@@ -12,9 +12,9 @@ using DTOs;
 
 namespace Forms
 {
-    public partial class FormPost : Form
+    public partial class FormPostEspecialidad : Form
     {
-        public FormPost()
+        public FormPostEspecialidad()
         {
             InitializeComponent();
         }

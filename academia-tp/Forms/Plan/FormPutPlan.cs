@@ -51,8 +51,8 @@ namespace Forms
                             if (especialidades != null)
                             {
                                 comboBoxIdEspecialidad.DataSource = especialidades.ToList();
-                                comboBoxIdEspecialidad.DisplayMember = "Desc";  // Muestra la descripción
-                                comboBoxIdEspecialidad.ValueMember = "Id";      // Usa el ID como valor
+                                comboBoxIdEspecialidad.DisplayMember = "Desc";  
+                                comboBoxIdEspecialidad.ValueMember = "Id";      
                             }
                         }
                         catch (Exception ex)
@@ -64,7 +64,7 @@ namespace Forms
                         {
                             TextBoxId.Text = plan.Id.ToString();
                             richTextBoxDescripcion.Text = plan.Desc;
-                            comboBoxIdEspecialidad.SelectedValue = plan.Id_especialidad; // Usar SelectedValue
+                            comboBoxIdEspecialidad.SelectedValue = plan.Id_especialidad; 
                         }
                     }
                     else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
@@ -149,7 +149,7 @@ namespace Forms
             {
                 int id = int.Parse(TextBoxId.Text);
                 string desc = richTextBoxDescripcion.Text.Trim();
-                int id_especialidad = (int)comboBoxIdEspecialidad.SelectedValue; // Usar SelectedValue
+                int id_especialidad = (int)comboBoxIdEspecialidad.SelectedValue; 
 
                 Plan plan = new Plan(id, desc, id_especialidad);
                 var response = await _httpClient.PutAsJsonAsync($"planes/{id}", plan);

@@ -13,9 +13,9 @@ using DTOs;
 
 namespace Forms
 {
-    public partial class Form2 : Form
+    public partial class FormPutEspecialidad : Form
     {
-        public Form2()
+        public FormPutEspecialidad()
         {
             InitializeComponent();
         }
@@ -27,12 +27,10 @@ namespace Forms
 
         private void label3_Click(object sender, EventArgs e)
         {
-            //ignorar
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-            //ignorar
         }
 
         private bool ValidarCampos()
@@ -90,7 +88,6 @@ namespace Forms
                 {
                     MessageBox.Show("Especialidad modificada con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Limpiar los TextBox
                     this.richTextBoxDescripcion.Clear();
                     this.TextBoxId.Clear();
                 }
@@ -107,7 +104,6 @@ namespace Forms
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            //boton de buscar
             if (string.IsNullOrWhiteSpace(textBoxBuscar.Text))
             {
                 MessageBox.Show("Ingrese un ID para buscar.", "Campo requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);

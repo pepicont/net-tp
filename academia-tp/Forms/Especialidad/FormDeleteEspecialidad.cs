@@ -25,7 +25,6 @@ namespace Forms
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            //boton de buscar
             if (int.TryParse(textBoxBuscar.Text, out int id))
             {
                 try

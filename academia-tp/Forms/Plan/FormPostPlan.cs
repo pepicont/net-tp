@@ -13,14 +13,14 @@ using DTOs;
 
 namespace Forms
 {
-    public partial class Form3 : Form
+    public partial class FormPostPlan : Form
     {
         private readonly HttpClient _httpClient = new()
         {
             BaseAddress = new Uri("http://localhost:5290")
         };
 
-        public Form3()
+        public FormPostPlan()
         {
             InitializeComponent();
         }
@@ -38,9 +38,9 @@ namespace Forms
                 if (especialidades != null && especialidades.Any())
                 {
                     comboBoxIdEspecialidad.DataSource = especialidades.ToList();
-                    comboBoxIdEspecialidad.DisplayMember = "Desc";  // Muestra la descripción
-                    comboBoxIdEspecialidad.ValueMember = "Id";      // Usa el ID como valor
-                    comboBoxIdEspecialidad.SelectedIndex = -1;      // No seleccionar nada inicialmente
+                    comboBoxIdEspecialidad.DisplayMember = "Desc";  
+                    comboBoxIdEspecialidad.ValueMember = "Id";      
+                    comboBoxIdEspecialidad.SelectedIndex = -1;     
                 }
                 else
                 {
@@ -66,7 +66,7 @@ namespace Forms
                 return;
             }
 
-            int id_especialidad = (int)comboBoxIdEspecialidad.SelectedValue; // Usar SelectedValue en lugar de SelectedItem
+            int id_especialidad = (int)comboBoxIdEspecialidad.SelectedValue; 
             CreatePlanDTO plan = new CreatePlanDTO(desc, id_especialidad);
 
             try
@@ -75,7 +75,7 @@ namespace Forms
                 if (response.IsSuccessStatusCode)
                 {
                     txtDesc.Clear();
-                    comboBoxIdEspecialidad.SelectedIndex = -1; // Usar SelectedIndex = -1 para limpiar
+                    comboBoxIdEspecialidad.SelectedIndex = -1; 
                     MessageBox.Show("Plan cargado con éxito");
                 }
                 else
