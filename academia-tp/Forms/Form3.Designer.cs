@@ -34,11 +34,12 @@
             label2 = new Label();
             comboBoxIdEspecialidad = new ComboBox();
             buttonRefresh = new Button();
+            label3 = new Label();
             SuspendLayout();
             // 
             // txtDesc
             // 
-            txtDesc.Location = new Point(155, 182);
+            txtDesc.Location = new Point(146, 200);
             txtDesc.Name = "txtDesc";
             txtDesc.Size = new Size(341, 96);
             txtDesc.TabIndex = 6;
@@ -46,18 +47,18 @@
             // 
             // buttonPost
             // 
-            buttonPost.Location = new Point(94, 322);
+            buttonPost.Location = new Point(240, 340);
             buttonPost.Name = "buttonPost";
             buttonPost.Size = new Size(122, 23);
             buttonPost.TabIndex = 5;
-            buttonPost.Text = "Confirmar";
+            buttonPost.Text = "Crear plan";
             buttonPost.UseVisualStyleBackColor = true;
             buttonPost.Click += buttonPost_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(77, 197);
+            label1.Location = new Point(56, 231);
             label1.Name = "label1";
             label1.Size = new Size(72, 15);
             label1.TabIndex = 4;
@@ -66,23 +67,25 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(77, 78);
+            label2.Location = new Point(56, 120);
             label2.Name = "label2";
-            label2.Size = new Size(93, 15);
+            label2.Size = new Size(75, 15);
             label2.TabIndex = 7;
-            label2.Text = "Id_especialidad: ";
+            label2.Text = "Especialidad:";
             // 
             // comboBoxIdEspecialidad
             // 
+            comboBoxIdEspecialidad.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxIdEspecialidad.FormattingEnabled = true;
-            comboBoxIdEspecialidad.Location = new Point(176, 75);
+            comboBoxIdEspecialidad.Location = new Point(146, 117);
             comboBoxIdEspecialidad.Name = "comboBoxIdEspecialidad";
-            comboBoxIdEspecialidad.Size = new Size(121, 23);
+            comboBoxIdEspecialidad.Size = new Size(243, 23);
             comboBoxIdEspecialidad.TabIndex = 8;
+            comboBoxIdEspecialidad.SelectedIndexChanged += comboBoxIdEspecialidad_SelectedIndexChanged;
             // 
             // buttonRefresh
             // 
-            buttonRefresh.Location = new Point(321, 74);
+            buttonRefresh.Location = new Point(412, 117);
             buttonRefresh.Name = "buttonRefresh";
             buttonRefresh.Size = new Size(75, 23);
             buttonRefresh.TabIndex = 9;
@@ -90,12 +93,23 @@
             buttonRefresh.UseVisualStyleBackColor = true;
             buttonRefresh.Click += buttonRefresh_Click;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(56, 40);
+            label3.Name = "label3";
+            label3.Size = new Size(199, 15);
+            label3.TabIndex = 10;
+            label3.Text = "Complete atributos de el nuevo plan";
+            label3.Click += label3_Click;
+            // 
             // Form3
             // 
             AccessibleName = "";
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(899, 525);
+            Controls.Add(label3);
             Controls.Add(buttonRefresh);
             Controls.Add(comboBoxIdEspecialidad);
             Controls.Add(label2);
@@ -115,5 +129,6 @@
         private Label label2;
         private ComboBox comboBoxIdEspecialidad;
         private Button buttonRefresh;
+        private Label label3;
     }
 }

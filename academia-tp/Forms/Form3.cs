@@ -11,77 +11,95 @@ using System.Windows.Forms;
 using Domain.model;
 using DTOs;
 
-
 namespace Forms
 {
     public partial class Form3 : Form
     {
-        public Form3()
-        {
-            InitializeComponent();
-        }
-
         private readonly HttpClient _httpClient = new()
         {
             BaseAddress = new Uri("http://localhost:5290")
         };
 
-
-        private void Form3_Load(object sender, EventArgs e)
+        public Form3()
         {
-
+            InitializeComponent();
         }
 
-        private async void buttonPost_Click(object sender, EventArgs e) //form post plan
+        private async void Form3_Load(object sender, EventArgs e)
         {
-           
+            await CargarEspecialidades();
+        }
 
+        private async Task CargarEspecialidades()
+        {
+            try
+            {
+                var especialidades = await _httpClient.GetFromJsonAsync<IEnumerable<Especialidad>>("especialidades");
+                if (especialidades != null && especialidades.Any())
+                {
+                    comboBoxIdEspecialidad.DataSource = especialidades.ToList();
+                    comboBoxIdEspecialidad.DisplayMember = "Desc";  // Muestra la descripción
+                    comboBoxIdEspecialidad.ValueMember = "Id";      // Usa el ID como valor
+                    comboBoxIdEspecialidad.SelectedIndex = -1;      // No seleccionar nada inicialmente
+                }
+                else
+                {
+                    MessageBox.Show("No se encontraron especialidades disponibles.");
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                MessageBox.Show($"Error al consultar las especialidades: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error inesperado: {ex.Message}");
+            }
+        }
+
+        private async void buttonPost_Click(object sender, EventArgs e)
+        {
             string desc = txtDesc.Text;
-            
             if (comboBoxIdEspecialidad.SelectedItem == null || string.IsNullOrEmpty(desc))
             {
                 MessageBox.Show("Debe completar todos los campos antes de enviar el formulario.");
                 return;
             }
-            int id_especialidad = (int)comboBoxIdEspecialidad.SelectedItem;
 
+            int id_especialidad = (int)comboBoxIdEspecialidad.SelectedValue; // Usar SelectedValue en lugar de SelectedItem
             CreatePlanDTO plan = new CreatePlanDTO(desc, id_especialidad);
-            var response = await _httpClient.PostAsJsonAsync("planes", plan);
-            if (response.IsSuccessStatusCode)
+
+            try
             {
-                txtDesc.Clear();
-                comboBoxIdEspecialidad.SelectedItem = null; // Limpiar el ComboBox
-                MessageBox.Show("Plan cargado con éxito");
+                var response = await _httpClient.PostAsJsonAsync("planes", plan);
+                if (response.IsSuccessStatusCode)
+                {
+                    txtDesc.Clear();
+                    comboBoxIdEspecialidad.SelectedIndex = -1; // Usar SelectedIndex = -1 para limpiar
+                    MessageBox.Show("Plan cargado con éxito");
+                }
+                else
+                {
+                    MessageBox.Show($"Error al cargar el plan. Código: {response.StatusCode}");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar el plan");
+                MessageBox.Show($"Error al cargar el plan: {ex.Message}");
             }
         }
 
         private async void buttonRefresh_Click(object sender, EventArgs e)
         {
-            try
-            {
-                var especialidades = await _httpClient.GetFromJsonAsync<IEnumerable<Especialidad>>("especialidades");
-                if (especialidades != null)
-                {
-                    // Obtener la lista de IDs de las especialidades
-                    var listaIdsEspecialidades = especialidades.Select(e => e.Id).ToList();
-                    comboBoxIdEspecialidad.DataSource = listaIdsEspecialidades;
-                }
+            await CargarEspecialidades();
+        }
 
-            }
-            catch (HttpRequestException ex)
-            {
-                MessageBox.Show($"Error al consultar las especialidades disponibles: {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al consultar las especialidades disponibles: {ex.Message}");
-            }
+        private void comboBoxIdEspecialidad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
         }
     }
 }
-
-

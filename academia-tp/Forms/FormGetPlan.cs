@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Domain.model;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Forms
 {
@@ -18,24 +19,30 @@ namespace Forms
         {
             InitializeComponent();
         }
+
         private readonly HttpClient _httpClient = new()
         {
             BaseAddress = new Uri("http://localhost:5290")
         };
 
-        private async void buttonGetAll_Click_1(object sender, EventArgs e) //no anda
+        private async void buttonGetAll_Click_1(object sender, EventArgs e)
         {
-            var planes = await _httpClient.GetFromJsonAsync<IEnumerable<Plan>>("planes");
-
-            if (planes != null)
+            try
             {
-                dataGridView1.DataSource = planes;
+                var planes = await _httpClient.GetFromJsonAsync<IEnumerable<Plan>>("planes");
+                if (planes != null && planes.Any())
+                {
+                    dataGridView1.DataSource = planes.ToList();
+                }
+                else
+                {
+                    MessageBox.Show("No se encontraron planes.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("No se encontraron planes.");
+                MessageBox.Show($"Error al obtener los planes: {ex.Message}");
             }
-
         }
 
         private async void buttonGetOne_Click(object sender, EventArgs e)
@@ -52,17 +59,21 @@ namespace Forms
                     }
                     else
                     {
-                        MessageBox.Show("No se encontró el plan."); //nunca entra
+                        MessageBox.Show("No se encontró el plan.");
                     }
                 }
-                catch (HttpRequestException ex)
+                catch (HttpRequestException ex) when (ex.Message.Contains("404"))
+                {
+                    MessageBox.Show("No se encontró el plan.");
+                }
+                catch (Exception ex)
                 {
                     MessageBox.Show($"Error al consultar el plan: {ex.Message}");
                 }
             }
             else
             {
-                MessageBox.Show("Ingrese un ID válido."); //bueno para implementar en los otros
+                MessageBox.Show("Ingrese un ID válido.");
             }
         }
     }

@@ -13,7 +13,7 @@ namespace Forms
 
         private readonly HttpClient _httpClient = new()
         {
-            BaseAddress = new Uri("http://localhost:5290") 
+            BaseAddress = new Uri("http://localhost:5290")
         };
 
         private async void buttonGetAll_Click(object sender, EventArgs e)
@@ -37,29 +37,57 @@ namespace Forms
             {
                 try
                 {
-                    var especialidad = await _httpClient.GetFromJsonAsync<Especialidad>($"especialidades/{id}");
+                    var response = await _httpClient.GetAsync($"especialidades/{id}");
 
-                    if (especialidad != null)
+                    if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                    {
+                        MessageBox.Show("No se encontró la especialidad.");
+                        dataGridView1.DataSource = null;
+                        return;
+                    }
+
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show($"Error al consultar la especialidad. Código: {response.StatusCode}");
+                        dataGridView1.DataSource = null;
+                        return;
+                    }
+
+                    var especialidad = await response.Content.ReadFromJsonAsync<Especialidad>();
+
+                    if (especialidad != null && especialidad.Id != 0)
                     {
                         dataGridView1.DataSource = new List<Especialidad> { especialidad };
                     }
                     else
                     {
-                        MessageBox.Show("No se encontró la especialidad."); //nunca entra
+                        MessageBox.Show("No se encontró la especialidad.");
+                        dataGridView1.DataSource = null;
                     }
                 }
                 catch (HttpRequestException ex)
                 {
-                    MessageBox.Show($"Error al consultar la especialidad: {ex.Message}");
+                    MessageBox.Show($"Error de conexión al consultar la especialidad: {ex.Message}");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error inesperado: {ex.Message}");
                 }
             }
             else
             {
-                MessageBox.Show("Ingrese un ID válido."); //bueno para implementar en los otros
+                MessageBox.Show("Ingrese un ID válido.");
+                dataGridView1.DataSource = null;
             }
         }
 
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

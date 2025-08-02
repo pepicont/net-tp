@@ -38,15 +38,16 @@
             textBoxBuscar = new TextBox();
             label4 = new Label();
             txtIdEspecialidad = new TextBox();
+            label5 = new Label();
             SuspendLayout();
             // 
             // buttonDelete
             // 
-            buttonDelete.Location = new Point(214, 343);
+            buttonDelete.Location = new Point(182, 343);
             buttonDelete.Name = "buttonDelete";
-            buttonDelete.Size = new Size(75, 23);
+            buttonDelete.Size = new Size(141, 23);
             buttonDelete.TabIndex = 24;
-            buttonDelete.Text = "Borrar";
+            buttonDelete.Text = "Eliminar plan";
             buttonDelete.UseVisualStyleBackColor = true;
             buttonDelete.Click += buttonDelete_Click;
             // 
@@ -87,7 +88,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(676, 123);
+            button1.Location = new Point(677, 67);
             button1.Name = "button1";
             button1.Size = new Size(93, 23);
             button1.TabIndex = 19;
@@ -98,7 +99,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(474, 126);
+            label1.Location = new Point(476, 71);
             label1.Name = "label1";
             label1.Size = new Size(17, 15);
             label1.TabIndex = 18;
@@ -106,7 +107,7 @@
             // 
             // textBoxBuscar
             // 
-            textBoxBuscar.Location = new Point(516, 123);
+            textBoxBuscar.Location = new Point(521, 67);
             textBoxBuscar.Name = "textBoxBuscar";
             textBoxBuscar.Size = new Size(100, 23);
             textBoxBuscar.TabIndex = 17;
@@ -114,11 +115,11 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(32, 295);
+            label4.Location = new Point(32, 298);
             label4.Name = "label4";
-            label4.Size = new Size(85, 15);
+            label4.Size = new Size(75, 15);
             label4.TabIndex = 25;
-            label4.Text = "Id Especialidad";
+            label4.Text = "Especialidad:";
             // 
             // txtIdEspecialidad
             // 
@@ -128,11 +129,21 @@
             txtIdEspecialidad.Size = new Size(100, 23);
             txtIdEspecialidad.TabIndex = 26;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(32, 67);
+            label5.Name = "label5";
+            label5.Size = new Size(105, 15);
+            label5.TabIndex = 27;
+            label5.Text = "Plan seleccionado:";
+            // 
             // FormDeletePlan
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label5);
             Controls.Add(txtIdEspecialidad);
             Controls.Add(label4);
             Controls.Add(buttonDelete);
@@ -161,5 +172,6 @@
         private TextBox textBoxBuscar;
         private Label label4;
         private TextBox txtIdEspecialidad;
+        private Label label5;
     }
 }

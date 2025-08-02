@@ -36,31 +36,33 @@
             button1 = new Button();
             label1 = new Label();
             textBoxBuscar = new TextBox();
+            label4 = new Label();
             SuspendLayout();
             // 
             // buttonDelete
             // 
-            buttonDelete.Location = new Point(208, 231);
+            buttonDelete.Location = new Point(167, 267);
             buttonDelete.Name = "buttonDelete";
-            buttonDelete.Size = new Size(75, 23);
+            buttonDelete.Size = new Size(147, 23);
             buttonDelete.TabIndex = 16;
-            buttonDelete.Text = "Borrar";
+            buttonDelete.Text = "Eliminar especialidad";
             buttonDelete.UseVisualStyleBackColor = true;
             buttonDelete.Click += buttonDelete_Click;
             // 
             // richTextBoxDescripcion
             // 
-            richTextBoxDescripcion.Location = new Point(125, 101);
+            richTextBoxDescripcion.Location = new Point(125, 165);
             richTextBoxDescripcion.Name = "richTextBoxDescripcion";
             richTextBoxDescripcion.ReadOnly = true;
             richTextBoxDescripcion.Size = new Size(247, 86);
             richTextBoxDescripcion.TabIndex = 15;
             richTextBoxDescripcion.Text = "";
+            richTextBoxDescripcion.TextChanged += richTextBoxDescripcion_TextChanged;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(26, 113);
+            label3.Location = new Point(26, 198);
             label3.Name = "label3";
             label3.Size = new Size(69, 15);
             label3.TabIndex = 14;
@@ -69,7 +71,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(26, 50);
+            label2.Location = new Point(26, 124);
             label2.Name = "label2";
             label2.Size = new Size(17, 15);
             label2.TabIndex = 13;
@@ -77,8 +79,9 @@
             // 
             // TextBoxId
             // 
-            TextBoxId.Location = new Point(125, 50);
+            TextBoxId.Location = new Point(125, 121);
             TextBoxId.Name = "TextBoxId";
+            TextBoxId.ReadOnly = true;
             TextBoxId.Size = new Size(100, 23);
             TextBoxId.TabIndex = 12;
             // 
@@ -108,11 +111,21 @@
             textBoxBuscar.Size = new Size(100, 23);
             textBoxBuscar.TabIndex = 9;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(26, 50);
+            label4.Name = "label4";
+            label4.Size = new Size(146, 15);
+            label4.TabIndex = 17;
+            label4.Text = "Especialidad seleccionada:";
+            // 
             // FormDeleteEspecialidad
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label4);
             Controls.Add(buttonDelete);
             Controls.Add(richTextBoxDescripcion);
             Controls.Add(label3);
@@ -137,5 +150,6 @@
         private Button button1;
         private Label label1;
         private TextBox textBoxBuscar;
+        private Label label4;
     }
 }

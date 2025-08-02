@@ -36,6 +36,7 @@
             label3 = new Label();
             richTextBoxDescripcion = new RichTextBox();
             buttonPut = new Button();
+            label4 = new Label();
             SuspendLayout();
             // 
             // textBoxBuscar
@@ -48,7 +49,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(464, 63);
+            label1.Location = new Point(470, 63);
             label1.Name = "label1";
             label1.Size = new Size(17, 15);
             label1.TabIndex = 1;
@@ -57,18 +58,18 @@
             // 
             // button1
             // 
-            button1.Location = new Point(666, 60);
+            button1.Location = new Point(630, 60);
             button1.Name = "button1";
-            button1.Size = new Size(93, 23);
+            button1.Size = new Size(146, 23);
             button1.TabIndex = 2;
-            button1.Text = "Buscar por Id";
+            button1.Text = "Buscar una especialidad";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(22, 60);
+            label2.Location = new Point(22, 124);
             label2.Name = "label2";
             label2.Size = new Size(17, 15);
             label2.TabIndex = 4;
@@ -76,7 +77,7 @@
             // 
             // TextBoxId
             // 
-            TextBoxId.Location = new Point(121, 60);
+            TextBoxId.Location = new Point(121, 121);
             TextBoxId.Name = "TextBoxId";
             TextBoxId.ReadOnly = true;
             TextBoxId.Size = new Size(100, 23);
@@ -85,7 +86,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(22, 123);
+            label3.Location = new Point(22, 212);
             label3.Name = "label3";
             label3.Size = new Size(69, 15);
             label3.TabIndex = 6;
@@ -94,7 +95,7 @@
             // 
             // richTextBoxDescripcion
             // 
-            richTextBoxDescripcion.Location = new Point(121, 111);
+            richTextBoxDescripcion.Location = new Point(121, 179);
             richTextBoxDescripcion.Name = "richTextBoxDescripcion";
             richTextBoxDescripcion.Size = new Size(247, 86);
             richTextBoxDescripcion.TabIndex = 7;
@@ -102,19 +103,29 @@
             // 
             // buttonPut
             // 
-            buttonPut.Location = new Point(204, 241);
+            buttonPut.Location = new Point(174, 296);
             buttonPut.Name = "buttonPut";
-            buttonPut.Size = new Size(75, 23);
+            buttonPut.Size = new Size(122, 23);
             buttonPut.TabIndex = 8;
-            buttonPut.Text = "Confirmar";
+            buttonPut.Text = "Confirmar cambio";
             buttonPut.UseVisualStyleBackColor = true;
             buttonPut.Click += buttonPut_Click;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(22, 60);
+            label4.Name = "label4";
+            label4.Size = new Size(152, 15);
+            label4.TabIndex = 9;
+            label4.Text = "Atributos de la especialidad";
             // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label4);
             Controls.Add(buttonPut);
             Controls.Add(richTextBoxDescripcion);
             Controls.Add(label3);
@@ -139,5 +150,6 @@
         private Label label3;
         private RichTextBox richTextBoxDescripcion;
         private Button buttonPut;
+        private Label label4;
     }
 }

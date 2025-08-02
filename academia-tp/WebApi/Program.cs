@@ -37,7 +37,7 @@ app.MapGet("planes/{id}", (int id) =>
     PlanServices planService = new PlanServices();
     Plan plan = planService.GetOne(id);
 
-    if( plan is null) { Results.NotFound(); }
+    if( plan is null) {return Results.NotFound(); }
 
     return Results.Ok(plan);
 });

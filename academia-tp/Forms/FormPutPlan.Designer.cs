@@ -38,21 +38,22 @@
             textBoxBuscar = new TextBox();
             label4 = new Label();
             comboBoxIdEspecialidad = new ComboBox();
+            label5 = new Label();
             SuspendLayout();
             // 
             // buttonPut
             // 
-            buttonPut.Location = new Point(210, 247);
+            buttonPut.Location = new Point(187, 320);
             buttonPut.Name = "buttonPut";
-            buttonPut.Size = new Size(75, 23);
+            buttonPut.Size = new Size(117, 23);
             buttonPut.TabIndex = 16;
-            buttonPut.Text = "Confirmar";
+            buttonPut.Text = "Confirmar cambio";
             buttonPut.UseVisualStyleBackColor = true;
             buttonPut.Click += buttonPut_Click;
             // 
             // richTextBoxDescripcion
             // 
-            richTextBoxDescripcion.Location = new Point(129, 99);
+            richTextBoxDescripcion.Location = new Point(129, 155);
             richTextBoxDescripcion.Name = "richTextBoxDescripcion";
             richTextBoxDescripcion.Size = new Size(247, 86);
             richTextBoxDescripcion.TabIndex = 15;
@@ -61,7 +62,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(30, 111);
+            label3.Location = new Point(30, 183);
             label3.Name = "label3";
             label3.Size = new Size(69, 15);
             label3.TabIndex = 14;
@@ -70,7 +71,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(30, 48);
+            label2.Location = new Point(30, 107);
             label2.Name = "label2";
             label2.Size = new Size(17, 15);
             label2.TabIndex = 13;
@@ -78,7 +79,7 @@
             // 
             // TextBoxId
             // 
-            TextBoxId.Location = new Point(129, 48);
+            TextBoxId.Location = new Point(129, 107);
             TextBoxId.Name = "TextBoxId";
             TextBoxId.ReadOnly = true;
             TextBoxId.Size = new Size(100, 23);
@@ -113,25 +114,36 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(30, 200);
+            label4.Location = new Point(30, 266);
             label4.Name = "label4";
-            label4.Size = new Size(85, 15);
+            label4.Size = new Size(75, 15);
             label4.TabIndex = 18;
-            label4.Text = "Id Especialidad";
+            label4.Text = "Especialidad:";
             // 
             // comboBoxIdEspecialidad
             // 
+            comboBoxIdEspecialidad.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxIdEspecialidad.FormattingEnabled = true;
-            comboBoxIdEspecialidad.Location = new Point(129, 200);
+            comboBoxIdEspecialidad.Location = new Point(129, 263);
             comboBoxIdEspecialidad.Name = "comboBoxIdEspecialidad";
             comboBoxIdEspecialidad.Size = new Size(121, 23);
             comboBoxIdEspecialidad.TabIndex = 19;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(30, 52);
+            label5.Name = "label5";
+            label5.Size = new Size(110, 15);
+            label5.TabIndex = 20;
+            label5.Text = "Atributos de el plan";
             // 
             // FormPutPlan
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label5);
             Controls.Add(comboBoxIdEspecialidad);
             Controls.Add(label4);
             Controls.Add(buttonPut);
@@ -160,5 +172,6 @@
         private TextBox textBoxBuscar;
         private Label label4;
         private ComboBox comboBoxIdEspecialidad;
+        private Label label5;
     }
 }
