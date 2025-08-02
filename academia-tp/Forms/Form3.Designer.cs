@@ -32,7 +32,8 @@
             buttonPost = new Button();
             label1 = new Label();
             label2 = new Label();
-            txtID = new TextBox();
+            comboBoxIdEspecialidad = new ComboBox();
+            buttonRefresh = new Button();
             SuspendLayout();
             // 
             // txtDesc
@@ -71,12 +72,23 @@
             label2.TabIndex = 7;
             label2.Text = "Id_especialidad: ";
             // 
-            // txtID
+            // comboBoxIdEspecialidad
             // 
-            txtID.Location = new Point(186, 75);
-            txtID.Name = "txtID";
-            txtID.Size = new Size(68, 23);
-            txtID.TabIndex = 8;
+            comboBoxIdEspecialidad.FormattingEnabled = true;
+            comboBoxIdEspecialidad.Location = new Point(176, 75);
+            comboBoxIdEspecialidad.Name = "comboBoxIdEspecialidad";
+            comboBoxIdEspecialidad.Size = new Size(121, 23);
+            comboBoxIdEspecialidad.TabIndex = 8;
+            // 
+            // buttonRefresh
+            // 
+            buttonRefresh.Location = new Point(321, 74);
+            buttonRefresh.Name = "buttonRefresh";
+            buttonRefresh.Size = new Size(75, 23);
+            buttonRefresh.TabIndex = 9;
+            buttonRefresh.Text = "Recargar";
+            buttonRefresh.UseVisualStyleBackColor = true;
+            buttonRefresh.Click += buttonRefresh_Click;
             // 
             // Form3
             // 
@@ -84,7 +96,8 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(899, 525);
-            Controls.Add(txtID);
+            Controls.Add(buttonRefresh);
+            Controls.Add(comboBoxIdEspecialidad);
             Controls.Add(label2);
             Controls.Add(txtDesc);
             Controls.Add(buttonPost);
@@ -100,6 +113,7 @@
         private Button buttonPost;
         private Label label1;
         private Label label2;
-        private TextBox txtID;
+        private ComboBox comboBoxIdEspecialidad;
+        private Button buttonRefresh;
     }
 }

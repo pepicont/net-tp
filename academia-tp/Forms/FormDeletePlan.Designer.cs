@@ -124,6 +124,7 @@
             // 
             txtIdEspecialidad.Location = new Point(131, 295);
             txtIdEspecialidad.Name = "txtIdEspecialidad";
+            txtIdEspecialidad.ReadOnly = true;
             txtIdEspecialidad.Size = new Size(100, 23);
             txtIdEspecialidad.TabIndex = 26;
             // 
