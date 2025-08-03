@@ -26,6 +26,10 @@ namespace Forms
         private async void buttonPost_Click(object sender, EventArgs e)
         {
             string desc = RichTextBoxDescripcion.Text;
+            if (String.IsNullOrEmpty(desc)) {
+                MessageBox.Show("Por favor, ingrese una descripción");
+                return;
+            }
             EspecialidadDTO especialidad = new EspecialidadDTO(desc);
             var response = await _httpClient.PostAsJsonAsync("especialidades",especialidad);
             if (response.IsSuccessStatusCode)
