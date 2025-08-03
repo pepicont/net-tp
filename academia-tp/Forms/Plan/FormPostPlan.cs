@@ -40,7 +40,7 @@ namespace Forms
                     comboBoxIdEspecialidad.DataSource = especialidades.ToList();
                     comboBoxIdEspecialidad.DisplayMember = "Desc";  
                     comboBoxIdEspecialidad.ValueMember = "Id";      
-                    comboBoxIdEspecialidad.SelectedIndex = -1;     
+                    comboBoxIdEspecialidad.SelectedIndex = 0;     
                 }
                 else
                 {
