@@ -1,46 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Compile Update="Especialidad\FormGetEspecialidad.cs">
+    <Compile Update="Especialidad\FormEspecialidad.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Especialidad\FormPutEspecialidad.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="FormEspecialidad.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="FormPlan.cs">
+    <Compile Update="Plan\FormPlan.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FormPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="ModalAgregarEspecialidad.cs">
+    <Compile Update="Especialidad\ModalAgregarEspecialidad.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="ModalDeleteEspecialidad.cs">
+    <Compile Update="Especialidad\ModalDeleteEspecialidad.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="ModalModificarEspecialidad.cs">
+    <Compile Update="Especialidad\ModalModificarEspecialidad.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Plan\FormPostPlan.cs">
+    <Compile Update="Plan\ModalAgregarPlan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Especialidad\FormDeleteEspecialidad.cs">
+    <Compile Update="Plan\ModalDeletePlan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Plan\FormDeletePlan.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Plan\FormGetPlan.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Especialidad\FormPostEspecialidad.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Plan\FormPutPlan.cs">
+    <Compile Update="Plan\ModalModificarPlan.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

@@ -1,6 +1,6 @@
 ﻿namespace Forms
 {
-    partial class FormDeleteEspecialidad
+    partial class ModalModificarPlan
     {
         /// <summary>
         /// Required designer variable.
@@ -28,128 +28,116 @@
         /// </summary>
         private void InitializeComponent()
         {
-            buttonDelete = new Button();
+            label4 = new Label();
+            buttonPut = new Button();
             richTextBoxDescripcion = new RichTextBox();
             label3 = new Label();
             label2 = new Label();
             TextBoxId = new TextBox();
-            button1 = new Button();
             label1 = new Label();
-            textBoxBuscar = new TextBox();
-            label4 = new Label();
+            comboBox1 = new ComboBox();
             SuspendLayout();
             // 
-            // buttonDelete
+            // label4
             // 
-            buttonDelete.Location = new Point(167, 267);
-            buttonDelete.Name = "buttonDelete";
-            buttonDelete.Size = new Size(147, 23);
-            buttonDelete.TabIndex = 16;
-            buttonDelete.Text = "Eliminar especialidad";
-            buttonDelete.UseVisualStyleBackColor = true;
-            buttonDelete.Click += buttonDelete_Click;
+            label4.AutoSize = true;
+            label4.Location = new Point(289, 25);
+            label4.Name = "label4";
+            label4.Size = new Size(101, 15);
+            label4.TabIndex = 21;
+            label4.Text = "Atributos del plan";
+            // 
+            // buttonPut
+            // 
+            buttonPut.Location = new Point(278, 266);
+            buttonPut.Name = "buttonPut";
+            buttonPut.Size = new Size(122, 23);
+            buttonPut.TabIndex = 20;
+            buttonPut.Text = "Confirmar cambio";
+            buttonPut.UseVisualStyleBackColor = true;
+            buttonPut.Click += buttonPut_Click;
             // 
             // richTextBoxDescripcion
             // 
-            richTextBoxDescripcion.Location = new Point(125, 165);
+            richTextBoxDescripcion.Location = new Point(223, 111);
             richTextBoxDescripcion.Name = "richTextBoxDescripcion";
-            richTextBoxDescripcion.ReadOnly = true;
             richTextBoxDescripcion.Size = new Size(247, 86);
-            richTextBoxDescripcion.TabIndex = 15;
+            richTextBoxDescripcion.TabIndex = 19;
             richTextBoxDescripcion.Text = "";
-            richTextBoxDescripcion.TextChanged += richTextBoxDescripcion_TextChanged;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(26, 198);
+            label3.Location = new Point(124, 144);
             label3.Name = "label3";
             label3.Size = new Size(69, 15);
-            label3.TabIndex = 14;
+            label3.TabIndex = 18;
             label3.Text = "Descripción";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(26, 124);
+            label2.Location = new Point(124, 66);
             label2.Name = "label2";
             label2.Size = new Size(17, 15);
-            label2.TabIndex = 13;
+            label2.TabIndex = 17;
             label2.Text = "Id";
             // 
             // TextBoxId
             // 
-            TextBoxId.Location = new Point(125, 121);
+            TextBoxId.Location = new Point(223, 63);
             TextBoxId.Name = "TextBoxId";
             TextBoxId.ReadOnly = true;
-            TextBoxId.Size = new Size(100, 23);
-            TextBoxId.TabIndex = 12;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(670, 50);
-            button1.Name = "button1";
-            button1.Size = new Size(93, 23);
-            button1.TabIndex = 11;
-            button1.Text = "Buscar por Id";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            TextBoxId.Size = new Size(89, 23);
+            TextBoxId.TabIndex = 16;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(468, 53);
+            label1.Location = new Point(124, 228);
             label1.Name = "label1";
-            label1.Size = new Size(17, 15);
-            label1.TabIndex = 10;
-            label1.Text = "Id";
+            label1.Size = new Size(72, 15);
+            label1.TabIndex = 22;
+            label1.Text = "Especialidad";
             // 
-            // textBoxBuscar
+            // comboBox1
             // 
-            textBoxBuscar.Location = new Point(510, 50);
-            textBoxBuscar.Name = "textBoxBuscar";
-            textBoxBuscar.Size = new Size(100, 23);
-            textBoxBuscar.TabIndex = 9;
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(223, 220);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(121, 23);
+            comboBox1.TabIndex = 23;
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(26, 50);
-            label4.Name = "label4";
-            label4.Size = new Size(146, 15);
-            label4.TabIndex = 17;
-            label4.Text = "Especialidad seleccionada:";
-            // 
-            // FormDeleteEspecialidad
+            // ModalModificarPlan
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(comboBox1);
+            Controls.Add(label1);
             Controls.Add(label4);
-            Controls.Add(buttonDelete);
+            Controls.Add(buttonPut);
             Controls.Add(richTextBoxDescripcion);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(TextBoxId);
-            Controls.Add(button1);
-            Controls.Add(label1);
-            Controls.Add(textBoxBuscar);
-            Name = "FormDeleteEspecialidad";
-            Text = "FormDeleteEspecialidad";
+            Name = "ModalModificarPlan";
+            Text = "ModalModificarPlan";
+            Load += ModalModificarPlan_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Button buttonDelete;
+        private Label label4;
+        private Button buttonPut;
         private RichTextBox richTextBoxDescripcion;
         private Label label3;
         private Label label2;
         private TextBox TextBoxId;
-        private Button button1;
         private Label label1;
-        private TextBox textBoxBuscar;
-        private Label label4;
+        private ComboBox comboBox1;
     }
 }

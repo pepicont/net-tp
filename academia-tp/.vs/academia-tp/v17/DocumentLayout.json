@@ -3,39 +3,39 @@
   "WorkspaceRootPath": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\users\\user\\desktop\\net-tp\\academia-tp\\forms\\modalmodificarespecialidad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\modalmodificarespecialidad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\users\\user\\desktop\\net-tp\\academia-tp\\forms\\plan\\modalmodificarplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\plan\\modalmodificarplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\users\\user\\desktop\\net-tp\\academia-tp\\forms\\modalagregarespecialidad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\modalagregarespecialidad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\users\\user\\desktop\\net-tp\\academia-tp\\forms\\plan\\modalagregarplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\plan\\modalagregarplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\users\\user\\desktop\\net-tp\\academia-tp\\forms\\formespecialidad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\formespecialidad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\users\\user\\desktop\\net-tp\\academia-tp\\forms\\especialidad\\modalmodificarespecialidad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\especialidad\\modalmodificarespecialidad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\forms\\formespecialidad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\formespecialidad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\users\\user\\desktop\\net-tp\\academia-tp\\forms\\plan\\formplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\plan\\formplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\users\\user\\desktop\\net-tp\\academia-tp\\forms\\modalagregarespecialidad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\modalagregarespecialidad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{9DA5730D-05BB-4FC8-B3FA-C4798EC4E4A6}|DTOs\\DTOs.csproj|c:\\users\\user\\desktop\\net-tp\\academia-tp\\dtos\\plan.dto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DA5730D-05BB-4FC8-B3FA-C4798EC4E4A6}|DTOs\\DTOs.csproj|solutionrelative:dtos\\plan.dto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\users\\user\\desktop\\net-tp\\academia-tp\\forms\\especialidad\\formpostespecialidad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\especialidad\\formpostespecialidad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\forms\\formplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\formplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\users\\user\\desktop\\net-tp\\academia-tp\\forms\\especialidad\\formpostespecialidad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\especialidad\\formpostespecialidad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\forms\\modalagregarplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\modalagregarplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\forms\\modalmodificarespecialidad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\modalmodificarespecialidad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\forms\\modalmodificarplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\modalmodificarplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|c:\\users\\user\\desktop\\net-tp\\academia-tp\\forms\\formprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\forms\\formprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{DF5F2A24-2D8D-4DC2-A5AD-A163AE89365A}|Forms\\Forms.csproj|solutionrelative:forms\\formprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -46,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,94 +54,99 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ModalAgregarEspecialidad.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\ModalAgregarEspecialidad.cs",
-              "RelativeDocumentMoniker": "Forms\\ModalAgregarEspecialidad.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\ModalAgregarEspecialidad.cs",
-              "RelativeToolTip": "Forms\\ModalAgregarEspecialidad.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAiwDIAAAANAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "ModalModificarEspecialidad.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\Especialidad\\ModalModificarEspecialidad.cs",
+              "RelativeDocumentMoniker": "Forms\\Especialidad\\ModalModificarEspecialidad.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\Especialidad\\ModalModificarEspecialidad.cs",
+              "RelativeToolTip": "Forms\\Especialidad\\ModalModificarEspecialidad.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAA9wE0AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-04T22:08:21.117Z",
+              "WhenOpened": "2025-08-04T23:16:54.456Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FormPlan.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\Plan\\FormPlan.cs",
+              "RelativeDocumentMoniker": "Forms\\Plan\\FormPlan.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\Plan\\FormPlan.cs",
+              "RelativeToolTip": "Forms\\Plan\\FormPlan.cs",
+              "ViewState": "AgIAAIwAAAAAAAAAAAApwJEAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-04T23:11:55.655Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ModalModificarEspecialidad.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\ModalModificarEspecialidad.cs",
-              "RelativeDocumentMoniker": "Forms\\ModalModificarEspecialidad.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\ModalModificarEspecialidad.cs",
-              "RelativeToolTip": "Forms\\ModalModificarEspecialidad.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAbAAAAAAAAAA==",
+              "Title": "ModalModificarPlan.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\Plan\\ModalModificarPlan.cs",
+              "RelativeDocumentMoniker": "Forms\\Plan\\ModalModificarPlan.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\Plan\\ModalModificarPlan.cs",
+              "RelativeToolTip": "Forms\\Plan\\ModalModificarPlan.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAAFAAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "OverriddenGroupName": "Forms",
-              "WhenOpened": "2025-08-04T20:37:23.785Z",
+              "WhenOpened": "2025-08-04T23:07:04.624Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FormEspecialidad.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\FormEspecialidad.cs",
-              "RelativeDocumentMoniker": "Forms\\FormEspecialidad.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\FormEspecialidad.cs",
-              "RelativeToolTip": "Forms\\FormEspecialidad.cs",
-              "ViewState": "AgIAAI8AAAAAAAAAAAAiwKAAAAAcAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "ModalAgregarPlan.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\Plan\\ModalAgregarPlan.cs",
+              "RelativeDocumentMoniker": "Forms\\Plan\\ModalAgregarPlan.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\Plan\\ModalAgregarPlan.cs",
+              "RelativeToolTip": "Forms\\Plan\\ModalAgregarPlan.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAADwvygAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "OverriddenGroupName": "Forms",
-              "WhenOpened": "2025-08-04T21:17:31.088Z",
+              "WhenOpened": "2025-08-04T22:43:29.553Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ModalModificarPlan.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\ModalModificarPlan.cs",
+              "RelativeDocumentMoniker": "Forms\\ModalModificarPlan.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\ModalModificarPlan.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Forms\\ModalModificarPlan.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-04T23:05:57.756Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "ModalAgregarEspecialidad.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\ModalAgregarEspecialidad.cs",
-              "RelativeDocumentMoniker": "Forms\\ModalAgregarEspecialidad.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\ModalAgregarEspecialidad.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Forms\\ModalAgregarEspecialidad.cs [Dise\u00F1o]",
+              "Title": "Plan.dto.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\DTOs\\Plan.dto.cs",
+              "RelativeDocumentMoniker": "DTOs\\Plan.dto.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\DTOs\\Plan.dto.cs",
+              "RelativeToolTip": "DTOs\\Plan.dto.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-04T22:08:11.805Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "FormEspecialidad.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\FormEspecialidad.cs",
-              "RelativeDocumentMoniker": "Forms\\FormEspecialidad.cs",
-              "ToolTip": "Forms/FormEspecialidad.cs",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "OverriddenGroupName": "Forms",
-              "OverriddenToolTip": "Forms/FormEspecialidad.cs",
-              "WhenOpened": "2025-08-04T21:17:04.767Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "FormPostEspecialidad.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\Especialidad\\FormPostEspecialidad.cs",
-              "RelativeDocumentMoniker": "Forms\\Especialidad\\FormPostEspecialidad.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\Especialidad\\FormPostEspecialidad.cs",
-              "RelativeToolTip": "Forms\\Especialidad\\FormPostEspecialidad.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAgwC0AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-04T22:10:48.347Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-04T22:51:28.846Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "FormPostEspecialidad.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\Especialidad\\FormPostEspecialidad.cs",
-              "RelativeDocumentMoniker": "Forms\\Especialidad\\FormPostEspecialidad.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\Especialidad\\FormPostEspecialidad.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Forms\\Especialidad\\FormPostEspecialidad.cs [Dise\u00F1o]",
+              "Title": "ModalAgregarPlan.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\ModalAgregarPlan.cs",
+              "RelativeDocumentMoniker": "Forms\\ModalAgregarPlan.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\ModalAgregarPlan.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Forms\\ModalAgregarPlan.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-04T22:08:50.21Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2025-08-04T22:47:17.061Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FormPlan.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\FormPlan.cs",
+              "RelativeDocumentMoniker": "Forms\\FormPlan.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\FormPlan.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Forms\\FormPlan.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-04T22:25:40.572Z"
             },
             {
               "$type": "Document",
@@ -152,20 +157,7 @@
               "ToolTip": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\FormPrincipal.cs [Dise\u00F1o]",
               "RelativeToolTip": "Forms\\FormPrincipal.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-04T22:06:07.691Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ModalModificarEspecialidad.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\ModalModificarEspecialidad.cs",
-              "RelativeDocumentMoniker": "Forms\\ModalModificarEspecialidad.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\net-tp\\academia-tp\\Forms\\ModalModificarEspecialidad.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Forms\\ModalModificarEspecialidad.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-04T20:37:29.03Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2025-08-04T22:06:07.691Z"
             }
           ]
         }

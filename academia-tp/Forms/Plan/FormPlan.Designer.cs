@@ -45,6 +45,7 @@
             ButtonCrear.TabIndex = 26;
             ButtonCrear.Text = "Crear";
             ButtonCrear.UseVisualStyleBackColor = true;
+            ButtonCrear.Click += ButtonCrear_Click;
             // 
             // textBox1
             // 
@@ -61,6 +62,7 @@
             ButtonModificar.TabIndex = 24;
             ButtonModificar.Text = "Modificar ";
             ButtonModificar.UseVisualStyleBackColor = true;
+            ButtonModificar.Click += ButtonModificar_Click;
             // 
             // ButtonEliminar
             // 
@@ -70,6 +72,7 @@
             ButtonEliminar.TabIndex = 23;
             ButtonEliminar.Text = "Eliminar";
             ButtonEliminar.UseVisualStyleBackColor = true;
+            ButtonEliminar.Click += ButtonEliminar_Click;
             // 
             // ButtonBuscar
             // 
