@@ -16,7 +16,7 @@ namespace Forms
         {
             InitializeComponent();
         }
-        
+
         private void FormPrincipal_Load_1(object sender, EventArgs e)
         { //para agregar las pestañas dinámicamente
             AgregarPestañaEntidad("Especialidad");
@@ -30,15 +30,9 @@ namespace Forms
             // Panel donde se mostrarán los formularios o usercontrols. Es básicamente un container
             Panel panelContenedor = new Panel { Dock = DockStyle.Fill };
 
-            // Menú superior de acciones (Agregar, Borrar, ...)
-            FlowLayoutPanel menu = new FlowLayoutPanel
-            {
-                Dock = DockStyle.Top,
-                Height = 40,
-                AutoSize = true
-            };
+            CargarFormulario(panelContenedor, entidad);
 
-            string[] acciones = { "Buscar", "Agregar", "Modificar", "Borrar" };
+            /*string[] acciones = { "Buscar", "Agregar", "Modificar", "Borrar" };
             //Crea dinámicamente los botones de acciones para cada entidad
 
             foreach (string accion in acciones)
@@ -57,12 +51,12 @@ namespace Forms
                 };
 
                 menu.Controls.Add(btn); //agregar boton al menu de botones
-            }
+            }*/
 
             // Agregar los controles a la pestaña (menu y debajo panel-container). 
             tab.Controls.Add(panelContenedor);
-            tab.Controls.Add(menu);
-            tabControl1.TabPages.Add(tab);
+
+            tabControl1.TabPages.Add(tab); 
         }
         private void CargarFormulario(Panel contenedor, string tag)
         {
@@ -72,30 +66,11 @@ namespace Forms
             // Mapear cada botón a su formulario
             switch (tag) //asigna el formulario a cargar según el tag del botón
             {
-                case "Especialidad_Buscar":
-                    form = new FormGetEspecialidad();
+                case "Especialidad":
+                    form = new FormEspecialidad();
                     break;
-                case "Especialidad_Agregar":
-                    form = new FormPostEspecialidad();
-                    break;
-                case "Especialidad_Modificar":
-                    form = new FormPutEspecialidad();
-                    break;
-                case "Especialidad_Borrar":
-                    form = new FormDeleteEspecialidad();
-                    break;
-
-                case "Plan_Buscar":
-                    form = new FormGetPlan();
-                    break;
-                case "Plan_Agregar":
-                    form = new FormPostPlan();
-                    break;
-                case "Plan_Modificar":
-                    form = new FormPutPlan();
-                    break;
-                case "Plan_Borrar":
-                    form = new FormDeletePlan();
+                case "Plan":
+                    form = new FormPlan();
                     break;
             }
 
@@ -109,6 +84,9 @@ namespace Forms
             }
         }
 
-        
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

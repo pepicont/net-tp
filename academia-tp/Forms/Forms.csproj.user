@@ -7,7 +7,19 @@
     <Compile Update="Especialidad\FormPutEspecialidad.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FormEspecialidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ModalDeleteEspecialidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ModalModificarEspecialidad.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Plan\FormPostPlan.cs">
