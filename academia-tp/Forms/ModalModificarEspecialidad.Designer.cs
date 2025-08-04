@@ -53,6 +53,7 @@
             buttonPut.TabIndex = 14;
             buttonPut.Text = "Confirmar cambio";
             buttonPut.UseVisualStyleBackColor = true;
+            buttonPut.Click += buttonPut_Click_1;
             // 
             // richTextBoxDescripcion
             // 

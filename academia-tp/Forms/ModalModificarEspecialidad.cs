@@ -17,14 +17,17 @@ namespace Forms
         public ModalModificarEspecialidad(Especialidad especialidad)
         {
             InitializeComponent();
-            buttonPut.DialogResult = DialogResult.OK;
+            _especialidad = especialidad;
+            TextBoxId.Text = _especialidad.Id.ToString();
+            richTextBoxDescripcion.Text = _especialidad.Desc;
         }
         private readonly HttpClient _httpClient = new()
         {
             BaseAddress = new Uri("http://localhost:5290")
         };
+        private readonly Especialidad _especialidad;
 
-      
+
 
         private bool ValidarCampos()
         {
@@ -39,42 +42,40 @@ namespace Forms
 
             return true;
         }
-
-        private async void buttonPut_Click(object sender, EventArgs e)
-        {
-            if (!ValidarCampos())
-            {
-                return;
-            }
-
-            try
-            {
-                TextBoxId.Text = especialidad.Id;
-                string desc = richTextBoxDescripcion.Text;
-
-                Especialidad especialidad = new Especialidad(id, desc);
-                var response = await _httpClient.PutAsJsonAsync($"especialidades/{id}", especialidad);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    MessageBox.Show("Especialidad modificada con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-              
-                }
-                else
-                {
-                    MessageBox.Show($"Error al modificar la especialidad. Código de estado: {response.StatusCode}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void ModalModificarEspecialidad_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private async void buttonPut_Click_1(object sender, EventArgs e)
+        {
+            if (ValidarCampos())
+            {
+                try
+                {
+
+                    string desc = richTextBoxDescripcion.Text;
+                    Especialidad especialidad = new Especialidad(_especialidad.Id, desc);
+                    int id = _especialidad.Id;
+                    var response = await _httpClient.PutAsJsonAsync($"especialidades/{id}", especialidad);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Especialidad modificada con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.DialogResult = DialogResult.OK; // Solo aquí
+                        this.Close();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Error al modificar la especialidad. Código de estado: {response.StatusCode}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

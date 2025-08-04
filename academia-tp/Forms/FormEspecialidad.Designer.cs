@@ -45,6 +45,7 @@
             ButtonCrear.TabIndex = 32;
             ButtonCrear.Text = "Crear";
             ButtonCrear.UseVisualStyleBackColor = true;
+            ButtonCrear.Click += ButtonCrear_Click;
             // 
             // textBox1
             // 

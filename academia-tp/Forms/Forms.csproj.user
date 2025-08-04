@@ -16,6 +16,9 @@
     <Compile Update="FormPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="ModalAgregarEspecialidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="ModalDeleteEspecialidad.cs">
       <SubType>Form</SubType>
     </Compile>

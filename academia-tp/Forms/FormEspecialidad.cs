@@ -120,10 +120,10 @@ namespace Forms
                 MessageBoxIcon.Warning);
             }
             else
-            {                
+            {
                 int id = (int)Grilla.CurrentRow.Cells["Id"].Value;
                 string desc = Grilla.CurrentRow.Cells["Desc"].Value.ToString();
-                Especialidad especialidad = new Especialidad (id, desc);
+                Especialidad especialidad = new Especialidad(id, desc);
                 Form modal = new ModalModificarEspecialidad(especialidad);
 
                 // Mostrar como modal (bloquea la ventana padre)
@@ -132,44 +132,43 @@ namespace Forms
                 // Procesar el resultado si es necesario
                 if (result == DialogResult.OK)
                 {
-                    // El usuario hizo clic en OK
-                    try
-                    {
-
-                        // Realizar el PUT request
-                        var response = await _httpClient.PutAsJsonAsync($"especialidades/{id}", especialidad);
-
-                        if (response.IsSuccessStatusCode)
-                        {
-                            MessageBox.Show("Se modificó la especialidad");
-
-                            // Recargar los datos en la grilla
-                            var especialidades = await _httpClient.GetFromJsonAsync<IEnumerable<Especialidad>>("especialidades");
-                            Grilla.DataSource = especialidades;
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error al modificar la especialidad: {ex.Message}");
-                    }
-                    
-
-
-                    }
-                    
+                    // Recargar los datos en la grilla
+                    var especialidades = await _httpClient.GetFromJsonAsync<IEnumerable<Especialidad>>("especialidades");
+                    Grilla.DataSource = especialidades;
+                }
                 // Liberar recursos
                 modal.Dispose();
             }
-                
-            }
-
-                
-
-                
 
 
-            }
         }
+
+        private async void ButtonCrear_Click(object sender, EventArgs e)
+        {
+            Form modal = new ModalAgregarEspecialidad();
+
+            // Mostrar como modal (bloquea la ventana padre)
+            DialogResult result = modal.ShowDialog();
+
+            // Procesar el resultado si es necesario
+            if (result == DialogResult.OK)
+            {
+                // Recargar los datos en la grilla
+                var especialidades = await _httpClient.GetFromJsonAsync<IEnumerable<Especialidad>>("especialidades");
+                Grilla.DataSource = especialidades;
+            }
+            // Liberar recursos
+            modal.Dispose();
+        }
+    }
+
+
+
+
+
+
+}
+        
     
         
 
