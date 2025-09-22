@@ -1,18 +1,22 @@
-﻿using System.Numerics;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Numerics;
 using Domain.model;
-
 
 namespace DataDomain
 {
     public class InMemory
-    {
-        public static List<Especialidad> especialidades;
-
-        public static List<Plan> planes;
-
-        static InMemory()
         {
-            especialidades = new List<Especialidad>
+            public static List<Especialidad> especialidades;
+
+            
+
+            static InMemory()
+            {
+                especialidades = new List<Especialidad>
             {
                 new Especialidad(1,"descripción 1"),
                 new Especialidad(2,"descripción 2"),
@@ -21,17 +25,12 @@ namespace DataDomain
                 new Especialidad(5,"descripción 5"),
             };
 
-            planes = new List<Plan>
-            {
-                new Plan(1, "sape", 1),
-                new Plan(2, "sape", 1),
-                new Plan(3, "sape", 3),
-                new Plan(4, "sape", 3)
-            };
+                
+            }
+
+
+
+
         }
-
-
-
-
     }
-}
+
