@@ -10,6 +10,8 @@ namespace DataDomain
     {
         public DbSet<Plan> Plan { get; set; }
         public DbSet<Especialidad> Especialidad { get; set; }
+        public DbSet<Usuario> Usuario { get; set; }
+        public DbSet<Persona> Persona { get; set; }
 
         public TPIContext()
         {

@@ -47,9 +47,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(tabControl1);
+            IsMdiContainer = true;
             Name = "FormPrincipal";
             Text = "FormPrincipal";
             Load += FormPrincipal_Load_1;
+            Shown += FormPrincipal_Shown;
             ResumeLayout(false);
         }
 

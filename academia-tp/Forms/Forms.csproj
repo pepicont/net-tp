@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Data.domain\DataDomain.csproj" />
     <ProjectReference Include="..\Domain.model\Domain.model.csproj" />
     <ProjectReference Include="..\Domain.services\Domain.services.csproj" />

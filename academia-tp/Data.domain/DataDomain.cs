@@ -8,7 +8,7 @@ using Domain.model;
 
 namespace DataDomain
 {
-    public class InMemory
+    /*public class InMemory
         {
             public static List<Especialidad> especialidades;
 
@@ -32,5 +32,6 @@ namespace DataDomain
 
 
         }
-    }
+    }*/
+}
 

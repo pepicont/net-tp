@@ -5,7 +5,7 @@ using DTOs;
 
 namespace Data
 {
-    public class PlanRepository
+    public class EspecialidadRepository
     {
 
         private TPIContext CreateContext()
@@ -13,40 +13,39 @@ namespace Data
             return new TPIContext();
         }
 
-        public Plan? GetOne(int id)
+        public Especialidad? GetOne(int id)
         {
             using var context = CreateContext();
-            Plan? plan = context.Plan.Find(id);
-            if (plan != null)
+            Especialidad? especialidad = context.Especialidad.Find(id);
+            if (especialidad != null)
             {
-                return plan;
+                return especialidad;
             }
             return null;
         }
 
-        public IEnumerable<Plan> GetAll()
+        public IEnumerable<Especialidad> GetAll()
         {
             using var context = CreateContext();
-            return context.Plan.OrderBy(p => p.Desc).ToList();
+            return context.Especialidad.OrderBy(p => p.Desc).ToList();
         }
 
-        public Plan Create(Plan plan)
+        public Especialidad Create(Especialidad especialidad)
         {
             using var context = CreateContext();
-            context.Plan.Add(plan);
+            context.Especialidad.Add(especialidad);
             context.SaveChanges();
-            return plan;
+            return especialidad;
         }
 
-        public bool Update(int id, UpdatePlanDTO plan)
+        public bool Update(int id, EspecialidadDTO especialidad)
         {
             using var context = CreateContext();
-            Plan? existingPlan = context.Plan.Find(id);
+            Especialidad? existingEspecialidad = context.Especialidad.Find(id);
 
-            if (existingPlan != null)
+            if (existingEspecialidad != null)
             {
-                existingPlan.Desc = plan.Desc;
-                existingPlan.Id_especialidad = (int)plan.Id_especialidad;
+                existingEspecialidad.Desc = especialidad.Desc;
                 context.SaveChanges();
                 return true;
             }
@@ -59,17 +58,17 @@ namespace Data
         public bool Delete(int id)
         {
             using var context = CreateContext();
-            var plan = context.Plan.Find(id);
-            if (plan != null)
+            var especialidad = context.Especialidad.Find(id);
+            if (especialidad != null)
             {
-                context.Plan.Remove(plan);
+                context.Especialidad.Remove(especialidad);
                 context.SaveChanges();
                 return true;
             }
             return false;
         }
 
-       
+
 
 
 

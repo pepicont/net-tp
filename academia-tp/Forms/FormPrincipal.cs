@@ -56,7 +56,7 @@ namespace Forms
             // Agregar los controles a la pestaña (menu y debajo panel-container). 
             tab.Controls.Add(panelContenedor);
 
-            tabControl1.TabPages.Add(tab); 
+            tabControl1.TabPages.Add(tab);
         }
         private void CargarFormulario(Panel contenedor, string tag)
         {
@@ -87,6 +87,16 @@ namespace Forms
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void FormPrincipal_Shown(object sender, EventArgs e)
+        {
+            FormLogin appLogin = new FormLogin();
+            appLogin.ShowDialog();
+            if (appLogin.ShowDialog() != DialogResult.OK)
+            {
+                this.Dispose();
+            }
         }
     }
 }
