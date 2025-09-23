@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             label2 = new Label();
-            RichTextBoxDescripcion = new RichTextBox();
             buttonPost = new Button();
             label1 = new Label();
             comboBox1 = new ComboBox();
             label3 = new Label();
+            RichTextBoxDescripcion = new RichTextBox();
             SuspendLayout();
             // 
             // label2
@@ -44,14 +44,6 @@
             label2.Size = new Size(240, 15);
             label2.TabIndex = 12;
             label2.Text = "Complete atributos de la nueva especialidad";
-            // 
-            // RichTextBoxDescripcion
-            // 
-            RichTextBoxDescripcion.Location = new Point(167, 89);
-            RichTextBoxDescripcion.Name = "RichTextBoxDescripcion";
-            RichTextBoxDescripcion.Size = new Size(341, 96);
-            RichTextBoxDescripcion.TabIndex = 11;
-            RichTextBoxDescripcion.Text = "";
             // 
             // buttonPost
             // 
@@ -91,6 +83,14 @@
             label3.Text = "Especialidad";
             label3.Click += label3_Click;
             // 
+            // RichTextBoxDescripcion
+            // 
+            RichTextBoxDescripcion.Location = new Point(167, 89);
+            RichTextBoxDescripcion.Name = "RichTextBoxDescripcion";
+            RichTextBoxDescripcion.Size = new Size(341, 96);
+            RichTextBoxDescripcion.TabIndex = 11;
+            RichTextBoxDescripcion.Text = "";
+            // 
             // ModalAgregarPlan
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -112,10 +112,10 @@
         #endregion
 
         private Label label2;
-        private RichTextBox RichTextBoxDescripcion;
         private Button buttonPost;
         private Label label1;
         private ComboBox comboBox1;
         private Label label3;
+        private RichTextBox RichTextBoxDescripcion;
     }
 }

@@ -19,6 +19,10 @@ namespace Domain.services
         {
             return repository.GetOne(id);
         }
+        public Persona? GetByLegajo(int leg)
+        {
+            return repository.GetByLegajo(leg);
+        }
 
         public IEnumerable<Persona> GetAll()
         {

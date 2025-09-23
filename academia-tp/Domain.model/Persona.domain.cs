@@ -1,4 +1,7 @@
-﻿namespace Domain.model
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
+namespace Domain.model
 {
     public class Persona
     {
@@ -14,29 +17,26 @@
         public int Tipo_persona { get; set; }
         public int Id_plan { get; set; }
 
+        public Persona() { }
+
         public Persona(
-            int id,
             string nombre,
             string apellido,
             string direccion,
             string email,
             string telefono,
             string fecha_nac,
-            int legajo,
             int tipo_persona,
             int id_plan)
         {
-            this.Id = id;
             this.Nombre = nombre;
             this.Apellido = apellido;
             this.Direccion = direccion;
             this.Email = email;
             this.Telefono = telefono;
             this.Fecha_nac = fecha_nac;
-            this.Legajo = legajo;
             this.Tipo_persona = tipo_persona;
             this.Id_plan = id_plan;
         }
-
     }
 }

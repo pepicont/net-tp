@@ -11,19 +11,16 @@ namespace Data
         {
             return new TPIContext();
         }
-
         public Persona? GetOne(int id)
         {
             using var context = CreateContext();
-           return context.Persona.Find(id);
-           
+            return context.Persona.FirstOrDefault(u => u.Id == id);
         }
 
-        public Persona? GetByLegajo(string leg)
+        public Persona? GetByLegajo(int leg)
         {
             using var context = CreateContext();
-            return context.Persona.FirstOrDefault(u => u.Legajo == legajo);
-            
+            return context.Persona.FirstOrDefault(u => u.Legajo == leg);
         }
 
         public IEnumerable<Persona> GetAll()
@@ -37,6 +34,11 @@ namespace Data
             using var context = CreateContext();
             context.Persona.Add(persona);
             context.SaveChanges();
+
+            // Ahora el Id ya está generado, así que puedes asignar Legajo
+            persona.Legajo = persona.Id;
+            context.SaveChanges();
+
             return persona;
         }
 

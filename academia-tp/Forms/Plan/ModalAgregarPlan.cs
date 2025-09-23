@@ -57,7 +57,7 @@ namespace Forms
 
             {
                 int id_especialidad = (int)comboBox1.SelectedValue;
-                CreatePlanDTO planes = new CreatePlanDTO(desc,id_especialidad);
+                CreatePlanDTO planes = new CreatePlanDTO(desc, id_especialidad);
                 var response = await _httpClient.PostAsJsonAsync("planes", planes);
                 if (response.IsSuccessStatusCode)
                 {
@@ -76,7 +76,17 @@ namespace Forms
 
         private void label3_Click(object sender, EventArgs e)
         {
+            //ignorar
+        }
 
+        private void label5_Click(object sender, EventArgs e)
+        {
+            //ignorar
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+            //ignorar
         }
     }
 }

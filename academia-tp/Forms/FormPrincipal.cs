@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Forms.Persona;
+using Forms.Usuario;
 
 namespace Forms
 {
@@ -21,6 +23,8 @@ namespace Forms
         { //para agregar las pestañas dinámicamente
             AgregarPestañaEntidad("Especialidad");
             AgregarPestañaEntidad("Plan");
+            AgregarPestañaEntidad("Usuario");
+            AgregarPestañaEntidad("Persona");
         }
         private void AgregarPestañaEntidad(string entidad)
         {
@@ -72,7 +76,14 @@ namespace Forms
                 case "Plan":
                     form = new FormPlan();
                     break;
+                case "Usuario":
+                    form = new FormUsuario();
+                    break;
+                case "Persona":
+                    form = new FormPersona();
+                    break;
             }
+
 
             if (form != null) //cuando se elige una opción, agrega al panel y muestra el formulario
             {
