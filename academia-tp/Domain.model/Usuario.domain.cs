@@ -13,6 +13,8 @@
         public bool Cambia_clave { get; set; }
         public int Id_persona { get; set; }
 
+        public Usuario() { }
+
         public Usuario(
             int id, 
             string nombreUsuario, 
@@ -35,6 +37,7 @@
             this.Id_persona = idPersona;
 
         }
+
 
     }
 }

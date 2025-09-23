@@ -3,39 +3,41 @@ using Domain.model;
 using Microsoft.EntityFrameworkCore;
 using DTOs;
 using Data;
-
-public class PersonaServices
-
+namespace Domain.services
 {
-    private PersonaRepository repository;
-    public PersonaServices()
-    {
-        repository = new PersonaRepository();
-    }
 
-    public Persona? GetOne(int id)
-    {
-        return repository.GetOne(id);
-    }
+    public class PersonaServices
 
-    public IEnumerable<Persona> GetAll()
     {
-        return repository.GetAll();
-    }
+        private PersonaRepository repository;
+        public PersonaServices()
+        {
+            repository = new PersonaRepository();
+        }
 
-    public Persona Create(Persona persona)
-    {
-        return repository.Create(persona);
-    }
+        public Persona? GetOne(int id)
+        {
+            return repository.GetOne(id);
+        }
 
-    public bool Update(int id, Persona persona)
-    {
-        return repository.Update(id, persona);
-    }
+        public IEnumerable<Persona> GetAll()
+        {
+            return repository.GetAll();
+        }
 
-    public bool Delete(int id)
-    {
-        return repository.Delete(id);
+        public Persona Create(Persona persona)
+        {
+            return repository.Create(persona);
+        }
+
+        public bool Update(int id, Persona persona)
+        {
+            return repository.Update(id, persona);
+        }
+
+        public bool Delete(int id)
+        {
+            return repository.Delete(id);
+        }
     }
 }
-

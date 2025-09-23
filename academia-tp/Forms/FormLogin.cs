@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Domain.services;
 
 namespace Forms
 {
@@ -19,7 +20,20 @@ namespace Forms
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            //logica de login
+            string nombreUsuario = txtUsuario.Text;
+            string clave = txtPass.Text;
+            var usuario = AuthService.Login(nombreUsuario, clave);
+            if (usuario == null)
+            {
+                MessageBox.Show("Nombre de usuario o contraseña incorrectos");
+            }
+            else
+            {
+                MessageBox.Show("Inicio de sesión exitoso");
+                DialogResult = DialogResult.OK;
+            }
+
+
 
         }
 

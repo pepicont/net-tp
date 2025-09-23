@@ -23,5 +23,8 @@ app.MapGet("/", () => "Hola Mundo!");
 
 app.MapEspecialidadEndpoints();
 app.MapPlanEndpoints();
+app.MapPersonaEndpoints();
+app.MapUsuarioEndpoints();
+
 
 app.Run();

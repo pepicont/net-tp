@@ -8,6 +8,7 @@ namespace WebApi
     {
         public static void MapPlanEndpoints(this WebApplication app)
         {
+
             app.MapGet("/planes", () =>
             {
                 PlanServices planService = new PlanServices();
@@ -15,20 +16,17 @@ namespace WebApi
                 IEnumerable<Plan> planes = planService.GetAll();
 
                 return Results.Ok(planes);
-
             });
-
 
             app.MapGet("planes/{id}", (int id) =>
             {
                 PlanServices planService = new PlanServices();
-                Plan plan = planService.GetOne(id);
+                Plan? plan = planService.GetOne(id);
 
                 if (plan is null) { return Results.NotFound(); }
 
                 return Results.Ok(plan);
             });
-
 
             app.MapPost("/planes", (Plan plan) =>
             {

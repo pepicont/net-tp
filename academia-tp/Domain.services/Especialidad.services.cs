@@ -1,40 +1,42 @@
-﻿namespace Domain.services;
-using Domain.model;
+﻿using Domain.model;
 using DataDomain;
 using DTOs;
 using Data;
 
-public class EspecialidadServices
-
+namespace Domain.services
 {
-    private EspecialidadRepository repository;
-    public EspecialidadServices()
-    {
-        repository = new EspecialidadRepository();
-    }
+    public class EspecialidadServices
 
-    public Especialidad? GetOne(int id)
     {
-        return repository.GetOne(id);
-    }
+        private EspecialidadRepository repository;
+        public EspecialidadServices()
+        {
+            repository = new EspecialidadRepository();
+        }
 
-    public IEnumerable<Especialidad> GetAll()
-    {
-        return repository.GetAll();
-    }
+        public Especialidad? GetOne(int id)
+        {
+            return repository.GetOne(id);
+        }
 
-    public Especialidad Create(Especialidad especialidad)
-    {
-        return repository.Create(especialidad);
-    }
+        public IEnumerable<Especialidad> GetAll()
+        {
+            return repository.GetAll();
+        }
 
-    public bool Update(int id, EspecialidadDTO especialidad)
-    {
-        return repository.Update(id, especialidad);
-    }
+        public Especialidad Create(Especialidad especialidad)
+        {
+            return repository.Create(especialidad);
+        }
 
-    public bool Delete(int id)
-    {
-        return repository.Delete(id);
+        public bool Update(int id, EspecialidadDTO especialidad)
+        {
+            return repository.Update(id, especialidad);
+        }
+
+        public bool Delete(int id)
+        {
+            return repository.Delete(id);
+        }
     }
 }

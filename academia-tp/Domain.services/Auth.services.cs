@@ -2,19 +2,16 @@
 using Data;
 using DTOs;
 
-namespace Services
+namespace Domain.services
 {
-    public class AuthService
+    public static class AuthService
     {
-        private readonly UsuarioRepository repository;
+        
 
-        public AuthService()
+        public static Usuario? Login(string nombreUsuario, string clave)
         {
-            repository = new UsuarioRepository();
-        }
-
-        public Usuario? Login(string nombreUsuario, string clave)
-        {
+            UsuarioRepository repository = new UsuarioRepository();
+            
             var usuario = repository.GetByUserName(nombreUsuario);
 
             if (usuario == null)
@@ -29,8 +26,10 @@ namespace Services
             return usuario;
         }
 
-        public Usuario Register(Usuario dto)
+        public static Usuario Register(Usuario dto)
         {
+            UsuarioRepository repository = new UsuarioRepository();
+
             var existingUser = repository.GetByUserName(dto.Nombre_usuario);
             if (existingUser != null)
                 throw new Exception("El nombre de usuario ya está en uso.");

@@ -1,40 +1,42 @@
-﻿namespace Domain.services;
+﻿
 using Domain.model;
 using DataDomain;
 using DTOs;
 using Data;
-
-public class PlanServices
-
+namespace Domain.services
 {
-    private PlanRepository repository;
-    public PlanServices()
-    {
-        repository = new PlanRepository();
-    }
+    public class PlanServices
 
-    public Plan? GetOne(int id)
     {
-        return repository.GetOne(id);
-    }
+        private PlanRepository repository;
+        public PlanServices()
+        {
+            repository = new PlanRepository();
+        }
 
-    public IEnumerable<Plan> GetAll()
-    {
-        return repository.GetAll();
-    }
+        public Plan? GetOne(int id)
+        {
+            return repository.GetOne(id);
+        }
 
-    public Plan Create(Plan plan)
-    {
-        return repository.Create(plan);
-    }
+        public IEnumerable<Plan> GetAll()
+        {
+            return repository.GetAll();
+        }
 
-    public bool Update(int id, UpdatePlanDTO plan)
-    {
-        return repository.Update(id, plan);
-    }
+        public Plan Create(Plan plan)
+        {
+            return repository.Create(plan);
+        }
 
-    public bool Delete(int id)
-    {
-        return repository.Delete(id);
+        public bool Update(int id, UpdatePlanDTO plan)
+        {
+            return repository.Update(id, plan);
+        }
+
+        public bool Delete(int id)
+        {
+            return repository.Delete(id);
+        }
     }
 }

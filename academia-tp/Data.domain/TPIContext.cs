@@ -24,6 +24,14 @@ namespace DataDomain
                 .UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Initial Catalog=TPI;Integrated Security=true;TrustServerCertificate=True")
                 .LogTo(Console.WriteLine, LogLevel.Information);
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
 
-    }
+            modelBuilder.Entity<Plan>(entity => { });
+            modelBuilder.Entity<Especialidad>(entity => { });
+            modelBuilder.Entity<Persona>(entity => { });
+            modelBuilder.Entity<Usuario>(entity => { });
+        }
+    };
 }

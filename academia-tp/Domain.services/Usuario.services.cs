@@ -3,38 +3,41 @@ using Domain.model;
 using Microsoft.EntityFrameworkCore;
 using DTOs;
 using Data;
-
-public class UsuarioServices
-
+namespace Domain.services
 {
-    private UsuarioRepository repository;
-    public UsuarioServices()
-    {
-        repository = new UsuarioRepository();
-    }
 
-    public Usuario? GetOne(int id)
-    {
-        return repository.GetOne(id);
-    }
+    public class UsuarioServices
 
-    public IEnumerable<Usuario> GetAll()
     {
-        return repository.GetAll();
-    }
+        private UsuarioRepository repository;
+        public UsuarioServices()
+        {
+            repository = new UsuarioRepository();
+        }
 
-    public Usuario Create(Usuario usuario)
-    {
-        return repository.Create(usuario);
-    }
+        public Usuario? GetOne(int id)
+        {
+            return repository.GetOne(id);
+        }
 
-    public bool Update(int id, UsuarioDTO usuario)
-    {
-        return repository.Update(id, usuario);
-    }
+        public IEnumerable<Usuario> GetAll()
+        {
+            return repository.GetAll();
+        }
 
-    public bool Delete(int id)
-    {
-        return repository.Delete(id);
+        public Usuario Create(Usuario usuario)
+        {
+            return repository.Create(usuario);
+        }
+
+        public bool Update(int id, UsuarioDTO usuario)
+        {
+            return repository.Update(id, usuario);
+        }
+
+        public bool Delete(int id)
+        {
+            return repository.Delete(id);
+        }
     }
 }

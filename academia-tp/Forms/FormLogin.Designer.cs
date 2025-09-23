@@ -46,7 +46,7 @@
             label1.Name = "label1";
             label1.Size = new Size(229, 30);
             label1.TabIndex = 0;
-            label1.Text = "¡Bienvenido al Sistema!\r\nPor favor digite su información de Ingreso";
+            label1.Text = "¡Bienvenido a la Academia!\r\nPor favor digite su información de Ingreso";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label2

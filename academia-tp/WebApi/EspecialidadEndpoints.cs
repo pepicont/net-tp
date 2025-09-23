@@ -1,4 +1,5 @@
-﻿using Domain.services;
+﻿using Domain.model;
+using Domain.services;
 using DTOs;
 
 namespace WebApi
@@ -25,7 +26,7 @@ namespace WebApi
             });
             
 
-            app.MapPost("/especialidades", (EspecialidadDTO especialidad) =>
+            app.MapPost("/especialidades", (Especialidad especialidad) =>
             {
                 EspecialidadServices especialidadService = new EspecialidadServices();
                 var createdEspecialidad = especialidadService.Create(especialidad);
