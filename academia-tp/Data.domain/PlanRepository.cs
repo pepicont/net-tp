@@ -16,12 +16,8 @@ namespace Data
         public Plan? GetOne(int id)
         {
             using var context = CreateContext();
-            Plan? plan = context.Plan.Find(id);
-            if (plan != null)
-            {
-                return plan;
-            }
-            return null;
+            return context.Plan.Find(id);
+            
         }
 
         public IEnumerable<Plan> GetAll()

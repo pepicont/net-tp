@@ -16,12 +16,8 @@ namespace Data
         public Especialidad? GetOne(int id)
         {
             using var context = CreateContext();
-            Especialidad? especialidad = context.Especialidad.Find(id);
-            if (especialidad != null)
-            {
-                return especialidad;
-            }
-            return null;
+            return context.Especialidad.Find(id);
+           
         }
 
         public IEnumerable<Especialidad> GetAll()

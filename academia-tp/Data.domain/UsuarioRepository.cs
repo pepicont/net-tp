@@ -16,24 +16,15 @@ namespace Data
         public Usuario? GetOne(int id)
         {
             using var context = CreateContext();
-            Usuario? usuario = context.Usuario.Find(id);
-            if (usuario != null)
-            {
-                return usuario;
-            }
-            return null;
+            return context.Usuario.Find(id);
         }
 
         public Usuario? GetByUserName(string username)
         {
             using var context = CreateContext();
 
-            var usuario = context.Usuario.FirstOrDefault(u => u.Nombre_usuario == username);
-            if (usuario != null)
-            {
-                return usuario;
-            }
-            return null;
+            return context.Usuario.FirstOrDefault(u => u.Nombre_usuario == username);
+            
         }
 
         public IEnumerable<Usuario> GetAll()

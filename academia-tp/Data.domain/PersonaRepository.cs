@@ -15,27 +15,15 @@ namespace Data
         public Persona? GetOne(int id)
         {
             using var context = CreateContext();
-           Persona? Persona = context.Persona.Find(id);
-            if (Persona != null)
-            {
-                return Persona;
-            }
-            return null;
+           return context.Persona.Find(id);
+           
         }
 
         public Persona? GetByLegajo(string leg)
         {
             using var context = CreateContext();
-            if (!int.TryParse(leg, out int legajo))
-            {
-                return null;
-            }
-            var persona = context.Persona.FirstOrDefault(u => u.Legajo == legajo);
-            if (persona != null)
-            {
-                return persona;
-            }
-            return null;
+            return context.Persona.FirstOrDefault(u => u.Legajo == legajo);
+            
         }
 
         public IEnumerable<Persona> GetAll()
