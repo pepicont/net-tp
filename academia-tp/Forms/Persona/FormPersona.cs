@@ -110,7 +110,7 @@ namespace Forms.Persona
                     Id_plan=idPlan
                 };
                 
-                Form modal = new FormModificarPersona(persona);
+                Form modal = new FormModificarPersona(persona, "Admin");
 
                 // Mostrar como modal (bloquea la ventana padre)
                 DialogResult result = modal.ShowDialog();

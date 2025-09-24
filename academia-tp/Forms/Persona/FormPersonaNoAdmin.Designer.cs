@@ -28,12 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "FormPersonaNoAdmin";
+            ButtonModificar = new Button();
+            Grilla = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)Grilla).BeginInit();
+            SuspendLayout();
+            // 
+            // ButtonModificar
+            // 
+            ButtonModificar.Location = new Point(321, 274);
+            ButtonModificar.Name = "ButtonModificar";
+            ButtonModificar.Size = new Size(146, 52);
+            ButtonModificar.TabIndex = 38;
+            ButtonModificar.Text = "Modificar\rPersona\r\n";
+            ButtonModificar.UseVisualStyleBackColor = true;
+            ButtonModificar.Click += ButtonModificar_Click;
+            // 
+            // Grilla
+            // 
+            Grilla.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Grilla.Location = new Point(42, 125);
+            Grilla.Name = "Grilla";
+            Grilla.Size = new Size(716, 123);
+            Grilla.TabIndex = 37;
+            // 
+            // FormPersonaNoAdmin
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(ButtonModificar);
+            Controls.Add(Grilla);
+            Name = "FormPersonaNoAdmin";
+            Text = "FormPersonaNoAdmin";
+            Load += FormPersonaNoAdmin_Load;
+            ((System.ComponentModel.ISupportInitialize)Grilla).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Button ButtonModificar;
+        private DataGridView Grilla;
     }
 }

@@ -24,8 +24,8 @@ namespace Forms
         {
             BaseAddress = new Uri("http://localhost:5290")
         };
-        public string Id { get; set; }
         public Domain.model.Usuario Usuario { get; set; }
+        public Domain.model.Persona Persona { get; set; }
 
         private void FormPrincipal_Load_1(object sender, EventArgs e)
         { //para agregar las pestañas dinámicamente. migrado a shown
@@ -87,10 +87,13 @@ namespace Forms
                     if(Usuario.Tipo == "Admin")
                         form = new FormUsuario();
                     else if(Usuario.Tipo == "Usuario")
-                        form = new FormUsuarioNoAdmin(Id);
+                        form = new FormUsuarioNoAdmin(Usuario.Id.ToString());
                     break;
                 case "Persona":
-                    form = new FormPersona();
+                    if (Usuario.Tipo == "Admin")
+                        form = new FormPersona();
+                    else if (Usuario.Tipo == "Usuario")
+                        form = new FormPersonaNoAdmin(Persona.Id.ToString(), Usuario.Tipo);
                     break;
             }
 
@@ -116,11 +119,12 @@ namespace Forms
             FormLogin appLogin = new FormLogin();
             if (appLogin.ShowDialog() == DialogResult.OK) 
             {
-                Id = appLogin.Id;
+                string id = appLogin.Id;
                 try
                 {
 
-                    Usuario = await _httpClient.GetFromJsonAsync<Domain.model.Usuario>($"usuarios/{Id}");
+                    Usuario = await _httpClient.GetFromJsonAsync<Domain.model.Usuario>($"usuarios/{id}");
+                    Persona = await _httpClient.GetFromJsonAsync<Domain.model.Persona>($"personas/{Usuario.Id_persona}");
 
                 }
                 catch (Exception ex)

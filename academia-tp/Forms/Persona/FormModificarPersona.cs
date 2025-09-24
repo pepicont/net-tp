@@ -14,10 +14,11 @@ namespace Forms.Persona
 {
     public partial class FormModificarPersona : Form
     {
-        public FormModificarPersona(Domain.model.Persona persona)
+        public FormModificarPersona(Domain.model.Persona persona, string tipoUsuario)
         {
             InitializeComponent();
             _persona = persona;
+            _tipoUsuario = tipoUsuario;
             txtNombre.Text = _persona.Nombre;
             txtApellido.Text = _persona.Apellido;
             txtDireccion.Text = _persona.Direccion;
@@ -35,9 +36,17 @@ namespace Forms.Persona
             {
                 radioProfesor.Checked = true;
             }
+            txtId.Enabled = false;
+            txtLegajo.Enabled = false;
 
+            if (_tipoUsuario == "Usuario")
+            {
+                radioAlumno.Enabled = false;
+                radioProfesor.Enabled = false;
+            }
         }
         private readonly Domain.model.Persona _persona;
+        private readonly string _tipoUsuario;
         
         private readonly HttpClient _httpClient = new()
         {
@@ -115,6 +124,7 @@ namespace Forms.Persona
             {
                 MessageBox.Show($"Error al consultar los planes: {ex.Message}");
             }
+            
         }
     }
 }
