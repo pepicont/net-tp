@@ -33,6 +33,12 @@ namespace DataDomain
                 entity.Property(e => e.Id);
                 entity.Property(e => e.Desc);
                 entity.Property(e => e.Id_especialidad);
+                // Configuración de la foreign key y borrado en cascada
+                entity.HasOne<Especialidad>()
+                      .WithMany()
+                      .HasForeignKey(p => p.Id_especialidad)
+                      .OnDelete(DeleteBehavior.Cascade);
+
             });
             modelBuilder.Entity<Especialidad>(entity =>
             {
