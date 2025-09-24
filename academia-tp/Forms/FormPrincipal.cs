@@ -41,26 +41,6 @@ namespace Forms
 
             CargarFormulario(panelContenedor, entidad);
 
-            /*string[] acciones = { "Buscar", "Agregar", "Modificar", "Borrar" };
-            //Crea dinámicamente los botones de acciones para cada entidad
-
-            foreach (string accion in acciones)
-            {
-                Button btn = new Button
-                {
-                    Text = accion,
-                    Tag = entidad + "_" + accion
-                };
-
-                // Evento del botón
-                btn.Click += (s, e) =>
-                {
-                    string tag = ((Button)s).Tag.ToString(); //s abreviación de sender (Boton que envió el evento)
-                    CargarFormulario(panelContenedor, tag); //lo que dice el nombre.
-                };
-
-                menu.Controls.Add(btn); //agregar boton al menu de botones
-            }*/
 
             // Agregar los controles a la pestaña (menu y debajo panel-container). 
             tab.Controls.Add(panelContenedor);
@@ -121,8 +101,11 @@ namespace Forms
 
         private async void FormPrincipal_Shown(object sender, EventArgs e)
         {
-
+            this.Hide(); //oculta formPrincipal antes de login
             FormLogin appLogin = new FormLogin();
+            appLogin.StartPosition = FormStartPosition.Manual; //para que se abra en el mismo lugar
+            appLogin.Size = this.Size;
+            appLogin.Location = this.Location;
             if (appLogin.ShowDialog() == DialogResult.OK) 
             {
                 string id = appLogin.Id;
@@ -131,6 +114,7 @@ namespace Forms
 
                     Usuario = await _httpClient.GetFromJsonAsync<Domain.model.Usuario>($"usuarios/{id}");
                     Persona = await _httpClient.GetFromJsonAsync<Domain.model.Persona>($"personas/{Usuario.Id_persona}");
+                    
 
                 }
                 catch (Exception ex)
@@ -138,7 +122,9 @@ namespace Forms
                     MessageBox.Show($"Error al obtener el usuario: {ex.Message}");
                     return;
                 }
+                this.Show();
                 InicializarTabs();
+                
 
             }
             else
