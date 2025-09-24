@@ -31,6 +31,7 @@ namespace Forms
             {
                 MessageBox.Show("Inicio de sesión exitoso");
                 DialogResult = DialogResult.OK;
+                this.Close();
             }
 
 

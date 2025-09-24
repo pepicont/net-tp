@@ -11,6 +11,7 @@ namespace Domain.services
         public static Usuario? Login(string nombreUsuario, string clave)
         {
             UsuarioRepository repository = new UsuarioRepository();
+
             
             var usuario = repository.GetByUserName(nombreUsuario);
 
