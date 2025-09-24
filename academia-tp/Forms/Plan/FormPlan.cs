@@ -15,9 +15,15 @@ namespace Forms
 {
     public partial class FormPlan : Form
     {
-        public FormPlan()
+        public FormPlan(string tipoUsuario)
         {
             InitializeComponent();
+            if (tipoUsuario == "Usuario")
+            {
+                ButtonEliminar.Visible = false;
+                ButtonModificar.Visible = false;
+                ButtonCrear.Visible = false;
+            }
         }
 
         private readonly HttpClient _httpClient = new()

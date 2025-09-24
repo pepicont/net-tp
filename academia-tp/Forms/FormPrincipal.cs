@@ -78,10 +78,16 @@ namespace Forms
             switch (tag) //asigna el formulario a cargar según el tag del botón
             {
                 case "Especialidad":
-                    form = new FormEspecialidad();
+                    if(Usuario.Tipo == "Admin")
+                        form = new FormEspecialidad("Admin");
+                    else if (Usuario.Tipo == "Usuario")
+                        form = new FormEspecialidad("Usuario");
                     break;
                 case "Plan":
-                    form = new FormPlan();
+                    if (Usuario.Tipo == "Admin")
+                        form = new FormPlan("Admin");
+                    else if (Usuario.Tipo == "Usuario")
+                        form = new FormPlan("Usuario");
                     break;
                 case "Usuario":
                     if(Usuario.Tipo == "Admin")

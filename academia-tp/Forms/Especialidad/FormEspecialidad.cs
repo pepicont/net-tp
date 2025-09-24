@@ -16,9 +16,15 @@ namespace Forms
 {
     public partial class FormEspecialidad : Form
     {
-        public FormEspecialidad()
+        public FormEspecialidad(string tipoUsuario)
         {
             InitializeComponent();
+            if (tipoUsuario == "Usuario")
+            {
+                ButtonEliminar.Visible = false;
+                ButtonModificar.Visible = false;
+                ButtonCrear.Visible = false;
+            }
         }
         private readonly HttpClient _httpClient = new()
         {
