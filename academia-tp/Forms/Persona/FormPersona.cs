@@ -76,9 +76,55 @@ namespace Forms.Persona
             modal.Dispose();
         }
 
-        private void ButtonModificar_Click(object sender, EventArgs e)
+        private async void ButtonModificar_Click(object sender, EventArgs e)
         {
+            if (Grilla.CurrentRow == null)
+            {
+                MessageBox.Show("Debe seleccionar un usuario a modificar primero",
+                "Advertencia",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
+            }
+            else
+            {
+                int id = (int)Grilla.CurrentRow.Cells["Id"].Value;
+                string nombre = Grilla.CurrentRow.Cells["Nombre"].Value.ToString();
+                string apellido = Grilla.CurrentRow.Cells["Apellido"].Value.ToString();
+                string direccion = Grilla.CurrentRow.Cells["Direccion"].Value.ToString();
+                string email = Grilla.CurrentRow.Cells["Email"].Value.ToString();
+                string telefono = Grilla.CurrentRow.Cells["Telefono"].Value.ToString();
+                DateTime fechaNac = DateTime.Parse(Grilla.CurrentRow.Cells["Fecha_nac"].Value.ToString());
+                int legajo = (int)Grilla.CurrentRow.Cells["Legajo"].Value;
+                int tipoPersona = (int)Grilla.CurrentRow.Cells["Tipo_persona"].Value;
+                int idPlan = (int)Grilla.CurrentRow.Cells["Id_plan"].Value;
+                Domain.model.Persona persona = new Domain.model.Persona() {
+                    Id = id,
+                    Nombre=nombre,
+                    Apellido=apellido,
+                    Direccion=direccion,
+                    Email=email,
+                    Telefono=telefono,
+                    Fecha_nac=fechaNac.ToString("yyyy-MM-dd"),
+                    Legajo=legajo,
+                    Tipo_persona=tipoPersona,
+                    Id_plan=idPlan
+                };
+                
+                Form modal = new FormModificarPersona(persona);
 
+                // Mostrar como modal (bloquea la ventana padre)
+                DialogResult result = modal.ShowDialog();
+
+                // Procesar el resultado si es necesario
+                if (result == DialogResult.OK)
+                {
+                    // Recargar los datos en la grilla
+                    var personas = await _httpClient.GetFromJsonAsync<IEnumerable<Domain.model.Persona>>("personas");
+                    Grilla.DataSource = personas;
+                }
+                // Liberar recursos
+                modal.Dispose();
+            }
         }
 
         private void ButtonEliminar_Click(object sender, EventArgs e)

@@ -64,10 +64,10 @@ namespace Forms.Persona
                     Telefono = telefono,
                     Fecha_nac = fechaNacimiento.ToString("yyyy-MM-dd"),
                     Tipo_persona = tipoPersona,
-                    Id_plan = 1
+                    Id_plan = (int)comboBoxPlan.SelectedValue
                 };
 
-                var response = await _httpClient.PostAsJsonAsync("persona", persona);
+                var response = await _httpClient.PostAsJsonAsync("personas", persona);
 
                 if (response.IsSuccessStatusCode)
                 {

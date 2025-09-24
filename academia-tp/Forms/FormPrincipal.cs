@@ -103,7 +103,6 @@ namespace Forms
         private void FormPrincipal_Shown(object sender, EventArgs e)
         {
             FormLogin appLogin = new FormLogin();
-            appLogin.ShowDialog();
             if (appLogin.ShowDialog() != DialogResult.OK)
             {
                 this.Dispose();

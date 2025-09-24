@@ -47,9 +47,9 @@
             label2 = new Label();
             buttonPut = new Button();
             label1 = new Label();
-            textBox1 = new TextBox();
+            txtLegajo = new TextBox();
             label10 = new Label();
-            textBox2 = new TextBox();
+            txtId = new TextBox();
             label11 = new Label();
             SuspendLayout();
             // 
@@ -216,13 +216,13 @@
             label1.TabIndex = 51;
             label1.Text = "Nombre:";
             // 
-            // textBox1
+            // txtLegajo
             // 
-            textBox1.Location = new Point(229, 53);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 71;
+            txtLegajo.Location = new Point(229, 53);
+            txtLegajo.Name = "txtLegajo";
+            txtLegajo.ReadOnly = true;
+            txtLegajo.Size = new Size(100, 23);
+            txtLegajo.TabIndex = 71;
             // 
             // label10
             // 
@@ -233,13 +233,13 @@
             label10.TabIndex = 70;
             label10.Text = "Legajo:";
             // 
-            // textBox2
+            // txtId
             // 
-            textBox2.Location = new Point(414, 53);
-            textBox2.Name = "textBox2";
-            textBox2.ReadOnly = true;
-            textBox2.Size = new Size(100, 23);
-            textBox2.TabIndex = 73;
+            txtId.Location = new Point(414, 53);
+            txtId.Name = "txtId";
+            txtId.ReadOnly = true;
+            txtId.Size = new Size(100, 23);
+            txtId.TabIndex = 73;
             // 
             // label11
             // 
@@ -255,9 +255,9 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(textBox2);
+            Controls.Add(txtId);
             Controls.Add(label11);
-            Controls.Add(textBox1);
+            Controls.Add(txtLegajo);
             Controls.Add(label10);
             Controls.Add(calendario);
             Controls.Add(radioAlumno);
@@ -280,6 +280,7 @@
             Controls.Add(label1);
             Name = "FormModificarPersona";
             Text = "FormModificarPersona";
+            Load += FormModificarPersona_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -305,9 +306,9 @@
         private Label label2;
         private Button buttonPut;
         private Label label1;
-        private TextBox textBox1;
+        private TextBox txtLegajo;
         private Label label10;
-        private TextBox textBox2;
+        private TextBox txtId;
         private Label label11;
     }
 }
