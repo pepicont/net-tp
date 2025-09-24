@@ -238,6 +238,7 @@
             Controls.Add(label1);
             Name = "ModalAgregarPersona";
             Text = "ModalAgregarPersona";
+            Load += ModalAgregarPersona_Load_1;
             ResumeLayout(false);
             PerformLayout();
         }
