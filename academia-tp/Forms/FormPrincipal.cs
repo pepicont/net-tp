@@ -24,7 +24,8 @@ namespace Forms
         {
             BaseAddress = new Uri("http://localhost:5290")
         };
-        public Object Id_tipo { get; set; }
+        public string Id { get; set; }
+        public Domain.model.Usuario Usuario { get; set; }
 
         private void FormPrincipal_Load_1(object sender, EventArgs e)
         { //para agregar las pestañas dinámicamente. migrado a shown
@@ -71,7 +72,7 @@ namespace Forms
             contenedor.Controls.Clear(); //borra el anterior si hay un form cargado
             Form form = null; //lo hace null para poder cargar por la validación de debajo
 
-            Domain.model.Usuario usuario = await _httpClient.GetFromJsonAsync<Domain.model.Usuario>($"usuarios/{Id}");
+            
 
             // Mapear cada botón a su formulario
             switch (tag) //asigna el formulario a cargar según el tag del botón
@@ -83,9 +84,9 @@ namespace Forms
                     form = new FormPlan();
                     break;
                 case "Usuario":
-                    if(usuario.Tipo == "Admin")
+                    if(Usuario.Tipo == "Admin")
                         form = new FormUsuario();
-                    else if(usuario.Tipo == "Usuario")
+                    else if(Usuario.Tipo == "Usuario")
                         form = new FormUsuarioNoAdmin(Id);
                     break;
                 case "Persona":
@@ -109,13 +110,24 @@ namespace Forms
 
         }
 
-        private void FormPrincipal_Shown(object sender, EventArgs e)
+        private async void FormPrincipal_Shown(object sender, EventArgs e)
         {
 
             FormLogin appLogin = new FormLogin();
             if (appLogin.ShowDialog() == DialogResult.OK) 
             {
                 Id = appLogin.Id;
+                try
+                {
+
+                    Usuario = await _httpClient.GetFromJsonAsync<Domain.model.Usuario>($"usuario/{Id}");
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al obtener el usuario: {ex.Message}");
+                    return;
+                }
                 InicializarTabs();
 
             }
