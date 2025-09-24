@@ -24,9 +24,11 @@ namespace Forms.Usuario
             BaseAddress = new Uri("http://localhost:5290")
         };
         private string _id;
+        private Domain.model.Usuario _usuario;
         private async void ButtonModificar_Click(object sender, EventArgs e)
         {
-            Form modal = new FormModificarUsuario(_id);
+
+            Form modal = new FormModificarUsuario(_usuario);
 
             // Mostrar como modal (bloquea la ventana padre)
             DialogResult result = modal.ShowDialog();
@@ -36,8 +38,9 @@ namespace Forms.Usuario
             {
                 
                 // Recargar los datos en la grilla
-                var usuario = await _httpClient.GetFromJsonAsync<Domain.model.Usuario>($"usuarios/{_id}");
-                Grilla.DataSource = usuario;
+                Domain.model.Usuario usuario = await _httpClient.GetFromJsonAsync<Domain.model.Usuario>($"usuarios/{_id}");
+                Grilla.DataSource = new List<Domain.model.Usuario> { usuario };
+                _usuario = usuario;
                 
             }
             // Liberar recursos
@@ -45,8 +48,9 @@ namespace Forms.Usuario
         }
         private async void FormUsuarioNoAdmin_Load(object sender, EventArgs e)
         {
-            var usuario = await _httpClient.GetFromJsonAsync<Domain.model.Usuario>($"usuarios/{_id}");
+            Domain.model.Usuario usuario = await _httpClient.GetFromJsonAsync<Domain.model.Usuario>($"usuarios/{_id}");
             Grilla.DataSource = new List<Domain.model.Usuario> { usuario };
+            _usuario = usuario;
         }
     }
 }

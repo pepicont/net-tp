@@ -14,18 +14,25 @@ namespace Forms.Usuario
 {
     public partial class FormModificarUsuario : Form
     {
-        public FormModificarUsuario(string id)
+        public FormModificarUsuario(Domain.model.Usuario usuario)
         {
             InitializeComponent();
-            _id = id;
-            
+            _usuario = usuario;
+
+            // Si el tipo de usuario es "Usuario", el campo txtLegajo y los radios serán solo lectura
+            if (_usuario.Tipo == "Usuario")
+            {
+                txtLegajo.Enabled = false;
+                radioSi.Enabled = false;
+                radioNo.Enabled = false;
+            }
         }
-        private readonly string _id;
 
         private readonly HttpClient _httpClient = new()
         {
             BaseAddress = new Uri("http://localhost:5290")
         };
+        private Domain.model.Usuario _usuario;
 
         private async void buttonPut_Click(object sender, EventArgs e)
         {
@@ -47,8 +54,8 @@ namespace Forms.Usuario
                     string email = txtEmail.Text;
                     bool cambiaClave = false;
 
-                    Domain.model.Usuario usuario = await _httpClient.GetFromJsonAsync<Domain.model.Usuario>($"usuarios/{_id}");
-                    if (!usuario.Cambia_clave && clave != usuario.Clave)
+                    
+                    if (!_usuario.Cambia_clave && clave != _usuario.Clave)
                     {
                         cambiaClave = true;
                     }
@@ -78,7 +85,7 @@ namespace Forms.Usuario
                             Cambia_clave = cambiaClave,
                             Id_persona = legajo,
                         };
-                        var response = await _httpClient.PutAsJsonAsync($"usuarios/{usuario.Id.ToString()}", usuarioPut);
+                        var response = await _httpClient.PutAsJsonAsync($"usuarios/{_usuario.Id.ToString()}", usuarioPut);
 
                         if (response.IsSuccessStatusCode)
                         {
@@ -100,14 +107,13 @@ namespace Forms.Usuario
 
         private async void FormModificarUsuario_Load(object sender, EventArgs e)
         {
-            Domain.model.Usuario usuario = await _httpClient.GetFromJsonAsync<Domain.model.Usuario>($"usuarios/{_id}");
-            txtNombreUsuario.Text = usuario.Nombre;
-            txtNombre.Text = usuario.Nombre;
-            txtApellido.Text = usuario.Apellido;
-            txtEmail.Text = usuario.Email;
-            txtLegajo.Text = usuario.Id_persona.ToString();
+            txtNombreUsuario.Text = _usuario.Nombre_usuario;
+            txtNombre.Text = _usuario.Nombre;
+            txtApellido.Text = _usuario.Apellido;
+            txtEmail.Text = _usuario.Email;
+            txtLegajo.Text = _usuario.Id_persona.ToString();
 
-            if (usuario.Habilitado)
+            if (_usuario.Habilitado)
             {
                 radioSi.Checked = true;
                 radioNo.Checked = false;

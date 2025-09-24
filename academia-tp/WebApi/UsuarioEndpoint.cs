@@ -19,7 +19,7 @@ namespace WebApi
 
             });
 
-            app.MapGet("usuario/{id}", (int id) =>
+            app.MapGet("usuarios/{id}", (int id) =>
             {
                 UsuarioServices usuarioService = new UsuarioServices();
                 Usuario? usuario = usuarioService.GetOne(id);

@@ -89,7 +89,7 @@ namespace Forms.Usuario
             else
             {
                 int id = (int)Grilla.CurrentRow.Cells["Id"].Value;
-                /*string nombreUsuario = Grilla.CurrentRow.Cells["Nombre_usuario"].Value.ToString();
+                string nombreUsuario = Grilla.CurrentRow.Cells["Nombre_usuario"].Value.ToString();
                 string nombre = Grilla.CurrentRow.Cells["Nombre"].Value.ToString();
                 string apellido = Grilla.CurrentRow.Cells["Apellido"].Value.ToString();
                 string clave = Grilla.CurrentRow.Cells["Clave"].Value.ToString();
@@ -110,9 +110,9 @@ namespace Forms.Usuario
                     Habilitado = habilitado,
                     Id_persona = idPersona
 
-                };*/
+                };
 
-                Form modal = new FormModificarUsuario(id.ToString()); /*usuario*/
+                Form modal = new FormModificarUsuario(usuario); /*usuario*/
 
                 // Mostrar como modal (bloquea la ventana padre)
                 DialogResult result = modal.ShowDialog();

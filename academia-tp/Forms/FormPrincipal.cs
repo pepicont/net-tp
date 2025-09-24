@@ -120,7 +120,7 @@ namespace Forms
                 try
                 {
 
-                    Usuario = await _httpClient.GetFromJsonAsync<Domain.model.Usuario>($"usuario/{Id}");
+                    Usuario = await _httpClient.GetFromJsonAsync<Domain.model.Usuario>($"usuarios/{Id}");
 
                 }
                 catch (Exception ex)
