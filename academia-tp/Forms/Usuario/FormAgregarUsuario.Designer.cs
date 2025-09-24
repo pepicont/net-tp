@@ -180,6 +180,7 @@
             Controls.Add(label1);
             Name = "FormAgregarUsuario";
             Text = "FormAgregarUsuario";
+            Load += FormAgregarUsuario_Load;
             ResumeLayout(false);
             PerformLayout();
         }

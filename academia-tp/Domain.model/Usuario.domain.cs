@@ -1,4 +1,5 @@
-﻿namespace Domain.model
+﻿
+namespace Domain.model
 {
     public class Usuario
     {
@@ -12,6 +13,7 @@
         public string Email { get; set; }
         public bool Cambia_clave { get; set; }
         public int Id_persona { get; set; }
+        public string Tipo { get; set; }
 
         public Usuario() { }
 
@@ -38,6 +40,9 @@
 
         }
 
-
+        public static implicit operator Usuario(HttpResponseMessage v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -37,7 +37,7 @@ namespace WebApi
                 return Results.Created($"/usuarios/{createdUsuario.Id}", createdUsuario);
             });
 
-            app.MapPut("/usuario/{id}", (int id, UsuarioDTO updatedUsuario) =>
+            app.MapPut("/usuarios/{id}", (int id, Usuario updatedUsuario) =>
             {
                 UsuarioServices usuarioService = new UsuarioServices();
                 var existingUsuario = usuarioService.GetOne(id);

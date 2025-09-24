@@ -40,7 +40,7 @@ namespace Forms.Persona
                     Grilla.DataSource = personasDescParcial;
                     if (!personasDescParcial.Any())
                     {
-                        MessageBox.Show("No se encontraron personas con esa descripción parcial");
+                        MessageBox.Show("No se encontraron personas con ese legajo");
                     }
                 }
                 else
@@ -127,9 +127,53 @@ namespace Forms.Persona
             }
         }
 
-        private void ButtonEliminar_Click(object sender, EventArgs e)
+        private async void ButtonEliminar_Click(object sender, EventArgs e)
         {
+            if (Grilla.CurrentRow == null)
+            {
+                MessageBox.Show("Debe seleccionar una persona a borrar primero",
+                "Advertencia",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
+            }
+            else
+            {
 
+
+                int idToDelete = (int)Grilla.CurrentRow.Cells["Id"].Value;
+
+                Form modal = new FormDeletePersona();
+
+                // Mostrar como modal (bloquea la ventana padre)
+                DialogResult result = modal.ShowDialog();
+
+                // Procesar el resultado si es necesario
+                if (result == DialogResult.OK)
+                {
+                    // El usuario hizo clic en OK
+                    var response = await _httpClient.DeleteAsync($"personas/{idToDelete}");
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Se eliminó la persona");
+                        var personas = await _httpClient.GetFromJsonAsync<IEnumerable<Domain.model.Persona>>("personas");
+                        Grilla.DataSource = personas;
+
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo borrar la persona seleccionada",
+                "Advertencia",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
+                    }
+                }
+
+                // Liberar recursos
+                modal.Dispose();
+
+
+            }
         }
     }
 }

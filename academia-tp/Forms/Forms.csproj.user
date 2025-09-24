@@ -16,6 +16,9 @@
     <Compile Update="Persona\FormPersona.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Persona\FormPersonaNoAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Persona\ModalAgregarPersona.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -53,6 +56,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Usuario\FormUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Usuario\FormUsuarioNoAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

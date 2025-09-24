@@ -217,6 +217,7 @@
             Controls.Add(label1);
             Name = "FormModificarUsuario";
             Text = "FormModificarUsuario";
+            Load += FormModificarUsuario_Load;
             ResumeLayout(false);
             PerformLayout();
         }

@@ -39,7 +39,7 @@
             // 
             // ButtonCrear
             // 
-            ButtonCrear.Location = new Point(56, 185);
+            ButtonCrear.Location = new Point(163, 348);
             ButtonCrear.Name = "ButtonCrear";
             ButtonCrear.Size = new Size(147, 23);
             ButtonCrear.TabIndex = 38;
@@ -49,14 +49,14 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(56, 103);
+            textBox1.Location = new Point(295, 269);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(177, 23);
             textBox1.TabIndex = 37;
             // 
             // ButtonModificar
             // 
-            ButtonModificar.Location = new Point(56, 256);
+            ButtonModificar.Location = new Point(325, 348);
             ButtonModificar.Name = "ButtonModificar";
             ButtonModificar.Size = new Size(147, 23);
             ButtonModificar.TabIndex = 36;
@@ -66,7 +66,7 @@
             // 
             // ButtonEliminar
             // 
-            ButtonEliminar.Location = new Point(56, 323);
+            ButtonEliminar.Location = new Point(498, 348);
             ButtonEliminar.Name = "ButtonEliminar";
             ButtonEliminar.Size = new Size(147, 23);
             ButtonEliminar.TabIndex = 35;
@@ -76,7 +76,7 @@
             // 
             // ButtonBuscar
             // 
-            ButtonBuscar.Location = new Point(259, 100);
+            ButtonBuscar.Location = new Point(498, 266);
             ButtonBuscar.Name = "ButtonBuscar";
             ButtonBuscar.Size = new Size(69, 27);
             ButtonBuscar.TabIndex = 34;
@@ -87,9 +87,9 @@
             // Grilla
             // 
             Grilla.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            Grilla.Location = new Point(350, 84);
+            Grilla.Location = new Point(50, 12);
             Grilla.Name = "Grilla";
-            Grilla.Size = new Size(394, 283);
+            Grilla.Size = new Size(708, 187);
             Grilla.TabIndex = 33;
             // 
             // FormPersona

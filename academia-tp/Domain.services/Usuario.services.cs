@@ -27,11 +27,13 @@ namespace Domain.services
 
         public Usuario Create(Usuario usuario)
         {
+            usuario.Clave = PasswordHasher.HashPassword(usuario.Clave);
             return repository.Create(usuario);
         }
 
-        public bool Update(int id, UsuarioDTO usuario)
+        public bool Update(int id, Usuario usuario)
         {
+            usuario.Clave = PasswordHasher.HashPassword(usuario.Clave);
             return repository.Update(id, usuario);
         }
 

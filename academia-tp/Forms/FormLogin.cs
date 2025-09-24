@@ -15,8 +15,10 @@ namespace Forms
     {
         public FormLogin()
         {
-            InitializeComponent();
-        }
+            InitializeComponent();        }
+
+        public string tipoUsuario { get; set; }
+        public string Tipo { get; set; }
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
@@ -26,10 +28,13 @@ namespace Forms
             if (usuario == null)
             {
                 MessageBox.Show("Nombre de usuario o contraseña incorrectos");
+                tipoUsuario = "";
             }
             else
             {
                 MessageBox.Show("Inicio de sesión exitoso");
+                tipoUsuario = usuario; // Asignar el usuario
+                Tipo = usuario.Tipo;
                 DialogResult = DialogResult.OK;
                 this.Close();
             }

@@ -12,14 +12,7 @@ namespace Forms
             // see https://aka.ms/applicationconfiguration.
            ApplicationConfiguration.Initialize();
            Application.Run(new FormPrincipal());
-            /*Application.Run(new FormGetEspecialidad());
-           Application.Run(new FormPostEspecialidad());
-           Application.Run(new FormPutEspecialidad());
-           Application.Run(new FormDeleteEspecialidad());
-           Application.Run(new FormGetPlan());
-           Application.Run(new FormPostPlan());
-           Application.Run(new FormDeletePlan());
-           Application.Run(new FormPutPlan());*/
+           
         }
     }
 }

@@ -15,16 +15,18 @@ namespace Forms.Persona
         public FormDeletePersona()
         {
             InitializeComponent();
+            btnAceptar.DialogResult = DialogResult.OK;
+            btnCancelar.DialogResult = DialogResult.Cancel;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-
+            //no hacen falta
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-
+            //no hacen falta
         }
     }
 }

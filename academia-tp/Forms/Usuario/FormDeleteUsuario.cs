@@ -15,6 +15,8 @@ namespace Forms.Usuario
         public FormDeleteUsuario()
         {
             InitializeComponent();
+            btnAceptar.DialogResult = DialogResult.OK;
+            btnCancelar.DialogResult = DialogResult.Cancel;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)

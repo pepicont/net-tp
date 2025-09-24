@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,14 +18,17 @@ namespace Forms
         public FormPrincipal()
         {
             InitializeComponent();
+            
         }
+        private readonly HttpClient _httpClient = new()
+        {
+            BaseAddress = new Uri("http://localhost:5290")
+        };
+        public Object Id_tipo { get; set; }
 
         private void FormPrincipal_Load_1(object sender, EventArgs e)
-        { //para agregar las pestañas dinámicamente
-            AgregarPestañaEntidad("Especialidad");
-            AgregarPestañaEntidad("Plan");
-            AgregarPestañaEntidad("Usuario");
-            AgregarPestañaEntidad("Persona");
+        { //para agregar las pestañas dinámicamente. migrado a shown
+            
         }
         private void AgregarPestañaEntidad(string entidad)
         {
@@ -62,10 +66,12 @@ namespace Forms
 
             tabControl1.TabPages.Add(tab);
         }
-        private void CargarFormulario(Panel contenedor, string tag)
+        private async Task CargarFormulario(Panel contenedor, string tag)
         {
             contenedor.Controls.Clear(); //borra el anterior si hay un form cargado
             Form form = null; //lo hace null para poder cargar por la validación de debajo
+
+            Domain.model.Usuario usuario = await _httpClient.GetFromJsonAsync<Domain.model.Usuario>($"usuarios/{Id}");
 
             // Mapear cada botón a su formulario
             switch (tag) //asigna el formulario a cargar según el tag del botón
@@ -77,7 +83,10 @@ namespace Forms
                     form = new FormPlan();
                     break;
                 case "Usuario":
-                    form = new FormUsuario();
+                    if(usuario.Tipo == "Admin")
+                        form = new FormUsuario();
+                    else if(usuario.Tipo == "Usuario")
+                        form = new FormUsuarioNoAdmin(Id);
                     break;
                 case "Persona":
                     form = new FormPersona();
@@ -102,11 +111,26 @@ namespace Forms
 
         private void FormPrincipal_Shown(object sender, EventArgs e)
         {
+
             FormLogin appLogin = new FormLogin();
-            if (appLogin.ShowDialog() != DialogResult.OK)
+            if (appLogin.ShowDialog() == DialogResult.OK) 
+            {
+                Id = appLogin.Id;
+                InicializarTabs();
+
+            }
+            else
             {
                 this.Dispose();
             }
+
+        }
+        private void InicializarTabs()
+        {
+            AgregarPestañaEntidad("Especialidad");
+            AgregarPestañaEntidad("Plan");
+            AgregarPestañaEntidad("Usuario");
+            AgregarPestañaEntidad("Persona");
         }
     }
 }

@@ -63,6 +63,7 @@ namespace DataDomain
                 entity.Property(e => e.Email);
                 entity.Property(e => e.Cambia_clave);
                 entity.Property(e => e.Id_persona);
+                entity.Property(e => e.Tipo);
             });
         }
     };

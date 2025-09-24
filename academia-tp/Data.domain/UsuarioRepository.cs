@@ -41,7 +41,7 @@ namespace Data
             return Usuario;
         }
 
-        public bool Update(int id, UsuarioDTO dto)
+        public bool Update(int id, Usuario usu)
         {
             using var context = CreateContext();
 
@@ -50,13 +50,13 @@ namespace Data
             if (existingUsuario == null)
                 return false;
 
-            existingUsuario.Nombre_usuario = dto.Nombre_usuario;
-            existingUsuario.Habilitado = dto.Habilitado;
-            existingUsuario.Nombre = dto.Nombre;
-            existingUsuario.Apellido = dto.Apellido;
-            existingUsuario.Email = dto.Email;
-            existingUsuario.Cambia_clave = dto.Cambia_clave;
-            existingUsuario.Id_persona = dto.Id_persona;
+            existingUsuario.Nombre_usuario = usu.Nombre_usuario;
+            existingUsuario.Habilitado = usu.Habilitado;
+            existingUsuario.Nombre = usu.Nombre;
+            existingUsuario.Apellido = usu.Apellido;
+            existingUsuario.Email = usu.Email;
+            existingUsuario.Cambia_clave = usu.Cambia_clave;
+            existingUsuario.Id_persona = usu.Id_persona;
 
             context.SaveChanges();
             return true;

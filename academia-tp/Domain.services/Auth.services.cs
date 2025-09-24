@@ -12,7 +12,6 @@ namespace Domain.services
         {
             UsuarioRepository repository = new UsuarioRepository();
 
-            
             var usuario = repository.GetByUserName(nombreUsuario);
 
             if (usuario == null)
@@ -27,21 +26,21 @@ namespace Domain.services
             return usuario;
         }
 
-        public static Usuario Register(Usuario dto)
+        public static Usuario Register(Usuario usuario)
         {
             UsuarioRepository repository = new UsuarioRepository();
 
-            var existingUser = repository.GetByUserName(dto.Nombre_usuario);
+            var existingUser = repository.GetByUserName(usuario.Nombre_usuario);
             if (existingUser != null)
                 throw new Exception("El nombre de usuario ya está en uso.");
 
             var allUsers = repository.GetAll();
 
-            dto.Clave = PasswordHasher.HashPassword(dto.Clave);
-            dto.Habilitado = true;
-            dto.Cambia_clave = false;
+            usuario.Clave = PasswordHasher.HashPassword(usuario.Clave);
+            usuario.Habilitado = true;
+            usuario.Cambia_clave = false;
 
-            return repository.Create(dto);
+            return repository.Create(usuario);
         }
     }
 
