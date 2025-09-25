@@ -12,7 +12,9 @@
             this.Id = id;
             this.Desc = desc;
         }
-
-    }
+        public Especialidad()
+        {
+        }
+}
 }
  

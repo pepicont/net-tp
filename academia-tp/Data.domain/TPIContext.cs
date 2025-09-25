@@ -38,13 +38,21 @@ namespace DataDomain
                       .WithMany()
                       .HasForeignKey(p => p.Id_especialidad)
                       .OnDelete(DeleteBehavior.Cascade);
-
+                entity.HasData(
+                    new Plan { Id = 1, Desc = "Plan 2025", Id_especialidad = 1 },
+                    new Plan { Id = 2, Desc = "Plan 2026", Id_especialidad = 2 });
             });
+
             modelBuilder.Entity<Especialidad>(entity =>
             {
                 entity.Property(e => e.Id);
                 entity.Property(e => e.Desc);
+                entity.HasData(
+                    new Especialidad { Id = 1, Desc = "Ingeniería" },
+                    new Especialidad { Id = 2, Desc = "Medicina" }
+                );
             });
+
             modelBuilder.Entity<Persona>(entity =>
             {
                 entity.HasKey(e => e.Id);
@@ -57,7 +65,24 @@ namespace DataDomain
                 entity.Property(e => e.Fecha_nac);
                 entity.Property(e => e.Tipo_persona);
                 entity.Property(e => e.Id_plan);
+                // Datos iniciales para Persona
+                entity.HasData(
+                    new Persona
+                    {
+                        Id = 1,
+                        Nombre = "Juan",
+                        Apellido = "Pérez",
+                        Direccion = "Calle Falsa 123",
+                        Email = "juan@mail.com",
+                        Telefono = "123456",
+                        Fecha_nac = "1990-01-01",
+                        Legajo = 1,
+                        Tipo_persona = 1,
+                        Id_plan = 1
+                    }
+                );
             });
+
             modelBuilder.Entity<Usuario>(entity =>
             {
                 entity.Property(e => e.Id);
@@ -70,7 +95,24 @@ namespace DataDomain
                 entity.Property(e => e.Cambia_clave);
                 entity.Property(e => e.Id_persona);
                 entity.Property(e => e.Tipo);
+                entity.HasData(
+                    new Usuario
+                    {
+                        Id = 1,
+                        Nombre_usuario = "admin",
+                        Clave = "$2a$12$oio9TEk650CiHoYazcMtQeBw5Ft6lrDvlGAEd3ktpUpRbTWRl9MLq", // Idealmente, hasheada
+                        Habilitado = true,
+                        Nombre = "Admin",
+                        Apellido = "Principal",
+                        Email = "admin@mail.com",
+                        Cambia_clave = false,
+                        Id_persona = 1,
+                        Tipo = "Admin"
+                    });
             });
         }
-    };
+    }
 }
+
+
+

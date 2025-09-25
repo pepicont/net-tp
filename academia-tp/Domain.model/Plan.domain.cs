@@ -21,5 +21,8 @@ namespace Domain.model
             this.Desc = desc;
             this.Id_especialidad = id_especialidad;
         }
+        public Plan()
+        {
+        }
     }
 }
