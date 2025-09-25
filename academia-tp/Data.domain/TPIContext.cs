@@ -79,6 +79,19 @@ namespace DataDomain
                         Legajo = 1,
                         Tipo_persona = 1,
                         Id_plan = 1
+                    },
+                    new Persona
+                    {
+                        Id = 2,
+                        Nombre = "Bruno",
+                        Apellido = "Vitali",
+                        Direccion = "Calle Falsa 123",
+                        Email = "bruno@mail.com",
+                        Telefono = "123456",
+                        Fecha_nac = "1990-01-01",
+                        Legajo = 2,
+                        Tipo_persona = 1,
+                        Id_plan = 2
                     }
                 );
             });
@@ -95,6 +108,11 @@ namespace DataDomain
                 entity.Property(e => e.Cambia_clave);
                 entity.Property(e => e.Id_persona);
                 entity.Property(e => e.Tipo);
+                // Foreign key a Persona
+                entity.HasOne<Persona>()
+                      .WithMany()
+                      .HasForeignKey(u => u.Id_persona)
+                      .OnDelete(DeleteBehavior.Cascade);
                 entity.HasData(
                     new Usuario
                     {
@@ -108,8 +126,21 @@ namespace DataDomain
                         Cambia_clave = false,
                         Id_persona = 1,
                         Tipo = "Admin"
+                    },
+                    new Usuario
+                    {
+                        Id = 2,
+                        Nombre_usuario = "bruno",
+                        Clave = "$2a$12$oio9TEk650CiHoYazcMtQeBw5Ft6lrDvlGAEd3ktpUpRbTWRl9MLq", // Idealmente, hasheada
+                        Habilitado = true,
+                        Nombre = "Bruno",
+                        Apellido = "Vitali",
+                        Email = "bruno@mail.com",
+                        Cambia_clave = false,
+                        Id_persona = 2,
+                        Tipo = "Usuario"
                     });
-            });
+        });
         }
     }
 }
