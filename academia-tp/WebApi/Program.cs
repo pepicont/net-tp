@@ -25,6 +25,7 @@ app.MapEspecialidadEndpoints();
 app.MapPlanEndpoints();
 app.MapPersonaEndpoints();
 app.MapUsuarioEndpoints();
+app.MapMateriaEndpoints();
 
 
 app.Run();

@@ -12,6 +12,7 @@ namespace DataDomain
         public DbSet<Especialidad> Especialidad { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Persona> Persona { get; set; }
+        public DbSet<Materia> Materia { get; set; }
 
         public TPIContext()
         {
@@ -50,6 +51,24 @@ namespace DataDomain
                 entity.HasData(
                     new Especialidad { Id = 1, Desc = "Ingeniería" },
                     new Especialidad { Id = 2, Desc = "Medicina" }
+                );
+            });
+
+            modelBuilder.Entity<Materia>(entity =>
+            {
+                entity.Property(e => e.Id);
+                entity.Property(e => e.Desc);
+                entity.Property(e => e.Hs_semanales);
+                entity.Property(e => e.Hs_totales);
+                entity.Property(e => e.Id_plan);
+                // Configuración de la foreign key y borrado en cascada
+                entity.HasOne<Plan>()
+                      .WithMany()
+                      .HasForeignKey(p => p.Id_plan)
+                      .OnDelete(DeleteBehavior.Cascade);
+                entity.HasData(
+                    new Materia { Id = 1, Desc = "Matemática I", Hs_semanales = 4, Hs_totales = 64, Id_plan = 1 },
+                    new Materia { Id = 2, Desc = "Programación I", Hs_semanales = 6, Hs_totales = 96, Id_plan = 1 }
                 );
             });
 

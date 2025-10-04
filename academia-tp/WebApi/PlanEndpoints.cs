@@ -18,7 +18,7 @@ namespace WebApi
                 return Results.Ok(planes);
             });
 
-            app.MapGet("planes/{id}", (int id) =>
+            app.MapGet("/planes/{id}", (int id) =>
             {
                 PlanServices planService = new PlanServices();
                 Plan? plan = planService.GetOne(id);
