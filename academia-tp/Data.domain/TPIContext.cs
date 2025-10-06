@@ -13,9 +13,10 @@ namespace DataDomain
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Persona> Persona { get; set; }
         public DbSet<Materia> Materia { get; set; }
+        public DbSet<Comision> Comision { get; set; }
 
         public TPIContext()
-        {
+        {   
             this.Database.EnsureCreated();
         }
 
@@ -70,6 +71,24 @@ namespace DataDomain
                     new Materia { Id = 1, Desc = "Matemática I", Hs_semanales = 4, Hs_totales = 64, Id_plan = 1 },
                     new Materia { Id = 2, Desc = "Programación I", Hs_semanales = 6, Hs_totales = 96, Id_plan = 1 }
                 );
+            });
+
+            modelBuilder.Entity<Comision>(entity =>
+            {
+                entity.Property(e => e.Id);
+                entity.Property(e => e.Desc);
+                entity.Property(e => e.Anio_especialidad);
+                entity.Property(e => e.Id_plan);
+
+                entity.HasOne<Plan>()
+                      .WithMany()
+                      .HasForeignKey(p => p.Id_plan)
+                      .OnDelete(DeleteBehavior.Cascade);
+                entity.HasData(
+                    new Comision { Id = 1, Desc = "Comisión A", Anio_especialidad = 2025, Id_plan = 1 },
+                    new Comision { Id = 2, Desc = "Comisión B", Anio_especialidad = 2025, Id_plan = 1 }
+                );
+
             });
 
             modelBuilder.Entity<Persona>(entity =>

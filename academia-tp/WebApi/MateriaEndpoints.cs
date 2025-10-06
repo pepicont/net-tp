@@ -11,17 +11,17 @@ namespace WebApi
 
             app.MapGet("/materias", () =>
             {
-                MateriaServices planService = new MateriaServices();
+                MateriaServices service = new MateriaServices();
 
-                IEnumerable<Materia> materias = planService.GetAll();
+                IEnumerable<Materia> materias = service.GetAll();
 
                 return Results.Ok(materias);
             });
 
             app.MapGet("/materias/{id}", (int id) =>
             {
-                MateriaServices planService = new MateriaServices();
-                Materia? plan = planService.GetOne(id);
+                MateriaServices service = new MateriaServices();
+                Materia? plan = service.GetOne(id);
 
                 if (plan is null) { return Results.NotFound(); }
 
@@ -30,32 +30,32 @@ namespace WebApi
 
             app.MapPost("/materias", (Materia plan) =>
             {
-                MateriaServices planService = new MateriaServices();
-                Materia createdMateria = planService.Create(plan);
+                MateriaServices service = new MateriaServices();
+                Materia createdMateria = service.Create(plan);
                 return Results.Created($"/materias/{createdMateria.Id}", createdMateria);
             });
 
             app.MapPut("/materias/{id}", (int id, Materia updatedMateria) =>
             {
-                MateriaServices planService = new MateriaServices();
-                var existingMateria = planService.GetOne(id);
+                MateriaServices service = new MateriaServices();
+                var existingMateria = service.GetOne(id);
                 if (existingMateria is null)
                 {
                     return Results.NotFound();
                 }
-                planService.Update(id, updatedMateria);
+                service.Update(id, updatedMateria);
                 return Results.Ok(updatedMateria);
             });
 
             app.MapDelete("/materias/{id}", (int id) =>
             {
-                MateriaServices planService = new MateriaServices();
-                var existingMateria = planService.GetOne(id);
+                MateriaServices service = new MateriaServices();
+                var existingMateria = service.GetOne(id);
                 if (existingMateria is null)
                 {
                     return Results.NotFound();
                 }
-                planService.Delete(id);
+                service.Delete(id);
                 return Results.NoContent();
             });
         }
