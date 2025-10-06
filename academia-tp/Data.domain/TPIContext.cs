@@ -14,6 +14,7 @@ namespace DataDomain
         public DbSet<Persona> Persona { get; set; }
         public DbSet<Materia> Materia { get; set; }
         public DbSet<Comision> Comision { get; set; }
+        public DbSet<Curso> Curso { get; set; }
 
         public TPIContext()
         {   
@@ -35,11 +36,11 @@ namespace DataDomain
                 entity.Property(e => e.Id);
                 entity.Property(e => e.Desc);
                 entity.Property(e => e.Id_especialidad);
-                // Configuración de la foreign key y borrado en cascada
+               
                 entity.HasOne<Especialidad>()
                       .WithMany()
                       .HasForeignKey(p => p.Id_especialidad)
-                      .OnDelete(DeleteBehavior.Cascade);
+                      .OnDelete(DeleteBehavior.Restrict);
                 entity.HasData(
                     new Plan { Id = 1, Desc = "Plan 2025", Id_especialidad = 1 },
                     new Plan { Id = 2, Desc = "Plan 2026", Id_especialidad = 2 });
@@ -89,6 +90,30 @@ namespace DataDomain
                     new Comision { Id = 2, Desc = "Comisión B", Anio_especialidad = 2025, Id_plan = 1 }
                 );
 
+            });
+
+            modelBuilder.Entity<Curso>(entity =>
+            {
+                entity.Property(e => e.Id);
+                entity.Property(e => e.Id_materia);
+                entity.Property(e => e.Id_comision);
+                entity.Property(e => e.Anio_calendario);
+                entity.Property(e => e.Cupo);
+
+                entity.HasOne<Materia>()
+                      .WithMany()
+                      .HasForeignKey(c => c.Id_materia)
+                      .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasOne<Comision>()
+                        .WithMany()
+                        .HasForeignKey(c => c.Id_comision)
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasData(
+                    new Curso { Id = 1, Id_materia = 1, Id_comision = 1, Anio_calendario = 2025, Cupo = 30 },
+                    new Curso { Id = 2, Id_materia = 2, Id_comision = 2, Anio_calendario = 2025, Cupo = 25 }
+                    );
             });
 
             modelBuilder.Entity<Persona>(entity =>

@@ -9,9 +9,11 @@ namespace Domain.services
 
     {
         private MateriaRepository repository;
+        private PlanRepository planRepository;
         public MateriaServices()
         {
             repository = new MateriaRepository();
+            planRepository = new PlanRepository();
         }
 
         public Materia? GetOne(int id)
@@ -26,11 +28,21 @@ namespace Domain.services
 
         public Materia Create(Materia materia)
         {
+            var plan = planRepository.GetOne(materia.Id_plan);
+            if (plan == null)
+            {
+                throw new Exception("El plan con el ID especificado no existe.");
+            }
             return repository.Create(materia);
         }
 
         public bool Update(int id, Materia materia)
         {
+            var plan = planRepository.GetOne(materia.Id_plan);
+            if (plan == null)
+            {
+                throw new Exception("El plan con el ID especificado no existe.");
+            }
             return repository.Update(id, materia);
         }
 

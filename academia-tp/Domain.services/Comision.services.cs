@@ -9,9 +9,11 @@ namespace Domain.services
 
     {
         private ComisionRepository repository;
+        private PlanRepository planRepository;
         public ComisionServices()
         {
             repository = new ComisionRepository();
+            planRepository = new PlanRepository();
         }
 
         public Comision? GetOne(int id)
@@ -26,11 +28,21 @@ namespace Domain.services
 
         public Comision Create(Comision comision)
         {
+            var plan = planRepository.GetOne(comision.Id_plan);
+            if (plan == null)
+            {
+                throw new Exception("El plan con el ID especificado no existe.");
+            }
             return repository.Create(comision);
         }
 
         public bool Update(int id, Comision comision)
         {
+            var plan = planRepository.GetOne(comision.Id_plan);
+            if (plan == null)
+            {
+                throw new Exception("El plan con el ID especificado no existe.");
+            }
             return repository.Update(id, comision);
         }
 
