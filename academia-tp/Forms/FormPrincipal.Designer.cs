@@ -28,35 +28,208 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tabControl1 = new TabControl();
+            menuStrip1 = new MenuStrip();
+            personaToolStripMenuItem = new ToolStripMenuItem();
+            listadoPersona = new ToolStripMenuItem();
+            detallePersona = new ToolStripMenuItem();
+            usuarioToolStripMenuItem = new ToolStripMenuItem();
+            listadoUsuario = new ToolStripMenuItem();
+            crearUsuario = new ToolStripMenuItem();
+            planToolStripMenuItem = new ToolStripMenuItem();
+            listadoPlan = new ToolStripMenuItem();
+            crearPlan = new ToolStripMenuItem();
+            especialidadToolStripMenuItem = new ToolStripMenuItem();
+            listadoEspecialidad = new ToolStripMenuItem();
+            crearEspecialidad = new ToolStripMenuItem();
+            materiaToolStripMenuItem = new ToolStripMenuItem();
+            listadoToolStripMenuItem4 = new ToolStripMenuItem();
+            detalleToolStripMenuItem4 = new ToolStripMenuItem();
+            comisiónToolStripMenuItem = new ToolStripMenuItem();
+            listadoToolStripMenuItem5 = new ToolStripMenuItem();
+            detalleToolStripMenuItem5 = new ToolStripMenuItem();
+            panelContenedor = new Panel();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
-            // tabControl1
+            // menuStrip1
             // 
-            tabControl1.Dock = DockStyle.Fill;
-            tabControl1.Location = new Point(0, 0);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(800, 450);
-            tabControl1.TabIndex = 0;
-            tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
+            menuStrip1.Items.AddRange(new ToolStripItem[] { personaToolStripMenuItem, usuarioToolStripMenuItem, planToolStripMenuItem, especialidadToolStripMenuItem, materiaToolStripMenuItem, comisiónToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(800, 24);
+            menuStrip1.TabIndex = 2;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // personaToolStripMenuItem
+            // 
+            personaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { listadoPersona, detallePersona });
+            personaToolStripMenuItem.Name = "personaToolStripMenuItem";
+            personaToolStripMenuItem.Size = new Size(61, 20);
+            personaToolStripMenuItem.Text = "Persona";
+            // 
+            // listadoPersona
+            // 
+            listadoPersona.Name = "listadoPersona";
+            listadoPersona.Size = new Size(180, 22);
+            listadoPersona.Text = "Listado";
+            listadoPersona.Click += listadoPersona_Click;
+            // 
+            // detallePersona
+            // 
+            detallePersona.Name = "detallePersona";
+            detallePersona.Size = new Size(180, 22);
+            detallePersona.Text = "Detalle";
+            detallePersona.Click += detallePersona_Click;
+            // 
+            // usuarioToolStripMenuItem
+            // 
+            usuarioToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { listadoUsuario, crearUsuario });
+            usuarioToolStripMenuItem.Name = "usuarioToolStripMenuItem";
+            usuarioToolStripMenuItem.Size = new Size(59, 20);
+            usuarioToolStripMenuItem.Text = "Usuario";
+            // 
+            // listadoUsuario
+            // 
+            listadoUsuario.Name = "listadoUsuario";
+            listadoUsuario.Size = new Size(180, 22);
+            listadoUsuario.Text = "Listado";
+            listadoUsuario.Click += listadoUsuario_Click;
+            // 
+            // crearUsuario
+            // 
+            crearUsuario.Name = "crearUsuario";
+            crearUsuario.Size = new Size(180, 22);
+            crearUsuario.Text = "Crear";
+            crearUsuario.Click += crearUsuario_Click;
+            // 
+            // planToolStripMenuItem
+            // 
+            planToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { listadoPlan, crearPlan });
+            planToolStripMenuItem.Name = "planToolStripMenuItem";
+            planToolStripMenuItem.Size = new Size(42, 20);
+            planToolStripMenuItem.Text = "Plan";
+            // 
+            // listadoPlan
+            // 
+            listadoPlan.Name = "listadoPlan";
+            listadoPlan.Size = new Size(180, 22);
+            listadoPlan.Text = "Listado";
+            listadoPlan.Click += listadoPlan_Click;
+            // 
+            // crearPlan
+            // 
+            crearPlan.Name = "crearPlan";
+            crearPlan.Size = new Size(180, 22);
+            crearPlan.Text = "Crear";
+            crearPlan.Click += crearPlan_Click;
+            // 
+            // especialidadToolStripMenuItem
+            // 
+            especialidadToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { listadoEspecialidad, crearEspecialidad });
+            especialidadToolStripMenuItem.Name = "especialidadToolStripMenuItem";
+            especialidadToolStripMenuItem.Size = new Size(84, 20);
+            especialidadToolStripMenuItem.Text = "Especialidad";
+            // 
+            // listadoEspecialidad
+            // 
+            listadoEspecialidad.Name = "listadoEspecialidad";
+            listadoEspecialidad.Size = new Size(180, 22);
+            listadoEspecialidad.Text = "Listado";
+            listadoEspecialidad.Click += listadoEspecialidad_Click;
+            // 
+            // crearEspecialidad
+            // 
+            crearEspecialidad.Name = "crearEspecialidad";
+            crearEspecialidad.Size = new Size(180, 22);
+            crearEspecialidad.Text = "Crear";
+            crearEspecialidad.Click += crearEspecialidad_Click;
+            // 
+            // materiaToolStripMenuItem
+            // 
+            materiaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { listadoToolStripMenuItem4, detalleToolStripMenuItem4 });
+            materiaToolStripMenuItem.Name = "materiaToolStripMenuItem";
+            materiaToolStripMenuItem.Size = new Size(59, 20);
+            materiaToolStripMenuItem.Text = "Materia";
+            // 
+            // listadoToolStripMenuItem4
+            // 
+            listadoToolStripMenuItem4.Name = "listadoToolStripMenuItem4";
+            listadoToolStripMenuItem4.Size = new Size(180, 22);
+            listadoToolStripMenuItem4.Text = "Listado";
+            // 
+            // detalleToolStripMenuItem4
+            // 
+            detalleToolStripMenuItem4.Name = "detalleToolStripMenuItem4";
+            detalleToolStripMenuItem4.Size = new Size(180, 22);
+            detalleToolStripMenuItem4.Text = "Crear";
+            // 
+            // comisiónToolStripMenuItem
+            // 
+            comisiónToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { listadoToolStripMenuItem5, detalleToolStripMenuItem5 });
+            comisiónToolStripMenuItem.Name = "comisiónToolStripMenuItem";
+            comisiónToolStripMenuItem.Size = new Size(70, 20);
+            comisiónToolStripMenuItem.Text = "Comisión";
+            // 
+            // listadoToolStripMenuItem5
+            // 
+            listadoToolStripMenuItem5.Name = "listadoToolStripMenuItem5";
+            listadoToolStripMenuItem5.Size = new Size(180, 22);
+            listadoToolStripMenuItem5.Text = "Listado";
+            // 
+            // detalleToolStripMenuItem5
+            // 
+            detalleToolStripMenuItem5.Name = "detalleToolStripMenuItem5";
+            detalleToolStripMenuItem5.Size = new Size(180, 22);
+            detalleToolStripMenuItem5.Text = "Crear";
+            // 
+            // panelContenedor
+            // 
+            panelContenedor.Dock = DockStyle.Fill;
+            panelContenedor.Location = new Point(0, 24);
+            panelContenedor.Name = "panelContenedor";
+            panelContenedor.Size = new Size(800, 426);
+            panelContenedor.TabIndex = 4;
             // 
             // FormPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(tabControl1);
+            Controls.Add(panelContenedor);
+            Controls.Add(menuStrip1);
             IsMdiContainer = true;
+            MainMenuStrip = menuStrip1;
             Name = "FormPrincipal";
             Text = "FormPrincipal";
             Load += FormPrincipal_Load_1;
             Shown += FormPrincipal_Shown;
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private TabControl tabControl1;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem personaToolStripMenuItem;
+        private ToolStripMenuItem listadoPersona;
+        private ToolStripMenuItem detallePersona;
+        private ToolStripMenuItem usuarioToolStripMenuItem;
+        private ToolStripMenuItem listadoUsuario;
+        private ToolStripMenuItem crearUsuario;
+        private ToolStripMenuItem planToolStripMenuItem;
+        private ToolStripMenuItem listadoPlan;
+        private ToolStripMenuItem crearPlan;
+        private ToolStripMenuItem especialidadToolStripMenuItem;
+        private ToolStripMenuItem listadoEspecialidad;
+        private ToolStripMenuItem crearEspecialidad;
+        private ToolStripMenuItem materiaToolStripMenuItem;
+        private ToolStripMenuItem listadoToolStripMenuItem4;
+        private ToolStripMenuItem detalleToolStripMenuItem4;
+        private ToolStripMenuItem comisiónToolStripMenuItem;
+        private ToolStripMenuItem listadoToolStripMenuItem5;
+        private ToolStripMenuItem detalleToolStripMenuItem5;
+        private Panel panelContenedor;
     }
 }
