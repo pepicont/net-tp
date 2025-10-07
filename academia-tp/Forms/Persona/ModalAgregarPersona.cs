@@ -72,8 +72,7 @@ namespace Forms.Persona
                 if (response.IsSuccessStatusCode)
                 {
                     MessageBox.Show("Persona cargada con éxito");
-                    this.DialogResult = DialogResult.OK; // Cerrar el modal con éxito
-
+                    this.Close();
 
                 }
                 else

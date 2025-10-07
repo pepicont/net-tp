@@ -33,7 +33,7 @@ namespace Forms.Persona
             if (!string.IsNullOrEmpty(legajo))
             {
                 if (personas != null)
-                { 
+                {
                     var personasDescParcial = personas
                         .Where(per => per.Legajo.ToString().Contains(legajo, StringComparison.OrdinalIgnoreCase))
                         .ToList();
@@ -58,23 +58,6 @@ namespace Forms.Persona
             }
         }
 
-        private async void ButtonCrear_Click(object sender, EventArgs e)
-        {
-            Form modal = new ModalAgregarPersona();
-
-            // Mostrar como modal (bloquea la ventana padre)
-            DialogResult result = modal.ShowDialog();
-
-            // Procesar el resultado si es necesario
-            if (result == DialogResult.OK)
-            {
-                // Recargar los datos en la grilla
-                var personas = await _httpClient.GetFromJsonAsync<IEnumerable<Domain.model.Persona>>("personas");
-                Grilla.DataSource = personas;
-            }
-            // Liberar recursos
-            modal.Dispose();
-        }
 
         private async void ButtonModificar_Click(object sender, EventArgs e)
         {
@@ -97,19 +80,20 @@ namespace Forms.Persona
                 int legajo = (int)Grilla.CurrentRow.Cells["Legajo"].Value;
                 int tipoPersona = (int)Grilla.CurrentRow.Cells["Tipo_persona"].Value;
                 int idPlan = (int)Grilla.CurrentRow.Cells["Id_plan"].Value;
-                Domain.model.Persona persona = new Domain.model.Persona() {
+                Domain.model.Persona persona = new Domain.model.Persona()
+                {
                     Id = id,
-                    Nombre=nombre,
-                    Apellido=apellido,
-                    Direccion=direccion,
-                    Email=email,
-                    Telefono=telefono,
-                    Fecha_nac=fechaNac.ToString("yyyy-MM-dd"),
-                    Legajo=legajo,
-                    Tipo_persona=tipoPersona,
-                    Id_plan=idPlan
+                    Nombre = nombre,
+                    Apellido = apellido,
+                    Direccion = direccion,
+                    Email = email,
+                    Telefono = telefono,
+                    Fecha_nac = fechaNac.ToString("yyyy-MM-dd"),
+                    Legajo = legajo,
+                    Tipo_persona = tipoPersona,
+                    Id_plan = idPlan
                 };
-                
+
                 Form modal = new FormModificarPersona(persona, "Admin");
 
                 // Mostrar como modal (bloquea la ventana padre)
@@ -175,5 +159,7 @@ namespace Forms.Persona
 
             }
         }
+
+
     }
 }

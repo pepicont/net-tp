@@ -39,7 +39,7 @@ namespace Forms
                 if (response.IsSuccessStatusCode)
                 {
                     MessageBox.Show("Especialidad cargada con éxito");
-                    this.DialogResult = DialogResult.OK; // Cerrar el modal con éxito
+                    this.Close();
 
 
                 }

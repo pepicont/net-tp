@@ -22,7 +22,6 @@ namespace Forms
             {
                 ButtonEliminar.Visible = false;
                 ButtonModificar.Visible = false;
-                ButtonCrear.Visible = false;
             }
         }
 
@@ -115,24 +114,7 @@ namespace Forms
 
             }
         }
-
-        private async void ButtonCrear_Click(object sender, EventArgs e)
-        {
-            Form modal = new ModalAgregarPlan();
-
-            // Mostrar como modal (bloquea la ventana padre)
-            DialogResult result = modal.ShowDialog();
-
-            // Procesar el resultado si es necesario
-            if (result == DialogResult.OK)
-            {
-                // Recargar los datos en la grilla
-                var planes = await _httpClient.GetFromJsonAsync<IEnumerable<Plan>>("planes");
-                Grilla.DataSource = planes;
-            }
-            // Liberar recursos
-            modal.Dispose();
-        }
+        
 
         private async void ButtonModificar_Click(object sender, EventArgs e)
         {

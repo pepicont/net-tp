@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ButtonCrear = new Button();
             textBox1 = new TextBox();
             ButtonModificar = new Button();
             ButtonEliminar = new Button();
@@ -37,26 +36,16 @@
             ((System.ComponentModel.ISupportInitialize)Grilla).BeginInit();
             SuspendLayout();
             // 
-            // ButtonCrear
-            // 
-            ButtonCrear.Location = new Point(143, 345);
-            ButtonCrear.Name = "ButtonCrear";
-            ButtonCrear.Size = new Size(147, 23);
-            ButtonCrear.TabIndex = 32;
-            ButtonCrear.Text = "Crear";
-            ButtonCrear.UseVisualStyleBackColor = true;
-            ButtonCrear.Click += ButtonCrear_Click;
-            // 
             // textBox1
             // 
-            textBox1.Location = new Point(283, 255);
+            textBox1.Location = new Point(290, 242);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(177, 23);
             textBox1.TabIndex = 31;
             // 
             // ButtonModificar
             // 
-            ButtonModificar.Location = new Point(313, 345);
+            ButtonModificar.Location = new Point(178, 345);
             ButtonModificar.Name = "ButtonModificar";
             ButtonModificar.Size = new Size(147, 23);
             ButtonModificar.TabIndex = 30;
@@ -66,7 +55,7 @@
             // 
             // ButtonEliminar
             // 
-            ButtonEliminar.Location = new Point(489, 345);
+            ButtonEliminar.Location = new Point(436, 345);
             ButtonEliminar.Name = "ButtonEliminar";
             ButtonEliminar.Size = new Size(147, 23);
             ButtonEliminar.TabIndex = 29;
@@ -76,7 +65,7 @@
             // 
             // ButtonBuscar
             // 
-            ButtonBuscar.Location = new Point(486, 252);
+            ButtonBuscar.Location = new Point(344, 271);
             ButtonBuscar.Name = "ButtonBuscar";
             ButtonBuscar.Size = new Size(69, 27);
             ButtonBuscar.TabIndex = 28;
@@ -97,7 +86,6 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(ButtonCrear);
             Controls.Add(textBox1);
             Controls.Add(ButtonModificar);
             Controls.Add(ButtonEliminar);
@@ -111,8 +99,6 @@
         }
 
         #endregion
-
-        private Button ButtonCrear;
         private TextBox textBox1;
         private Button ButtonModificar;
         private Button ButtonEliminar;

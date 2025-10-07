@@ -62,7 +62,7 @@ namespace Forms
                 if (response.IsSuccessStatusCode)
                 {
                     MessageBox.Show("Plan cargado con éxito");
-                    this.DialogResult = DialogResult.OK; // Cerrar el modal con éxito
+                    this.Close();
 
 
                 }

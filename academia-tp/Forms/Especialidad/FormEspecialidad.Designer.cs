@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ButtonCrear = new Button();
             textBox1 = new TextBox();
             ButtonModificar = new Button();
             ButtonEliminar = new Button();
@@ -36,16 +35,6 @@
             Grilla = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)Grilla).BeginInit();
             SuspendLayout();
-            // 
-            // ButtonCrear
-            // 
-            ButtonCrear.Location = new Point(57, 145);
-            ButtonCrear.Name = "ButtonCrear";
-            ButtonCrear.Size = new Size(147, 23);
-            ButtonCrear.TabIndex = 32;
-            ButtonCrear.Text = "Crear";
-            ButtonCrear.UseVisualStyleBackColor = true;
-            ButtonCrear.Click += ButtonCrear_Click;
             // 
             // textBox1
             // 
@@ -56,7 +45,7 @@
             // 
             // ButtonModificar
             // 
-            ButtonModificar.Location = new Point(57, 216);
+            ButtonModificar.Location = new Point(57, 150);
             ButtonModificar.Name = "ButtonModificar";
             ButtonModificar.Size = new Size(147, 23);
             ButtonModificar.TabIndex = 30;
@@ -66,7 +55,7 @@
             // 
             // ButtonEliminar
             // 
-            ButtonEliminar.Location = new Point(57, 283);
+            ButtonEliminar.Location = new Point(57, 238);
             ButtonEliminar.Name = "ButtonEliminar";
             ButtonEliminar.Size = new Size(147, 23);
             ButtonEliminar.TabIndex = 29;
@@ -97,7 +86,6 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(ButtonCrear);
             Controls.Add(textBox1);
             Controls.Add(ButtonModificar);
             Controls.Add(ButtonEliminar);
@@ -111,8 +99,6 @@
         }
 
         #endregion
-
-        private Button ButtonCrear;
         private TextBox textBox1;
         private Button ButtonModificar;
         private Button ButtonEliminar;

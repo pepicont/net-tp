@@ -57,25 +57,6 @@ namespace Forms.Usuario
                 else { MessageBox.Show("No se encontraron usuarios."); }
             }
         }
-    
-
-        private async void ButtonCrear_Click(object sender, EventArgs e)
-        {
-            Form modal = new FormAgregarUsuario();
-
-            // Mostrar como modal (bloquea la ventana padre)
-            DialogResult result = modal.ShowDialog();
-
-            // Procesar el resultado si es necesario
-            if (result == DialogResult.OK)
-            {
-                // Recargar los datos en la grilla
-                var usuarios = await _httpClient.GetFromJsonAsync<IEnumerable<Domain.model.Usuario>>("usuarios");
-                Grilla.DataSource = usuarios;
-            }
-            // Liberar recursos
-            modal.Dispose();
-        }
 
         private async void ButtonModificar_Click(object sender, EventArgs e)
         {

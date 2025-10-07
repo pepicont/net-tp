@@ -78,7 +78,7 @@
             // 
             detallePersona.Name = "detallePersona";
             detallePersona.Size = new Size(180, 22);
-            detallePersona.Text = "Detalle";
+            detallePersona.Text = "Crear";
             detallePersona.Click += detallePersona_Click;
             // 
             // usuarioToolStripMenuItem
@@ -91,14 +91,14 @@
             // listadoUsuario
             // 
             listadoUsuario.Name = "listadoUsuario";
-            listadoUsuario.Size = new Size(180, 22);
+            listadoUsuario.Size = new Size(112, 22);
             listadoUsuario.Text = "Listado";
             listadoUsuario.Click += listadoUsuario_Click;
             // 
             // crearUsuario
             // 
             crearUsuario.Name = "crearUsuario";
-            crearUsuario.Size = new Size(180, 22);
+            crearUsuario.Size = new Size(112, 22);
             crearUsuario.Text = "Crear";
             crearUsuario.Click += crearUsuario_Click;
             // 
@@ -112,14 +112,14 @@
             // listadoPlan
             // 
             listadoPlan.Name = "listadoPlan";
-            listadoPlan.Size = new Size(180, 22);
+            listadoPlan.Size = new Size(112, 22);
             listadoPlan.Text = "Listado";
             listadoPlan.Click += listadoPlan_Click;
             // 
             // crearPlan
             // 
             crearPlan.Name = "crearPlan";
-            crearPlan.Size = new Size(180, 22);
+            crearPlan.Size = new Size(112, 22);
             crearPlan.Text = "Crear";
             crearPlan.Click += crearPlan_Click;
             // 
@@ -133,14 +133,14 @@
             // listadoEspecialidad
             // 
             listadoEspecialidad.Name = "listadoEspecialidad";
-            listadoEspecialidad.Size = new Size(180, 22);
+            listadoEspecialidad.Size = new Size(112, 22);
             listadoEspecialidad.Text = "Listado";
             listadoEspecialidad.Click += listadoEspecialidad_Click;
             // 
             // crearEspecialidad
             // 
             crearEspecialidad.Name = "crearEspecialidad";
-            crearEspecialidad.Size = new Size(180, 22);
+            crearEspecialidad.Size = new Size(112, 22);
             crearEspecialidad.Text = "Crear";
             crearEspecialidad.Click += crearEspecialidad_Click;
             // 
@@ -154,13 +154,13 @@
             // listadoToolStripMenuItem4
             // 
             listadoToolStripMenuItem4.Name = "listadoToolStripMenuItem4";
-            listadoToolStripMenuItem4.Size = new Size(180, 22);
+            listadoToolStripMenuItem4.Size = new Size(112, 22);
             listadoToolStripMenuItem4.Text = "Listado";
             // 
             // detalleToolStripMenuItem4
             // 
             detalleToolStripMenuItem4.Name = "detalleToolStripMenuItem4";
-            detalleToolStripMenuItem4.Size = new Size(180, 22);
+            detalleToolStripMenuItem4.Size = new Size(112, 22);
             detalleToolStripMenuItem4.Text = "Crear";
             // 
             // comisiónToolStripMenuItem
@@ -173,13 +173,13 @@
             // listadoToolStripMenuItem5
             // 
             listadoToolStripMenuItem5.Name = "listadoToolStripMenuItem5";
-            listadoToolStripMenuItem5.Size = new Size(180, 22);
+            listadoToolStripMenuItem5.Size = new Size(112, 22);
             listadoToolStripMenuItem5.Text = "Listado";
             // 
             // detalleToolStripMenuItem5
             // 
             detalleToolStripMenuItem5.Name = "detalleToolStripMenuItem5";
-            detalleToolStripMenuItem5.Size = new Size(180, 22);
+            detalleToolStripMenuItem5.Size = new Size(112, 22);
             detalleToolStripMenuItem5.Text = "Crear";
             // 
             // panelContenedor
@@ -201,7 +201,6 @@
             MainMenuStrip = menuStrip1;
             Name = "FormPrincipal";
             Text = "FormPrincipal";
-            Load += FormPrincipal_Load_1;
             Shown += FormPrincipal_Shown;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
