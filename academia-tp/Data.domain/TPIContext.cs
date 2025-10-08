@@ -15,6 +15,7 @@ namespace DataDomain
         public DbSet<Materia> Materia { get; set; }
         public DbSet<Comision> Comision { get; set; }
         public DbSet<Curso> Curso { get; set; }
+        public DbSet<Inscripcion> Inscripcion { get; set; }
 
         public TPIContext()
         {   
@@ -203,7 +204,32 @@ namespace DataDomain
                         Id_persona = 2,
                         Tipo = "Usuario"
                     });
-        });
+
+        }
+            );
+            modelBuilder.Entity<Inscripcion>(entity =>
+            {
+                entity.Property(e => e.Id);
+                entity.Property(e => e.Id_curso);
+                entity.Property(e => e.Id_alumno);
+                entity.Property(e => e.Condicion);
+                entity.Property(e => e.Nota);
+                entity.Property(e => e.Fecha_inscripcion);
+                entity.HasOne<Curso>()
+                      .WithMany()
+                      .HasForeignKey(i => i.Id_curso)
+                      .OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne<Persona>()
+                      .WithMany()
+                      .HasForeignKey(i => i.Id_alumno)
+                      .OnDelete(DeleteBehavior.Restrict);
+                entity.HasData(
+             new Inscripcion { Id = 1, Id_curso = 1, Id_alumno = 1, Condicion = "Regular", Nota = 8, Fecha_inscripcion = new DateTime(2025, 1, 1) },
+             new Inscripcion { Id = 2, Id_curso = 2, Id_alumno = 2, Condicion = "Aprobado", Nota = 10, Fecha_inscripcion = new DateTime(2025, 1, 2) }
+                  );
+
+                
+            });
         }
     }
 }

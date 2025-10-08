@@ -1,18 +1,71 @@
-using System.Runtime.InteropServices;
+using Domain.model;
+using Domain.services;
+using DTOs;
 
-// En proyectos de estilo SDK como este, varios atributos de ensamblado que definían
-// en este archivo se agregan ahora automáticamente durante la compilación y se rellenan
-// con valores definidos en las propiedades del proyecto. Para obtener detalles acerca
-// de los atributos que se incluyen y cómo personalizar este proceso, consulte https://aka.ms/assembly-info-properties
+namespace WebApi
+{
+    public static class InscripcionEndpoints
+    {
+        public static void MapInscripcionEndpoints(this WebApplication app)
+        {
+            app.MapGet("/inscripciones/search", (string? searchTerm) =>
+            {
+                InscripcionServices inscripcionService = new InscripcionServices();
+                var inscripciones = inscripcionService.SearchDTO(searchTerm ?? string.Empty);
+                return Results.Ok(inscripciones);
+            });
 
+            app.MapGet("/inscripciones/alumno/{idAlumno}", (int idAlumno) =>
+            {
+                InscripcionServices inscripcionService = new InscripcionServices();
+                var inscripciones = inscripcionService.GetInscripcionesByAlumno(idAlumno);
+                return Results.Ok(inscripciones);
+            });
 
-// Al establecer ComVisible en false, se consigue que los tipos de este ensamblado
-// no sean visibles para los componentes COM. Si tiene que acceder a un tipo en este
-// ensamblado desde COM, establezca el atributo ComVisible en true en ese tipo.
+            app.MapGet("/inscripciones/{id}", (int id) =>
+            {
+                InscripcionServices inscripcionService = new InscripcionServices();
+                var inscripcion = inscripcionService.GetOne(id);
+                if (inscripcion is null)
+                    return Results.NotFound();
+                return Results.Ok(inscripcion);
+            });
 
-[assembly: ComVisible(false)]
-
-// El siguiente GUID es para el identificador de typelib, si este proyecto se expone
-// en COM.
-
-[assembly: Guid("e9de9091-c8ea-4e01-9753-2dcaf1e3bdd8")]
+            app.MapPost("/inscripciones", (Inscripcion inscripcion) =>
+            {
+                try
+                {
+                    InscripcionServices inscripcionService = new InscripcionServices();
+                    var createdInscripcion = inscripcionService.Create(inscripcion);
+                    return Results.Created($"/inscripciones/{createdInscripcion.Id}", createdInscripcion);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    return Results.BadRequest(new { message = ex.Message });
+                }
+            });
+            app.MapPut("/inscripciones/{id}", (int id, Inscripcion updatedInscripcion) =>
+            {
+                InscripcionServices inscripcionService = new InscripcionServices();
+                var existingInscripcion = inscripcionService.GetOne(id);
+                if (existingInscripcion is null)
+                {
+                    return Results.NotFound();
+                }
+                inscripcionService.Update(id, updatedInscripcion);
+                return Results.Ok(updatedInscripcion);
+            });
+            app.MapDelete("/inscripciones/{id}", (int id) =>
+            {
+                InscripcionServices inscripcionService = new InscripcionServices();
+                var existingInscripcion = inscripcionService.GetOne(id);
+                if (existingInscripcion is null)
+                {
+                    return Results.NotFound();
+                }
+                inscripcionService.Delete(id);
+                return Results.NoContent();
+            });
+        }
+    }
+}

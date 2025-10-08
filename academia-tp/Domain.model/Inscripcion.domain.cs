@@ -17,10 +17,13 @@ namespace Domain.model
 
         public float? Nota { get; set; }
 
-    
+        public DateTime Fecha_inscripcion { get; set; }
 
-    public Inscripcion(int id_alumno, int id_curso, string condicion, float? nota)
+
+        public Inscripcion() { }
+        public Inscripcion(int id_alumno, int id_curso, string condicion, float? nota, DateTime fecha_inscripcion)
         {
+            Fecha_inscripcion = fecha_inscripcion;
             Id_alumno = id_alumno;
             Id_curso = id_curso;
             Condicion = condicion;

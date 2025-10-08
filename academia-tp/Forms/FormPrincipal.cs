@@ -8,6 +8,7 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Forms.Inscripcion;
 using Forms.Persona;
 using Forms.Usuario;
 
@@ -65,37 +66,38 @@ namespace Forms
             if (Usuario.Tipo == "Usuario")
             {
                 ConfigurarMenuSoloListado(personaToolStripMenuItem, listadoPersona, detallePersona, menuPrincipal_Click);
-
                 ConfigurarMenuSoloListado(usuarioToolStripMenuItem, listadoUsuario, crearUsuario, menuPrincipal_Click);
-
                 ConfigurarMenuSoloListado(planToolStripMenuItem, listadoPlan, crearPlan, menuPrincipal_Click);
-
                 ConfigurarMenuSoloListado(especialidadToolStripMenuItem, listadoEspecialidad, crearEspecialidad, menuPrincipal_Click);
 
-                
+               
+                if (Persona.Tipo_persona == 1) 
+                {
+                    ConfigurarMenuAdmin(inscripcionToolStripMenuItem, listadoInscripcion, crearInscripcion, menuPrincipal_Click);
+                }
+                else 
+                {
+                    ConfigurarMenuSoloListado(inscripcionToolStripMenuItem, listadoInscripcion, crearInscripcion, menuPrincipal_Click);
+                }
             }
-            else
+            else 
             {
                 ConfigurarMenuAdmin(personaToolStripMenuItem, listadoPersona, detallePersona, menuPrincipal_Click);
-
                 ConfigurarMenuAdmin(usuarioToolStripMenuItem, listadoUsuario, crearUsuario, menuPrincipal_Click);
-
                 ConfigurarMenuAdmin(planToolStripMenuItem, listadoPlan, crearPlan, menuPrincipal_Click);
-
                 ConfigurarMenuAdmin(especialidadToolStripMenuItem, listadoEspecialidad, crearEspecialidad, menuPrincipal_Click);
-
-                
+                ConfigurarMenuAdmin(inscripcionToolStripMenuItem, listadoInscripcion, crearInscripcion, menuPrincipal_Click);
             }
         }
 
-        private void ConfigurarMenuSoloListado(ToolStripMenuItem menuPrincipal, ToolStripMenuItem subMenuListado, ToolStripMenuItem subMenuCrear, EventHandler handlerListado) 
+        private void ConfigurarMenuSoloListado(ToolStripMenuItem menuPrincipal, ToolStripMenuItem subMenuListado, ToolStripMenuItem subMenuCrear, EventHandler handlerListado)
         {
             subMenuCrear.Visible = false;
             menuPrincipal.DropDownItems.Clear();    // Elimina los submenús y asigna el click directo al menú principal
             menuPrincipal.Click -= handlerListado; // Limpia handlers previos para que no se subscriba dos veces al metodo en caso de logout
             menuPrincipal.Click += handlerListado;
         }
-        private void ConfigurarMenuAdmin(ToolStripMenuItem menuPrincipal,ToolStripMenuItem subMenuListado, ToolStripMenuItem subMenuCrear, EventHandler handlerListado)
+        private void ConfigurarMenuAdmin(ToolStripMenuItem menuPrincipal, ToolStripMenuItem subMenuListado, ToolStripMenuItem subMenuCrear, EventHandler handlerListado)
         {
             menuPrincipal.DropDownItems.Clear();
             menuPrincipal.DropDownItems.Add(subMenuListado);
@@ -113,6 +115,8 @@ namespace Forms
                 listadoPlan_Click(sender, e);
             else if (sender == especialidadToolStripMenuItem)
                 listadoEspecialidad_Click(sender, e);
+            else if (sender == inscripcionToolStripMenuItem)
+                listadoInscripcion_Click(sender, e);
         }
 
         private void MostrarEnPanel(Form form)
@@ -124,7 +128,7 @@ namespace Forms
             panelContenedor.Controls.Add(form);
             form.Show();
         }
-        
+
         private void listadoPersona_Click(object sender, EventArgs e)
         {
             panelContenedor.Controls.Clear();
@@ -145,7 +149,7 @@ namespace Forms
             panelContenedor.Controls.Clear();          //IMPORTANTE: no hace falta validar si es usuario porque no le aparece, en web se deberia validad igual por los endpoints pero como aca en winforms no hace falta
             var form = new ModalAgregarPersona();
             MostrarEnPanel(form);
-           
+
         }
 
         private void listadoUsuario_Click(object sender, EventArgs e)
@@ -197,7 +201,7 @@ namespace Forms
             panelContenedor.Controls.Clear();
             Form form = null;
             if (Usuario.Tipo == "Admin")
-                form = new FormEspecialidad("Admin"); 
+                form = new FormEspecialidad("Admin");
             else if (Usuario.Tipo == "Usuario")
                 form = new FormEspecialidad("Usuario");
 
@@ -211,6 +215,39 @@ namespace Forms
         {
             panelContenedor.Controls.Clear();
             var form = new ModalAgregarEspecialidad();
+            MostrarEnPanel(form);
+        }
+
+        private void listadoInscripcion_Click(object sender, EventArgs e)
+        {
+            if (Usuario != null && Persona != null)
+            {
+                FormInscripcion form = new FormInscripcion();
+                form.TipoUsuario = Usuario.Tipo;      
+                form.TipoPersona = Persona.Tipo_persona; 
+                form.IdPersona = Persona.Id;
+
+                panelContenedor.Controls.Clear();
+                MostrarEnPanel(form);
+            }
+        }
+
+
+        private void crearInscripcion_Click(object sender, EventArgs e)
+        {
+            panelContenedor.Controls.Clear();
+
+            FormAgregarInscripcion form;
+
+            if (Usuario.Tipo == "Admin" || Persona.Tipo_persona == 2) 
+            {
+                form = new FormAgregarInscripcion(Persona.Id, Usuario.Tipo, Persona.Tipo_persona);
+            }
+            else 
+            {
+                form = new FormAgregarInscripcion(Persona.Id);
+            }
+
             MostrarEnPanel(form);
         }
     }

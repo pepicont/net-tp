@@ -47,6 +47,13 @@ namespace WebApi
                 return Results.Ok(updatedCurso);
             });
 
+            app.MapGet("/cursos/materia/{materiaId}", (int materiaId) =>
+            {
+                CursoServices service = new CursoServices();
+                var cursos = service.GetAll().Where(c => c.Id_materia == materiaId);
+                return Results.Ok(cursos);
+            });
+
             app.MapDelete("/cursos/{id}", (int id) =>
             {
                 CursoServices service = new CursoServices();

@@ -32,6 +32,9 @@
             personaToolStripMenuItem = new ToolStripMenuItem();
             listadoPersona = new ToolStripMenuItem();
             detallePersona = new ToolStripMenuItem();
+            inscripcionToolStripMenuItem = new ToolStripMenuItem();
+            listadoInscripcion = new ToolStripMenuItem();
+            crearInscripcion = new ToolStripMenuItem();
             usuarioToolStripMenuItem = new ToolStripMenuItem();
             listadoUsuario = new ToolStripMenuItem();
             crearUsuario = new ToolStripMenuItem();
@@ -53,7 +56,7 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { personaToolStripMenuItem, usuarioToolStripMenuItem, planToolStripMenuItem, especialidadToolStripMenuItem, materiaToolStripMenuItem, comisiónToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { personaToolStripMenuItem, inscripcionToolStripMenuItem, usuarioToolStripMenuItem, planToolStripMenuItem, especialidadToolStripMenuItem, materiaToolStripMenuItem, comisiónToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 24);
@@ -70,16 +73,37 @@
             // listadoPersona
             // 
             listadoPersona.Name = "listadoPersona";
-            listadoPersona.Size = new Size(180, 22);
+            listadoPersona.Size = new Size(112, 22);
             listadoPersona.Text = "Listado";
             listadoPersona.Click += listadoPersona_Click;
             // 
             // detallePersona
             // 
             detallePersona.Name = "detallePersona";
-            detallePersona.Size = new Size(180, 22);
+            detallePersona.Size = new Size(112, 22);
             detallePersona.Text = "Crear";
             detallePersona.Click += detallePersona_Click;
+            // 
+            // inscripcionToolStripMenuItem
+            // 
+            inscripcionToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { listadoInscripcion, crearInscripcion });
+            inscripcionToolStripMenuItem.Name = "inscripcionToolStripMenuItem";
+            inscripcionToolStripMenuItem.Size = new Size(77, 20);
+            inscripcionToolStripMenuItem.Text = "Inscripcion";
+            // 
+            // listadoInscripcion
+            // 
+            listadoInscripcion.Name = "listadoInscripcion";
+            listadoInscripcion.Size = new Size(180, 22);
+            listadoInscripcion.Text = "Listado";
+            listadoInscripcion.Click += listadoInscripcion_Click;
+            // 
+            // crearInscripcion
+            // 
+            crearInscripcion.Name = "crearInscripcion";
+            crearInscripcion.Size = new Size(180, 22);
+            crearInscripcion.Text = "Crear";
+            crearInscripcion.Click += crearInscripcion_Click;
             // 
             // usuarioToolStripMenuItem
             // 
@@ -230,5 +254,8 @@
         private ToolStripMenuItem listadoToolStripMenuItem5;
         private ToolStripMenuItem detalleToolStripMenuItem5;
         private Panel panelContenedor;
+        private ToolStripMenuItem inscripcionToolStripMenuItem;
+        private ToolStripMenuItem listadoInscripcion;
+        private ToolStripMenuItem crearInscripcion;
     }
 }

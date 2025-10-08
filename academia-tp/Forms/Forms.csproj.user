@@ -7,6 +7,12 @@
     <Compile Update="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Inscripcion\FormDeleteInscripcion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Inscripcion\FormAgregarInscripcion.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Inscripcion\FormInscripcion.cs">
       <SubType>Form</SubType>
     </Compile>
