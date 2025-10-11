@@ -70,17 +70,17 @@ namespace Forms
                 ConfigurarMenuSoloListado(planToolStripMenuItem, listadoPlan, crearPlan, menuPrincipal_Click);
                 ConfigurarMenuSoloListado(especialidadToolStripMenuItem, listadoEspecialidad, crearEspecialidad, menuPrincipal_Click);
 
-               
-                if (Persona.Tipo_persona == 1) 
+
+                if (Persona.Tipo_persona == 1)
                 {
                     ConfigurarMenuAdmin(inscripcionToolStripMenuItem, listadoInscripcion, crearInscripcion, menuPrincipal_Click);
                 }
-                else 
+                else
                 {
                     ConfigurarMenuSoloListado(inscripcionToolStripMenuItem, listadoInscripcion, crearInscripcion, menuPrincipal_Click);
                 }
             }
-            else 
+            else
             {
                 ConfigurarMenuAdmin(personaToolStripMenuItem, listadoPersona, detallePersona, menuPrincipal_Click);
                 ConfigurarMenuAdmin(usuarioToolStripMenuItem, listadoUsuario, crearUsuario, menuPrincipal_Click);
@@ -223,8 +223,8 @@ namespace Forms
             if (Usuario != null && Persona != null)
             {
                 FormInscripcion form = new FormInscripcion();
-                form.TipoUsuario = Usuario.Tipo;      
-                form.TipoPersona = Persona.Tipo_persona; 
+                form.TipoUsuario = Usuario.Tipo;
+                form.TipoPersona = Persona.Tipo_persona;
                 form.IdPersona = Persona.Id;
 
                 panelContenedor.Controls.Clear();
@@ -239,16 +239,31 @@ namespace Forms
 
             FormAgregarInscripcion form;
 
-            if (Usuario.Tipo == "Admin" || Persona.Tipo_persona == 2) 
+            if (Usuario.Tipo == "Admin" || Persona.Tipo_persona == 2)
             {
                 form = new FormAgregarInscripcion(Persona.Id, Usuario.Tipo, Persona.Tipo_persona);
             }
-            else 
+            else
             {
                 form = new FormAgregarInscripcion(Persona.Id);
             }
 
             MostrarEnPanel(form);
+        }
+
+        private void listadoMaterias_Click(object sender, EventArgs e)
+        {
+            panelContenedor.Controls.Clear();
+            Form form = null;
+            if (Usuario.Tipo == "Admin")
+                form = new FormMateria("Admin");
+            else if (Usuario.Tipo == "Usuario")
+                form = new FormMateria("Usuario");
+
+            if (form != null)
+            {
+                MostrarEnPanel(form);
+            }
         }
     }
 }

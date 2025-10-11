@@ -24,4 +24,16 @@
     <ProjectReference Include="..\WebApi\WebApi.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Materia\FormMateria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Materia\ModalAgregarMateria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Materia\ModalModificarEspecialidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>
