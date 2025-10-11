@@ -36,6 +36,8 @@
             label4 = new Label();
             txtBoxHsSemanales = new TextBox();
             txtBoxHsTotales = new TextBox();
+            label5 = new Label();
+            comboBox1 = new ComboBox();
             SuspendLayout();
             // 
             // label2
@@ -43,9 +45,9 @@
             label2.AutoSize = true;
             label2.Location = new Point(242, 100);
             label2.Name = "label2";
-            label2.Size = new Size(305, 20);
+            label2.Size = new Size(272, 20);
             label2.TabIndex = 8;
-            label2.Text = "Complete atributos de la nueva especialidad";
+            label2.Text = "Complete atributos de la nueva materia";
             // 
             // RichTextBoxDescripcion
             // 
@@ -108,11 +110,32 @@
             txtBoxHsTotales.Size = new Size(125, 27);
             txtBoxHsTotales.TabIndex = 12;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(108, 373);
+            label5.Name = "label5";
+            label5.Size = new Size(37, 20);
+            label5.TabIndex = 16;
+            label5.Text = "Plan";
+            // 
+            // comboBox1
+            // 
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(197, 369);
+            comboBox1.Margin = new Padding(3, 4, 3, 4);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(188, 28);
+            comboBox1.TabIndex = 15;
+            // 
             // ModalAgregarMateria
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(737, 484);
+            Controls.Add(label5);
+            Controls.Add(comboBox1);
             Controls.Add(txtBoxHsTotales);
             Controls.Add(txtBoxHsSemanales);
             Controls.Add(label4);
@@ -124,6 +147,7 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "ModalAgregarMateria";
             Text = "ModalAgregarEspecialidad";
+            Load += ModalAgregarMateria_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -138,5 +162,7 @@
         private Label label4;
         private TextBox txtBoxHsSemanales;
         private TextBox txtBoxHsTotales;
+        private Label label5;
+        private ComboBox comboBox1;
     }
 }

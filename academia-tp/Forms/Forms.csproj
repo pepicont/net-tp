@@ -31,7 +31,10 @@
     <Compile Update="Materia\ModalAgregarMateria.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Materia\ModalModificarEspecialidad.cs">
+    <Compile Update="Materia\ModalDeleteMateria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Materia\ModalModificarMateria.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

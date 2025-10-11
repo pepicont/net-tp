@@ -16,8 +16,9 @@ namespace Domain.model
 
         public Materia() { }
 
-        public Materia(  string descripcion, int hs_semanales, int hs_totales, int id_plan)
+        public Materia(int id, string descripcion, int hs_semanales, int hs_totales, int id_plan)
         {
+            Id = id;
             Desc = descripcion;
             Hs_semanales = hs_semanales;
             Hs_totales = hs_totales;

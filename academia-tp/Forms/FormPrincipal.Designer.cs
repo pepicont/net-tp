@@ -46,7 +46,7 @@
             crearEspecialidad = new ToolStripMenuItem();
             materiaToolStripMenuItem = new ToolStripMenuItem();
             listadoMaterias = new ToolStripMenuItem();
-            detalleToolStripMenuItem4 = new ToolStripMenuItem();
+            crearMaterias = new ToolStripMenuItem();
             comisiónToolStripMenuItem = new ToolStripMenuItem();
             listadoToolStripMenuItem5 = new ToolStripMenuItem();
             detalleToolStripMenuItem5 = new ToolStripMenuItem();
@@ -172,7 +172,7 @@
             // 
             // materiaToolStripMenuItem
             // 
-            materiaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { listadoMaterias, detalleToolStripMenuItem4 });
+            materiaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { listadoMaterias, crearMaterias });
             materiaToolStripMenuItem.Name = "materiaToolStripMenuItem";
             materiaToolStripMenuItem.Size = new Size(74, 24);
             materiaToolStripMenuItem.Text = "Materia";
@@ -184,11 +184,12 @@
             listadoMaterias.Text = "Listado";
             listadoMaterias.Click += listadoMaterias_Click;
             // 
-            // detalleToolStripMenuItem4
+            // crearMaterias
             // 
-            detalleToolStripMenuItem4.Name = "detalleToolStripMenuItem4";
-            detalleToolStripMenuItem4.Size = new Size(224, 26);
-            detalleToolStripMenuItem4.Text = "Crear";
+            crearMaterias.Name = "crearMaterias";
+            crearMaterias.Size = new Size(224, 26);
+            crearMaterias.Text = "Crear";
+            crearMaterias.Click += crearMaterias_Click;
             // 
             // comisiónToolStripMenuItem
             // 
@@ -254,7 +255,7 @@
         private ToolStripMenuItem crearEspecialidad;
         private ToolStripMenuItem materiaToolStripMenuItem;
         private ToolStripMenuItem listadoToolStripMenuItem4;
-        private ToolStripMenuItem detalleToolStripMenuItem4;
+        private ToolStripMenuItem crearMaterias;
         private ToolStripMenuItem comisiónToolStripMenuItem;
         private ToolStripMenuItem listadoToolStripMenuItem5;
         private ToolStripMenuItem detalleToolStripMenuItem5;

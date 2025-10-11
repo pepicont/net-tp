@@ -16,8 +16,16 @@ namespace Forms
             BaseAddress = new Uri("http://localhost:5290")
         };
 
+
+
+        private void MostrarError(string mensaje)
+        {
+            MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
         private async void buttonPost_Click(object sender, EventArgs e)
         {
+            int id_plan = (int)comboBox1.SelectedValue;
             string desc = RichTextBoxDescripcion.Text;
             string hs_semanales = txtBoxHsSemanales.Text;
             string hs_totales = txtBoxHsTotales.Text;
@@ -36,7 +44,7 @@ namespace Forms
                         Desc = desc,
                         Hs_semanales = hsSemanalesInt,
                         Hs_totales = hsTotalesInt,
-                        Id_plan = 1
+                        Id_plan = id_plan
                     };
 
                     var response = await _httpClient.PostAsJsonAsync("materias", materia);
@@ -54,6 +62,24 @@ namespace Forms
                 {
                     MessageBox.Show("Horas semanales y totales deben ser números válidos", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private async void ModalAgregarMateria_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                var planes = await _httpClient.GetFromJsonAsync<IEnumerable<Plan>>("planes");
+                if (planes != null)
+                {
+                    comboBox1.DataSource = planes.ToList();
+                    comboBox1.DisplayMember = "Desc";
+                    comboBox1.ValueMember = "Id";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al consultar las planes: {ex.Message}");
             }
         }
     }

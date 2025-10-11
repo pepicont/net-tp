@@ -68,92 +68,101 @@ namespace Forms
 
         private async void ButtonEliminar_Click(object sender, EventArgs e)
         {
-            //if (Grilla.CurrentRow == null)
-            //{
-            //    MessageBox.Show("Debe seleccionar una materia a borrar primero",
-            //    "Advertencia",
-            //    MessageBoxButtons.OK,
-            //    MessageBoxIcon.Warning);
-            //}
-            //else
-            //{
+            if (Grilla.CurrentRow == null)
+            {
+                MessageBox.Show("Debe seleccionar una materia a borrar primero",
+                "Advertencia",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
+            }
+            else
+            {
 
 
-            //    int idToDelete = (int)Grilla.CurrentRow.Cells["Id"].Value;
+                int idToDelete = (int)Grilla.CurrentRow.Cells["Id"].Value;
 
-            //    Form modal = new ModalDeleteMateria();
+                Form modal = new ModalDeleteMateria();
 
-            //    // Mostrar como modal (bloquea la ventana padre)
-            //    DialogResult result = modal.ShowDialog();
+                // Mostrar como modal (bloquea la ventana padre)
+                DialogResult result = modal.ShowDialog();
 
-            //    // Procesar el resultado si es necesario
-            //    if (result == DialogResult.OK)
-            //    {
-            //        // El usuario hizo clic en OK
-            //        var response = await _httpClient.DeleteAsync($"materias/{idToDelete}");
-            //        if (response.IsSuccessStatusCode)
-            //        {
-            //            MessageBox.Show("Se eliminó la materia");
-            //            var materias = await _httpClient.GetFromJsonAsync<IEnumerable<Materia>>("materias");
-            //            Grilla.DataSource = materias;
-
-
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("No se pudo borrar la materia seleccionada",
-            //    "Advertencia",
-            //    MessageBoxButtons.OK,
-            //    MessageBoxIcon.Warning);
-            //        }
-            //    }
-
-            //    // Liberar recursos
-            //    modal.Dispose();
+                // Procesar el resultado si es necesario
+                if (result == DialogResult.OK)
+                {
+                    // El usuario hizo clic en OK
+                    var response = await _httpClient.DeleteAsync($"materias/{idToDelete}");
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Se eliminó la materia");
+                        var materias = await _httpClient.GetFromJsonAsync<IEnumerable<Materia>>("materias");
+                        Grilla.DataSource = materias;
 
 
-            //}
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo borrar la materia seleccionada",
+                "Advertencia",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
+                    }
+                }
+
+                // Liberar recursos
+                modal.Dispose();
+
+
+            }
         }
 
         private async void ButtonModificar_Click(object sender, EventArgs e)
-        { }
-        //        if (Grilla.CurrentRow == null)
-        //        {
-        //            MessageBox.Show("Debe seleccionar una materia a borrar primero",
-        //            "Advertencia",
-        //            MessageBoxButtons.OK,
-        //            MessageBoxIcon.Warning);
-        //        }
-        //        else
-        //        {
-        //            string desc = Grilla.CurrentRow.Cells["Desc"].Value.ToString();
-        //            int hs_semanales = (int)Grilla.CurrentRow.Cells["Hs_semanales"].Value;
-        //            int hs_totales = (int)Grilla.CurrentRow.Cells["Hs_totales"].Value;
+        {
+            if (Grilla.CurrentRow == null)
+            {
+                MessageBox.Show("Debe seleccionar una materia a borrar primero",
+                "Advertencia",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
+            }
+            else
+            {   
+                int id = (int)Grilla.CurrentRow.Cells["Id"].Value;
+                string? desc = Grilla.CurrentRow.Cells["Desc"].Value?.ToString();
+                if (string.IsNullOrEmpty(desc))
+                {
+                    MessageBox.Show("La descripción de la materia no puede estar vacía.",
+                    "Advertencia",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                    return;
+                }
 
-        //            Materia materia = new Materia( desc, hs_semanales, hs_totales, 1);
-        //            Form modal = new ModalModificarMateria(materia);
+                int hs_semanales = (int)Grilla.CurrentRow.Cells["Hs_semanales"].Value;
+                int hs_totales = (int)Grilla.CurrentRow.Cells["Hs_totales"].Value;
+                int id_plan = (int)Grilla.CurrentRow.Cells["Id_plan"].Value;
 
-        //            // Mostrar como modal (bloquea la ventana padre)
-        //            DialogResult result = modal.ShowDialog();
+                Materia materia = new Materia(id, desc, hs_semanales, hs_totales, id_plan);
+                Form modal = new ModalModificarMateria(materia);
 
-        //            // Procesar el resultado si es necesario
-        //            if (result == DialogResult.OK)
-        //            {
-        //                // Recargar los datos en la grilla
-        //                var materias = await _httpClient.GetFromJsonAsync<IEnumerable<Materia>>("materias");
-        //                Grilla.DataSource = materias;
-        //            }
-        //            // Liberar recursos
-        //            modal.Dispose();
-        //        }
+                // Mostrar como modal (bloquea la ventana padre)
+                DialogResult result = modal.ShowDialog();
 
-
-        //    }
-
-        //}
+                // Procesar el resultado si es necesario
+                if (result == DialogResult.OK)
+                {
+                    // Recargar los datos en la grilla
+                    var materias = await _httpClient.GetFromJsonAsync<IEnumerable<Materia>>("materias");
+                    Grilla.DataSource = materias;
+                }
+                // Liberar recursos
+                modal.Dispose();
+            }
+        }
 
     }
+
 }
+
 
 
 

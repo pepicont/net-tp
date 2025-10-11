@@ -265,5 +265,12 @@ namespace Forms
                 MostrarEnPanel(form);
             }
         }
+
+        private void crearMaterias_Click(object sender, EventArgs e)
+        {
+            panelContenedor.Controls.Clear();
+            var form = new ModalAgregarMateria();
+            MostrarEnPanel(form);
+        }
     }
 }
