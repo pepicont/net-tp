@@ -117,6 +117,7 @@ namespace Forms
                 listadoEspecialidad_Click(sender, e);
             else if (sender == inscripcionToolStripMenuItem)
                 listadoInscripcion_Click(sender, e);
+
         }
 
         private void MostrarEnPanel(Form form)
@@ -270,6 +271,28 @@ namespace Forms
         {
             panelContenedor.Controls.Clear();
             var form = new ModalAgregarMateria();
+            MostrarEnPanel(form);
+        }
+
+        private void listadoComisiones_Click(object sender, EventArgs e)
+        {
+            panelContenedor.Controls.Clear();
+            Form form = null;
+            if (Usuario.Tipo == "Admin")
+                form = new FormComision("Admin");
+            else if (Usuario.Tipo == "Usuario")
+                form = new FormMateria("Usuario");
+
+            if (form != null)
+            {
+                MostrarEnPanel(form);
+            }
+        }
+
+        private void crearComision_Click(object sender, EventArgs e)
+        {
+            panelContenedor.Controls.Clear();
+            var form = new ModalAgregarComision();
             MostrarEnPanel(form);
         }
     }

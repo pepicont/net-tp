@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\**" />
+    <Content Remove="Controllers\**" />
+    <EmbeddedResource Remove="Controllers\**" />
+    <None Remove="Controllers\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="NewFile.txt" />
   </ItemGroup>
 
@@ -20,10 +27,6 @@
     <ProjectReference Include="..\Domain.model\Domain.model.csproj" />
     <ProjectReference Include="..\Domain.services\Domain.services.csproj" />
     <ProjectReference Include="..\DTOs\DTOs.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
