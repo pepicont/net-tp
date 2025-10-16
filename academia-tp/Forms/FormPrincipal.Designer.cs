@@ -47,9 +47,12 @@
             materiaToolStripMenuItem = new ToolStripMenuItem();
             listadoMaterias = new ToolStripMenuItem();
             crearMaterias = new ToolStripMenuItem();
-            comisiónToolStripMenuItem = new ToolStripMenuItem();
-            listadoComisiones = new ToolStripMenuItem();
-            crearComision = new ToolStripMenuItem();
+            toolStripMenuItem1 = new ToolStripMenuItem();
+            toolStripMenuItem2 = new ToolStripMenuItem();
+            toolStripMenuItem3 = new ToolStripMenuItem();
+            CursoToolStripMenuItem = new ToolStripMenuItem();
+            listadoCursos = new ToolStripMenuItem();
+            crearCurso = new ToolStripMenuItem();
             panelContenedor = new Panel();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -57,7 +60,7 @@
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { personaToolStripMenuItem, inscripcionToolStripMenuItem, usuarioToolStripMenuItem, planToolStripMenuItem, especialidadToolStripMenuItem, materiaToolStripMenuItem, comisiónToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { personaToolStripMenuItem, inscripcionToolStripMenuItem, usuarioToolStripMenuItem, planToolStripMenuItem, especialidadToolStripMenuItem, materiaToolStripMenuItem, toolStripMenuItem1, CursoToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 24);
@@ -190,26 +193,45 @@
             crearMaterias.Text = "Crear";
             crearMaterias.Click += crearMaterias_Click;
             // 
-            // comisiónToolStripMenuItem
+            // toolStripMenuItem1
             // 
-            comisiónToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { listadoComisiones, crearComision });
-            comisiónToolStripMenuItem.Name = "comisiónToolStripMenuItem";
-            comisiónToolStripMenuItem.Size = new Size(70, 20);
-            comisiónToolStripMenuItem.Text = "Comisión";
+            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem2, toolStripMenuItem3 });
+            toolStripMenuItem1.Name = "toolStripMenuItem1";
+            toolStripMenuItem1.Size = new Size(70, 20);
+            toolStripMenuItem1.Text = "Comisión";
             // 
-            // listadoComisiones
+            // toolStripMenuItem2
             // 
-            listadoComisiones.Name = "listadoComisiones";
-            listadoComisiones.Size = new Size(180, 22);
-            listadoComisiones.Text = "Listado";
-            listadoComisiones.Click += listadoComisiones_Click;
+            toolStripMenuItem2.Name = "toolStripMenuItem2";
+            toolStripMenuItem2.Size = new Size(112, 22);
+            toolStripMenuItem2.Text = "Listado";
             // 
-            // crearComision
+            // toolStripMenuItem3
             // 
-            crearComision.Name = "crearComision";
-            crearComision.Size = new Size(180, 22);
-            crearComision.Text = "Crear";
-            crearComision.Click += crearComision_Click;
+            toolStripMenuItem3.Name = "toolStripMenuItem3";
+            toolStripMenuItem3.Size = new Size(112, 22);
+            toolStripMenuItem3.Text = "Crear";
+            // 
+            // CursoToolStripMenuItem
+            // 
+            CursoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { listadoCursos, crearCurso });
+            CursoToolStripMenuItem.Name = "CursoToolStripMenuItem";
+            CursoToolStripMenuItem.Size = new Size(50, 20);
+            CursoToolStripMenuItem.Text = "Curso";
+            // 
+            // listadoCursos
+            // 
+            listadoCursos.Name = "listadoCursos";
+            listadoCursos.Size = new Size(180, 22);
+            listadoCursos.Text = "Listado";
+            listadoCursos.Click += listadoCursos_Click;
+            // 
+            // crearCurso
+            // 
+            crearCurso.Name = "crearCurso";
+            crearCurso.Size = new Size(180, 22);
+            crearCurso.Text = "Crear";
+            crearCurso.Click += crearCurso_Click;
             // 
             // panelContenedor
             // 
@@ -255,14 +277,17 @@
         private ToolStripMenuItem materiaToolStripMenuItem;
         private ToolStripMenuItem listadoToolStripMenuItem4;
         private ToolStripMenuItem crearMaterias;
-        private ToolStripMenuItem comisiónToolStripMenuItem;
-        private ToolStripMenuItem listadoComisiones;
+        private ToolStripMenuItem CursoToolStripMenuItem;
+        private ToolStripMenuItem listadoCursos;
         private ToolStripMenuItem detalleToolStripMenuItem5;
         private Panel panelContenedor;
         private ToolStripMenuItem inscripcionToolStripMenuItem;
         private ToolStripMenuItem listadoInscripcion;
         private ToolStripMenuItem crearInscripcion;
         private ToolStripMenuItem listadoMaterias;
-        private ToolStripMenuItem crearComision;
+        private ToolStripMenuItem crearCurso;
+        private ToolStripMenuItem toolStripMenuItem1;
+        private ToolStripMenuItem toolStripMenuItem2;
+        private ToolStripMenuItem toolStripMenuItem3;
     }
 }

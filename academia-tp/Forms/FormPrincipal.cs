@@ -295,5 +295,27 @@ namespace Forms
             var form = new ModalAgregarComision();
             MostrarEnPanel(form);
         }
+
+        private void crearCurso_Click(object sender, EventArgs e)
+        {
+            panelContenedor.Controls.Clear();
+            var form = new ModalAgregarCurso();
+            MostrarEnPanel(form);
+        }
+
+        private void listadoCursos_Click(object sender, EventArgs e)
+        {
+            panelContenedor.Controls.Clear();
+            Form form = null;
+            if (Usuario.Tipo == "Admin")
+                form = new FormCurso("Admin");
+            else if (Usuario.Tipo == "Usuario")
+                form = new FormCurso("Usuario");
+
+            if (form != null)
+            {
+                MostrarEnPanel(form);
+            }
+        }
     }
 }

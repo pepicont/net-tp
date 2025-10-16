@@ -37,6 +37,18 @@
     <Compile Update="Comision\ModalModificarComision.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Curso\FormCurso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Curso\ModalAgregarCurso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Curso\ModalDeleteCurso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Curso\ModalModificarCurso.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Materia\FormMateria.cs">
       <SubType>Form</SubType>
     </Compile>
