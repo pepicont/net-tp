@@ -317,5 +317,27 @@ namespace Forms
                 MostrarEnPanel(form);
             }
         }
+
+        private void listadoDocentes_Click(object sender, EventArgs e)
+        {
+            panelContenedor.Controls.Clear();
+            Form form = null;
+            if (Usuario.Tipo == "Admin")
+                form = new FormDocente("Admin");
+            else if (Usuario.Tipo == "Usuario")
+                form = new FormDocente("Usuario");
+
+            if (form != null)
+            {
+                MostrarEnPanel(form);
+            }
+        }
+
+        private void crearDocente_Click(object sender, EventArgs e)
+        {
+            panelContenedor.Controls.Clear();
+            var form = new ModalAgregarDocente();
+            MostrarEnPanel(form);
+        }
     }
 }

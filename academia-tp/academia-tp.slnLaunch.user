@@ -3,11 +3,11 @@
     "Name": "Nuevo perfil",
     "Projects": [
       {
-        "Path": "WebApi\\WebApi.csproj",
+        "Path": "Forms\\Forms.csproj",
         "Action": "Start"
       },
       {
-        "Path": "Forms\\Forms.csproj",
+        "Path": "WebApi\\WebApi.csproj",
         "Action": "Start"
       }
     ]
