@@ -16,6 +16,7 @@ namespace DataDomain
         public DbSet<Comision> Comision { get; set; }
         public DbSet<Curso> Curso { get; set; }
         public DbSet<Inscripcion> Inscripcion { get; set; }
+        public DbSet<Docente> Docente { get; set; }
 
         public TPIContext()
         {   
@@ -229,6 +230,28 @@ namespace DataDomain
                   );
 
                 
+            });
+
+            modelBuilder.Entity<Docente>(entity =>
+            {
+                entity.Property(e => e.Id);
+                entity.Property(e => e.Id_curso);
+                entity.Property(e => e.Id_docente);
+                entity.Property(e => e.Cargo);
+
+                entity.HasOne<Curso>()
+                      .WithMany()
+                      .HasForeignKey(d => d.Id_curso)
+                      .OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne<Persona>()
+                        .WithMany()
+                        .HasForeignKey(d => d.Id_docente)
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasData(
+                    new { Id = 1, Id_curso = 1, Id_docente = 1, Cargo = "Titular" },
+                    new { Id = 2, Id_curso = 2, Id_docente = 2, Cargo = "Auxiliar" }
+                    );
             });
         }
     }
