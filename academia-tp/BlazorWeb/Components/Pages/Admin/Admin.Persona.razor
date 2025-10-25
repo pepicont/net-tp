@@ -1,5 +1,6 @@
 ﻿@page "/admin/persona"
 @using BlazorWeb.Components.Base
+@using BlazorWeb.Components.Shared
 @using Domain.model
 @inherits ProtectedAdmin
 @rendermode RenderModes.ProtectedMode
@@ -16,63 +17,93 @@
     </div>
 }
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Legajo</th>
-            <th>Dirección</th>
-            <th>Email</th>
-            <th>Teléfono</th>
-            <th>Fecha de Nacimiento</th>
-            <th>Tipo de Persona</th>
-            <th>ID Plan</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (personas != null)
-        {
+@if ((personas == null || !personas.Any()) && !isLoading)
+{
+    <div class="alert alert-info" role="alert">
+        <i class="bi bi-info-circle-fill"></i>
+        No hay personas cargadas en el sistema.
+    </div>
+}
+@if (personas != null && personas.Any() && !isLoading)
+{
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Legajo</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Dirección</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Fecha de Nacimiento</th>
+                <th>Tipo de Persona</th>
+                <th>ID Plan</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
             @foreach (var persona in personas)
             {
                 <tr>
+                    <td>@persona.Legajo</td>
                     <td>@persona.Nombre</td>
                     <td>@persona.Apellido</td>
-                    <td>@persona.Legajo</td>
                     <td>@persona.Direccion</td>
                     <td>@persona.Email</td>
                     <td>@persona.Telefono</td>
                     <td>@persona.Fecha_nac</td>
-                    <td>@persona.Tipo_persona</td>
+                    <td>@ObtenerTipoPersona(persona.Tipo_persona)</td>
                     <td>@persona.Id_plan</td>
                     <td>
-                        <button class="btn btn-warning btn-sm" type="button" @onclick="() => null">Editar</button> <!--EditarPersona(persona.Legajo)-->
-                        <button class="btn btn-danger btn-sm" type="button" @onclick="() => null">Eliminar</button> <!--EliminarPersona(persona.Legajo)-->
+                        <button class="btn btn-warning btn-sm me-1" type="button" @onclick="() => EditarPersona(persona)">
+                            <i class="bi bi-pencil"></i> Editar
+                        </button>
+                        <button class="btn btn-danger btn-sm" type="button" @onclick="() => EliminarPersona(persona.Id)">
+                            <i class="bi bi-trash"></i> Eliminar
+                        </button>
                     </td>
                 </tr>
             }
-        }
-    </tbody>
-</table>
-<button class="btn btn-primary" type="button" @onclick="()=> null">Cargar nueva persona</button> <!--CargarNuevaPersona(persona.Legajo)-->
+        </tbody>
+    </table>
+}
+
+@if (!isLoading)
+{
+    <button class="btn btn-primary" type="button" @onclick="AbrirModalNuevo">
+        <i class="bi bi-plus-circle"></i> Cargar nueva persona
+    </button>
+}
+
+
+
+<ModalPersona IsVisible="mostrarModal" 
+              PersonaActual="personaSeleccionada" 
+              OnGuardado="OnPersonaGuardada" 
+              OnCerrar="CerrarModal" />
 
 @code {
     private List<Persona>? personas = new List<Persona>();
     private bool isLoading = true;
+    private bool mostrarModal = false;
+    private Persona? personaSeleccionada = null;
 
     protected override async Task OnInitializedAsync()
     {
         base.OnInitialized();
+        await CargarPersonas();
+    }
 
+    private async Task CargarPersonas()
+    {
         try
         {
             isLoading = true;
             personas = await PersonaService.GetAllAsync();
+            personas = personas?.OrderBy(p => p.Legajo).ToList();
         }
         catch (Exception ex)
         {
-            // Opcional: manejar el error
             Console.WriteLine($"Error al cargar personas: {ex.Message}");
             personas = new List<Persona>();
         }
@@ -82,15 +113,63 @@
         }
     }
 
-    //private void CargarNuevaPersona() => Navigation.NavigateTo("/admin/persona/nuevo"); van a ser el mismo modal con modificar
-
-    //private void EditarPersona(int legajo) => Navigation.NavigateTo($"/admin/persona/editar/{legajo}");
-
-    /*private async Task EliminarPersona(int legajo)
+    private void AbrirModalNuevo()
     {
-        PersonaService servicio = new PersonaService();
-        servicio.Delete(legajo);
-        personas = servicio.GetAll();
-        StateHasChanged();
-    }*/
-}
+        personaSeleccionada = new Persona();
+        mostrarModal = true;
+    }
+
+    private void EditarPersona(Persona persona)
+    {
+        personaSeleccionada = new Persona
+        {
+            Id = persona.Id,
+            Nombre = persona.Nombre,
+            Apellido = persona.Apellido,
+            Legajo = persona.Legajo,
+            Direccion = persona.Direccion,
+            Email = persona.Email,
+            Telefono = persona.Telefono,
+            Fecha_nac = persona.Fecha_nac,
+            Tipo_persona = persona.Tipo_persona,
+            Id_plan = persona.Id_plan
+        };
+        mostrarModal = true;
+    }
+
+    private async Task OnPersonaGuardada()
+    {
+        await CargarPersonas();
+    }
+
+    private void CerrarModal()
+    {
+        mostrarModal = false;
+        personaSeleccionada = null;
+    }
+
+    private async Task EliminarPersona(int id)
+    {
+        
+            try
+            {
+                await PersonaService.DeleteAsync(id);
+                await CargarPersonas();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al eliminar persona: {ex.Message}");
+            }
+        }
+    private string ObtenerTipoPersona(int tipo)
+    {
+        return tipo switch
+        {
+            1 => "Alumno",
+            2 => "Docente",
+            _ => "Desconocido"
+        };
+    }
+    }
+
+    
