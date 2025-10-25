@@ -1,13 +1,26 @@
 [
   {
-    "Name": "Nuevo perfil",
+    "Name": "Forms",
     "Projects": [
       {
-        "Path": "Forms\\Forms.csproj",
+        "Path": "WebApi\\WebApi.csproj",
         "Action": "Start"
       },
       {
+        "Path": "Forms\\Forms.csproj",
+        "Action": "Start"
+      }
+    ]
+  },
+  {
+    "Name": "Blazor",
+    "Projects": [
+      {
         "Path": "WebApi\\WebApi.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "BlazorWeb\\BlazorWeb.csproj",
         "Action": "Start"
       }
     ]
