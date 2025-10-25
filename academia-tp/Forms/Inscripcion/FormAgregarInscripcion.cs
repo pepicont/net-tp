@@ -31,7 +31,6 @@ namespace Forms.Inscripcion
             IdPersona = idPersona;
         }
 
- 
         public FormAgregarInscripcion(int idPersona, string tipoUsuario, int tipoPersona) : this()
         {
             IdPersona = idPersona;
@@ -54,7 +53,6 @@ namespace Forms.Inscripcion
             labelIdAlumno.Visible = puedeInscribirOtros;
             button1.Text = puedeInscribirOtros ? "Inscribir Alumno" : "Inscribirse";
 
- 
             if (!puedeInscribirOtros)
             {
                 textBoxIdAlumno.Text = IdPersona.ToString();
@@ -94,8 +92,9 @@ namespace Forms.Inscripcion
             }
             else
             {
-                comboBoxCurso.DataSource = null;
+                LimpiarCursos();
                 comboBoxCurso.Enabled = false;
+  
             }
         }
 
@@ -154,7 +153,6 @@ namespace Forms.Inscripcion
                 MostrarError("Debe seleccionar un curso.");
                 return false;
             }
-
             return true;
         }
 
@@ -165,7 +163,6 @@ namespace Forms.Inscripcion
                 return IdPersona > 0 ? IdPersona : 0;
             }
 
-   
             if (string.IsNullOrWhiteSpace(textBoxIdAlumno.Text))
             {
                 MostrarError("Debe ingresar el ID del alumno.");
@@ -240,6 +237,7 @@ namespace Forms.Inscripcion
         {
             comboBoxCurso.DataSource = null;
         }
+
 
         private void MostrarError(string mensaje)
         {

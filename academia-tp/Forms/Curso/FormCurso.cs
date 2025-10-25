@@ -72,7 +72,7 @@ namespace Forms
         {
             if (Grilla.CurrentRow == null)
             {
-                MessageBox.Show("Debe seleccionar una comision a borrar primero",
+                MessageBox.Show("Debe seleccionar una curso a borrar primero",
                 "Advertencia",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Warning);
@@ -95,7 +95,7 @@ namespace Forms
                     var response = await _httpClient.DeleteAsync($"cursos/{idToDelete}");
                     if (response.IsSuccessStatusCode)
                     {
-                        MessageBox.Show("Se eliminó la comision");
+                        MessageBox.Show("Se eliminó el curso");
                         var cursos = await _httpClient.GetFromJsonAsync<IEnumerable<Curso>>("cursos");
                         Grilla.DataSource = cursos;
 
@@ -103,7 +103,7 @@ namespace Forms
                     }
                     else
                     {
-                        MessageBox.Show("No se pudo borrar la comision seleccionada",
+                        MessageBox.Show("No se pudo borrar el curso seleccionado",
                 "Advertencia",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Warning);
@@ -131,9 +131,8 @@ namespace Forms
                 int id = (int)Grilla.CurrentRow.Cells["Id"].Value;
                 int anioC = (int)Grilla.CurrentRow.Cells["Anio_calendario"].Value;
                 int idMateria = (int)Grilla.CurrentRow.Cells["Id_materia"].Value;
-                int idComision = (int)Grilla.CurrentRow.Cells["Id_comision"].Value;
                 int cupo = (int)Grilla.CurrentRow.Cells["Cupo"].Value;
-                Curso comision = new Curso(idMateria, idComision, anioC, cupo);
+                Curso comision = new Curso(idMateria, anioC, cupo);
                 Form modal = new ModalModificarCurso(id, comision);
 
                 // Mostrar como modal (bloquea la ventana padre)

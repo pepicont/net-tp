@@ -35,6 +35,7 @@
             label2 = new Label();
             textBoxIdAlumno = new TextBox();
             labelIdAlumno = new Label();
+            label3 = new Label();
             SuspendLayout();
             // 
             // comboBoxMateria
@@ -67,7 +68,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(200, 240);
+            button1.Location = new Point(200, 280);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 3;
@@ -102,11 +103,21 @@
             labelIdAlumno.Text = "ID Alumno";
             labelIdAlumno.Visible = false;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(25, 201);
+            label3.Name = "label3";
+            label3.Size = new Size(57, 15);
+            label3.TabIndex = 8;
+            // 
             // FormAgregarInscripcion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label3);
+            Controls.Add(comboBoxComision);
             Controls.Add(labelIdAlumno);
             Controls.Add(textBoxIdAlumno);
             Controls.Add(label2);
@@ -128,6 +139,8 @@
         private Label label2;
         private TextBox textBoxIdAlumno;
         private Label labelIdAlumno;
+        private ComboBox comboBoxComision;
+        private Label label3;
         #endregion
     }
 }

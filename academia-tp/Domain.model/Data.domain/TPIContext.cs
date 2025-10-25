@@ -13,7 +13,6 @@ namespace DataDomain
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Persona> Persona { get; set; }
         public DbSet<Materia> Materia { get; set; }
-        public DbSet<Comision> Comision { get; set; }
         public DbSet<Curso> Curso { get; set; }
         public DbSet<Inscripcion> Inscripcion { get; set; }
         public DbSet<Docente> Docente { get; set; }
@@ -76,29 +75,10 @@ namespace DataDomain
                 );
             });
 
-            modelBuilder.Entity<Comision>(entity =>
-            {
-                entity.Property(e => e.Id);
-                entity.Property(e => e.Desc);
-                entity.Property(e => e.Anio_especialidad);
-                entity.Property(e => e.Id_plan);
-
-                entity.HasOne<Plan>()
-                      .WithMany()
-                      .HasForeignKey(p => p.Id_plan)
-                      .OnDelete(DeleteBehavior.Cascade);
-                entity.HasData(
-                    new Comision { Id = 1, Desc = "Comisión A", Anio_especialidad = 2025, Id_plan = 1 },
-                    new Comision { Id = 2, Desc = "Comisión B", Anio_especialidad = 2025, Id_plan = 1 }
-                );
-
-            });
-
             modelBuilder.Entity<Curso>(entity =>
             {
                 entity.Property(e => e.Id);
                 entity.Property(e => e.Id_materia);
-                entity.Property(e => e.Id_comision);
                 entity.Property(e => e.Anio_calendario);
                 entity.Property(e => e.Cupo);
 
@@ -107,14 +87,10 @@ namespace DataDomain
                       .HasForeignKey(c => c.Id_materia)
                       .OnDelete(DeleteBehavior.Cascade);
 
-                entity.HasOne<Comision>()
-                        .WithMany()
-                        .HasForeignKey(c => c.Id_comision)
-                        .OnDelete(DeleteBehavior.Restrict);
 
                 entity.HasData(
-                    new Curso { Id = 1, Id_materia = 1, Id_comision = 1, Anio_calendario = 2025, Cupo = 30 },
-                    new Curso { Id = 2, Id_materia = 2, Id_comision = 2, Anio_calendario = 2025, Cupo = 25 }
+                    new Curso { Id = 1, Id_materia = 1, Anio_calendario = 2025, Cupo = 30 },
+                    new Curso { Id = 2, Id_materia = 2, Anio_calendario = 2025, Cupo = 25 }
                     );
             });
 

@@ -15,7 +15,6 @@ namespace DTOs
             public string NombreAlumno { get; set; }
             public string ApellidoAlumno { get; set; }
             public string DescMateria { get; set; }
-            public string DescComision { get; set; }
             public int AnioCalendario { get; set; }
             public string Condicion { get; set; }
             public float? Nota { get; set; }

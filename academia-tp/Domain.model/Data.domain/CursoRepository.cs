@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Data
 {
-    public class ComisionRepository
+    public class CursoRepository
     {
 
         private TPIContext CreateContext()
@@ -12,37 +12,38 @@ namespace Data
             return new TPIContext();
         }
 
-        public Comision? GetOne(int id)
+        public Curso? GetOne(int id)
         {
             using var context = CreateContext();
-            return context.Comision.Find(id);
+            return context.Curso.Find(id);
 
         }
 
-        public IEnumerable<Comision> GetAll()
+        public IEnumerable<Curso> GetAll()
         {
             using var context = CreateContext();
-            return context.Comision.OrderBy(p => p.Desc).ToList();
+            return context.Curso.OrderBy(c => c.Id).ToList();
         }
 
-        public Comision Create(Comision materia)
+        public Curso Create(Curso materia)
         {
             using var context = CreateContext();
-            context.Comision.Add(materia);
+            context.Curso.Add(materia);
             context.SaveChanges();
             return materia;
         }
 
-        public bool Update(int id, Comision materia)
+        public bool Update(int id, Curso materia)
         {
             using var context = CreateContext();
-            Comision? existingComision = context.Comision.Find(id);
+            Curso? existingCurso = context.Curso.Find(id);
 
-            if (existingComision != null)
+            if (existingCurso != null)
             {
-                existingComision.Desc = materia.Desc;
-                existingComision.Anio_especialidad = materia.Anio_especialidad;
-                existingComision.Id_plan = (int)materia.Id_plan;
+                existingCurso.Id_materia = materia.Id_materia;
+                existingCurso.Anio_calendario = materia.Anio_calendario;
+                existingCurso.Cupo = materia.Cupo;
+
                 context.SaveChanges();
                 return true;
             }
@@ -55,10 +56,10 @@ namespace Data
         public bool Delete(int id)
         {
             using var context = CreateContext();
-            var materia = context.Comision.Find(id);
+            var materia = context.Curso.Find(id);
             if (materia != null)
             {
-                context.Comision.Remove(materia);
+                context.Curso.Remove(materia);
                 context.SaveChanges();
                 return true;
             }

@@ -33,6 +33,7 @@
             buttonBuscar = new Button();
             buttonModificar = new Button();
             buttonEliminar = new Button();
+            buttonReporteAlumnos = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -64,7 +65,7 @@
             // 
             // buttonModificar
             // 
-            buttonModificar.Location = new Point(250, 337);
+            buttonModificar.Location = new Point(318, 337);
             buttonModificar.Name = "buttonModificar";
             buttonModificar.Size = new Size(120, 23);
             buttonModificar.TabIndex = 3;
@@ -74,7 +75,7 @@
             // 
             // buttonEliminar
             // 
-            buttonEliminar.Location = new Point(444, 337);
+            buttonEliminar.Location = new Point(535, 337);
             buttonEliminar.Name = "buttonEliminar";
             buttonEliminar.Size = new Size(124, 23);
             buttonEliminar.TabIndex = 4;
@@ -82,11 +83,22 @@
             buttonEliminar.UseVisualStyleBackColor = true;
             buttonEliminar.Click += buttonEliminar_Click;
             // 
+            // buttonReporteAlumnos
+            // 
+            buttonReporteAlumnos.Location = new Point(100, 337);
+            buttonReporteAlumnos.Name = "buttonReporteAlumnos";
+            buttonReporteAlumnos.Size = new Size(119, 23);
+            buttonReporteAlumnos.TabIndex = 5;
+            buttonReporteAlumnos.Text = "Listado curso";
+            buttonReporteAlumnos.UseVisualStyleBackColor = true;
+            buttonReporteAlumnos.Click += buttonReporteAlumnos_Click;
+            // 
             // FormInscripcion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(buttonReporteAlumnos);
             Controls.Add(buttonEliminar);
             Controls.Add(buttonModificar);
             Controls.Add(buttonBuscar);
@@ -106,5 +118,6 @@
         private Button buttonBuscar;
         private Button buttonModificar;
         private Button buttonEliminar;
+        private Button buttonReporteAlumnos;
     }
 }

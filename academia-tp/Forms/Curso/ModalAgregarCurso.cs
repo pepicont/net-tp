@@ -34,18 +34,11 @@ namespace Forms
                     comboBox1.DisplayMember = "Desc";
                     comboBox1.ValueMember = "Id";
                 }
-                var coms = await _httpClient.GetFromJsonAsync<IEnumerable<Comision>>("comisiones");
-                if (coms != null)
-                {
-                    comboBox2.DataSource = coms.ToList();
-                    comboBox2.DisplayMember = "Desc";
-                    comboBox2.ValueMember = "Id";
-                }
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al consultar los materias o comisiones: {ex.Message}");
+                MessageBox.Show($"Error al consultar los materias{ex.Message}");
             }
         }
 
@@ -62,10 +55,6 @@ namespace Forms
             {
                 MessageBox.Show("Por favor, seleccione un plan", "Campo requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if( comboBox2.SelectedItem == null)
-            {
-                MessageBox.Show("Por favor, seleccione una comision", "Campo requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
             else if( !int.TryParse(txtCupo.Text, out int cupo))
             {
                 MessageBox.Show("Por favor, ingrese un cupo válido", "Campo requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -75,23 +64,21 @@ namespace Forms
             else
             {
                 int id_materia = (int)comboBox1.SelectedValue;
-                int id_comision = (int)comboBox2.SelectedValue;
                 Curso curso = new Curso
                 {
                     Id_materia = id_materia,
-                    Id_comision = id_comision,
                     Anio_calendario = anio_esp,
                     Cupo = cupo
                 };
                 var response = await _httpClient.PostAsJsonAsync("cursos", curso);
                 if (response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show("Comision cargada con éxito");
+                    MessageBox.Show("Curso cargado con éxito");
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Error al cargar el plan");
+                    MessageBox.Show("Error al cargar el curso");
                 }
             }
         }
