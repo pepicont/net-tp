@@ -1,21 +1,96 @@
 ﻿@page "/admin/persona"
 @using BlazorWeb.Components.Base
+@using Domain.model
 @inherits ProtectedAdmin
 @rendermode RenderModes.ProtectedMode
-
-
+@inject PersonaHttpService PersonaService
 
 <h3>Gestión de Personas (Solo Admin)</h3>
 
+@if (isLoading)
+{
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 300px;">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+            <span class="visually-hidden">Cargando...</span>
+        </div>
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Legajo</th>
+            <th>Dirección</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Tipo de Persona</th>
+            <th>ID Plan</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (personas != null)
+        {
+            @foreach (var persona in personas)
+            {
+                <tr>
+                    <td>@persona.Nombre</td>
+                    <td>@persona.Apellido</td>
+                    <td>@persona.Legajo</td>
+                    <td>@persona.Direccion</td>
+                    <td>@persona.Email</td>
+                    <td>@persona.Telefono</td>
+                    <td>@persona.Fecha_nac</td>
+                    <td>@persona.Tipo_persona</td>
+                    <td>@persona.Id_plan</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm" type="button" @onclick="() => null">Editar</button> <!--EditarPersona(persona.Legajo)-->
+                        <button class="btn btn-danger btn-sm" type="button" @onclick="() => null">Eliminar</button> <!--EliminarPersona(persona.Legajo)-->
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<button class="btn btn-primary" type="button" @onclick="()=> null">Cargar nueva persona</button> <!--CargarNuevaPersona(persona.Legajo)-->
+
 @code {
-    // El usuario ya está autenticado y verificado como Admin
-    // Puedes acceder a AuthService.Usuario directamente
+    private List<Persona>? personas = new List<Persona>();
+    private bool isLoading = true;
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        base.OnInitialized(); // Importante: llama a la verificación
+        base.OnInitialized();
 
-        // Tu código de inicialización aquí
-        var usuarioActual = AuthService.Usuario;
+        try
+        {
+            isLoading = true;
+            personas = await PersonaService.GetAllAsync();
+        }
+        catch (Exception ex)
+        {
+            // Opcional: manejar el error
+            Console.WriteLine($"Error al cargar personas: {ex.Message}");
+            personas = new List<Persona>();
+        }
+        finally
+        {
+            isLoading = false;
+        }
     }
+
+    //private void CargarNuevaPersona() => Navigation.NavigateTo("/admin/persona/nuevo"); van a ser el mismo modal con modificar
+
+    //private void EditarPersona(int legajo) => Navigation.NavigateTo($"/admin/persona/editar/{legajo}");
+
+    /*private async Task EliminarPersona(int legajo)
+    {
+        PersonaService servicio = new PersonaService();
+        servicio.Delete(legajo);
+        personas = servicio.GetAll();
+        StateHasChanged();
+    }*/
 }

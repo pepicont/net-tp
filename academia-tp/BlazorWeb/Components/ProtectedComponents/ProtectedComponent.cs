@@ -23,13 +23,17 @@ namespace BlazorWeb.Components.Base
         protected override void OnInitialized()
         {
             base.OnInitialized();
+            VerificarAutenticacion();
+        }
 
-            // Verificar si el usuario está autenticado
+
+        private void VerificarAutenticacion()
+        {
             if (AuthService.Usuario == null || !AllowedRoles.Contains(AuthService.Usuario.Tipo))
             {
                 NavigationManager.NavigateTo("/login", forceLoad: true);
-                return;
             }
         }
+
     }
 }

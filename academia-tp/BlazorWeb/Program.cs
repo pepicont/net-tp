@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
+builder.Services.AddHttpClient<PersonaHttpService>();
 builder.Services.AddScoped<AuthServiceScoped>(); //servicio auth singleton
 
 var app = builder.Build();

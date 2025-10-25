@@ -1,0 +1,21 @@
+﻿@page "/usuario/persona"
+@using BlazorWeb.Components.Base
+@inherits ProtectedUser
+@rendermode RenderModes.ProtectedMode
+
+
+
+<h3>Gestión de mi Persona</h3>
+
+@code {
+    // El usuario ya está autenticado y verificado como Usuario
+    // Puedes acceder a AuthService.Usuario directamente
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized(); // Importante: llama a la verificación
+
+        // Tu código de inicialización aquí
+        var usuarioActual = AuthService.Usuario;
+    }
+}
