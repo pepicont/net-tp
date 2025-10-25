@@ -1,0 +1,21 @@
+﻿@page "/admin/persona"
+@using BlazorWeb.Components.Base
+@inherits ProtectedAdmin
+@rendermode RenderModes.ProtectedMode
+
+
+
+<h3>Gestión de Personas (Solo Admin)</h3>
+
+@code {
+    // El usuario ya está autenticado y verificado como Admin
+    // Puedes acceder a AuthService.Usuario directamente
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized(); // Importante: llama a la verificación
+
+        // Tu código de inicialización aquí
+        var usuarioActual = AuthService.Usuario;
+    }
+}
