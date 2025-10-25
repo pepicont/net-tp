@@ -1,7 +1,9 @@
 ﻿@namespace BlazorWeb.Components.Shared
 @using Domain.model
+@using Domain.services
 @inject PersonaHttpService PersonaService
 @inject PlanHttpService PlanService
+@inject AuthServiceScoped AuthServiceScoped
 
 @if (IsVisible)
 {
@@ -74,11 +76,15 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Tipo de Persona <span class="text-danger">*</span></label>
-                                <InputSelect class="form-select" @bind-Value="PersonaActual.Tipo_persona">
+                                <InputSelect class="form-select" @bind-Value="PersonaActual.Tipo_persona" disabled="@(AuthServiceScoped.Usuario?.Tipo == "Usuario")">
                                     <option value="0">Seleccione...</option>
                                     <option value="1">Alumno</option>
                                     <option value="2">Docente</option>
                                 </InputSelect>
+                                @if (AuthServiceScoped.Usuario?.Tipo == "Usuario")
+                                {
+                                    <small class="text-muted">No tiene permisos para modificar el tipo de persona</small>
+                                }
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Plan <span class="text-danger">*</span></label>
