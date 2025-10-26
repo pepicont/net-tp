@@ -10,16 +10,15 @@ namespace Domain.model
     {
         public int Id { get; set; }
         public int Id_materia { get; set; }
-        public int Id_comision { get; set; }
         public int Anio_calendario { get; set; }
         public int Cupo { get; set; }
+        public string Nombre { get; set; }
 
         public Curso() { }
 
-        public Curso( int idMateria, int idComision, int anioCalendario, int cupo)
+        public Curso( int idMateria, int anioCalendario, int cupo)
         {
             Id_materia = idMateria;
-            Id_comision = idComision;
             Anio_calendario = anioCalendario;
             Cupo = cupo;
         }

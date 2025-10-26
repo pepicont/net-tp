@@ -10,12 +10,10 @@ namespace Domain.services
     {
         private CursoRepository repository;
         private MateriaRepository materiaRepository;
-        private ComisionRepository comisionRepository;
         public CursoServices()
         {
             repository = new CursoRepository();
             materiaRepository = new MateriaRepository();
-            comisionRepository = new ComisionRepository();
         }
 
         public Curso? GetOne(int id)
@@ -28,36 +26,24 @@ namespace Domain.services
             return repository.GetAll();
         }
 
-        public Curso Create(Curso comision)
+        public Curso Create(Curso curso)
         {
-            var materia = materiaRepository.GetOne(comision.Id_materia);
+            var materia = materiaRepository.GetOne(curso.Id_materia);
             if (materia == null)
             {
                 throw new Exception("La materia con el ID especificado no existe.");
             }
-
-            var comi = comisionRepository.GetOne(comision.Id_comision);
-            if (comi == null)
-            {
-                throw new Exception("La comision con el ID especificado no existe.");
-            }
-            return repository.Create(comision);
+            return repository.Create(curso);
         }
 
-        public bool Update(int id, Curso comision)
+        public bool Update(int id, Curso curso)
         {
-            var materia = materiaRepository.GetOne(comision.Id_materia);
+            var materia = materiaRepository.GetOne(curso.Id_materia);
             if (materia == null)
             {
                 throw new Exception("La materia con el ID especificado no existe.");
             }
-
-            var comi = comisionRepository.GetOne(comision.Id_comision);
-            if (comi == null)
-            {
-                throw new Exception("La comision con el ID especificado no existe.");
-            }
-            return repository.Update(id, comision);
+            return repository.Update(id, curso);
         }
 
         public bool Delete(int id)

@@ -66,6 +66,21 @@ namespace WebApi
                 inscripcionService.Delete(id);
                 return Results.NoContent();
             });
+
+            app.MapGet("/inscripciones/alumnos-por-curso", (int idCurso, int anio) =>
+            {
+                InscripcionServices inscripcionService = new InscripcionServices();
+                var alumnos = inscripcionService.GetAlumnosPorCurso(idCurso, anio);
+                return Results.Ok(alumnos);
+            });
+
+            app.MapGet("/inscripciones/cantidad-por-curso", (int? materiaId, int? anio) =>
+            {
+                InscripcionServices service = new InscripcionServices();
+                var result = service.GetCantidadAlumnosPorCurso(materiaId, anio);
+                return Results.Ok(result);
+            });
         }
+
     }
 }
