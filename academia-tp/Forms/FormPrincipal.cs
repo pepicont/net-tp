@@ -69,9 +69,9 @@ namespace Forms
                 ConfigurarMenuSoloListado(usuarioToolStripMenuItem, listadoUsuario, crearUsuario, menuPrincipal_Click);
                 ConfigurarMenuSoloListado(planToolStripMenuItem, listadoPlan, crearPlan, menuPrincipal_Click);
                 ConfigurarMenuSoloListado(especialidadToolStripMenuItem, listadoEspecialidad, crearEspecialidad, menuPrincipal_Click);
-                ConfigurarMenuSoloListado(cursoToolStripMenuItem, listadoEspecialidad, crearEspecialidad, menuPrincipal_Click);
-                ConfigurarMenuSoloListado(materiaToolStripMenuItem, listadoEspecialidad, crearEspecialidad, menuPrincipal_Click);
-                ConfigurarMenuSoloListado(docenteToolStripMenuItem, listadoEspecialidad, crearEspecialidad, menuPrincipal_Click);
+                ConfigurarMenuSoloListado(cursoToolStripMenuItem, listadoCurso, crearCurso, menuPrincipal_Click);
+                ConfigurarMenuSoloListado(materiaToolStripMenuItem, listadoMateria, crearMateria, menuPrincipal_Click);
+                ConfigurarMenuSoloListado(docenteToolStripMenuItem, listadoDocente, crearDocente, menuPrincipal_Click);
 
 
                 if (Persona.Tipo_persona == 1)
@@ -90,9 +90,9 @@ namespace Forms
                 ConfigurarMenuAdmin(planToolStripMenuItem, listadoPlan, crearPlan, menuPrincipal_Click);
                 ConfigurarMenuAdmin(especialidadToolStripMenuItem, listadoEspecialidad, crearEspecialidad, menuPrincipal_Click);
                 ConfigurarMenuAdmin(inscripcionToolStripMenuItem, listadoInscripcion, crearInscripcion, menuPrincipal_Click);
-                ConfigurarMenuAdmin(cursoToolStripMenuItem, listadoInscripcion, crearInscripcion, menuPrincipal_Click);
-                ConfigurarMenuAdmin(docenteToolStripMenuItem, listadoInscripcion, crearInscripcion, menuPrincipal_Click);
-                ConfigurarMenuAdmin(materiaToolStripMenuItem, listadoInscripcion, crearInscripcion, menuPrincipal_Click);
+                ConfigurarMenuAdmin(cursoToolStripMenuItem, listadoCurso, crearCurso, menuPrincipal_Click);
+                ConfigurarMenuAdmin(docenteToolStripMenuItem, listadoDocente, crearDocente, menuPrincipal_Click);
+                ConfigurarMenuAdmin(materiaToolStripMenuItem, listadoMateria, crearMateria, menuPrincipal_Click);
             }
         }
 
