@@ -1,4 +1,5 @@
 ﻿using Domain.model;
+using static System.Net.WebRequestMethods;
 
 public class EspecialidadHttpService
 {
@@ -27,9 +28,19 @@ public class EspecialidadHttpService
         response.EnsureSuccessStatusCode();
     }
 
-    public async Task DeleteAsync(int id)
+    public async Task<ApiResponse?> DeleteAsync(int id)
     {
         var response = await _httpClient.DeleteAsync($"especialidades/{id}");
-        response.EnsureSuccessStatusCode();
+
+        if (!response.IsSuccessStatusCode)
+            return null;
+
+        var content = await response.Content.ReadFromJsonAsync<ApiResponse>();
+        return content;
+    }
+
+    public class ApiResponse
+    {
+        public string? Message { get; set; }
     }
 }

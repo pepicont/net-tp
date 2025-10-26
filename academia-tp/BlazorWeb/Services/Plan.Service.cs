@@ -28,9 +28,19 @@ public class PlanHttpService
         response.EnsureSuccessStatusCode();
     }
 
-    public async Task DeleteAsync(int id)
+    public async Task<ApiResponse> DeleteAsync(int id)
     {
-        var response = await _httpClient.DeleteAsync($"planes/{id}");
-        response.EnsureSuccessStatusCode();
+        var response = await _httpClient.DeleteAsync($"especialidades/{id}");
+
+        if (!response.IsSuccessStatusCode)
+            return null;
+
+        var content = await response.Content.ReadFromJsonAsync<ApiResponse>();
+        return content;
+    }
+
+    public class ApiResponse
+    {
+        public string? Message { get; set; }
     }
 }

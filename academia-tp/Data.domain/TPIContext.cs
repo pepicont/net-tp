@@ -110,6 +110,7 @@ namespace DataDomain
                 entity.Property(e => e.Fecha_nac);
                 entity.Property(e => e.Tipo_persona);
                 entity.Property(e => e.Id_plan);
+
                 // Datos iniciales para Persona
                 entity.HasData(
                     new Persona
@@ -317,7 +318,7 @@ new Persona
                 entity.HasOne<Curso>()
                       .WithMany()
                       .HasForeignKey(i => i.Id_curso)
-                      .OnDelete(DeleteBehavior.Restrict);
+                      .OnDelete(DeleteBehavior.Cascade);
                 entity.HasOne<Persona>()
                       .WithMany()
                       .HasForeignKey(i => i.Id_alumno)
@@ -348,7 +349,7 @@ new Inscripcion { Id = 10, Id_curso = 4, Id_alumno = 10, Condicion = "Regular", 
                 entity.HasOne<Curso>()
                       .WithMany()
                       .HasForeignKey(d => d.Id_curso)
-                      .OnDelete(DeleteBehavior.Restrict);
+                      .OnDelete(DeleteBehavior.Cascade);
                 entity.HasOne<Persona>()
                         .WithMany()
                         .HasForeignKey(d => d.Id_docente)

@@ -61,18 +61,25 @@
     </button>
 }
 
+@if (!string.IsNullOrEmpty(infoMessage))
+{
+    <div class="alert alert-info mt-3">@infoMessage</div>
+}
+
+
 
 
 <ModalEspecialidad IsVisible="mostrarModal"
-              EspecialidadActual="especialidadSeleccionada"
-              OnGuardado="OnEspecialidadGuardada"
-              OnCerrar="CerrarModal" />
+EspecialidadActual="especialidadSeleccionada"
+OnGuardado="OnEspecialidadGuardada"
+OnCerrar="CerrarModal" />
 
 @code {
     private List<Especialidad>? especialidades = new List<Especialidad>();
     private bool isLoading = true;
     private bool mostrarModal = false;
     private Especialidad? especialidadSeleccionada = null;
+    private string infoMessage;
 
     protected override async Task OnInitializedAsync()
     {
@@ -126,19 +133,29 @@
         especialidadSeleccionada = null;
     }
 
-    private async Task EliminarEspecialidad(int id)
+private async Task EliminarEspecialidad(int id)
+{
+    try
     {
+        infoMessage = null;
 
-        try
+        var response = await EspecialidadService.DeleteAsync(id);
+
+        if (response == null)
         {
-            await EspecialidadService.DeleteAsync(id);
+            infoMessage = "No se pudo eliminar la especialidad porque tiene planes asociados.";
+        }
+        else
+        {
+            infoMessage = response.Message ?? "Especialidad eliminada correctamente.";
             await CargarEspecialidades();
         }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error al eliminar especialidad: {ex.Message}");
-        }
     }
+    catch (Exception ex)
+    {
+       infoMessage = "No se pudo eliminar la especialidad porque tiene planes asociados.";
+    }
+}
 }
 
 
