@@ -1,0 +1,59 @@
+﻿@using Domain.services
+@inject NavigationManager Navigation
+@inject AuthServiceScoped AuthServiceScoped
+@rendermode InteractiveServer
+@implements IDisposable
+
+@if (AuthServiceScoped.Usuario != null)
+{
+    <div class="top-bar">
+        <button class="logout-button" @onclick="Logout">
+            <span class="bi-box-arrow-left"></span>Cerrar Sesión
+        </button>
+    </div>
+}
+
+<style>
+    .top-bar {
+        display: flex;
+        justify-content: flex-end;
+        padding: 1rem;
+        background-color: #f8f9fa;
+    }
+
+    .logout-button {
+        background-color: white;
+        color: #dc3545;
+        border: 1px solid #dc3545;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+    }
+
+        .logout-button:hover {
+            background-color: #dc3545;
+            color: white;
+        }
+</style>
+
+@code {
+    protected override void OnInitialized()
+    {
+        AuthServiceScoped.OnChange += StateHasChanged;
+    }
+
+    private void Logout()
+    {
+        Navigation.NavigateTo("/login", forceLoad: true);
+    }
+
+    public void Dispose()
+    {
+        AuthServiceScoped.OnChange -= StateHasChanged;
+    }
+}

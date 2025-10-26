@@ -1,0 +1,71 @@
+﻿@using System.ComponentModel.DataAnnotations
+@using Domain.services
+@page "/"
+@page "/login"
+@rendermode InteractiveServer
+@inject AuthServiceScoped AuthServiceScoped
+@inject NavigationManager NavigationManager
+<h3>Inicia sesión en la Academia</h3>
+
+<EditForm Model="@loginModel" OnValidSubmit="HandleValidSubmit" FormName="LoginForm">
+    <DataAnnotationsValidator />
+
+    <div class="mb-3">
+        <label for="username" class="form-label">Nombre de usuario</label>
+        <InputText id="username" class="form-control" @bind-Value="loginModel.Username" />
+        <ValidationMessage For="@(() => loginModel.Username)" />
+    </div>
+
+    <div class="mb-3">
+        <label for="password" class="form-label">Contraseña</label>
+        <InputText id="password" type="password" class="form-control" @bind-Value="loginModel.Password" />
+        <ValidationMessage For="@(() => loginModel.Password)" />
+    </div>
+
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="alert alert-danger">@errorMessage</div>
+    }
+    @if (!string.IsNullOrEmpty(okMessage))
+    {
+        <div class="alert alert-success">@okMessage</div>
+    }
+
+    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+</EditForm>
+
+
+@code {
+    private LoginModel loginModel = new();
+    private string errorMessage = string.Empty;
+    private string okMessage = string.Empty;
+
+    protected override void OnInitialized() //para que cada vez que vaya a /login, le vuelva a pedir registrarse
+    {
+        AuthServiceScoped.Logout();
+    }
+    private void HandleValidSubmit()
+    {
+        errorMessage = string.Empty;
+        var usuario = AuthServiceScoped.Login(loginModel.Username, loginModel.Password);
+
+        if (usuario == null)
+        {
+            errorMessage = "Usuario o contraseña incorrectos, o usuario deshabilitado.";
+            return;
+        }
+
+        okMessage = "Inicio de sesión exitoso.";
+        errorMessage = string.Empty;
+        NavigationManager.NavigateTo("/home");
+    }
+
+    public class LoginModel
+    {
+        [Required(ErrorMessage = "El nombre de usuario es obligatorio")]
+        public string Username { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "La contraseña es obligatoria")]
+        public string Password { get; set; } = string.Empty;
+    }
+}

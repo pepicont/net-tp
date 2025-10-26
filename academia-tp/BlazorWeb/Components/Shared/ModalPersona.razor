@@ -1,0 +1,253 @@
+﻿@namespace BlazorWeb.Components.Shared
+@using Domain.model
+@using Domain.services
+@inject PersonaHttpService PersonaService
+@inject PlanHttpService PlanService
+@inject AuthServiceScoped AuthServiceScoped
+
+@if (IsVisible)
+{
+    <div class="modal fade show d-block" tabindex="-1" role="dialog" style="background-color: rgba(0,0,0,0.5);">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">@(PersonaActual?.Id > 0 ? "Editar Persona" : "Nueva Persona")</h5>
+                    <button type="button" class="btn-close" @onclick="Cerrar" aria-label="Close"></button>
+                </div>
+                <EditForm Model="PersonaActual" OnValidSubmit="GuardarPersona">
+                    <div class="modal-body">
+                        @if (!string.IsNullOrEmpty(errorMessage))
+                        {
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                @errorMessage
+                                <button type="button" class="btn-close" @onclick="() => errorMessage = null"></button>
+                            </div>
+                        }
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Nombre <span class="text-danger">*</span></label>
+                                <InputText class="form-control" @bind-Value="PersonaActual.Nombre" placeholder="Ingrese el nombre" />
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Apellido <span class="text-danger">*</span></label>
+                                <InputText class="form-control" @bind-Value="PersonaActual.Apellido" placeholder="Ingrese el apellido" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            @if (PersonaActual?.Id > 0)
+                            {
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Legajo</label>
+                                    <InputNumber class="form-control" @bind-Value="PersonaActual.Legajo" disabled />
+                                    <small class="text-muted">El legajo no puede modificarse</small>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Email <span class="text-danger">*</span></label>
+                                    <InputText type="email" class="form-control" @bind-Value="PersonaActual.Email" placeholder="ejemplo@correo.com" />
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-md-12 mb-3">
+                                    <label class="form-label">Email <span class="text-danger">*</span></label>
+                                    <InputText type="email" class="form-control" @bind-Value="PersonaActual.Email" placeholder="ejemplo@correo.com" />
+                                </div>
+                            }
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Teléfono <span class="text-danger">*</span></label>
+                                <InputText class="form-control" @bind-Value="PersonaActual.Telefono" placeholder="Ingrese el teléfono" />
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Fecha de Nacimiento <span class="text-danger">*</span></label>
+                                <InputDate class="form-control" @bind-Value="FechaNacimiento" />
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Dirección <span class="text-danger">*</span></label>
+                            <InputText class="form-control" @bind-Value="PersonaActual.Direccion" placeholder="Ingrese la dirección" />
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Tipo de Persona <span class="text-danger">*</span></label>
+                                <InputSelect class="form-select" @bind-Value="PersonaActual.Tipo_persona" disabled="@(AuthServiceScoped.Usuario?.Tipo == "Usuario")">
+                                    <option value="0">Seleccione...</option>
+                                    <option value="1">Alumno</option>
+                                    <option value="2">Docente</option>
+                                </InputSelect>
+                                @if (AuthServiceScoped.Usuario?.Tipo == "Usuario")
+                                {
+                                    <small class="text-muted">No tiene permisos para modificar el tipo de persona</small>
+                                }
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Plan <span class="text-danger">*</span></label>
+                                @if (cargandoPlanes)
+                                {
+                                    <div class="form-control d-flex align-items-center">
+                                        <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                                        <span>Cargando planes...</span>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <InputSelect class="form-select" @bind-Value="PersonaActual.Id_plan">
+                                        <option value="0">Seleccione un plan...</option>
+                                        @foreach (var plan in planes)
+                                        {
+                                            <option value="@plan.Id">@plan.Desc</option>
+                                        }
+                                    </InputSelect>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" @onclick="Cerrar" disabled="@guardando">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="btn btn-primary" disabled="@guardando">
+                            @if (guardando)
+                            {
+                                <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                            }
+                            @(PersonaActual?.Id > 0 ? "Guardar Cambios" : "Crear Persona")
+                        </button>
+                    </div>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsVisible { get; set; }
+    [Parameter] public Persona? PersonaActual { get; set; }
+    [Parameter] public EventCallback OnGuardado { get; set; }
+    [Parameter] public EventCallback OnCerrar { get; set; }
+
+    private bool guardando = false;
+    private bool cargandoPlanes = false;
+    private string? errorMessage = null;
+    private List<Plan>? planes = null;
+
+    private DateTime FechaNacimiento
+    {
+        get => DateTime.TryParse(PersonaActual?.Fecha_nac, out var fecha) ? fecha : DateTime.Today;
+        set => PersonaActual!.Fecha_nac = value.ToString("yyyy-MM-dd");
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await CargarPlanes();
+    }
+
+    private async Task CargarPlanes()
+    {
+        try
+        {
+            cargandoPlanes = true;
+            planes = await PlanService.GetAllAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al cargar planes: {ex.Message}");
+            planes = new List<Plan>();
+        }
+        finally
+        {
+            cargandoPlanes = false;
+        }
+    }
+
+    private async Task GuardarPersona()
+    {
+        // Validar campos vacíos
+        if (string.IsNullOrWhiteSpace(PersonaActual?.Nombre))
+        {
+            errorMessage = "El nombre es obligatorio";
+            return;
+        }
+        
+        if (string.IsNullOrWhiteSpace(PersonaActual?.Apellido))
+        {
+            errorMessage = "El apellido es obligatorio";
+            return;
+        }
+
+        if (string.IsNullOrWhiteSpace(PersonaActual?.Email))
+        {
+            errorMessage = "El email es obligatorio";
+            return;
+        }
+
+        if (string.IsNullOrWhiteSpace(PersonaActual?.Telefono))
+        {
+            errorMessage = "El teléfono es obligatorio";
+            return;
+        }
+
+        if (string.IsNullOrWhiteSpace(PersonaActual?.Direccion))
+        {
+            errorMessage = "La dirección es obligatoria";
+            return;
+        }
+
+        if (PersonaActual.Tipo_persona <= 0)
+        {
+            errorMessage = "Debe seleccionar un tipo de persona";
+            return;
+        }
+
+        if (PersonaActual.Id_plan <= 0)
+        {
+            errorMessage = "Debe seleccionar un plan";
+            return;
+        }
+
+        try
+        {
+            guardando = true;
+            errorMessage = null;
+
+            if (PersonaActual!.Id > 0)
+            {
+                await PersonaService.UpdateAsync(PersonaActual);
+            }
+            else
+            {
+                await PersonaService.CreateAsync(PersonaActual);
+            }
+
+            await OnGuardado.InvokeAsync();
+            await Cerrar();
+        }
+        catch (HttpRequestException ex)
+        {
+            errorMessage = "Error de conexión. Verifica que el servidor esté disponible.";
+            Console.WriteLine($"Error HTTP: {ex.Message}");
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error al guardar la persona: {ex.Message}";
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+        finally
+        {
+            guardando = false;
+        }
+    }
+
+    private async Task Cerrar()
+    {
+        errorMessage = null;
+        await OnCerrar.InvokeAsync();
+    }
+}

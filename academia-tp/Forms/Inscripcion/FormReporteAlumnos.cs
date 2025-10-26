@@ -50,6 +50,7 @@ namespace Forms.Inscripcion
         {
             if (comboBoxMateria.SelectedValue is int materiaId)
             {
+                await CargarCursosPorMateria(materiaId);
                 comboBoxCurso.Enabled = true;
                 await CargarCursosPorMateria(materiaId);
             }
@@ -142,7 +143,7 @@ namespace Forms.Inscripcion
                    System.IO.Directory.GetParent(projectRoot) != null)
             {
                 projectRoot = System.IO.Directory.GetParent(projectRoot).FullName;
-            }
+        }
             string reportFolder = System.IO.Path.Combine(projectRoot, "Reportes");
             if (!System.IO.Directory.Exists(reportFolder))
                 System.IO.Directory.CreateDirectory(reportFolder);
@@ -169,7 +170,7 @@ namespace Forms.Inscripcion
                 comboBoxCurso.DataSource = null;
                 comboBoxCurso.Enabled = false;
             }
-        }
+    }
 
         private async void buttonCrearReporte_Click(object sender, EventArgs e)
         {
@@ -202,84 +203,93 @@ namespace Forms.Inscripcion
 
 // Modifica la clase AlumnosPorCursoReport para recibir el nombre del curso y mostrarlo en el PDF
 
-public class AlumnosPorCursoReport : IDocument
-{
-    private readonly List<AlumnoReporteDto> alumnos;
+    public class AlumnosPorCursoReport : IDocument
+    {
+        private readonly List<AlumnoReporteDto> alumnos;
     private readonly string nombreCurso;
 
     public AlumnosPorCursoReport(List<AlumnoReporteDto> alumnos, string nombreCurso)
-    {
-        this.alumnos = alumnos;
-        this.nombreCurso = nombreCurso;
-    }
-
-    public void Compose(IDocumentContainer container)
-    {
-        container.Page(page =>
         {
-            page.Margin(30);
-            page.Size(PageSizes.A4);
-            page.Content().Column(col =>
+            this.alumnos = alumnos;
+        this.nombreCurso = nombreCurso;
+        }
+
+        public DocumentMetadata GetMetadata() => DocumentMetadata.Default;
+
+        public void Compose(IDocumentContainer container)
+        {
+            container.Page(page =>
             {
+                page.Margin(30);
+                page.Size(PageSizes.A4);
+                page.Content().Column(col =>
+                {
                 col.Item().Text("Listado de Alumnos por Curso").FontSize(18).Bold().AlignCenter();
                 col.Item().PaddingVertical(10);
 
-                if (alumnos.Any())
-                {
-                    var primer = alumnos.First();
+                    // Información del curso
+                    if (alumnos.Any())
+                    {
+                        var primer = alumnos.First();
                     col.Item().Text($"Materia: {primer.DescMateria}").FontSize(12);
-                    col.Item().PaddingVertical(3);
+                        col.Item().PaddingVertical(3);
                     col.Item().Text($"Curso: {nombreCurso}").FontSize(12); // <-- Aquí aparece el nombre
-                    col.Item().PaddingVertical(3);
+                        col.Item().PaddingVertical(3);
                     col.Item().Text($"Año: {primer.AnioCalendario}").FontSize(12);
-                    col.Item().PaddingVertical(10);
-                }
-
-                col.Item().Table(table =>
-                {
-                    table.ColumnsDefinition(columns =>
-                    {
-                        columns.ConstantColumn(60);
-                        columns.RelativeColumn(2);
-                        columns.RelativeColumn(2);
-                        columns.ConstantColumn(80);
-                        columns.ConstantColumn(60);
-                        columns.ConstantColumn(80);
-                    });
-
-                    table.Header(header =>
-                    {
-                        header.Cell().Element(CellStyle).Text("Legajo").Bold();
-                        header.Cell().Element(CellStyle).Text("Nombre").Bold();
-                        header.Cell().Element(CellStyle).Text("Apellido").Bold();
-                        header.Cell().Element(CellStyle).Text("Condición").Bold();
-                        header.Cell().Element(CellStyle).Text("Nota").Bold();
-                        header.Cell().Element(CellStyle).Text("Fecha Insc.").Bold();
-                    });
-
-                    foreach (var alumno in alumnos.OrderBy(a => a.Apellido).ThenBy(a => a.Nombre))
-                    {
-                        table.Cell().Element(CellStyle).Text(alumno.Legajo.ToString());
-                        table.Cell().Element(CellStyle).Text(alumno.Nombre ?? "");
-                        table.Cell().Element(CellStyle).Text(alumno.Apellido ?? "");
-                        table.Cell().Element(CellStyle).Text(alumno.Condicion ?? "");
-                        table.Cell().Element(CellStyle).Text(alumno.Nota?.ToString() ?? "-");
-                        table.Cell().Element(CellStyle).Text(alumno.Fecha_inscripcion.ToString("dd/MM/yyyy"));
+                        col.Item().PaddingVertical(10);
                     }
+
+                    // Tabla de alumnos
+                    col.Item().Table(table =>
+                    {
+                        table.ColumnsDefinition(columns =>
+                        {
+                        columns.ConstantColumn(60);
+                        columns.RelativeColumn(2);
+                        columns.RelativeColumn(2);
+                        columns.ConstantColumn(80);
+                        columns.ConstantColumn(60);
+                        columns.ConstantColumn(80);
+                        });
+
+                        // Encabezado
+                        table.Header(header =>
+                        {
+                            header.Cell().Element(CellStyle).Text("Legajo").Bold();
+                            header.Cell().Element(CellStyle).Text("Nombre").Bold();
+                            header.Cell().Element(CellStyle).Text("Apellido").Bold();
+                            header.Cell().Element(CellStyle).Text("Condición").Bold();
+                            header.Cell().Element(CellStyle).Text("Nota").Bold();
+                            header.Cell().Element(CellStyle).Text("Fecha Insc.").Bold();
+                        });
+
+                        // Filas de datos
+                        foreach (var alumno in alumnos.OrderBy(a => a.Apellido).ThenBy(a => a.Nombre))
+                        {
+                            table.Cell().Element(CellStyle).Text(alumno.Legajo.ToString());
+                            table.Cell().Element(CellStyle).Text(alumno.Nombre ?? "");
+                            table.Cell().Element(CellStyle).Text(alumno.Apellido ?? "");
+                            table.Cell().Element(CellStyle).Text(alumno.Condicion ?? "");
+                            table.Cell().Element(CellStyle).Text(alumno.Nota?.ToString() ?? "-");
+                            table.Cell().Element(CellStyle).Text(alumno.Fecha_inscripcion.ToString("dd/MM/yyyy"));
+                        }
+                    });
+
+                    // Totales
+                    col.Item().PaddingVertical(15);
+                    col.Item().Text($"Total de alumnos: {alumnos.Count}")
+                        .FontSize(12).Bold();
                 });
-
-                col.Item().PaddingVertical(15);
-                col.Item().Text($"Total de alumnos: {alumnos.Count}")
-                    .FontSize(12).Bold();
             });
-        });
-    }
+        }
 
-    private IContainer CellStyle(IContainer container)
-    {
-        return container
-            .Padding(5)
-            .BorderBottom(1)
-            .BorderColor(Colors.Grey.Lighten2);
+        // Método auxiliar para estilo de celdas
+        private IContainer CellStyle(IContainer container)
+        {
+            return container
+                .Padding(5)
+                .BorderBottom(1)
+                .BorderColor(Colors.Grey.Lighten2);
+        }
     }
 }

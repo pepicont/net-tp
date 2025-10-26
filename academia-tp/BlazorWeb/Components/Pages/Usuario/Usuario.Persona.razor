@@ -1,0 +1,121 @@
+﻿@page "/usuario/persona"
+@using BlazorWeb.Components.Base
+@using BlazorWeb.Components.Shared
+@using Domain.model
+@using Domain.services
+@inherits ProtectedUser
+@rendermode RenderModes.ProtectedMode
+@inject PersonaHttpService PersonaService
+@inject AuthServiceScoped AuthServiceScoped
+
+<h3>Gestión de mi persona</h3>
+
+@if (isLoading)
+{
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 300px;">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+            <span class="visually-hidden">Cargando...</span>
+        </div>
+    </div>
+}
+
+@if (persona != null && !isLoading)
+{
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Legajo</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Dirección</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Fecha de Nacimiento</th>
+                <th>Tipo de Persona</th>
+                <th>ID Plan</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>@persona.Legajo</td>
+                    <td>@persona.Nombre</td>
+                    <td>@persona.Apellido</td>
+                    <td>@persona.Direccion</td>
+                    <td>@persona.Email</td>
+                    <td>@persona.Telefono</td>
+                    <td>@persona.Fecha_nac</td>
+                    <td>@ObtenerTipoPersona(persona.Tipo_persona)</td>
+                    <td>@persona.Id_plan</td>
+                    
+                </tr>
+            
+        </tbody>
+    </table>
+    <button class="btn btn-primary" type="button" @onclick="EditarPersona">
+        <i class="bi bi-plus-circle"></i> Editar mis datos
+    </button>
+}
+
+
+    
+<ModalPersona IsVisible="mostrarModal"
+              PersonaActual="persona"
+              OnGuardado="OnPersonaGuardada"
+              OnCerrar="CerrarModal" />
+
+@code {
+    private Persona? persona = null;
+    private bool isLoading = true;
+    private bool mostrarModal = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        base.OnInitialized();
+        await CargarPersona();
+    }
+
+    private async Task CargarPersona()
+    {
+        try
+        {
+            isLoading = true;
+            persona = await PersonaService.GetByIdAsync(AuthServiceScoped.Usuario.Id_persona);
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al cargar personas: {ex.Message}");
+            persona = null;
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private void EditarPersona()
+    {
+        mostrarModal = true;
+    }
+
+    private async Task OnPersonaGuardada()
+    {
+        await CargarPersona();
+    }
+
+    private void CerrarModal()
+    {
+        mostrarModal = false;
+    }
+
+    private string ObtenerTipoPersona(int tipo)
+    {
+        return tipo switch
+        {
+            1 => "Alumno",
+            2 => "Docente",
+            _ => "Desconocido"
+        };
+    }
+}
