@@ -33,17 +33,17 @@ namespace Data
             return materia;
         }
 
-        public bool Update(int id, Curso materia)
+        public bool Update(int id, Curso curso)
         {
             using var context = CreateContext();
             Curso? existingCurso = context.Curso.Find(id);
 
             if (existingCurso != null)
             {
-                existingCurso.Id_comision = materia.Id_comision;
-                existingCurso.Id_materia = materia.Id_materia;
-                existingCurso.Anio_calendario = materia.Anio_calendario;
-                existingCurso.Cupo = materia.Cupo;
+                existingCurso.Id_materia = curso.Id_materia;
+                existingCurso.Anio_calendario = curso.Anio_calendario;
+                existingCurso.Cupo = curso.Cupo;
+                existingCurso.Nombre = curso.Nombre;
 
                 context.SaveChanges();
                 return true;

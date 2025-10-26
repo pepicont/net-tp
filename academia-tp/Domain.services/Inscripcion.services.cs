@@ -12,7 +12,6 @@ namespace Domain.services
         private readonly InscripcionRepository inscripcionRepository;
         private readonly PersonaRepository personaRepository;
         private readonly CursoRepository cursoRepository;
-        private readonly ComisionRepository comisionRepository;
         private readonly MateriaRepository materiaRepository;
 
         public InscripcionServices()
@@ -20,7 +19,6 @@ namespace Domain.services
             inscripcionRepository = new InscripcionRepository();
             personaRepository = new PersonaRepository();
             cursoRepository = new CursoRepository();
-            comisionRepository = new ComisionRepository();
             materiaRepository = new MateriaRepository();
         }
 
@@ -94,7 +92,6 @@ namespace Domain.services
             // Cargar datos una sola vez para el filtrado
             var personas = personaRepository.GetAll().ToList();
             var cursos = cursoRepository.GetAll().ToList();
-            var comisiones = comisionRepository.GetAll().ToList();
             var materias = materiaRepository.GetAll().ToList();
 
             return inscripciones.Where(inscripcion =>
@@ -108,15 +105,13 @@ namespace Domain.services
                     return true;
                 }
 
-                // Buscar por curso/materia/comisión
+                // Buscar por curso/materia
                 var curso = cursos.FirstOrDefault(c => c.Id == inscripcion.Id_curso);
                 if (curso != null)
                 {
                     var materia = materias.FirstOrDefault(m => m.Id == curso.Id_materia);
-                    var comision = comisiones.FirstOrDefault(com => com.Id == curso.Id_comision);
 
-                    if ((materia != null && materia.Desc.ToLower().Contains(searchTerm)) ||
-                        (comision != null && comision.Desc.ToLower().Contains(searchTerm)))
+                    if ((materia != null && materia.Desc.ToLower().Contains(searchTerm)))
                     {
                         return true;
                     }
@@ -131,7 +126,6 @@ namespace Domain.services
             // Cargar datos una sola vez
             var personas = personaRepository.GetAll().ToList();
             var cursos = cursoRepository.GetAll().ToList();
-            var comisiones = comisionRepository.GetAll().ToList();
             var materias = materiaRepository.GetAll().ToList();
 
             return inscripciones.Select(inscripcion =>
@@ -164,14 +158,56 @@ namespace Domain.services
                     var materia = materias.FirstOrDefault(m => m.Id == curso.Id_materia);
                     if (materia != null)
                         dto.DescMateria = materia.Desc;
-
-                    var comision = comisiones.FirstOrDefault(com => com.Id == curso.Id_comision);
-                    if (comision != null)
-                        dto.DescComision = comision.Desc;
                 }
 
                 return dto;
             }).ToList();
         }
+        public List<AlumnoReporteDto> GetAlumnosPorCurso(int idCurso, int anio)
+        {
+            var inscripciones = inscripcionRepository.GetByCursoAnio(idCurso, anio);
+            var personas = personaRepository.GetAll().ToList();
+            var cursos = cursoRepository.GetAll().ToList();
+            var materias = materiaRepository.GetAll().ToList();
+
+            return inscripciones.Select(i =>
+            {
+                var persona = personas.FirstOrDefault(p => p.Id == i.Id_alumno);
+                var curso = cursos.FirstOrDefault(c => c.Id == i.Id_curso);
+                var materia = materias.FirstOrDefault(m => m.Id == curso?.Id_materia);
+
+                return new AlumnoReporteDto
+                {
+                    Legajo = persona?.Legajo ?? 0,
+                    Nombre = persona?.Nombre ?? "",
+                    Apellido = persona?.Apellido ?? "",
+                    DescMateria = materia?.Desc ?? "",
+                    AnioCalendario = curso?.Anio_calendario ?? 0,
+                    Condicion = i.Condicion,
+                    Nota = i.Nota,
+                    Fecha_inscripcion = i.Fecha_inscripcion
+                };
+            }).ToList();
+        }
+        public IEnumerable<CursoCantidadDto> GetCantidadAlumnosPorCurso(int? materiaId, int? anio)
+        {
+            var inscripciones = inscripcionRepository.GetAll();
+            var cursos = cursoRepository.GetAll();
+
+            var query = from i in inscripciones
+                        join c in cursos on i.Id_curso equals c.Id
+                        where (!materiaId.HasValue || c.Id_materia == materiaId.Value)
+                           && (!anio.HasValue || i.Fecha_inscripcion.Year == anio.Value)
+                        group i by new { c.Id, c.Nombre, c.Cupo } into g
+                        select new CursoCantidadDto
+                        {
+                            NombreCurso = g.Key.Nombre,
+                            CantidadAlumnos = g.Count(),
+                            Cupo = g.Key.Cupo
+                        };
+
+            return query.ToList();
+        }
+
     }
 }

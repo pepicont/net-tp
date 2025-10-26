@@ -61,5 +61,34 @@ namespace Data
             context.SaveChanges();
             return true;
         }
+        public IEnumerable<Inscripcion> GetByCursoAnio(int idCurso, int anio)
+        {
+            using var context = CreateContext();
+
+            // Primero validar que el curso existe con esos filtros
+            var curso = context.Curso.FirstOrDefault(c => c.Id == idCurso &&
+                                                         
+                                                          c.Anio_calendario == anio);
+
+            if (curso == null) return new List<Inscripcion>();
+
+            // Obtener inscripciones para ese curso
+            var inscripciones = context.Inscripcion
+                .Where(i => i.Id_curso == idCurso)
+                .ToList();
+
+            // Filtrar solo las inscripciones de alumnos (tipo_persona = 1)
+            var inscripcionesAlumnos = new List<Inscripcion>();
+            foreach (var inscripcion in inscripciones)
+            {
+                var persona = context.Persona.FirstOrDefault(p => p.Id == inscripcion.Id_alumno && p.Tipo_persona == 1);
+                if (persona != null)
+                {
+                    inscripcionesAlumnos.Add(inscripcion);
+                }
+            }
+
+            return inscripcionesAlumnos;
+        }
     }
 }

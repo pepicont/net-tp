@@ -83,7 +83,6 @@ namespace Forms.Inscripcion
                         var searchTermLower = searchTerm.ToLower();
                         inscripciones = todasSusInscripciones?.Where(i =>
                             i.DescMateria.ToLower().Contains(searchTermLower) ||
-                            i.DescComision.ToLower().Contains(searchTermLower) ||
                             i.Condicion.ToLower().Contains(searchTermLower)
                         );
                     }
@@ -155,7 +154,7 @@ namespace Forms.Inscripcion
         }
 
 
-            private async void buttonEliminar_Click(object sender, EventArgs e)
+        private async void buttonEliminar_Click(object sender, EventArgs e)
         {
             if (dataGridView1.CurrentRow == null)
             {
@@ -206,5 +205,19 @@ namespace Forms.Inscripcion
                 modal.Dispose();
             }
         }
+
+        private void buttonReporteAlumnos_Click(object sender, EventArgs e)
+        {
+            FormReporteAlumnos formReporte = new FormReporteAlumnos();
+            formReporte.ShowDialog();
+            formReporte.Dispose();
+        }
+
+        private void buttonReporteGrafico_Click(object sender, EventArgs e)
+        {
+            FormReporteGrafico formReporte = new FormReporteGrafico();
+            formReporte.ShowDialog();
+            formReporte.Dispose();
+        }
     }
-    }
+}

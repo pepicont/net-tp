@@ -69,6 +69,9 @@ namespace Forms
                 ConfigurarMenuSoloListado(usuarioToolStripMenuItem, listadoUsuario, crearUsuario, menuPrincipal_Click);
                 ConfigurarMenuSoloListado(planToolStripMenuItem, listadoPlan, crearPlan, menuPrincipal_Click);
                 ConfigurarMenuSoloListado(especialidadToolStripMenuItem, listadoEspecialidad, crearEspecialidad, menuPrincipal_Click);
+                ConfigurarMenuSoloListado(cursoToolStripMenuItem, listadoEspecialidad, crearEspecialidad, menuPrincipal_Click);
+                ConfigurarMenuSoloListado(materiaToolStripMenuItem, listadoEspecialidad, crearEspecialidad, menuPrincipal_Click);
+                ConfigurarMenuSoloListado(docenteToolStripMenuItem, listadoEspecialidad, crearEspecialidad, menuPrincipal_Click);
 
 
                 if (Persona.Tipo_persona == 1)
@@ -87,6 +90,9 @@ namespace Forms
                 ConfigurarMenuAdmin(planToolStripMenuItem, listadoPlan, crearPlan, menuPrincipal_Click);
                 ConfigurarMenuAdmin(especialidadToolStripMenuItem, listadoEspecialidad, crearEspecialidad, menuPrincipal_Click);
                 ConfigurarMenuAdmin(inscripcionToolStripMenuItem, listadoInscripcion, crearInscripcion, menuPrincipal_Click);
+                ConfigurarMenuAdmin(cursoToolStripMenuItem, listadoInscripcion, crearInscripcion, menuPrincipal_Click);
+                ConfigurarMenuAdmin(docenteToolStripMenuItem, listadoInscripcion, crearInscripcion, menuPrincipal_Click);
+                ConfigurarMenuAdmin(materiaToolStripMenuItem, listadoInscripcion, crearInscripcion, menuPrincipal_Click);
             }
         }
 
@@ -97,7 +103,7 @@ namespace Forms
             menuPrincipal.Click -= handlerListado; // Limpia handlers previos para que no se subscriba dos veces al metodo en caso de logout
             menuPrincipal.Click += handlerListado;
         }
-        private void ConfigurarMenuAdmin(ToolStripMenuItem menuPrincipal, ToolStripMenuItem subMenuListado, ToolStripMenuItem subMenuCrear, EventHandler handlerListado)
+        private void ConfigurarMenuAdmin(ToolStripMenuItem menuPrincipal, ToolStripMenuItem subMenuListado, ToolStripMenuItem subMenuCrear, EventHandler handlerListado) 
         {
             menuPrincipal.DropDownItems.Clear();
             menuPrincipal.DropDownItems.Add(subMenuListado);
@@ -105,7 +111,7 @@ namespace Forms
             menuPrincipal.Click -= handlerListado;
             subMenuCrear.Visible = true;
         }
-        private void menuPrincipal_Click(object sender, EventArgs e)
+        private void menuPrincipal_Click(object sender, EventArgs e) //esto se le manda igual al admin por consistencia pero no se ejecuta, los toolstrip si tienen submenus no ejecutan el click del padre
         {
             if (sender == personaToolStripMenuItem)
                 listadoPersona_Click(sender, e);
@@ -115,8 +121,12 @@ namespace Forms
                 listadoPlan_Click(sender, e);
             else if (sender == especialidadToolStripMenuItem)
                 listadoEspecialidad_Click(sender, e);
-            else if (sender == inscripcionToolStripMenuItem)
-                listadoInscripcion_Click(sender, e);
+            else if (sender == cursoToolStripMenuItem)
+                listadoCurso_Click(sender, e);
+            else if (sender == docenteToolStripMenuItem)
+                listadoDocente_Click(sender, e);
+            else if (sender == materiaToolStripMenuItem)
+                listadoMateria_Click(sender, e);
 
         }
 
@@ -145,7 +155,7 @@ namespace Forms
             }
         }
 
-        private void detallePersona_Click(object sender, EventArgs e) //ME OLVIDE DE CAMBIARLE EL NOMBRE SERIA CREAR :( 
+        private void detallePersona_Click(object sender, EventArgs e) //ME OLVIDE DE CAMBIARLE EL NOMBRE SERIA CREAR Y NO QUIERO QUE SE ROMPA EL FORM 
         {
             panelContenedor.Controls.Clear();          //IMPORTANTE: no hace falta validar si es usuario porque no le aparece, en web se deberia validad igual por los endpoints pero como aca en winforms no hace falta
             var form = new ModalAgregarPersona();
@@ -252,7 +262,7 @@ namespace Forms
             MostrarEnPanel(form);
         }
 
-        private void listadoMaterias_Click(object sender, EventArgs e)
+        private void listadoMateria_Click(object sender, EventArgs e)
         {
             panelContenedor.Controls.Clear();
             Form form = null;
@@ -267,34 +277,13 @@ namespace Forms
             }
         }
 
-        private void crearMaterias_Click(object sender, EventArgs e)
+        private void crearMateria_Click(object sender, EventArgs e)
         {
             panelContenedor.Controls.Clear();
             var form = new ModalAgregarMateria();
             MostrarEnPanel(form);
         }
 
-        private void listadoComisiones_Click(object sender, EventArgs e)
-        {
-            panelContenedor.Controls.Clear();
-            Form form = null;
-            if (Usuario.Tipo == "Admin")
-                form = new FormComision("Admin");
-            else if (Usuario.Tipo == "Usuario")
-                form = new FormMateria("Usuario");
-
-            if (form != null)
-            {
-                MostrarEnPanel(form);
-            }
-        }
-
-        private void crearComision_Click(object sender, EventArgs e)
-        {
-            panelContenedor.Controls.Clear();
-            var form = new ModalAgregarComision();
-            MostrarEnPanel(form);
-        }
 
         private void crearCurso_Click(object sender, EventArgs e)
         {
@@ -303,7 +292,7 @@ namespace Forms
             MostrarEnPanel(form);
         }
 
-        private void listadoCursos_Click(object sender, EventArgs e)
+        private void listadoCurso_Click(object sender, EventArgs e)
         {
             panelContenedor.Controls.Clear();
             Form form = null;
@@ -318,7 +307,7 @@ namespace Forms
             }
         }
 
-        private void listadoDocentes_Click(object sender, EventArgs e)
+        private void listadoDocente_Click(object sender, EventArgs e)
         {
             panelContenedor.Controls.Clear();
             Form form = null;
