@@ -1,0 +1,163 @@
+﻿@namespace BlazorWeb.Components.Shared
+@using Domain.model
+@inject ReporteHttpService ReporteService
+@inject MateriaHttpService MateriaService
+@inject IJSRuntime JS
+
+@if (IsVisible)
+{
+    <div class="modal fade show d-block" tabindex="-1" role="dialog" style="background-color: rgba(0,0,0,0.5);">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Generar Reporte Gráfico de Alumnos por Curso</h5>
+                    <button type="button" class="btn-close" @onclick="Cerrar" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    @if (!string.IsNullOrEmpty(errorMessage))
+                    {
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            @errorMessage
+                            <button type="button" class="btn-close" @onclick="() => errorMessage = null"></button>
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrEmpty(successMessage))
+                    {
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            @successMessage
+                            <button type="button" class="btn-close" @onclick="() => successMessage = null"></button>
+                        </div>
+                    }
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Materia <span class="text-danger">*</span></label>
+                            <select class="form-select" @bind="materiaSeleccionada">
+                                <option value="0">-- Seleccione una materia --</option>
+                                @if (materias != null)
+                                {
+                                    @foreach (var m in materias)
+                                    {
+                                        <option value="@m.Id">@m.Desc</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Año <span class="text-danger">*</span></label>
+                            <input type="number" class="form-control" @bind="anio" min="2000" max="2100" />
+                        </div>
+                    </div>
+
+                    <div class="alert alert-info" role="alert">
+                        <i class="bi bi-info-circle-fill"></i>
+                        Este reporte mostrará un gráfico de barras con la cantidad de alumnos por curso de la materia seleccionada.
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" @onclick="Cerrar" disabled="@generando">
+                        Cancelar
+                    </button>
+                    <button type="button" class="btn btn-primary" @onclick="GenerarReporte" disabled="@generando">
+                        @if (generando)
+                        {
+                            <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                        }
+                        Generar Reporte Gráfico
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsVisible { get; set; }
+    [Parameter] public EventCallback OnCerrar { get; set; }
+
+    private List<Materia>? materias;
+    private int materiaSeleccionada = 0;
+    private int anio = DateTime.Now.Year;
+    private bool generando = false;
+    private string? errorMessage = null;
+    private string? successMessage = null;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await CargarMaterias();
+    }
+
+    private async Task CargarMaterias()
+    {
+        try
+        {
+            materias = await MateriaService.GetAllAsync();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error al cargar materias: {ex.Message}";
+        }
+    }
+
+    private async Task GenerarReporte()
+    {
+        // Validación
+        if (materiaSeleccionada == 0)
+        {
+            errorMessage = "Por favor seleccione una materia";
+            return;
+        }
+
+        if (anio <= 0)
+        {
+            errorMessage = "Por favor ingrese un año válido";
+            return;
+        }
+
+        try
+        {
+            generando = true;
+            errorMessage = null;
+            successMessage = null;
+
+            // Llamar al servicio
+            var pdfBytes = await ReporteService.GenerarReporteGraficoAsync(materiaSeleccionada, anio);
+
+            if (pdfBytes != null && pdfBytes.Length > 0)
+            {
+                // Descargar el archivo
+                await DescargarArchivo(pdfBytes, "ReporteGraficoAlumnosPorCurso.pdf");
+                successMessage = "✅ Reporte gráfico generado correctamente y guardado en la carpeta Reportes";
+            }
+            else
+            {
+                errorMessage = "No hay datos disponibles para los filtros seleccionados";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error al generar reporte: {ex.Message}";
+        }
+        finally
+        {
+            generando = false;
+        }
+    }
+
+    private async Task DescargarArchivo(byte[] fileBytes, string fileName)
+    {
+        var base64 = Convert.ToBase64String(fileBytes);
+        await JS.InvokeVoidAsync("downloadFile", base64, fileName);
+    }
+
+    private async Task Cerrar()
+    {
+        errorMessage = null;
+        successMessage = null;
+        materiaSeleccionada = 0;
+        await OnCerrar.InvokeAsync();
+    }
+}

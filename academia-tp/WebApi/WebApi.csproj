@@ -18,6 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="QuestPDF" Version="2025.7.3" />
+    <PackageReference Include="SkiaSharp" Version="3.119.1" />
     <PackageReference Include="Stripe.net" Version="48.3.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>

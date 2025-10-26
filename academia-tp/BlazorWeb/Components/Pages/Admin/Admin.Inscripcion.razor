@@ -72,10 +72,10 @@
     <button class="btn btn-primary" type="button" @onclick="AbrirModalNuevo">
         <i class="bi bi-plus-circle"></i> Cargar nueva inscripción
     </button>
-    <button class="btn btn-outline-primary" type="button">
+    <button class="btn btn-outline-primary" type="button" @onclick="AbrirModalReporte1">
         <i class="bi bi-receipt-cutoff"></i> Generar reporte 1
     </button>
-    <button class="btn btn-outline-primary" type="button">
+    <button class="btn btn-outline-primary" type="button" @onclick="AbrirModalReporte2">
         <i class="bi bi-reception-2"></i> Generar reporte 2
     </button>
 }
@@ -86,6 +86,8 @@
                    InscripcionActual="inscripcionSeleccionada"
                    OnGuardado="OnInscripcionGuardada"
                    OnCerrar="CerrarModal" />
+<ModalReporteAlumnos IsVisible="mostrarModalReporte1" OnCerrar="CerrarModalReporte1" />
+<ModalReporteGrafico IsVisible="mostrarModalReporte2" OnCerrar="CerrarModalReporte2" />
 
 @code {
     private List<InscripcionDTO>? inscripciones = new List<InscripcionDTO>();
@@ -166,6 +168,28 @@
         {
             Console.WriteLine($"Error al eliminar especialidad: {ex.Message}");
         }
+    }
+    private bool mostrarModalReporte1 = false;
+    private bool mostrarModalReporte2 = false;
+
+    private void AbrirModalReporte1()
+    {
+        mostrarModalReporte1 = true;
+    }
+
+    private void CerrarModalReporte1()
+    {
+        mostrarModalReporte1 = false;
+    }
+
+    private void AbrirModalReporte2()
+    {
+        mostrarModalReporte2 = true;
+    }
+
+    private void CerrarModalReporte2()
+    {
+        mostrarModalReporte2 = false;
     }
 }
 
