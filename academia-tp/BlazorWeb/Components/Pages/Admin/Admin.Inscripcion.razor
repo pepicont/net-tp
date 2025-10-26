@@ -1,0 +1,172 @@
+﻿@page "/admin/inscripcion"
+@using BlazorWeb.Components.Base
+@using BlazorWeb.Components.Shared
+@using DTOs
+@using Domain.model
+@inherits ProtectedAdmin
+@rendermode RenderModes.ProtectedMode
+@inject InscripcionHttpService InscripcionService
+
+<h3>Gestión de Inscripciones (Solo Admin)</h3>
+
+@if (isLoading)
+{
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 300px;">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+            <span class="visually-hidden">Cargando...</span>
+        </div>
+    </div>
+}
+
+@if ((inscripciones == null || !inscripciones.Any()) && !isLoading)
+{
+    <div class="alert alert-info" role="alert">
+        <i class="bi bi-info-circle-fill"></i>
+        No hay inscripciones cargadas en el sistema.
+    </div>
+}
+@if (inscripciones != null && inscripciones.Any() && !isLoading)
+{
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Legajo Alumno</th>
+                <th>Nombre Alumno</th>
+                <th>Apellido Alumno</th>
+                <th>Materia</th>
+                <th>Año Calendario</th>
+                <th>Condición</th>
+                <th>Nota</th>
+                <th>Fecha Inscripción</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var inscripcion in inscripciones)
+            {
+                <tr>
+                    <td>@inscripcion.LegajoAlumno</td>
+                    <td>@inscripcion.NombreAlumno</td>
+                    <td>@inscripcion.ApellidoAlumno</td>
+                    <td>@inscripcion.DescMateria</td>
+                    <td>@inscripcion.AnioCalendario</td>
+                    <td>@inscripcion.Condicion</td>
+                    <td>@inscripcion.Nota</td>
+                    <td>@inscripcion.Fecha_inscripcion.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm me-1" type="button" @onclick="() => EditarInscripcion(inscripcion)">
+                            <i class="bi bi-pencil"></i> Editar
+                        </button>
+                        <button class="btn btn-danger btn-sm" type="button" @onclick="() => EliminarInscripcion(inscripcion.Id)">
+                            <i class="bi bi-trash"></i> Eliminar
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@if (!isLoading)
+{
+    <button class="btn btn-primary" type="button" @onclick="AbrirModalNuevo">
+        <i class="bi bi-plus-circle"></i> Cargar nueva inscripción
+    </button>
+    <button class="btn btn-outline-primary" type="button">
+        <i class="bi bi-receipt-cutoff"></i> Generar reporte 1
+    </button>
+    <button class="btn btn-outline-primary" type="button">
+        <i class="bi bi-reception-2"></i> Generar reporte 2
+    </button>
+}
+
+
+
+<ModalInscripcion IsVisible="mostrarModal"
+                   InscripcionActual="inscripcionSeleccionada"
+                   OnGuardado="OnInscripcionGuardada"
+                   OnCerrar="CerrarModal" />
+
+@code {
+    private List<InscripcionDTO>? inscripciones = new List<InscripcionDTO>();
+    private bool isLoading = true;
+    private bool mostrarModal = false;
+    private InscripcionDTO? inscripcionSeleccionada = null;
+
+    protected override async Task OnInitializedAsync()
+    {
+        base.OnInitialized();
+        await CargarInscripciones();
+    }
+
+    private async Task CargarInscripciones()
+    {
+        try
+        {
+            isLoading = true;
+            inscripciones = await InscripcionService.GetAllAsync();
+            inscripciones = inscripciones?.OrderBy(i => i.LegajoAlumno).ToList();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al cargar inscripciones: {ex.Message}");
+            inscripciones = new List<InscripcionDTO>();
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private void AbrirModalNuevo()
+    {
+        inscripcionSeleccionada = new InscripcionDTO();
+        mostrarModal = true;
+    }
+
+    private void EditarInscripcion(InscripcionDTO inscripcion)
+    {
+        inscripcionSeleccionada = new InscripcionDTO
+        {
+            Id = inscripcion.Id,
+            Id_alumno = inscripcion.Id_alumno,
+            Id_curso = inscripcion.Id_curso,
+            LegajoAlumno = inscripcion.LegajoAlumno,
+            NombreAlumno = inscripcion.NombreAlumno,
+            ApellidoAlumno = inscripcion.ApellidoAlumno,
+            DescMateria = inscripcion.DescMateria,
+            AnioCalendario = inscripcion.AnioCalendario,
+            Condicion = inscripcion.Condicion,
+            Nota = inscripcion.Nota,
+            Fecha_inscripcion = inscripcion.Fecha_inscripcion
+        };
+        mostrarModal = true;
+    }
+
+    private async Task OnInscripcionGuardada()
+    {
+        await CargarInscripciones();
+    }
+
+    private void CerrarModal()
+    {
+        mostrarModal = false;
+        inscripcionSeleccionada = null;
+    }
+
+    private async Task EliminarInscripcion(int id)
+    {
+
+        try
+        {
+            await InscripcionService.DeleteAsync(id);
+            await CargarInscripciones();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al eliminar especialidad: {ex.Message}");
+        }
+    }
+}
+
+

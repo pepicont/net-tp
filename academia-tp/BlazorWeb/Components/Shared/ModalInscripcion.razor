@@ -1,0 +1,254 @@
+﻿@namespace BlazorWeb.Components.Shared
+@using DTOs
+@using Domain.model
+@using Domain.services
+@inject PersonaHttpService PersonaService
+@inject InscripcionHttpService InscripcionService
+@inject AuthServiceScoped AuthServiceScoped
+@inject MateriaHttpService MateriaService
+@inject CursoHttpService CursoService
+
+@if (IsVisible)
+{
+    <div class="modal fade show d-block" tabindex="-1" role="dialog" style="background-color: rgba(0,0,0,0.5);">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">@(InscripcionActual?.Id > 0 ? "Editar Inscripcion" : "Nueva Inscripcion")</h5>
+                    <button type="button" class="btn-close" @onclick="Cerrar" aria-label="Close"></button>
+                </div>
+                <EditForm Model="InscripcionActual" OnValidSubmit="GuardarInscripcion">
+                    <div class="modal-body">
+                        @if (!string.IsNullOrEmpty(errorMessage))
+                        {
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                @errorMessage
+                                <button type="button" class="btn-close" @onclick="() => errorMessage = null"></button>
+                            </div>
+                        }
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Legajo Alumno <span class="text-danger">*</span></label>
+                                <InputNumber class="form-control" @bind-Value="InscripcionActual.LegajoAlumno" disabled="@(InscripcionActual?.Id > 0)"/>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Materia <span class="text-danger">*</span></label>
+                                <InputSelect class="form-control" @bind-Value="selectedMateriaId" @bind-Value:after="OnMateriaChanged" disabled="@(InscripcionActual?.Id > 0)">
+                                    <option value="0">-- Seleccione una materia --</option>
+                                    @if (materias != null)
+                                    {
+                                        @foreach (var materia in materias)
+                                        {
+                                            <option value="@materia.Id">@materia.Desc</option>
+                                        }
+                                    }
+                                </InputSelect>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label class="form-label">Curso <span class="text-danger">*</span></label>
+                                <InputSelect class="form-control" @bind-Value="InscripcionActual.Id_curso" disabled="@(InscripcionActual?.Id > 0)">
+                                    <option value="0">-- Seleccione un curso --</option>
+                                    @if (cursos != null)
+                                    {
+                                        @foreach (var curso in cursos)
+                                        {
+                                            <option value="@curso.Id">Curso @curso.Id - Cupo: @curso.Cupo</option>
+                                        }
+                                    }
+                                </InputSelect>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Nombre Alumno<span class="text-danger">*</span></label>
+                                <InputText class="form-control" @bind-Value="InscripcionActual.NombreAlumno" disabled />
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Apellido Alumno <span class="text-danger">*</span></label>
+                                <InputText class="form-control" @bind-Value="InscripcionActual.ApellidoAlumno" disabled />
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Año Calendario <span class="text-danger">*</span></label>
+                                <InputNumber class="form-control" @bind-Value="InscripcionActual.AnioCalendario" disabled />
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Condición <span class="text-danger">*</span></label>
+                                <InputSelect class="form-control" @bind-Value="InscripcionActual.Condicion" disabled="@(InscripcionActual?.Id == 0)">
+                                    <option value="">-- Seleccione una condición --</option>
+                                    <option value="Inscripto">Inscripto</option>
+                                    <option value="Regular">Regular</option>
+                                    <option value="Aprobado">Aprobado</option>
+                                    <option value="Libre">Libre</option>
+                                </InputSelect>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Nota <span class="text-danger">*</span></label>
+                                <InputNumber class="form-control" @bind-Value="InscripcionActual.Nota" disabled="@(InscripcionActual?.Id == 0)" />
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Fecha Inscripción <span class="text-danger">*</span></label>
+                                <InputDate class="form-control" @bind-Value="InscripcionActual.Fecha_inscripcion" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" @onclick="Cerrar" disabled="@guardando">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="btn btn-primary" disabled="@guardando">
+                            @if (guardando)
+                            {
+                                <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                            }
+                            @(InscripcionActual?.Id > 0 ? "Guardar Cambios" : "Crear Inscripción")
+                        </button>
+                    </div>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsVisible { get; set; }
+    [Parameter] public InscripcionDTO? InscripcionActual { get; set; }
+    [Parameter] public EventCallback OnGuardado { get; set; }
+    [Parameter] public EventCallback OnCerrar { get; set; }
+
+    private bool guardando = false;
+    private string? errorMessage = null;
+    private List<Materia>? materias;
+    private List<Curso>? cursos;
+    private int selectedMateriaId = 0;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await CargarMaterias();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (InscripcionActual != null && InscripcionActual.Id == 0)
+        {
+            InscripcionActual.Fecha_inscripcion = DateTime.Now;
+            InscripcionActual.Condicion = "Inscripto";
+            selectedMateriaId = 0;
+            cursos = null;
+        }
+        else if (InscripcionActual != null && InscripcionActual.Id > 0)
+        {
+            // En modo edición, obtener el curso actual y cargar su materia
+            
+            
+        }
+    }
+
+    private async Task CargarMaterias()
+    {
+        try
+        {
+            materias = await MateriaService.GetAllAsync();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error al cargar las materias: {ex.Message}";
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+    }
+
+    private async Task OnMateriaChanged()
+    {
+        if (selectedMateriaId > 0)
+        {
+            await CargarCursosPorMateria(selectedMateriaId);
+        }
+        else
+        {
+            cursos = null;
+            InscripcionActual.Id_curso = 0;
+        }
+    }
+
+    private async Task CargarCursosPorMateria(int materiaId)
+    {
+        try
+        {
+            cursos = await CursoService.GetPorMateriaAsync(materiaId);
+            
+            if (cursos == null || !cursos.Any())
+            {
+                errorMessage = "No hay cursos disponibles para esta materia";
+                InscripcionActual.Id_curso = 0;
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error al cargar los cursos: {ex.Message}";
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+    }
+
+    private async Task GuardarInscripcion()
+    {
+        // Validar campos vacíos
+        if (InscripcionActual?.LegajoAlumno <= 0)
+        {
+            errorMessage = "El legajo del alumno es obligatorio";
+            return;
+        }
+
+        if (InscripcionActual?.Id_curso <= 0)
+        {
+            errorMessage = "Debe seleccionar un curso";
+            return;
+        }
+
+        try
+        {
+            guardando = true;
+            errorMessage = null;
+
+            if (InscripcionActual!.Id > 0)
+            {
+                //await InscripcionService.UpdateAsync(InscripcionActual);
+            }
+            else
+            {
+                Inscripcion inscripcion = new Inscripcion
+                {
+                    Id_alumno = InscripcionActual.Id_alumno,
+                    Id_curso = InscripcionActual.Id_curso,
+                    Condicion = InscripcionActual.Condicion,
+                    Nota = InscripcionActual.Nota,
+                    Fecha_inscripcion = InscripcionActual.Fecha_inscripcion
+                };
+                await InscripcionService.CreateAsync(inscripcion);
+            }
+
+            await OnGuardado.InvokeAsync();
+            await Cerrar();
+        }
+        catch (HttpRequestException ex)
+        {
+            errorMessage = "Error de conexión. Verifica que el servidor esté disponible.";
+            Console.WriteLine($"Error HTTP: {ex.Message}");
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error al guardar la inscripción: {ex.Message}";
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+        finally
+        {
+            guardando = false;
+        }
+    }
+
+    private async Task Cerrar()
+    {
+        errorMessage = null;
+        selectedMateriaId = 0;
+        cursos = null;
+        await OnCerrar.InvokeAsync();
+    }
+}
