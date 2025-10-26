@@ -1,6 +1,7 @@
 ﻿@namespace BlazorWeb.Components.Shared
 @using Domain.model
 @using Domain.services
+@using Domain.validators
 @inject MateriaHttpService MateriaService
 @inject PlanHttpService PlanService
 @inject AuthServiceScoped AuthServiceScoped
@@ -104,12 +105,9 @@
 
     private async Task GuardarMateria()
     {
-        // Validar campos vacíos
-        if (string.IsNullOrWhiteSpace(MateriaActual?.Desc))
-        {
-            errorMessage = "La descripción es obligatoria";
-            return;
-        }
+		errorMessage = MateriaValidator.Validate(MateriaActual);
+		if (errorMessage != null)
+			return;
 
         try
         {

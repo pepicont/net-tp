@@ -1,6 +1,7 @@
 ﻿@using BlazorWeb.Components.Shared
 @using Domain.model
 @using Domain.services
+@using Domain.validators
 @inject CursoHttpService CursoService
 @inject MateriaHttpService MateriaService
 @inject AuthServiceScoped AuthServiceScoped
@@ -105,6 +106,9 @@
 
     private async Task GuardarCurso()
     {
+        errorMessage = CursoValidator.Validate(CursoActual);
+        if (errorMessage != null)
+            return;
 
         try
         {

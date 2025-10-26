@@ -1,6 +1,7 @@
 ﻿@namespace BlazorWeb.Components.Shared
 @using Domain.model
 @using Domain.services
+@using Domain.validators
 @inject EspecialidadHttpService EspecialidadService
 @inject AuthServiceScoped AuthServiceScoped
 
@@ -71,12 +72,10 @@
 
     private async Task GuardarEspecialidad()
     {
-        // Validar campos vacíos
-        if (string.IsNullOrWhiteSpace(EspecialidadActual?.Desc))
-        {
-            errorMessage = "La descripción es obligatoria";
+        errorMessage = EspecialidadValidator.Validate(EspecialidadActual);
+        if (errorMessage != null)
             return;
-        }
+
 
         try
         {

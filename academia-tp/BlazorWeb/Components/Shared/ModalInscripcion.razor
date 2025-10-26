@@ -2,6 +2,7 @@
 @using DTOs
 @using Domain.model
 @using Domain.services
+@using Domain.validators
 @inject PersonaHttpService PersonaService
 @inject InscripcionHttpService InscripcionService
 @inject AuthServiceScoped AuthServiceScoped
@@ -190,18 +191,10 @@
 
     private async Task GuardarInscripcion()
     {
-        // Validar campos vacíos
-        if (InscripcionActual?.LegajoAlumno <= 0)
-        {
-            errorMessage = "El legajo del alumno es obligatorio";
-            return;
-        }
-
-        if (InscripcionActual?.Id_curso <= 0)
-        {
-            errorMessage = "Debe seleccionar un curso";
-            return;
-        }
+       
+		errorMessage = InscripcionValidator.Validate(InscripcionActual);
+		if (errorMessage != null)
+			return;
 
         try
         {

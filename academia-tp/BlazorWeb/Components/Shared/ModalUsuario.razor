@@ -1,6 +1,7 @@
 ﻿@namespace BlazorWeb.Components.Shared
 @using Domain.model
 @using Domain.services
+@using Domain.validators
 @inject UsuarioHttpService UsuarioService
 @inject PersonaHttpService PersonaService
 @inject AuthServiceScoped AuthServiceScoped
@@ -155,23 +156,9 @@
 
     private async Task GuardarUsuario()
     {
-        if (string.IsNullOrWhiteSpace(UsuarioActual?.Nombre_usuario))
-        {
-            errorMessage = "El nombre de usuario es obligatorio";
-            return;
-        }
-
-        if (string.IsNullOrWhiteSpace(UsuarioActual?.Email))
-        {
-            errorMessage = "El email es obligatorio";
-            return;
-        }
-
-        if (UsuarioActual.Id_persona <= 0)
-        {
-            errorMessage = "Debe seleccionar una persona asociada";
-            return;
-        }
+		errorMessage = UsuarioValidator.Validate(UsuarioActual);
+		if (errorMessage != null)
+			return;
 
         try
         {

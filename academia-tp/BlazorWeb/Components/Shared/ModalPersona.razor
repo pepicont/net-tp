@@ -1,6 +1,7 @@
 ﻿@namespace BlazorWeb.Components.Shared
 @using Domain.model
 @using Domain.services
+@using Domain.validators
 @inject PersonaHttpService PersonaService
 @inject PlanHttpService PlanService
 @inject AuthServiceScoped AuthServiceScoped
@@ -169,48 +170,9 @@
 
     private async Task GuardarPersona()
     {
-        // Validar campos vacíos
-        if (string.IsNullOrWhiteSpace(PersonaActual?.Nombre))
-        {
-            errorMessage = "El nombre es obligatorio";
-            return;
-        }
-        
-        if (string.IsNullOrWhiteSpace(PersonaActual?.Apellido))
-        {
-            errorMessage = "El apellido es obligatorio";
-            return;
-        }
-
-        if (string.IsNullOrWhiteSpace(PersonaActual?.Email))
-        {
-            errorMessage = "El email es obligatorio";
-            return;
-        }
-
-        if (string.IsNullOrWhiteSpace(PersonaActual?.Telefono))
-        {
-            errorMessage = "El teléfono es obligatorio";
-            return;
-        }
-
-        if (string.IsNullOrWhiteSpace(PersonaActual?.Direccion))
-        {
-            errorMessage = "La dirección es obligatoria";
-            return;
-        }
-
-        if (PersonaActual.Tipo_persona <= 0)
-        {
-            errorMessage = "Debe seleccionar un tipo de persona";
-            return;
-        }
-
-        if (PersonaActual.Id_plan <= 0)
-        {
-            errorMessage = "Debe seleccionar un plan";
-            return;
-        }
+		errorMessage = PersonaValidator.Validate(PersonaActual);
+		if (errorMessage != null)
+			return;
 
         try
         {
