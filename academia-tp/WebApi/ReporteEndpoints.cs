@@ -5,12 +5,9 @@ using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
 using SkiaSharp;
-using System.ComponentModel;
-using static System.Net.Mime.MediaTypeNames;
+
 namespace WebApi
 {
-    
-
     public static class ReporteEndpoints
     {
         public static void MapReporteEndpoints(this IEndpointRouteBuilder app)
@@ -18,15 +15,14 @@ namespace WebApi
             var group = app.MapGroup("/reportes");
 
             // Reporte 1: Alumnos por curso (PDF simple)
-            group.MapGet("/alumnos-por-curso", (
-                [FromQuery] int idCurso,
-                [FromQuery] int anio,
-                [FromServices] InscripcionServices inscripcionService,
-                [FromServices] CursoServices cursoService) =>
+            group.MapGet("/alumnos-por-curso", (int idCurso, int anio) =>
             {
                 try
                 {
-                    var alumnos = ObtenerAlumnosReporte(idCurso, anio, inscripcionService);
+                    InscripcionServices inscripcionService = new InscripcionServices();
+                    CursoServices cursoService = new CursoServices();
+
+                    var alumnos = inscripcionService.GetAlumnosPorCurso(idCurso, anio);
 
                     if (alumnos == null || alumnos.Count == 0)
                         return Results.NotFound("No hay alumnos inscriptos.");
@@ -34,30 +30,36 @@ namespace WebApi
                     var curso = cursoService.GetOne(idCurso);
                     string nombreCurso = curso?.Nombre ?? "Desconocido";
 
+                    Console.WriteLine($"Generando PDF para {alumnos.Count} alumnos..."); // ⬅️ DEBUG
+
                     // Generar PDF
                     byte[] pdfBytes = GenerarPDFAlumnos(alumnos, nombreCurso);
 
+                    Console.WriteLine($"PDF generado: {pdfBytes.Length} bytes"); // ⬅️ DEBUG
+
                     // Guardar en carpeta Reportes
                     string filePath = GuardarReporte(pdfBytes, "ReporteAlumnosPorCurso.pdf");
+
+                    Console.WriteLine($"PDF guardado en: {filePath}"); // ⬅️ DEBUG
 
                     // Devolver el PDF al cliente para descarga
                     return Results.File(pdfBytes, "application/pdf", "ReporteAlumnosPorCurso.pdf");
                 }
                 catch (Exception ex)
                 {
-                    return Results.Problem($"Error al generar reporte: {ex.Message}");
+                    Console.WriteLine($"ERROR DETALLADO: {ex}"); // ⬅️ Ver el stack trace completo
+                    return Results.Problem($"Error al generar reporte: {ex.Message}\n\nStack trace: {ex.StackTrace}");
                 }
             });
 
             // Reporte 2: Gráfico de alumnos por curso
-            group.MapGet("/grafico-alumnos", (
-                [FromQuery] int materiaId,
-                [FromQuery] int anio,
-                [FromServices] InscripcionServices inscripcionService) =>
+            group.MapGet("/grafico-alumnos", (int materiaId, int anio) =>
             {
                 try
                 {
-                    var datos = ObtenerDatosGrafico(materiaId, anio, inscripcionService);
+                    InscripcionServices inscripcionService = new InscripcionServices();
+
+                    var datos = inscripcionService.GetCantidadAlumnosPorCurso(materiaId, anio).ToList();
 
                     if (datos == null || datos.Count == 0)
                         return Results.NotFound("No hay datos para mostrar.");
@@ -79,20 +81,6 @@ namespace WebApi
                     return Results.Problem($"Error al generar reporte: {ex.Message}");
                 }
             });
-        }
-
-        // Métodos auxiliares
-        private static List<AlumnoReporteDto> ObtenerAlumnosReporte(
-            int idCurso, int anio, InscripcionServices service)
-        {
-            // Usar el método existente en el servicio
-            return service.GetAlumnosPorCurso(idCurso, anio);
-        }
-
-        private static List<CursoCantidadDto> ObtenerDatosGrafico(
-            int materiaId, int anio, InscripcionServices service)
-        {
-            return service.GetCantidadAlumnosPorCurso(materiaId, anio).ToList();
         }
 
         private static byte[] GenerarPDFAlumnos(List<AlumnoReporteDto> alumnos, string nombreCurso)
@@ -169,23 +157,40 @@ namespace WebApi
 
         private static string GuardarReporte(byte[] pdfBytes, string nombreArchivo)
         {
-            string projectRoot = AppDomain.CurrentDomain.BaseDirectory;
-
-            // Buscar la carpeta Reportes
-            while (!Directory.Exists(Path.Combine(projectRoot, "Reportes")) &&
-                   Directory.GetParent(projectRoot) != null)
+            try
             {
-                projectRoot = Directory.GetParent(projectRoot).FullName;
+                string projectRoot = AppDomain.CurrentDomain.BaseDirectory;
+                Console.WriteLine($"Base directory: {projectRoot}"); // ⬅️ DEBUG
+
+                // Buscar la carpeta Reportes
+                while (!Directory.Exists(Path.Combine(projectRoot, "Reportes")) &&
+                       Directory.GetParent(projectRoot) != null)
+                {
+                    projectRoot = Directory.GetParent(projectRoot).FullName;
+                }
+
+                string reportFolder = Path.Combine(projectRoot, "Reportes");
+                Console.WriteLine($"Report folder: {reportFolder}"); // ⬅️ DEBUG
+
+                if (!Directory.Exists(reportFolder))
+                {
+                    Console.WriteLine("Creando carpeta Reportes..."); // ⬅️ DEBUG
+                    Directory.CreateDirectory(reportFolder);
+                }
+
+                string filePath = Path.Combine(reportFolder, nombreArchivo);
+                Console.WriteLine($"Guardando en: {filePath}"); // ⬅️ DEBUG
+
+                File.WriteAllBytes(filePath, pdfBytes);
+                Console.WriteLine("Archivo guardado exitosamente"); // ⬅️ DEBUG
+
+                return filePath;
             }
-
-            string reportFolder = Path.Combine(projectRoot, "Reportes");
-            if (!Directory.Exists(reportFolder))
-                Directory.CreateDirectory(reportFolder);
-
-            string filePath = Path.Combine(reportFolder, nombreArchivo);
-            File.WriteAllBytes(filePath, pdfBytes);
-
-            return filePath;
+            catch (Exception ex)
+            {
+                Console.WriteLine($"ERROR al guardar archivo: {ex}"); // ⬅️ DEBUG
+                throw;
+            }
         }
     }
 
