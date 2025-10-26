@@ -22,15 +22,18 @@ namespace Forms.Inscripcion
         public int TipoPersona { get; set; }     // 1=Alumno, 2=Profesor
         public int IdPersona { get; set; }
 
+        private List<DTOs.InscripcionDTO> inscripcionesOriginales = new();
+
         public FormInscripcion()
         {
             InitializeComponent();
+            this.Load += FormInscripcion_Load;
         }
 
         private async void FormInscripcion_Load(object sender, EventArgs e)
         {
             await CargarInscripciones();
-        }
+            }
 
         private async Task CargarInscripciones()
         {
@@ -38,26 +41,37 @@ namespace Forms.Inscripcion
             {
                 IEnumerable<DTOs.InscripcionDTO> inscripciones;
 
-                // La lógica de filtrado:
-                if (TipoUsuario == "Admin" || TipoPersona == 2) // Admin o Profesor
+                if (TipoUsuario == "Admin" || TipoPersona == 2)
                 {
                     inscripciones = await _httpClient.GetFromJsonAsync<IEnumerable<DTOs.InscripcionDTO>>("inscripciones/search");
                 }
-                else // Alumno (TipoPersona == 1)
+                else
                 {
                     inscripciones = await _httpClient.GetFromJsonAsync<IEnumerable<DTOs.InscripcionDTO>>($"inscripciones/alumno/{IdPersona}");
                 }
 
                 if (inscripciones != null)
                 {
-                    dataGridView1.DataSource = inscripciones.ToList();
+                    inscripcionesOriginales = inscripciones.ToList();
+                    dataGridView1.DataSource = inscripcionesOriginales;
                     ConfigurarGridPorRol();
+
+                    // Inicializa combos de filtrado aquí
+                    comboBoxFiltrarCondicion.Items.Clear();
+                    comboBoxFiltrarCondicion.Items.Add("Todas");
+                    comboBoxFiltrarCondicion.Items.Add("Aprobado");
+                    comboBoxFiltrarCondicion.Items.Add("Regular");
+                    comboBoxFiltrarCondicion.Items.Add("Inscripto");
+                    comboBoxFiltrarCondicion.Items.Add("Libre");
+                    comboBoxFiltrarCondicion.SelectedIndex = 0;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al cargar inscripciones: {ex.Message}");
             }
+            buttonReporteAlumnos.Visible = TipoUsuario == "Admin" || TipoPersona == 2;
+            buttonReporteGrafico.Visible = TipoUsuario == "Admin";
         }
 
         private async void buttonBuscar_Click(object sender, EventArgs e)
@@ -150,7 +164,24 @@ namespace Forms.Inscripcion
 
         private void buttonModificar_Click(object sender, EventArgs e)
         {
-            // Implementación pendiente
+            if (dataGridView1.CurrentRow == null)
+            {
+                MessageBox.Show("Debe seleccionar una inscripción para modificar.",
+                    "Advertencia",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            int idInscripcion = (int)dataGridView1.CurrentRow.Cells["Id"].Value;
+
+            // Abre el formulario de modificación pasando el ID
+            var formModificar = new formModificarInscripcion(idInscripcion);
+            if (formModificar.ShowDialog() == DialogResult.OK)
+            {
+                _ = CargarInscripciones();
+            }
+            formModificar.Dispose();
         }
 
 
@@ -205,7 +236,22 @@ namespace Forms.Inscripcion
                 modal.Dispose();
             }
         }
+        private void buttonFiltrar_Click(object sender, EventArgs e)
+        {
+            var condicion = comboBoxFiltrarCondicion.SelectedItem?.ToString();
+            int anio = (int)numericUpDownFiltrarAnio.Value;
 
+            var filtradas = inscripcionesOriginales.AsEnumerable();
+
+            if (!string.IsNullOrWhiteSpace(condicion) && condicion != "Todas")
+                filtradas = filtradas.Where(i => i.Condicion == condicion);
+
+            // Filtra solo si hay inscripciones para ese año
+            filtradas = filtradas.Where(i => i.AnioCalendario == anio);
+
+            dataGridView1.DataSource = filtradas.ToList();
+            ConfigurarGridPorRol();
+        }
         private void buttonReporteAlumnos_Click(object sender, EventArgs e)
         {
             FormReporteAlumnos formReporte = new FormReporteAlumnos();

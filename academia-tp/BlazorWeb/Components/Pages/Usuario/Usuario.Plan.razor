@@ -5,6 +5,7 @@
 @inherits ProtectedUser
 @rendermode RenderModes.ProtectedMode
 @inject PlanHttpService PlanService
+@inject EspecialidadHttpService EspecialidadService
 
 <h3>Listado de Planes</h3>
 
@@ -31,7 +32,7 @@
             <tr>
                 <th>Id</th>
                 <th>Descripción</th>
-                <th>Id Especialidad</th>
+                <th>Especialidad</th>
             </tr>
         </thead>
         <tbody>
@@ -40,7 +41,7 @@
                 <tr>
                     <td>@plan.Id</td>
                     <td>@plan.Desc</td>
-					<td>@plan.Id_especialidad</td>
+                    <td>@ObtenerNombreEspecialidad(plan.Id_especialidad)</td>
                 </tr>
             }
         </tbody>
@@ -51,11 +52,13 @@
 @code {
     private List<Plan>? planes = new List<Plan>();
     private bool isLoading = true;
+	private List<Especialidad>? especialidades = new List<Especialidad>();
 
     protected override async Task OnInitializedAsync()
     {
         base.OnInitialized();
         await CargarPlanes();
+		await cargarEspecilidades();
     }
 
     private async Task CargarPlanes()
@@ -76,7 +79,26 @@
             isLoading = false;
         }
     }
+	private async Task cargarEspecilidades()
+	{
+		try
+		{
+			especialidades = await EspecialidadService.GetAllAsync();
+			especialidades = especialidades?.OrderBy(e => e.Id).ToList();
+		}
+		catch (Exception ex)
+		{
+			Console.WriteLine($"Error al cargar especialidades: {ex.Message}");
+		}
+	}
+    private string ObtenerNombreEspecialidad(int idEspecialidad)
+    {
+        if (especialidades == null || !especialidades.Any())
+            return "-";
 
+        var esp = especialidades.FirstOrDefault(e => e.Id == idEspecialidad);
+        return esp != null ? esp.Desc : "Sin especialidad";
+    }
 }
 
 

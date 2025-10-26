@@ -1,0 +1,107 @@
+﻿@page "/usuario/curso"
+@using BlazorWeb.Components.Base
+@using BlazorWeb.Components.Shared
+@using Domain.model
+@inherits ProtectedUser
+@rendermode RenderModes.ProtectedMode
+@inject CursoHttpService CursoService
+@inject MateriaHttpService MateriaService
+
+<h3>Listado de Cursos</h3>
+
+@if (isLoading)
+{
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 300px;">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+            <span class="visually-hidden">Cargando...</span>
+        </div>
+    </div>
+}
+
+@if ((cursos == null || !cursos.Any()) && !isLoading)
+{
+    <div class="alert alert-info" role="alert">
+        <i class="bi bi-info-circle-fill"></i>
+        No hay cursos cargadas en el sistema.
+    </div>
+}
+@if (cursos != null && cursos.Any() && !isLoading)
+{
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Materia</th>
+                <th>Anio Calendario</th>
+                <th>Cupo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var curso in cursos)
+            {
+                <tr>
+                    <td>@curso.Nombre</td>
+                    <td>@ObtenerNombreMateria(curso.Id_materia)</td>
+                    <td>@curso.Anio_calendario</td>
+                    <td>@curso.Cupo</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@code {
+    private List<Curso>? cursos = new List<Curso>();
+    private bool isLoading = true;
+	private List<Materia>? materias = new List<Materia>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        base.OnInitialized();
+        await CargarCursos();
+		await cargarMaterias();
+    }
+
+    private async Task CargarCursos()
+    {
+        try
+        {
+            isLoading = true;
+            cursos = await CursoService.GetAllAsync();
+            cursos = cursos?.OrderBy(e => e.Id).ToList();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al cargar cursos: {ex.Message}");
+            cursos = new List<Curso>();
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+    private async Task cargarMaterias()
+    {
+        try
+        {
+            materias = await MateriaService.GetAllAsync();
+            materias = materias?.OrderBy(e => e.Id).ToList();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al cargar materias: {ex.Message}");
+        }
+    }
+    private string ObtenerNombreMateria(int idMateria)
+    {
+        if (materias == null || !materias.Any())
+            return "-";
+
+        var esp = materias.FirstOrDefault(e => e.Id == idMateria);
+        return esp != null ? esp.Desc : "Sin especialidad";
+    }
+}
+
+

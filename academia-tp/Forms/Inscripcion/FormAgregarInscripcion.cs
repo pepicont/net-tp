@@ -204,10 +204,12 @@ namespace Forms.Inscripcion
         {
             try
             {
+                int idCursoSeleccionado = (int)comboBoxCurso.SelectedValue;
+
                 var inscripcion = new Domain.model.Inscripcion
                 {
                     Id_alumno = idAlumno,
-                    Id_curso = (int)comboBoxCurso.SelectedValue,
+                    Id_curso = idCursoSeleccionado,
                     Condicion = "Inscripto",
                     Nota = null,
                     Fecha_inscripcion = DateTime.Now
@@ -217,6 +219,14 @@ namespace Forms.Inscripcion
 
                 if (response.IsSuccessStatusCode)
                 {
+                    // Actualizar el cupo del curso
+                    var curso = await _httpClient.GetFromJsonAsync<Curso>($"cursos/{idCursoSeleccionado}");
+                    if (curso != null)
+                    {
+                        curso.Cupo = Math.Max(0, curso.Cupo - 1); // Evita cupo negativo
+                        await _httpClient.PutAsJsonAsync($"cursos/{curso.Id}", curso);
+                    }
+
                     MessageBox.Show("Inscripción realizada exitosamente!");
                     DialogResult = DialogResult.OK;
                     Close();

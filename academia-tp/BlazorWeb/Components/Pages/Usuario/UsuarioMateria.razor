@@ -1,0 +1,109 @@
+﻿@page "/usuario/materia"
+@using BlazorWeb.Components.Base
+@using BlazorWeb.Components.Shared
+@using Domain.model
+@inherits ProtectedUser
+@rendermode RenderModes.ProtectedMode
+@inject PlanHttpService PlanService
+@inject MateriaHttpService MateriaService
+
+<h3>Listado de Materias</h3>
+
+@if (isLoading)
+{
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 300px;">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+            <span class="visually-hidden">Cargando...</span>
+        </div>
+    </div>
+}
+
+@if ((materiaes == null || !materiaes.Any()) && !isLoading)
+{
+    <div class="alert alert-info" role="alert">
+        <i class="bi bi-info-circle-fill"></i>
+        No hay materiaes cargadas en el sistema.
+    </div>
+}
+@if (materiaes != null && materiaes.Any() && !isLoading)
+{
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Descripción</th>
+                <th>Hs Semanales</th>
+                <th>Hs Totales</th>
+                <th>Materia</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var materia in materiaes)
+            {
+                <tr>
+                    <td>@materia.Id</td>
+                    <td>@materia.Desc</td>
+					<td>@materia.Hs_semanales</td>
+					<td>@materia.Hs_totales</td>
+                    <td>@ObtenerNombrePlan(materia.Id_plan)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@code {
+    private List<Materia>? materiaes = new List<Materia>();
+    private bool isLoading = true;
+    private List<Plan>? planes = new List<Plan>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        base.OnInitialized();
+        await CargarMaterias();
+        await cargarPlanes();
+    }
+
+    private async Task CargarMaterias()
+    {
+        try
+        {
+            isLoading = true;
+            materiaes = await MateriaService.GetAllAsync();
+            materiaes = materiaes?.OrderBy(e => e.Id).ToList();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al cargar materiaes: {ex.Message}");
+            materiaes = new List<Materia>();
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+    private async Task cargarPlanes()
+    {
+        try
+        {
+            planes = await PlanService.GetAllAsync();
+            planes = planes?.OrderBy(e => e.Id).ToList();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al cargar planes: {ex.Message}");
+        }
+    }
+
+    private string ObtenerNombrePlan(int id)
+    {
+        if (planes == null || !planes.Any())
+            return "-";
+
+        var esp = planes.FirstOrDefault(e => e.Id == id);
+        return esp != null ? esp.Desc : "Sin plan";
+    }
+}
+
+

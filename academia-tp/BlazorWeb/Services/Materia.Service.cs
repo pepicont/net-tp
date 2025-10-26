@@ -15,21 +15,21 @@ public class MateriaHttpService
         return await _httpClient.GetFromJsonAsync<List<Materia>>("materias")
                ?? new List<Materia>();
     }
-    /*public async Task CreateAsync(Especialidad especialidad)
+    public async Task CreateAsync(Materia materia)
     {
-        var response = await _httpClient.PostAsJsonAsync("especialidades", especialidad);
+        var response = await _httpClient.PostAsJsonAsync("materias", materia);
         response.EnsureSuccessStatusCode();
     }
 
-    public async Task UpdateAsync(Especialidad especialidad)
+    public async Task UpdateAsync(Materia materia)
     {
-        var response = await _httpClient.PutAsJsonAsync($"especialidades/{especialidad.Id}", especialidad);
+        var response = await _httpClient.PutAsJsonAsync($"materias/{materia.Id}", materia);
         response.EnsureSuccessStatusCode();
     }
 
     public async Task DeleteAsync(int id)
     {
-        var response = await _httpClient.DeleteAsync($"especialidades/{id}");
+        var response = await _httpClient.DeleteAsync($"materias/{id}");
         response.EnsureSuccessStatusCode();
-    }*/
+    }
 }

@@ -1,0 +1,161 @@
+﻿@using BlazorWeb.Components.Shared
+@using Domain.model
+@using Domain.services
+@inject CursoHttpService CursoService
+@inject MateriaHttpService MateriaService
+@inject AuthServiceScoped AuthServiceScoped
+
+@if (IsVisible)
+{
+    <div class="modal fade show d-block" tabindex="-1" role="dialog" style="background-color: rgba(0,0,0,0.5);">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">@(CursoActual?.Id > 0 ? "Editar Curso" : "Nuevo Curso")</h5>
+                    <button type="button" class="btn-close" @onclick="Cerrar" aria-label="Close"></button>
+                </div>
+                <EditForm Model="CursoActual" OnValidSubmit="GuardarCurso">
+                    <div class="modal-body">
+                        @if (!string.IsNullOrEmpty(errorMessage))
+                        {
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                @errorMessage
+                                <button type="button" class="btn-close" @onclick="() => errorMessage = null"></button>
+                            </div>
+                        }
+
+                        @if (CursoActual?.Id > 0)
+                        {
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Id <span class="text-danger">*</span></label>
+                                    <InputNumber class="form-control" @bind-Value="CursoActual.Id" placeholder="Ingrese el ID" disabled />
+                                    <small class="form-text text-muted">El ID no se puede modificar</small>
+                                </div>
+                            </div>
+                        }
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Nombre <span class="text-danger">*</span></label>
+                                <InputText class="form-control" @bind-Value="CursoActual.Nombre" placeholder="Ingrese el nombre" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Anio Calendario <span class="text-danger">*</span></label>
+                                <InputNumber class="form-control" @bind-Value="CursoActual.Anio_calendario" placeholder="Ingrese el anio" />
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Cupo <span class="text-danger">*</span></label>
+                                <InputNumber class="form-control" @bind-Value="CursoActual.Cupo" placeholder="Ingrese el cupo" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Materia <span class="text-danger">*</span></label>
+                                <InputSelect class="form-select" @bind-Value="CursoActual.Id_materia">
+                                    <option value="">-- Seleccione una materia --</option>
+                                    @foreach (var mat in Materias)
+                                    {
+                                        <option value="@mat.Id">@mat.Desc</option>
+                                    }
+                                </InputSelect>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" @onclick="Cerrar" disabled="@guardando">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="btn btn-primary" disabled="@guardando">
+                            @if (guardando)
+                            {
+                                <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                            }
+                            @(CursoActual?.Id > 0 ? "Guardar Cambios" : "Crear Curso")
+                        </button>
+                    </div>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsVisible { get; set; }
+    [Parameter] public Curso? CursoActual { get; set; }
+    [Parameter] public EventCallback OnGuardado { get; set; }
+    [Parameter] public EventCallback OnCerrar { get; set; }
+
+    private bool guardando = false;
+    private string? errorMessage = null;
+	private List<Materia> Materias = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await CargarMaterias();
+    }
+
+    private async Task GuardarCurso()
+    {
+
+        try
+        {
+            guardando = true;
+            errorMessage = null;
+
+            if (CursoActual!.Id > 0)
+            {
+                await CursoService.UpdateAsync(CursoActual);
+            }
+            else
+            {
+                await CursoService.CreateAsync(CursoActual);
+            }
+
+            await OnGuardado.InvokeAsync();
+            await Cerrar();
+        }
+        catch (HttpRequestException ex)
+        {
+            errorMessage = "Error de conexión. Verifica que el servidor esté disponible.";
+            Console.WriteLine($"Error HTTP: {ex.Message}");
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error al guardar la Curso: {ex.Message}";
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+        finally
+        {
+            guardando = false;
+        }
+    }
+
+    private async Task Cerrar()
+    {
+        errorMessage = null;
+        await OnCerrar.InvokeAsync();
+    }
+
+    private async Task CargarMaterias()
+    {
+        try
+        {
+            var lista = await MateriaService.GetAllAsync();
+            Materias = lista ?? new();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error cargando matecialidades: {ex.Message}");
+            errorMessage = "No se pudieron cargar las matecialidades.";
+        }
+    }
+}
