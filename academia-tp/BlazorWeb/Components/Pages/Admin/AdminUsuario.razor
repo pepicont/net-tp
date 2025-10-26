@@ -1,0 +1,166 @@
+﻿@page "/admin/usuario"
+@using BlazorWeb.Components.Base
+@using BlazorWeb.Components.Shared
+@using Domain.model
+@inherits ProtectedAdmin
+@rendermode RenderModes.ProtectedMode
+@inject UsuarioHttpService UsuarioService
+
+<h3>Gestión de Usuarios (Solo Admin)</h3>
+
+@if (isLoading)
+{
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 300px;">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+            <span class="visually-hidden">Cargando...</span>
+        </div>
+    </div>
+}
+else if ((usuarios == null || !usuarios.Any()))
+{
+    <div class="alert alert-info" role="alert">
+        <i class="bi bi-info-circle-fill"></i>
+        No hay usuarios cargados en el sistema.
+    </div>
+}
+else
+{
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Usuario</th>
+                <th>Habilitado</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>Cambia Clave</th>
+                <th>Tipo de Usuario</th>
+                <th>Id Persona</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var usuario in usuarios)
+            {
+                <tr>
+                    <td>@usuario.Id</td>
+                    <td>@usuario.Nombre_usuario</td>
+                    <td>@(usuario.Habilitado ? "Sí" : "No")</td>
+                    <td>@usuario.Nombre</td>
+                    <td>@usuario.Apellido</td>
+                    <td>@usuario.Email</td>
+                    <td>@(usuario.Cambia_clave ? "Sí" : "No")</td>
+                    <td>@usuario.Tipo</td>
+                    <td>@usuario.Id_persona</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm me-1" type="button" @onclick="() => EditarUsuario(usuario)">
+                            <i class="bi bi-pencil"></i> Editar
+                        </button>
+                        <button class="btn btn-danger btn-sm" type="button" @onclick="() => EliminarUsuario(usuario.Id)">
+                            <i class="bi bi-trash"></i> Eliminar
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@if (!isLoading)
+{
+    <button class="btn btn-primary" type="button" @onclick="AbrirModalNuevo">
+        <i class="bi bi-plus-circle"></i> Cargar nuevo usuario
+    </button>
+}
+
+<ModalUsuario IsVisible="mostrarModal"
+              UsuarioActual="usuarioSeleccionada"
+              OnGuardado="OnUsuarioGuardada"
+              OnCerrar="CerrarModal" />
+
+@code {
+    private List<Usuario>? usuarios = new();
+    private bool isLoading = true;
+    private bool mostrarModal = false;
+    private Usuario? usuarioSeleccionada = null;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            base.OnInitialized();
+            await CargarUsuarios();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error en OnInitializedAsync: {ex}");
+        }
+    }
+
+    private async Task CargarUsuarios()
+    {
+        try
+        {
+            isLoading = true;
+            usuarios = await UsuarioService.GetAllAsync();
+            usuarios = usuarios?.OrderBy(u => u.Apellido).ToList();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al cargar usuarios: {ex.Message}");
+            usuarios = new List<Usuario>();
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private void AbrirModalNuevo()
+    {
+        usuarioSeleccionada = new Usuario();
+        mostrarModal = true;
+    }
+
+    private void EditarUsuario(Usuario usuario)
+    {
+        usuarioSeleccionada = new Usuario
+            {
+                Id = usuario.Id,
+                Nombre_usuario = usuario.Nombre_usuario,
+                Habilitado = usuario.Habilitado,
+                Nombre = usuario.Nombre,
+                Apellido = usuario.Apellido,
+                Email = usuario.Email,
+                Cambia_clave = usuario.Cambia_clave,
+                Tipo = usuario.Tipo,
+                Id_persona = usuario.Id_persona
+            };
+        mostrarModal = true;
+    }
+
+    private async Task OnUsuarioGuardada()
+    {
+        await CargarUsuarios();
+    }
+
+    private void CerrarModal()
+    {
+        mostrarModal = false;
+        usuarioSeleccionada = null;
+    }
+
+    private async Task EliminarUsuario(int id)
+    {
+        try
+        {
+            await UsuarioService.DeleteAsync(id);
+            await CargarUsuarios();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al eliminar usuario: {ex.Message}");
+        }
+    }
+}

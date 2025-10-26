@@ -10,6 +10,7 @@ builder.Services.AddRazorComponents()
 builder.Services.AddHttpClient<PersonaHttpService>();
 builder.Services.AddHttpClient<PlanHttpService>();
 builder.Services.AddHttpClient<EspecialidadHttpService>();
+builder.Services.AddScoped<UsuarioHttpService>();
 builder.Services.AddScoped<AuthServiceScoped>(); //servicio auth singleton
 
 var app = builder.Build();
