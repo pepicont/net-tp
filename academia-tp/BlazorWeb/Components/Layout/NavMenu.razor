@@ -16,66 +16,14 @@
 
     <div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
         <nav class="flex-column">
-            <div class="nav-item px-3">
-                <NavLink class="nav-link" href="home" Match="NavLinkMatch.All">
-                    <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
-                </NavLink>
-            </div>
-
-            <div class="nav-item px-3">
-                <NavLink class="nav-link nav-link-icon" href="admin/persona" Match="NavLinkMatch.All">
-                    <span class="bi-person-vcard-fill" aria-hidden="true"></span> Persona
-                </NavLink>
-            </div>
-
-            <div class="nav-item px-3">
-                <NavLink class="nav-link nav-link-icon" href="admin/inscripcion" Match="NavLinkMatch.All">
-                    <span class="bi-receipt" aria-hidden="true"></span> Inscripcion
-                </NavLink>
-            </div>
-
-            <div class="nav-item px-3">
-                <NavLink class="nav-link nav-link-icon" href="admin/usuario" Match="NavLinkMatch.All">
-                    <span class="bi-person-circle" aria-hidden="true"></span> Usuario
-                </NavLink>
-            </div>
-
-            <div class="nav-item px-3">
-                <NavLink class="nav-link nav-link-icon" href="admin/plan" Match="NavLinkMatch.All">
-                    <span class="bi-calendar-event" aria-hidden="true"></span> Plan
-                </NavLink>
-            </div>
-
-            <div class="nav-item px-3">
-                <NavLink class="nav-link nav-link-icon" href="admin/especialidad" Match="NavLinkMatch.All">
-                    <span class="bi-award" aria-hidden="true"></span> Especialidad
-                </NavLink>
-            </div>
-
-            <div class="nav-item px-3">
-                <NavLink class="nav-link nav-link-icon" href="admin/materia" Match="NavLinkMatch.All">
-                    <span class="bi-journal" aria-hidden="true"></span> Materia
-                </NavLink>
-            </div>
-
-            <div class="nav-item px-3">
-                <NavLink class="nav-link nav-link-icon" href="admin/comision" Match="NavLinkMatch.All">
-                    <span class="bi-archive" aria-hidden="true"></span> Comisión
-                </NavLink>
-            </div>
-
-            <div class="nav-item px-3">
-                <NavLink class="nav-link nav-link-icon" href="admin/curso" Match="NavLinkMatch.All">
-                    <span class="bi-chat-dots" aria-hidden="true"></span> Curso
-                </NavLink>
-            </div>
-
-            <div class="nav-item px-3">
-                <NavLink class="nav-link nav-link-icon" href="admin/docente" Match="NavLinkMatch.All">
-                    <span class="bi-person-exclamation" aria-hidden="true"></span> Docente
-                </NavLink>
-            </div>
-
+            @foreach (var item in AdminMenuItems)
+            {
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link nav-link-icon" href=@($"admin/{item.Href}") Match="NavLinkMatch.All">
+                        <span class="@item.Icono" aria-hidden="true"></span> @item.Titulo
+                    </NavLink>
+                </div>
+            }
         </nav>
     </div>
 }
@@ -85,66 +33,14 @@
 
     <div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
         <nav class="flex-column">
-            <div class="nav-item px-3">
-                <NavLink class="nav-link" href="home" Match="NavLinkMatch.All">
-                    <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
-                </NavLink>
-            </div>
-
-            <div class="nav-item px-3">
-                <NavLink class="nav-link nav-link-icon" href="usuario/persona" Match="NavLinkMatch.All">
-                    <span class="bi-person-vcard-fill" aria-hidden="true"></span> Persona
-                </NavLink>
-            </div>
-
-            <div class="nav-item px-3">
-                <NavLink class="nav-link nav-link-icon" href="usuario/inscripcion" Match="NavLinkMatch.All">
-                    <span class="bi-receipt" aria-hidden="true"></span> Inscripcion
-                </NavLink>
-            </div>
-
-            <div class="nav-item px-3">
-                <NavLink class="nav-link nav-link-icon" href="usuario/usuario" Match="NavLinkMatch.All">
-                    <span class="bi-person-circle" aria-hidden="true"></span> Usuario
-                </NavLink>
-            </div>
-
-            <div class="nav-item px-3">
-                <NavLink class="nav-link nav-link-icon" href="usuario/plan" Match="NavLinkMatch.All">
-                    <span class="bi-calendar-event" aria-hidden="true"></span> Plan
-                </NavLink>
-            </div>
-
-            <div class="nav-item px-3">
-                <NavLink class="nav-link nav-link-icon" href="usuario/especialidad" Match="NavLinkMatch.All">
-                    <span class="bi-award" aria-hidden="true"></span> Especialidad
-                </NavLink>
-            </div>
-
-            <div class="nav-item px-3">
-                <NavLink class="nav-link nav-link-icon" href="usuario/materia" Match="NavLinkMatch.All">
-                    <span class="bi-journal" aria-hidden="true"></span> Materia
-                </NavLink>
-            </div>
-
-            <div class="nav-item px-3">
-                <NavLink class="nav-link nav-link-icon" href="usuario/comision" Match="NavLinkMatch.All">
-                    <span class="bi-archive" aria-hidden="true"></span> Comisión
-                </NavLink>
-            </div>
-
-            <div class="nav-item px-3">
-                <NavLink class="nav-link nav-link-icon" href="usuario/curso" Match="NavLinkMatch.All">
-                    <span class="bi-chat-dots" aria-hidden="true"></span> Curso
-                </NavLink>
-            </div>
-
-            <div class="nav-item px-3">
-                <NavLink class="nav-link nav-link-icon" href="usuario/docente" Match="NavLinkMatch.All">
-                    <span class="bi-person-exclamation" aria-hidden="true"></span> Docente
-                </NavLink>
-            </div>
-
+            @foreach (var item in AdminMenuItems)
+            {
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link nav-link-icon" href=@($"usuario/{item.Href}") Match="NavLinkMatch.All">
+                        <span class="@item.Icono" aria-hidden="true"></span> @item.Titulo
+                    </NavLink>
+                </div>
+            }
         </nav>
     </div>
 }
@@ -170,4 +66,20 @@
         AuthServiceScoped.OnChange -= StateHasChanged;
         NavigationManager.LocationChanged -= OnLocationChanged;
     }
+
+    private List<MenuItem> AdminMenuItems = new()
+    {
+        new("Home", "home", "bi-house-door-fill-nav-menu"),
+        new("Persona", "persona", "bi-person-vcard-fill"),
+        new("Inscripción", "inscripcion", "bi-receipt"),
+        new("Usuario", "usuario", "bi-person-circle"),
+        new("Plan", "plan", "bi-calendar-event"),
+        new("Especialidad", "especialidad", "bi-award"),
+        new("Materia", "materia", "bi-journal"),
+        new("Comisión", "comision", "bi-archive"),
+        new("Curso", "curso", "bi-chat-dots"),
+        new("Docente", "docente", "bi-person-exclamation")
+    };
+
+    public record MenuItem(string Titulo, string Href, string Icono);
 }

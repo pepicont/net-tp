@@ -1,0 +1,82 @@
+﻿@page "/usuario/plan"
+@using BlazorWeb.Components.Base
+@using BlazorWeb.Components.Shared
+@using Domain.model
+@inherits ProtectedUser
+@rendermode RenderModes.ProtectedMode
+@inject PlanHttpService PlanService
+
+<h3>Listado de Planes</h3>
+
+@if (isLoading)
+{
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 300px;">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+            <span class="visually-hidden">Cargando...</span>
+        </div>
+    </div>
+}
+
+@if ((planes == null || !planes.Any()) && !isLoading)
+{
+    <div class="alert alert-info" role="alert">
+        <i class="bi bi-info-circle-fill"></i>
+        No hay planes cargadas en el sistema.
+    </div>
+}
+@if (planes != null && planes.Any() && !isLoading)
+{
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Descripción</th>
+                <th>Id Especialidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var plan in planes)
+            {
+                <tr>
+                    <td>@plan.Id</td>
+                    <td>@plan.Desc</td>
+					<td>@plan.Id_especialidad</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@code {
+    private List<Plan>? planes = new List<Plan>();
+    private bool isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        base.OnInitialized();
+        await CargarPlanes();
+    }
+
+    private async Task CargarPlanes()
+    {
+        try
+        {
+            isLoading = true;
+            planes = await PlanService.GetAllAsync();
+            planes = planes?.OrderBy(e => e.Id).ToList();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al cargar planes: {ex.Message}");
+            planes = new List<Plan>();
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+}
+
+

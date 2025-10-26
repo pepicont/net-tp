@@ -1,0 +1,155 @@
+﻿@namespace BlazorWeb.Components.Shared
+@using Domain.model
+@using Domain.services
+@inject PlanHttpService PlanService
+@inject EspecialidadHttpService EspecialidadService
+@inject AuthServiceScoped AuthServiceScoped
+
+@if (IsVisible)
+{
+    <div class="modal fade show d-block" tabindex="-1" role="dialog" style="background-color: rgba(0,0,0,0.5);">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">@(PlanActual?.Id > 0 ? "Editar Plan" : "Nuevo Plan")</h5>
+                    <button type="button" class="btn-close" @onclick="Cerrar" aria-label="Close"></button>
+                </div>
+                <EditForm Model="PlanActual" OnValidSubmit="GuardarPlan">
+                    <div class="modal-body">
+                        @if (!string.IsNullOrEmpty(errorMessage))
+                        {
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                @errorMessage
+                                <button type="button" class="btn-close" @onclick="() => errorMessage = null"></button>
+                            </div>
+                        }
+
+                        @if (PlanActual?.Id > 0)
+                        {
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Id <span class="text-danger">*</span></label>
+                                    <InputNumber class="form-control" @bind-Value="PlanActual.Id" placeholder="Ingrese el ID" disabled />
+                                    <small class="form-text text-muted">El ID no se puede modificar</small>
+                                </div>
+                            </div>
+                        }
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Descripción <span class="text-danger">*</span></label>
+                                <InputText class="form-control" @bind-Value="PlanActual.Desc" placeholder="Ingrese la descripción" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Especialidad <span class="text-danger">*</span></label>
+                                <InputSelect class="form-select" @bind-Value="PlanActual.Id_especialidad">
+                                    <option value="">-- Seleccione una especialidad --</option>
+                                    @foreach (var esp in Especialidades)
+                                    {
+                                        <option value="@esp.Id">@esp.Desc</option>
+                                    }
+                                </InputSelect>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" @onclick="Cerrar" disabled="@guardando">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="btn btn-primary" disabled="@guardando">
+                            @if (guardando)
+                            {
+                                <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                            }
+                            @(PlanActual?.Id > 0 ? "Guardar Cambios" : "Crear Plan")
+                        </button>
+                    </div>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public bool IsVisible { get; set; }
+    [Parameter] public Plan? PlanActual { get; set; }
+    [Parameter] public EventCallback OnGuardado { get; set; }
+    [Parameter] public EventCallback OnCerrar { get; set; }
+
+    private bool guardando = false;
+    private string? errorMessage = null;
+	private List<Especialidad> Especialidades = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await CargarEspecialidades();
+    }
+
+    private async Task GuardarPlan()
+    {
+        // Validar campos vacíos
+        if (string.IsNullOrWhiteSpace(PlanActual?.Desc))
+        {
+            errorMessage = "La descripción es obligatoria";
+            return;
+        }
+
+        try
+        {
+            guardando = true;
+            errorMessage = null;
+
+            if (PlanActual!.Id > 0)
+            {
+                await PlanService.UpdateAsync(PlanActual);
+            }
+            else
+            {
+                await PlanService.CreateAsync(PlanActual);
+            }
+
+            await OnGuardado.InvokeAsync();
+            await Cerrar();
+        }
+        catch (HttpRequestException ex)
+        {
+            errorMessage = "Error de conexión. Verifica que el servidor esté disponible.";
+            Console.WriteLine($"Error HTTP: {ex.Message}");
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error al guardar la Plan: {ex.Message}";
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+        finally
+        {
+            guardando = false;
+        }
+    }
+
+    private async Task Cerrar()
+    {
+        errorMessage = null;
+        await OnCerrar.InvokeAsync();
+    }
+
+    private async Task CargarEspecialidades()
+    {
+        try
+        {
+            var lista = await EspecialidadService.GetAllAsync();
+            Especialidades = lista ?? new();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error cargando especialidades: {ex.Message}");
+            errorMessage = "No se pudieron cargar las especialidades.";
+        }
+    }
+}
