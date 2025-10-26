@@ -1,5 +1,80 @@
-﻿<h3>Usuario.Especialidad</h3>
+﻿@page "/usuario/especialidad"
+@using BlazorWeb.Components.Base
+@using BlazorWeb.Components.Shared
+@using Domain.model
+@inherits ProtectedUser
+@rendermode RenderModes.ProtectedMode
+@inject EspecialidadHttpService EspecialidadService
+
+<h3>Listado de Especialidades</h3>
+
+@if (isLoading)
+{
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 300px;">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+            <span class="visually-hidden">Cargando...</span>
+        </div>
+    </div>
+}
+
+@if ((especialidades == null || !especialidades.Any()) && !isLoading)
+{
+    <div class="alert alert-info" role="alert">
+        <i class="bi bi-info-circle-fill"></i>
+        No hay especialidades cargadas en el sistema.
+    </div>
+}
+@if (especialidades != null && especialidades.Any() && !isLoading)
+{
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var especialidad in especialidades)
+            {
+                <tr>
+                    <td>@especialidad.Id</td>
+                    <td>@especialidad.Desc</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
 
 @code {
+    private List<Especialidad>? especialidades = new List<Especialidad>();
+    private bool isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        base.OnInitialized();
+        await CargarEspecialidades();
+    }
+
+    private async Task CargarEspecialidades()
+    {
+        try
+        {
+            isLoading = true;
+            especialidades = await EspecialidadService.GetAllAsync();
+            especialidades = especialidades?.OrderBy(e => e.Id).ToList();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al cargar especialidades: {ex.Message}");
+            especialidades = new List<Especialidad>();
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
 
 }
+
+
