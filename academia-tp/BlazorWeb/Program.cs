@@ -14,6 +14,7 @@ builder.Services.AddHttpClient<InscripcionHttpService>();
 builder.Services.AddHttpClient<MateriaHttpService>();
 builder.Services.AddHttpClient<CursoHttpService>();
 builder.Services.AddHttpClient<ReporteHttpService>();
+builder.Services.AddScoped<UsuarioHttpService>();
 builder.Services.AddScoped<AuthServiceScoped>(); //servicio auth singleton
 
 var app = builder.Build();
