@@ -1,0 +1,113 @@
+﻿@page "/usuario/usuario"
+@using BlazorWeb.Components.Base
+@using BlazorWeb.Components.Shared
+@using Domain.model
+@using Domain.services
+@inherits ProtectedUser
+@rendermode RenderModes.ProtectedMode
+@inject UsuarioHttpService UsuarioService
+@inject AuthServiceScoped AuthServiceScoped
+
+<h3>Gestión de mi usuario</h3>
+
+@if (isLoading)
+{
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 300px;">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+            <span class="visually-hidden">Cargando...</span>
+        </div>
+    </div>
+}
+
+@if (usuario != null && !isLoading)
+{
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Usuario</th>
+                <th>Habilitado</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>Cambia Clave</th>
+                <th>Tipo de Usuario</th>
+                <th>Id Persona</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                <td>@usuario.Id</td>
+                <td>@usuario.Nombre_usuario</td>
+                <td>@(usuario.Habilitado ? "Sí" : "No")</td>
+                <td>@usuario.Nombre</td>
+                <td>@usuario.Apellido</td>
+                <td>@usuario.Email</td>
+                <td>@(usuario.Cambia_clave ? "Sí" : "No")</td>
+                <td>@usuario.Tipo</td>
+                <td>@usuario.Id_persona</td>
+                    
+                </tr>
+            
+        </tbody>
+    </table>
+    <button class="btn btn-primary" type="button" @onclick="EditarUsuario">
+        <i class="bi bi-plus-circle"></i> Editar mis datos
+    </button>
+}
+
+
+    
+<ModalUsuario IsVisible="mostrarModal"
+              UsuarioActual="usuario"
+              OnGuardado="OnUsuarioGuardada"
+              OnCerrar="CerrarModal" />
+
+@code {
+    private Usuario? usuario = null;
+    private bool isLoading = true;
+    private bool mostrarModal = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        base.OnInitialized();
+        await CargarUsuario();
+    }
+
+    private async Task CargarUsuario()
+    {
+        try
+        {
+            isLoading = true;
+            usuario = await UsuarioService.GetByIdAsync(AuthServiceScoped.Usuario.Id);
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al cargar usuarios: {ex.Message}");
+            usuario = null;
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private void EditarUsuario()
+    {
+        mostrarModal = true;
+    }
+
+    private async Task OnUsuarioGuardada()
+    {
+        await CargarUsuario();
+    }
+
+    private void CerrarModal()
+    {
+        mostrarModal = false;
+    }
+
+   
+}
