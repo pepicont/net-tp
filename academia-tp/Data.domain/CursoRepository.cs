@@ -22,7 +22,7 @@ namespace Data
         public IEnumerable<Curso> GetAll()
         {
             using var context = CreateContext();
-            return context.Curso.OrderBy(c => c.Id).ToList();
+            return context.Curso.OrderBy(c => c.Nombre).ToList();
         }
 
         public Curso Create(Curso materia)
