@@ -15,4 +15,22 @@ public class PlanHttpService
         return await _httpClient.GetFromJsonAsync<List<Plan>>("planes")
                ?? new List<Plan>();
     }
+
+    public async Task CreateAsync(Plan plan)
+    {
+        var response = await _httpClient.PostAsJsonAsync("planes", plan);
+        response.EnsureSuccessStatusCode();
+    }
+
+    public async Task UpdateAsync(Plan plan)
+    {
+        var response = await _httpClient.PutAsJsonAsync($"planes/{plan.Id}", plan);
+        response.EnsureSuccessStatusCode();
+    }
+
+    public async Task DeleteAsync(int id)
+    {
+        var response = await _httpClient.DeleteAsync($"planes/{id}");
+        response.EnsureSuccessStatusCode();
+    }
 }
