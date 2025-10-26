@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Data.domain\Data.domain.csproj" />
-    <ProjectReference Include="..\Data.domain\DataDomain.csproj" />
     <ProjectReference Include="..\Domain.model\Domain.model.csproj" />
     <ProjectReference Include="..\DTOs\DTOs.csproj" />
   </ItemGroup>

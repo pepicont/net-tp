@@ -199,7 +199,7 @@ namespace Forms.Inscripcion
             }
         }
     }
-}
+
 
 // Modifica la clase AlumnosPorCursoReport para recibir el nombre del curso y mostrarlo en el PDF
 
