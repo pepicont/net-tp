@@ -5,6 +5,7 @@
 @inherits ProtectedAdmin
 @rendermode RenderModes.ProtectedMode
 @inject PlanHttpService PlanService
+@inject EspecialidadHttpService EspecialidadService
 
 <h3>Gestión de Planes (Solo Admin)</h3>
 
@@ -31,7 +32,7 @@
             <tr>
                 <th>Id</th>
                 <th>Descripción</th>
-                <th>Id Especialidad</th>
+                <th>Especialidad</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -41,7 +42,7 @@
                 <tr>
                     <td>@plan.Id</td>
                     <td>@plan.Desc</td>
-					<td>@plan.Id_especialidad</td>
+                    <td>@ObtenerNombreEspecialidad(plan.Id_especialidad)</td>
                     <td>
                         <button class="btn btn-warning btn-sm me-1" type="button" @onclick="() => EditarPlan(plan)">
                             <i class="bi bi-pencil"></i> Editar
@@ -75,11 +76,13 @@
     private bool isLoading = true;
     private bool mostrarModal = false;
     private Plan? planSeleccionada = null;
+    private List<Especialidad>? especialidades = new List<Especialidad>();
 
     protected override async Task OnInitializedAsync()
     {
         base.OnInitialized();
         await CargarPlanes();
+        await cargarEspecilidades();
     }
 
     private async Task CargarPlanes()
@@ -141,6 +144,27 @@
         {
             Console.WriteLine($"Error al eliminar plan: {ex.Message}");
         }
+    }
+
+    private async Task cargarEspecilidades()
+    {
+        try
+        {
+            especialidades = await EspecialidadService.GetAllAsync();
+            especialidades = especialidades?.OrderBy(e => e.Id).ToList();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error al cargar especialidades: {ex.Message}");
+        }
+    }
+    private string ObtenerNombreEspecialidad(int idEspecialidad)
+    {
+        if (especialidades == null || !especialidades.Any())
+            return "-";
+
+        var esp = especialidades.FirstOrDefault(e => e.Id == idEspecialidad);
+        return esp != null ? esp.Desc : "Sin especialidad";
     }
 }
 
