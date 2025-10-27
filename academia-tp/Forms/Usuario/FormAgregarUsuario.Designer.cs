@@ -129,9 +129,9 @@
             // 
             // buttonPost
             // 
-            buttonPost.Location = new Point(444, 220);
+            buttonPost.Location = new Point(388, 215);
             buttonPost.Name = "buttonPost";
-            buttonPost.Size = new Size(129, 35);
+            buttonPost.Size = new Size(185, 35);
             buttonPost.TabIndex = 52;
             buttonPost.Text = "Crear";
             buttonPost.UseVisualStyleBackColor = true;
@@ -164,7 +164,6 @@
             // 
             // buttonVerificar
             // 
-            buttonVerificar = new Button();
             buttonVerificar.Location = new Point(386, 161);
             buttonVerificar.Name = "buttonVerificar";
             buttonVerificar.Size = new Size(131, 23);
