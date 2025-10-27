@@ -1,7 +1,7 @@
 ﻿using Domain.services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebApi
+namespace WebApi.Endpoints
 {
     public static class ReporteEndpoints
     {

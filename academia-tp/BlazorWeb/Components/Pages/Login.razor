@@ -1,10 +1,13 @@
 ﻿@using System.ComponentModel.DataAnnotations
+@using Domain.model
 @using Domain.services
 @page "/"
 @page "/login"
 @rendermode InteractiveServer
+@inject AuthHttpService AuthHttpService
 @inject AuthServiceScoped AuthServiceScoped
 @inject NavigationManager NavigationManager
+
 <h3>Inicia sesión en la Academia</h3>
 
 <EditForm Model="@loginModel" OnValidSubmit="HandleValidSubmit" FormName="LoginForm">
@@ -31,33 +34,59 @@
         <div class="alert alert-success">@okMessage</div>
     }
 
-    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+    <button type="submit" class="btn btn-primary" disabled="@isLoading">
+        @if (isLoading)
+        {
+            <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+        }
+        Iniciar Sesión
+    </button>
 </EditForm>
-
 
 @code {
     private LoginModel loginModel = new();
     private string errorMessage = string.Empty;
     private string okMessage = string.Empty;
+    private bool isLoading = false;
 
-    protected override void OnInitialized() //para que cada vez que vaya a /login, le vuelva a pedir registrarse
+    protected override void OnInitialized()
     {
+        // Limpiar sesión anterior
         AuthServiceScoped.Logout();
     }
-    private void HandleValidSubmit()
+
+    private async Task HandleValidSubmit()
     {
         errorMessage = string.Empty;
-        var usuario = AuthServiceScoped.Login(loginModel.Username, loginModel.Password);
+        okMessage = string.Empty;
+        isLoading = true;
 
-        if (usuario == null)
+        try
         {
-            errorMessage = "Usuario o contraseña incorrectos, o usuario deshabilitado.";
-            return;
-        }
+            // ✅ NUEVO: Llamar al endpoint HTTP en lugar de AuthServiceScoped.Login
+            var usuario = await AuthHttpService.LoginAsync(loginModel.Username, loginModel.Password);
 
-        okMessage = "Inicio de sesión exitoso.";
-        errorMessage = string.Empty;
-        NavigationManager.NavigateTo("/home");
+            if (usuario == null)
+            {
+                errorMessage = "Usuario o contraseña incorrectos, o usuario deshabilitado.";
+                return;
+            }
+
+            // ✅ Ahora sí, guardar el usuario en el estado de sesión
+            AuthServiceScoped.SetUsuario(usuario);
+
+            okMessage = "Inicio de sesión exitoso.";
+            await Task.Delay(500); // Pequeña pausa para mostrar el mensaje
+            NavigationManager.NavigateTo("/home");
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error al conectar con el servidor: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+        }
     }
 
     public class LoginModel

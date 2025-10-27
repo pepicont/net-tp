@@ -4,7 +4,7 @@ using DataDomain;
 using Domain.model;
 
 
-namespace WebApi
+namespace WebApi.Endpoints
 {
     public static class PersonaEndpoints
     {

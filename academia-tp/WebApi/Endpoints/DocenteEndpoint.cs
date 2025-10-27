@@ -1,7 +1,7 @@
 ﻿using Domain.model;
 using Domain.services;
 
-namespace WebApi
+namespace WebApi.Endpoints
 {
     public static class DocenteEndpoint
     {

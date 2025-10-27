@@ -3,8 +3,8 @@
 using Domain.model;
 using Domain.services;
 using DTOs;
-using WebApi;
 using QuestPDF.Infrastructure;
+using WebApi.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,6 +33,7 @@ app.MapCursoEndpoints();
 app.MapInscripcionEndpoints();
 app.MapDocenteEndpoints();
 app.MapReporteEndpoints();
+app.MapAuthEndpoints();
 
 
 app.Run();

@@ -2,7 +2,7 @@ using Domain.model;
 using Domain.services;
 using DTOs;
 
-namespace WebApi
+namespace WebApi.Endpoints
 {
     public static class InscripcionEndpoints
     {
