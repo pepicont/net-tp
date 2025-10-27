@@ -46,14 +46,27 @@
                         }
 
                         <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">Nombre <span class="text-danger">*</span></label>
-                                <InputText class="form-control" @bind-Value="UsuarioActual.Nombre" placeholder="Ingrese el nombre" />
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Nombre <span class="text-danger">*</span></label>
+                                    <InputText class="form-control" @bind-Value="UsuarioActual.Nombre" readonly />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Apellido <span class="text-danger">*</span></label>
+                                    <InputText class="form-control" @bind-Value="UsuarioActual.Apellido" readonly />
+                                </div>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label class="form-label">Apellido <span class="text-danger">*</span></label>
-                                <InputText class="form-control" @bind-Value="UsuarioActual.Apellido" placeholder="Ingrese el apellido" />
+                                <label class="form-label">Legajo de Persona <span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <InputText class="form-control" @bind-Value="legajoInput" placeholder="Ingrese el legajo" />
+                                    <button type="button" class="btn btn-outline-primary" @onclick="ValidarLegajo" disabled="@validandoLegajo">
+                                        Validar
+                                    </button>
+                                </div>
                             </div>
+                            
                         </div>
 
                         <div class="row">
@@ -64,27 +77,6 @@
                                     <option value="Admin">Admin</option>
                                     <option value="Usuario">Usuario</option>
                                 </InputSelect>
-                            </div>
-
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">Persona asociada <span class="text-danger">*</span></label>
-                                @if (cargandoPersonas)
-                                {
-                                    <div class="form-control d-flex align-items-center">
-                                        <span class="spinner-border spinner-border-sm me-2" role="status"></span>
-                                        <span>Cargando personas...</span>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <InputSelect class="form-select" @bind-Value="UsuarioActual.Id_persona">
-                                        <option value="0">Seleccione una persona...</option>
-                                        @foreach (var persona in personas)
-                                        {
-                                            <option value="@persona.Id">@($"{persona.Apellido}, {persona.Nombre}")</option>
-                                        }
-                                    </InputSelect>
-                                }
                             </div>
                         </div>
 
@@ -131,28 +123,7 @@
     private string? errorMessage = null;
     private List<Persona> personas = new();
 
-    protected override async Task OnInitializedAsync()
-    {
-        await CargarPersonas();
-    }
 
-    private async Task CargarPersonas()
-    {
-        try
-        {
-            cargandoPersonas = true;
-            personas = await PersonaService.GetAllAsync() ?? new();
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error al cargar personas: {ex.Message}");
-            personas = new();
-        }
-        finally
-        {
-            cargandoPersonas = false;
-        }
-    }
 
     private async Task GuardarUsuario()
     {
@@ -193,5 +164,49 @@
     {
         errorMessage = null;
         await OnCerrar.InvokeAsync();
+    }
+    private string legajoInput = "";
+    private bool validandoLegajo = false;
+
+    private async Task ValidarLegajo()
+    {
+        errorMessage = null;
+        validandoLegajo = true;
+        try
+        {
+            if (string.IsNullOrWhiteSpace(legajoInput))
+            {
+                errorMessage = "Debe ingresar un legajo.";
+                return;
+            }
+
+            if (!int.TryParse(legajoInput, out int legajo))
+            {
+                errorMessage = "El legajo debe ser un número.";
+                return;
+            }
+
+            var persona = await PersonaService.GetByIdAsync(legajo);
+            if (persona == null)
+            {
+                errorMessage = "No se encontró una persona con ese legajo.";
+                UsuarioActual.Nombre = "";
+                UsuarioActual.Apellido = "";
+            }
+            else
+            {
+                UsuarioActual.Id_persona = persona.Id;
+                UsuarioActual.Nombre = persona.Nombre;
+                UsuarioActual.Apellido = persona.Apellido;
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"No se encontró una persona con ese legajo.";
+        }
+        finally
+        {
+            validandoLegajo = false;
+        }
     }
 }
