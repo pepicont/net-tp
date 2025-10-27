@@ -53,7 +53,7 @@ namespace Forms
 
         private void btnCrearCuenta_Click(object sender, EventArgs e)
         {
-            //lógica de crear cuenta
+            //lógica de crear cuenta, al 
         }
     }
 }

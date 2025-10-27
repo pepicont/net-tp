@@ -24,6 +24,7 @@ namespace Forms.Usuario
             BaseAddress = new Uri("http://localhost:5290")
         };
 
+        private int? personaIdSeleccionada = null;
         private async void buttonPost_Click(object sender, EventArgs e)
         {
             try
@@ -63,7 +64,7 @@ namespace Forms.Usuario
                             Email = email,
                             Habilitado = habilitado,
                             Cambia_clave = cambiaClave,
-                            Id_persona = legajo,
+                            Id_persona = personaIdSeleccionada ?? 0,
                             Tipo = tipo
                         };
 
@@ -90,7 +91,33 @@ namespace Forms.Usuario
             }
             
         }
+        private void buttonVerificar_Click(object sender, EventArgs e)
+        {
+            if (!int.TryParse(txtLegajo.Text, out int legajo))
+            {
+                MessageBox.Show("Ingrese un legajo válido.");
+                return;
+            }
 
+            var personaRepo = new Data.PersonaRepository();
+            var persona = personaRepo.GetByLegajo(legajo);
+
+            if (persona != null)
+            {
+                txtNombre.Text = persona.Nombre;
+                txtApellido.Text = persona.Apellido;
+                txtEmail.Text = persona.Email;
+                this.personaIdSeleccionada = persona.Id; 
+            }
+            else
+            {
+                MessageBox.Show("No se encontró una persona con ese legajo.");
+                txtNombre.Text = "";
+                txtApellido.Text = "";
+                txtEmail.Text = "";
+                this.personaIdSeleccionada = null;
+            }
+        }
         private void FormAgregarUsuario_Load(object sender, EventArgs e)
         {
             //está de más

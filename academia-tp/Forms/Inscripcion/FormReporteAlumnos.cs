@@ -233,7 +233,7 @@ namespace Forms.Inscripcion
                         var primer = alumnos.First();
                     col.Item().Text($"Materia: {primer.DescMateria}").FontSize(12);
                         col.Item().PaddingVertical(3);
-                    col.Item().Text($"Curso: {nombreCurso}").FontSize(12); // <-- Aquí aparece el nombre
+                    col.Item().Text($"Curso: {nombreCurso}").FontSize(12); 
                         col.Item().PaddingVertical(3);
                     col.Item().Text($"Año: {primer.AnioCalendario}").FontSize(12);
                         col.Item().PaddingVertical(10);

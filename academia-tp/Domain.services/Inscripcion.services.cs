@@ -123,7 +123,6 @@ namespace Domain.services
 
         private IEnumerable<InscripcionDTO> ConvertToDTO(IEnumerable<Inscripcion> inscripciones)
         {
-            // Cargar datos una sola vez
             var personas = personaRepository.GetAll().ToList();
             var cursos = cursoRepository.GetAll().ToList();
             var materias = materiaRepository.GetAll().ToList();
@@ -140,7 +139,6 @@ namespace Domain.services
                     Fecha_inscripcion = inscripcion.Fecha_inscripcion
                 };
 
-                // Datos del alumno
                 var alumno = personas.FirstOrDefault(p => p.Id == inscripcion.Id_alumno);
                 if (alumno != null)
                 {
@@ -149,7 +147,6 @@ namespace Domain.services
                     dto.LegajoAlumno = alumno.Legajo;
                 }
 
-                // Datos del curso
                 var curso = cursos.FirstOrDefault(c => c.Id == inscripcion.Id_curso);
                 if (curso != null)
                 {
@@ -191,24 +188,32 @@ namespace Domain.services
         }
         public IEnumerable<CursoCantidadDto> GetCantidadAlumnosPorCurso(int? materiaId, int? anio)
         {
-            var inscripciones = inscripcionRepository.GetAll();
-            var cursos = cursoRepository.GetAll();
+            var cursos = cursoRepository.GetAll()
+        .Where(c => !materiaId.HasValue || c.Id_materia == materiaId.Value)
+        .ToList();
 
-            var query = from i in inscripciones
-                        join c in cursos on i.Id_curso equals c.Id
-                        where (!materiaId.HasValue || c.Id_materia == materiaId.Value)
-                           && (!anio.HasValue || i.Fecha_inscripcion.Year == anio.Value)
-                        group i by new { c.Id, c.Nombre, c.Cupo } into g
-                        select new CursoCantidadDto
-                        {
-                            NombreCurso = g.Key.Nombre,
-                            CantidadAlumnos = g.Count(),
-                            Cupo = g.Key.Cupo
-                        };
+            var inscripciones = inscripcionRepository.GetAll()
+                .Where(i => !anio.HasValue || i.Fecha_inscripcion.Year == anio.Value)
+                .ToList();
 
-            return query.ToList();
+            var resultado = cursos
+                .Select(curso =>
+                {
+                    var cantidad = inscripciones.Count(i => i.Id_curso == curso.Id);
+                    return new CursoCantidadDto
+                    {
+                        NombreCurso = curso.Nombre,
+                        CantidadAlumnos = cantidad,
+                        Cupo = curso.Cupo
+                    };
+                })
+                .Where(dto => dto.CantidadAlumnos > 0)
+                .ToList();
+
+            return resultado;
         }
-
     }
 
     }
+
+    

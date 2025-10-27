@@ -20,7 +20,6 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
 
         /// <summary>
         /// Required method for Designer support - do not modify
@@ -42,10 +41,12 @@
             label1 = new Label();
             txtLegajo = new TextBox();
             label3 = new Label();
+            buttonVerificar = new Button();
             SuspendLayout();
             // 
             // txtEmail
             // 
+            txtEmail.Enabled = false;
             txtEmail.Location = new Point(473, 76);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(100, 23);
@@ -62,6 +63,7 @@
             // 
             // txtApellido
             // 
+            txtApellido.Enabled = false;
             txtApellido.Location = new Point(228, 232);
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(100, 23);
@@ -70,7 +72,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(141, 235);
+            label6.Location = new Point(125, 235);
             label6.Name = "label6";
             label6.Size = new Size(54, 15);
             label6.TabIndex = 61;
@@ -78,6 +80,7 @@
             // 
             // txtNombre
             // 
+            txtNombre.Enabled = false;
             txtNombre.Location = new Point(228, 176);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(100, 23);
@@ -86,7 +89,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(141, 179);
+            label5.Location = new Point(125, 179);
             label5.Name = "label5";
             label5.Size = new Size(54, 15);
             label5.TabIndex = 59;
@@ -126,9 +129,9 @@
             // 
             // buttonPost
             // 
-            buttonPost.Location = new Point(386, 200);
+            buttonPost.Location = new Point(444, 220);
             buttonPost.Name = "buttonPost";
-            buttonPost.Size = new Size(187, 55);
+            buttonPost.Size = new Size(129, 35);
             buttonPost.TabIndex = 52;
             buttonPost.Text = "Crear";
             buttonPost.UseVisualStyleBackColor = true;
@@ -159,11 +162,23 @@
             label3.TabIndex = 72;
             label3.Text = "Legajo:";
             // 
+            // buttonVerificar
+            // 
+            buttonVerificar = new Button();
+            buttonVerificar.Location = new Point(386, 161);
+            buttonVerificar.Name = "buttonVerificar";
+            buttonVerificar.Size = new Size(131, 23);
+            buttonVerificar.TabIndex = 74;
+            buttonVerificar.Text = "Verificar legajo";
+            buttonVerificar.UseVisualStyleBackColor = true;
+            buttonVerificar.Click += buttonVerificar_Click;
+            // 
             // FormAgregarUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(buttonVerificar);
             Controls.Add(txtLegajo);
             Controls.Add(label3);
             Controls.Add(txtEmail);
@@ -184,8 +199,6 @@
             ResumeLayout(false);
             PerformLayout();
         }
-
-        #endregion
         private TextBox txtEmail;
         private Label label7;
         private TextBox txtApellido;
@@ -200,5 +213,6 @@
         private Label label1;
         private TextBox txtLegajo;
         private Label label3;
+        private Button buttonVerificar;
     }
 }
