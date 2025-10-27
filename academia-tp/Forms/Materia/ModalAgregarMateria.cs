@@ -17,12 +17,6 @@ namespace Forms
         };
 
 
-
-        private void MostrarError(string mensaje)
-        {
-            MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
-
         private async void buttonPost_Click(object sender, EventArgs e)
         {
             int id_plan = (int)comboBox1.SelectedValue;

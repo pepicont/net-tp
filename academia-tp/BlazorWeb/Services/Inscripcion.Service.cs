@@ -24,13 +24,11 @@ public class InscripcionHttpService
 
     public async Task UpdateAsync(Especialidad especialidad)
     {
-        /*var response = await _httpClient.PutAsJsonAsync($"especialidades/{especialidad.Id}", especialidad);
-        response.EnsureSuccessStatusCode();*/
+        //
     }
 
     public async Task DeleteAsync(int id)
     {
-        /*var response = await _httpClient.DeleteAsync($"especialidades/{id}");
-        response.EnsureSuccessStatusCode();*/
+        //
     }
 }

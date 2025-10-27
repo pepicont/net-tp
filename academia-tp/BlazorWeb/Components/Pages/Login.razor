@@ -63,7 +63,7 @@
 
         try
         {
-            // ✅ NUEVO: Llamar al endpoint HTTP en lugar de AuthServiceScoped.Login
+            
             var usuario = await AuthHttpService.LoginAsync(loginModel.Username, loginModel.Password);
 
             if (usuario == null)
@@ -72,7 +72,7 @@
                 return;
             }
 
-            // ✅ Ahora sí, guardar el usuario en el estado de sesión
+            
             AuthServiceScoped.SetUsuario(usuario);
 
             okMessage = "Inicio de sesión exitoso.";

@@ -159,7 +159,7 @@ namespace Forms
 
         private void detallePersona_Click(object sender, EventArgs e) //ME OLVIDE DE CAMBIARLE EL NOMBRE SERIA CREAR Y NO QUIERO QUE SE ROMPA EL FORM 
         {
-            panelContenedor.Controls.Clear();          //IMPORTANTE: no hace falta validar si es usuario porque no le aparece, en web se deberia validad igual por los endpoints pero como aca en winforms no hace falta
+            panelContenedor.Controls.Clear();          
             var form = new ModalAgregarPersona();
             MostrarEnPanel(form);
 
