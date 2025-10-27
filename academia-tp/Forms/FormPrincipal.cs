@@ -127,6 +127,8 @@ namespace Forms
                 listadoDocente_Click(sender, e);
             else if (sender == materiaToolStripMenuItem)
                 listadoMateria_Click(sender, e);
+            else if (sender == inscripcionToolStripMenuItem)
+                listadoInscripcion_Click(sender, e);
 
         }
 

@@ -43,7 +43,8 @@ namespace Forms
 
         private void InkOlvidaPass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //recuperación de contraseña
+            FormRecuperacionContrasenia recuperar = new FormRecuperacionContrasenia();
+            recuperar.ShowDialog();
         }
 
         private void label4_Click(object sender, EventArgs e)

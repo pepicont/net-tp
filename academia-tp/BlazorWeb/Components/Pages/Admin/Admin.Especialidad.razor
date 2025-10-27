@@ -6,8 +6,15 @@
 @rendermode RenderModes.ProtectedMode
 @inject EspecialidadHttpService EspecialidadService
 
-<h3>Gestión de Especialidades (Solo Admin)</h3>
-
+<div class="d-flex justify-content-between align-items-center mb-3">
+<h3 class="mb-0">Gestión de Especialidades (Solo Admin)</h3>
+    @if (!isLoading)
+    {
+        <button class="btn btn-primary" type="button" @onclick="AbrirModalNuevo">
+            <i class="bi bi-plus-circle"></i> Cargar nueva especialidad
+        </button>
+    }
+</div>
 @if (isLoading)
 {
     <div class="d-flex justify-content-center align-items-center" style="min-height: 300px;">
@@ -54,12 +61,6 @@
     </table>
 }
 
-@if (!isLoading)
-{
-    <button class="btn btn-primary" type="button" @onclick="AbrirModalNuevo">
-        <i class="bi bi-plus-circle"></i> Cargar nueva especialidad
-    </button>
-}
 
 @if (!string.IsNullOrEmpty(infoMessage))
 {

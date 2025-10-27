@@ -3,38 +3,37 @@ using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
 using SkiaSharp;
-using System.ComponentModel;
-using static System.Net.Mime.MediaTypeNames;
+using Data;
 
 namespace Domain.services
 {
     public class ReporteServices
     {
-        private readonly InscripcionServices _inscripcionServices;
-        private readonly CursoServices _cursoServices;
+        // ✅ CAMBIO: Usar ReporteRepository con ADO.NET
+        private readonly ReporteRepository _reporteRepository;
 
         public ReporteServices()
         {
-            _inscripcionServices = new InscripcionServices();
-            _cursoServices = new CursoServices();
+            _reporteRepository = new ReporteRepository();
         }
 
         public byte[] GenerarReporteAlumnosPorCurso(int idCurso, int anio)
         {
-            var alumnos = _inscripcionServices.GetAlumnosPorCurso(idCurso, anio);
+            // ✅ Ahora usa ADO.NET
+            var alumnos = _reporteRepository.GetAlumnosPorCurso(idCurso, anio);
 
             if (alumnos == null || alumnos.Count == 0)
                 throw new InvalidOperationException("No hay alumnos inscriptos.");
 
-            var curso = _cursoServices.GetOne(idCurso);
-            string nombreCurso = curso?.Nombre ?? "Desconocido";
+            string nombreCurso = _reporteRepository.GetNombreCurso(idCurso);
 
             return GenerarPDFAlumnos(alumnos, nombreCurso);
         }
 
         public byte[] GenerarReporteGraficoAlumnos(int materiaId, int anio)
         {
-            var datos = _inscripcionServices.GetCantidadAlumnosPorCurso(materiaId, anio).ToList();
+            // ✅ Ahora usa ADO.NET
+            var datos = _reporteRepository.GetCantidadAlumnosPorCurso(materiaId, anio);
 
             if (datos == null || datos.Count == 0)
                 throw new InvalidOperationException("No hay datos para mostrar.");
@@ -137,7 +136,7 @@ namespace Domain.services
         }
     }
 
-    // Clases para generar PDFs
+    // ⬇️ Las clases de generación de PDF permanecen iguales
     public class AlumnosPorCursoReport : IDocument
     {
         private readonly List<AlumnoReporteDto> alumnos;

@@ -7,7 +7,23 @@
 @rendermode RenderModes.ProtectedMode
 @inject InscripcionHttpService InscripcionService
 
-<h3>Gestión de Inscripciones (Solo Admin)</h3>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h3 class="mb-0">Gestión de Inscripciones (Solo Admin)</h3>
+    @if (!isLoading)
+    {
+        <div>
+            <button class="btn btn-primary me-2" type="button" @onclick="AbrirModalNuevo">
+                <i class="bi bi-plus-circle"></i> Cargar nueva inscripción
+            </button>
+            <button class="btn btn-outline-primary me-2" type="button" @onclick="AbrirModalReporte1">
+                <i class="bi bi-receipt-cutoff"></i> Reporte de Alumnos por Curso
+            </button>
+            <button class="btn btn-outline-primary" type="button" @onclick="AbrirModalReporte2">
+                <i class="bi bi-reception-2"></i> Gráfico de Alumnos por Curso
+            </button>
+        </div>
+    }
+</div>
 
 @if (isLoading)
 {
@@ -66,21 +82,6 @@
         </tbody>
     </table>
 }
-
-@if (!isLoading)
-{
-    <button class="btn btn-primary" type="button" @onclick="AbrirModalNuevo">
-        <i class="bi bi-plus-circle"></i> Cargar nueva inscripción
-    </button>
-    <button class="btn btn-outline-primary" type="button" @onclick="AbrirModalReporte1">
-        <i class="bi bi-receipt-cutoff"></i> Reporte de Alumnos por Curso
-    </button>
-    <button class="btn btn-outline-primary" type="button" @onclick="AbrirModalReporte2">
-        <i class="bi bi-reception-2"></i> Gráfico de Alumnos por Curso
-    </button>
-}
-
-
 
 <ModalInscripcion IsVisible="mostrarModal"
                    InscripcionActual="inscripcionSeleccionada"
