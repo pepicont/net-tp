@@ -282,7 +282,7 @@ new Persona
                     {
                         Id = 1,
                         Nombre_usuario = "admin",
-                        Clave = "$2a$12$oio9TEk650CiHoYazcMtQeBw5Ft6lrDvlGAEd3ktpUpRbTWRl9MLq", // Idealmente, hasheada
+                        Clave = "$2a$12$oio9TEk650CiHoYazcMtQeBw5Ft6lrDvlGAEd3ktpUpRbTWRl9MLq", 
                         Habilitado = true,
                         Nombre = "Admin",
                         Apellido = "Principal",
@@ -295,7 +295,7 @@ new Persona
                     {
                         Id = 2,
                         Nombre_usuario = "bruno",
-                        Clave = "$2a$12$oio9TEk650CiHoYazcMtQeBw5Ft6lrDvlGAEd3ktpUpRbTWRl9MLq", // Idealmente, hasheada
+                        Clave = "$2a$12$oio9TEk650CiHoYazcMtQeBw5Ft6lrDvlGAEd3ktpUpRbTWRl9MLq", 
                         Habilitado = true,
                         Nombre = "Bruno",
                         Apellido = "Vitali",
@@ -308,7 +308,7 @@ new Persona
                     {
                         Id = 3,
                         Nombre_usuario = "profesor",
-                        Clave = "$2a$12$oio9TEk650CiHoYazcMtQeBw5Ft6lrDvlGAEd3ktpUpRbTWRl9MLq", // Idealmente, hasheada
+                        Clave = "$2a$12$oio9TEk650CiHoYazcMtQeBw5Ft6lrDvlGAEd3ktpUpRbTWRl9MLq", 
                         Habilitado = true,
                         Nombre = "Profesor",
                         Apellido = "Ejemplo",
