@@ -142,14 +142,14 @@ namespace DataDomain
                     new Persona
                     {
                         Id = 3,
-                        Nombre = "Ana",
-                        Apellido = "García",
+                        Nombre = "profesor",
+                        Apellido = "ejemplo",
                         Direccion = "Av. Siempreviva 742",
-                        Email = "ana@mail.com",
+                        Email = "profesor@mail.com",
                         Telefono = "654321",
                         Fecha_nac = "1992-03-15",
                         Legajo = 3,
-                        Tipo_persona = 1,
+                        Tipo_persona = 2,
                         Id_plan = 1
                     },
 new Persona
@@ -303,9 +303,24 @@ new Persona
                         Cambia_clave = false,
                         Id_persona = 2,
                         Tipo = "Usuario"
+                    },
+                    new Usuario
+                    {
+                        Id = 3,
+                        Nombre_usuario = "profesor",
+                        Clave = "$2a$12$oio9TEk650CiHoYazcMtQeBw5Ft6lrDvlGAEd3ktpUpRbTWRl9MLq", // Idealmente, hasheada
+                        Habilitado = true,
+                        Nombre = "Profesor",
+                        Apellido = "Ejemplo",
+                        Email = "profesor@mail.com",
+                        Cambia_clave = false,
+                        Id_persona = 3,
+                        Tipo = "Usuario"
                     });
+                
+                }
                     
-        }
+        
             );
             modelBuilder.Entity<Inscripcion>(entity =>
             {
