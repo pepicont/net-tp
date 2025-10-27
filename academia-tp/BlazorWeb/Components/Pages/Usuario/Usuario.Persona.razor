@@ -8,7 +8,16 @@
 @inject PersonaHttpService PersonaService
 @inject AuthServiceScoped AuthServiceScoped
 
-<h3>Gestión de mi persona</h3>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h3 class="mb-0">Gestión de mi persona</h3>
+    @if (!isLoading)
+    {
+        <button class="btn btn-primary" type="button" @onclick="EditarPersona">
+            <i class="bi bi-plus-circle"></i> Editar mis datos
+        </button>
+    }
+</div>
+
 
 @if (isLoading)
 {
@@ -52,9 +61,7 @@
             
         </tbody>
     </table>
-    <button class="btn btn-primary" type="button" @onclick="EditarPersona">
-        <i class="bi bi-plus-circle"></i> Editar mis datos
-    </button>
+    
 }
 
 

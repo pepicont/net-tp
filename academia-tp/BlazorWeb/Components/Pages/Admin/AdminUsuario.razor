@@ -6,7 +6,16 @@
 @rendermode RenderModes.ProtectedMode
 @inject UsuarioHttpService UsuarioService
 
-<h3>Gestión de Usuarios (Solo Admin)</h3>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h3 class="mb-0">Gestión de Usuarios (Solo Admin)</h3>
+    @if (!isLoading)
+    {
+        <button class="btn btn-primary" type="button" @onclick="AbrirModalNuevo">
+            <i class="bi bi-plus-circle"></i> Cargar nuevo Usuario
+        </button>
+    }
+</div>
+
 
 @if (isLoading)
 {
@@ -67,12 +76,7 @@ else
     </table>
 }
 
-@if (!isLoading)
-{
-    <button class="btn btn-primary" type="button" @onclick="AbrirModalNuevo">
-        <i class="bi bi-plus-circle"></i> Cargar nuevo usuario
-    </button>
-}
+
 
 <ModalUsuario IsVisible="mostrarModal"
               UsuarioActual="usuarioSeleccionada"
