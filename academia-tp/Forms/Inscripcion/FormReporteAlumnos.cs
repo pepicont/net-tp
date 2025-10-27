@@ -1,14 +1,15 @@
-﻿using System;
+﻿using Domain.model;
+using Domain.services;
+using DTOs;
+using QuestPDF.Fluent;
+using QuestPDF.Helpers;
+using QuestPDF.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DTOs;
-using Domain.model;
-using QuestPDF.Fluent;
-using QuestPDF.Infrastructure;
-using QuestPDF.Helpers;
 
 namespace Forms.Inscripcion
 {
@@ -18,10 +19,11 @@ namespace Forms.Inscripcion
         {
             BaseAddress = new Uri("http://localhost:5290")
         };
-
+        private readonly ReporteServices _reporteService;
         public FormReporteAlumnos()
         {
             InitializeComponent();
+            _reporteService = new ReporteServices();
         }
 
         private async void FormReporteAlumnos_Load(object sender, EventArgs e)
@@ -50,7 +52,6 @@ namespace Forms.Inscripcion
         {
             if (comboBoxMateria.SelectedValue is int materiaId)
             {
-                await CargarCursosPorMateria(materiaId);
                 comboBoxCurso.Enabled = true;
                 await CargarCursosPorMateria(materiaId);
             }
@@ -87,33 +88,6 @@ namespace Forms.Inscripcion
             }
         }
 
-        private async void btnCrearReporte_Click(object sender, EventArgs e)
-        {
-            if (!ValidarSelecciones()) return;
-
-            try
-            {
-                int idCurso = (int)comboBoxCurso.SelectedValue;
-                int anio = (int)numericUpDownAño.Value;
-
-                var alumnos = await _httpClient.GetFromJsonAsync<List<AlumnoReporteDto>>(
-                    $"inscripciones/alumnos-por-curso?idCurso={idCurso}&anio={anio}");
-
-                if (alumnos == null || alumnos.Count == 0)
-                {
-                    MessageBox.Show("No hay alumnos inscriptos para los filtros seleccionados.");
-                    return;
-                }
-
-                GenerarReportePDF(alumnos);
-                MessageBox.Show("Reporte generado correctamente en 'ReporteAlumnosPorCurso.pdf'");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al generar el reporte: {ex.Message}");
-            }
-        }
-
         private bool ValidarSelecciones()
         {
             if (comboBoxMateria.SelectedValue == null)
@@ -132,26 +106,6 @@ namespace Forms.Inscripcion
                 return false;
             }
             return true;
-        }
-
-
-        private void GenerarReportePDF(List<AlumnoReporteDto> alumnos)
-        {
-            string nombreCurso = comboBoxCurso.SelectedItem is Curso curso ? curso.Nombre : comboBoxCurso.Text;
-            string projectRoot = AppDomain.CurrentDomain.BaseDirectory;
-            while (!System.IO.Directory.Exists(System.IO.Path.Combine(projectRoot, "Reportes")) &&
-                   System.IO.Directory.GetParent(projectRoot) != null)
-            {
-                projectRoot = System.IO.Directory.GetParent(projectRoot).FullName;
-        }
-            string reportFolder = System.IO.Path.Combine(projectRoot, "Reportes");
-            if (!System.IO.Directory.Exists(reportFolder))
-                System.IO.Directory.CreateDirectory(reportFolder);
-
-            string filePath = System.IO.Path.Combine(reportFolder, "ReporteAlumnosPorCurso.pdf");
-            // Instancia el reporte y genera el PDF
-            var reporte = new AlumnosPorCursoReport(alumnos, nombreCurso);
-            reporte.GeneratePdf(filePath);
         }
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
@@ -172,7 +126,7 @@ namespace Forms.Inscripcion
             }
     }
 
-        private async void buttonCrearReporte_Click(object sender, EventArgs e)
+        private void buttonCrearReporte_Click(object sender, EventArgs e)
         {
             if (!ValidarSelecciones()) return;
 
@@ -181,115 +135,26 @@ namespace Forms.Inscripcion
                 int idCurso = (int)comboBoxCurso.SelectedValue;
                 int anio = (int)numericUpDownAño.Value;
 
-                var alumnos = await _httpClient.GetFromJsonAsync<List<AlumnoReporteDto>>(
-                    $"inscripciones/alumnos-por-curso?idCurso={idCurso}&anio={anio}");
 
-                if (alumnos == null || alumnos.Count == 0)
-                {
-                    MessageBox.Show("No hay alumnos inscriptos para los filtros seleccionados.");
-                    return;
-                }
+                byte[] pdfBytes = _reporteService.GenerarReporteAlumnosPorCurso(idCurso, anio);
 
-                GenerarReportePDF(alumnos);
-                MessageBox.Show("Reporte generado correctamente");
+
+                string filePath = _reporteService.GuardarReporte(pdfBytes, "ReporteAlumnosPorCurso.pdf");
+
+                MessageBox.Show($"Reporte generado correctamente en:\n{filePath}",
+                    "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show(ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al generar el reporte: {ex.Message}");
+                MessageBox.Show($"Error al generar el reporte: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-    }
 
 
-// Modifica la clase AlumnosPorCursoReport para recibir el nombre del curso y mostrarlo en el PDF
-
-    public class AlumnosPorCursoReport : IDocument
-    {
-        private readonly List<AlumnoReporteDto> alumnos;
-    private readonly string nombreCurso;
-
-    public AlumnosPorCursoReport(List<AlumnoReporteDto> alumnos, string nombreCurso)
-        {
-            this.alumnos = alumnos;
-        this.nombreCurso = nombreCurso;
-        }
-
-        public DocumentMetadata GetMetadata() => DocumentMetadata.Default;
-
-        public void Compose(IDocumentContainer container)
-        {
-            container.Page(page =>
-            {
-                page.Margin(30);
-                page.Size(PageSizes.A4);
-                page.Content().Column(col =>
-                {
-                col.Item().Text("Listado de Alumnos por Curso").FontSize(18).Bold().AlignCenter();
-                col.Item().PaddingVertical(10);
-
-                    // Información del curso
-                    if (alumnos.Any())
-                    {
-                        var primer = alumnos.First();
-                    col.Item().Text($"Materia: {primer.DescMateria}").FontSize(12);
-                        col.Item().PaddingVertical(3);
-                    col.Item().Text($"Curso: {nombreCurso}").FontSize(12); 
-                        col.Item().PaddingVertical(3);
-                    col.Item().Text($"Año: {primer.AnioCalendario}").FontSize(12);
-                        col.Item().PaddingVertical(10);
-                    }
-
-                    // Tabla de alumnos
-                    col.Item().Table(table =>
-                    {
-                        table.ColumnsDefinition(columns =>
-                        {
-                        columns.ConstantColumn(60);
-                        columns.RelativeColumn(2);
-                        columns.RelativeColumn(2);
-                        columns.ConstantColumn(80);
-                        columns.ConstantColumn(60);
-                        columns.ConstantColumn(80);
-                        });
-
-                        // Encabezado
-                        table.Header(header =>
-                        {
-                            header.Cell().Element(CellStyle).Text("Legajo").Bold();
-                            header.Cell().Element(CellStyle).Text("Nombre").Bold();
-                            header.Cell().Element(CellStyle).Text("Apellido").Bold();
-                            header.Cell().Element(CellStyle).Text("Condición").Bold();
-                            header.Cell().Element(CellStyle).Text("Nota").Bold();
-                            header.Cell().Element(CellStyle).Text("Fecha Insc.").Bold();
-                        });
-
-                        // Filas de datos
-                        foreach (var alumno in alumnos.OrderBy(a => a.Apellido).ThenBy(a => a.Nombre))
-                        {
-                            table.Cell().Element(CellStyle).Text(alumno.Legajo.ToString());
-                            table.Cell().Element(CellStyle).Text(alumno.Nombre ?? "");
-                            table.Cell().Element(CellStyle).Text(alumno.Apellido ?? "");
-                            table.Cell().Element(CellStyle).Text(alumno.Condicion ?? "");
-                            table.Cell().Element(CellStyle).Text(alumno.Nota?.ToString() ?? "-");
-                            table.Cell().Element(CellStyle).Text(alumno.Fecha_inscripcion.ToString("dd/MM/yyyy"));
-                        }
-                    });
-
-                    // Totales
-                    col.Item().PaddingVertical(15);
-                    col.Item().Text($"Total de alumnos: {alumnos.Count}")
-                        .FontSize(12).Bold();
-                });
-            });
-        }
-
-        // Método auxiliar para estilo de celdas
-        private IContainer CellStyle(IContainer container)
-        {
-            return container
-                .Padding(5)
-                .BorderBottom(1)
-                .BorderColor(Colors.Grey.Lighten2);
-        }
     }
 }
