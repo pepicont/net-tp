@@ -46,7 +46,7 @@
                         }
 
                         <div class="row">
-                            
+
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Nombre <span class="text-danger">*</span></label>
@@ -66,7 +66,11 @@
                                     </button>
                                 </div>
                             </div>
-                            
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Clave <span class="text-danger">*</span></label>
+                                <InputText class="form-control" @bind-Value="UsuarioActual.Clave"  />
+                            </div>
+
                         </div>
 
                         <div class="row">
@@ -112,6 +116,7 @@
     </div>
 }
 
+
 @code {
     [Parameter] public bool IsVisible { get; set; }
     [Parameter] public Usuario? UsuarioActual { get; set; }
@@ -123,13 +128,17 @@
     private string? errorMessage = null;
     private List<Persona> personas = new();
 
-
+    private string legajoInput = "";
+    private bool validandoLegajo = false;
 
     private async Task GuardarUsuario()
     {
-		errorMessage = UsuarioValidator.Validate(UsuarioActual);
-		if (errorMessage != null)
-			return;
+        errorMessage = UsuarioValidator.Validate(UsuarioActual);
+        if (errorMessage != null)
+            return;
+
+        if (UsuarioActual!.Clave != null)
+            UsuarioActual.Cambia_clave = true;
 
         try
         {
@@ -165,8 +174,7 @@
         errorMessage = null;
         await OnCerrar.InvokeAsync();
     }
-    private string legajoInput = "";
-    private bool validandoLegajo = false;
+    
 
     private async Task ValidarLegajo()
     {
