@@ -37,13 +37,6 @@
                                 <InputText type="email" class="form-control" @bind-Value="UsuarioActual.Email" placeholder="ejemplo@correo.com" />
                             </div>
                         </div>
-                        @if (UsuarioActual!.Id == 0)
-                        {
-                            <div class="row">
-                                <label class="form-label">Clave <span class="text-danger">*</span></label>
-                                <InputText type="password" class="form-control" @bind-Value="UsuarioActual.Clave" placeholder="Ingrese su clave" />
-                            </div>
-                        }
 
                         <div class="row">
 
@@ -68,7 +61,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Clave <span class="text-danger">*</span></label>
-                                <InputText class="form-control" @bind-Value="UsuarioActual.Clave"  />
+                                <InputText type="password" class="form-control" @bind-Value="UsuarioActual.Clave" />
                             </div>
 
                         </div>
@@ -131,8 +124,26 @@
     private string legajoInput = "";
     private bool validandoLegajo = false;
 
+    protected override async Task OnParametersSetAsync()
+    {
+        if (IsVisible && UsuarioActual?.Id > 0 && UsuarioActual.Id_persona > 0)
+        {
+            legajoInput = UsuarioActual.Id_persona.ToString();
+        }
+        else if (IsVisible && UsuarioActual?.Id == 0)
+        {
+            legajoInput = "";
+        }
+    }
+
     private async Task GuardarUsuario()
     {
+        if (string.IsNullOrWhiteSpace(UsuarioActual?.Clave))
+        {
+            errorMessage = "La clave es obligatoria.";
+            return;
+        }
+
         errorMessage = UsuarioValidator.Validate(UsuarioActual);
         if (errorMessage != null)
             return;
@@ -172,6 +183,7 @@
     private async Task Cerrar()
     {
         errorMessage = null;
+        legajoInput = "";
         await OnCerrar.InvokeAsync();
     }
     
@@ -200,6 +212,7 @@
                 errorMessage = "No se encontró una persona con ese legajo.";
                 UsuarioActual.Nombre = "";
                 UsuarioActual.Apellido = "";
+                UsuarioActual.Id_persona = 0;
             }
             else
             {
@@ -211,6 +224,7 @@
         catch (Exception ex)
         {
             errorMessage = $"No se encontró una persona con ese legajo.";
+            Console.WriteLine($"Error al validar legajo: {ex.Message}");
         }
         finally
         {
